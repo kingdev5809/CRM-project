@@ -41,11 +41,8 @@ const Students = () => {
     },
   ];
   return (
-    <div className="studentsPage">
-      <div className="studentsPageNav">
-        <Navbar />
-      </div>
-      <div className="studentsPageMain container">
+    <div className="studentsPage container">
+      
         <div className="main-header-pages ">
           <h1>All Students </h1>
           <button onClick={()=> setVisibleModal('d-block')}>CREATE</button>
@@ -97,7 +94,6 @@ const Students = () => {
             ))}
           </div>
         </div>
-      </div>
       <AddStudentModal
       visibleModal={visibleModal}
       setVisibleModal={setVisibleModal}

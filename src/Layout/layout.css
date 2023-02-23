@@ -115,7 +115,7 @@ body::-webkit-scrollbar {
 .navbar-component .deskop-nav .navbar-main ul li a:hover {
   color: #ee6c4d;
 }
-.navbar-component .deskop-nav .navbar-main ul li a svg {
+.navbar-component .deskop-nav .navbar-main ul li a img {
   width: 25px;
 }
 
@@ -123,7 +123,9 @@ body::-webkit-scrollbar {
   margin-left: 15px;
 }
 
-.navbar-component .mobile-nav {
+
+
+/* .navbar-component .mobile-nav {
   position: fixed;
   bottom: 0;
   width: 100%;
@@ -134,7 +136,113 @@ body::-webkit-scrollbar {
 .navbar-component .mobile-nav .mobile-nav-inner {
   display: flex;
   justify-content: space-between;
+  padding: 20px;
+} */
+.navbar-component .mobile-nav {
+  display: none;
+  width: 100%;
+  height: 70px;
+  background-color: #fff;
+  position: fixed;
+  bottom: 50px;
+  justify-content: center;
 }
+
+.navbar-component .mobile-nav ul {
+  display: flex;
+  width: 90%;
+  margin: auto;
+}
+
+.navbar-component .mobile-nav ul li {
+  position: relative;
+  list-style-type: none;
+  width: 70px;
+  height: 70px;
+  z-index: 1;
+}
+
+.navbar-component .mobile-nav ul li a {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  text-align: center;
+  font-weight: 500;
+}
+.navbar-component .mobile-nav ul li a .icon {
+  position: relative;
+  /* display: block; */
+  font-size: 1.5em;
+  text-align: center;
+  transition: 0.5s;
+  line-height: 75px;
+}
+.navbar-component .mobile-nav ul li a .icon img {
+  width: 25px;
+  height: 25px;
+}
+
+.navbar-component .mobile-nav ul li a.active .icon {
+  /* transform: translateY(-32px); */
+}
+
+.navbar-component .mobile-nav ul li a .text {
+  position: absolute;
+  color: black;
+  font-weight: 400;
+  font-display: 0.75rem;
+  letter-spacing: 0.05em;
+  transition: 0.5;
+  opacity: 0;
+  transform: translateY(-20px);
+}
+
+.navbar-component .mobile-nav ul li a.active .text {
+  opacity: 1;
+  transform: translateY(50px);
+}
+
+.navbar-component .mobile-nav ul li a.active  {
+  position: absolute;
+  
+  width: 70px;
+  height: 70px;
+  background-color: #ff7b54;
+  border-radius: 50%;
+  border: 6px solid #f5f7fb;
+  transform: translateY(-32px);
+  
+}
+
+.navbar-component .mobile-nav ul li a.active::before {
+  content: " ";
+  position: absolute;
+  top: 53%;
+  left: -38%;
+  width: 21px;
+  height: 20px;
+  background: transparent;
+  border-top-right-radius: 20px;
+  box-shadow: 0px -10px 0 0 #f5f7fb;
+  color: transparent;
+}
+
+.navbar-component .mobile-nav ul li a.active::after {
+  content: " ";
+  position: absolute;
+  top: 53%;
+  right: -38%;
+  width: 21px;
+  height: 20px;
+  background: transparent;
+  border-top-left-radius: 20px;
+  box-shadow: 0px -10px 0 0 #f5f7fb;
+  color: transparent;
+}
+
 
 @media screen and (max-width: 800px) {
   .navbar-box {
@@ -172,7 +280,6 @@ body::-webkit-scrollbar {
   display: block;
 }
 .w-screen {
-  position: fixed;
   background-color: black;
   opacity: 0.25;
   width: 100%;
@@ -453,15 +560,10 @@ body::-webkit-scrollbar {
 .calendarComponent .fc-button:focus {
   background-color: #ee6c4d !important;
 }
-.scheldulePage {
-  display: flex;
-}
-.scheldulePage .schelduleNav {
-  position: fixed;
-}
-.scheldulePage .schelduleMain {
-  
-  padding:30px 20px;
+
+
+.scheldulePage  {
+  padding: 30px 20px;
 }
 
 .classes-page .items {
@@ -584,22 +686,18 @@ body::-webkit-scrollbar {
 
 /*  */
 
-.teacherPage {
-  display: flex;
-}
-.teacherPage .teacherPageNav {
-  width: 20%;
-}
-.teacherPage .teacherPageMain {
+
+
+.teacherPage  {
   position: relative;
 }
-.teacherPage .teacherPageMain .items {
+.teacherPage  .items {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
   margin-top: 10px;
 }
-.teacherPage .teacherPageMain .items .item {
+.teacherPage  .items .item {
   background-color: #fff;
   width: 100%;
   text-align: center;
@@ -608,111 +706,106 @@ body::-webkit-scrollbar {
   margin: 5px;
   box-shadow: 5px 5px 13px 2px rgba(0, 0, 0, 0.14);
 }
-.teacherPage .teacherPageMain .items .item h2 {
+.teacherPage  .items .item h2 {
   font-size: 1.25rem;
   line-height: 1.75rem;
   color: #706b6b;
   font-weight: 600;
 }
-.teacherPage .teacherPageMain .items .item h4 {
+.teacherPage  .items .item h4 {
   font-size: 1rem;
   line-height: 1.5rem;
   font-weight: 500;
 }
-.teacherPage .teacherPageMain .items .item p {
+.teacherPage  .items .item p {
   margin: 10px 0;
   display: flex;
   justify-content: center;
   color: #706b6b;
 }
-.teacherPage .teacherPageMain .items .item p svg {
+.teacherPage  .items .item p svg {
   width: 1rem;
   height: 1rem;
   margin-right: 5px;
 }
-.teacherPage .teacherPageMain .items .item h5 {
+.teacherPage  .items .item h5 {
   font-weight: 400;
 }
 
 @media screen and (max-width: 1000px) {
-  .teacherPage .teacherPageMain .items  {
+  .teacherPage  .items {
     grid-template-columns: repeat(2, 1fr);
   }
-
 }
 
 @media screen and (max-width: 650px) {
-  .teacherPage .teacherPageMain .items  {
+  .teacherPage  .items {
     grid-template-columns: repeat(1, 1fr);
   }
-  .teacherPage .teacherPageMain .items .item{
+  .teacherPage  .items .item {
     width: 90%;
     margin: auto;
   }
 }
-.studentsPage {
-  display: flex;
-}
-.studentsPage .studentsPageNav {
-  width: 21%;
-}
-.studentsPage .studentsPageMain {
+
+
+.studentsPage  {
   position: relative;
 }
-.studentsPage .studentsPageMain .main {
+.studentsPage  .main {
   width: 99%;
   margin: auto;
 }
-.studentsPage .studentsPageMain .main .items {
+.studentsPage  .main .items {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
 }
-.studentsPage .studentsPageMain .main .items .item {
+.studentsPage  .main .items .item {
   padding: 1.25rem;
   width: 95%;
   border-radius: 10px;
   background-color: #fff;
   margin: 10px 0;
 }
-.studentsPage .studentsPageMain .main .items .item .title {
+.studentsPage  .main .items .item .title {
   display: flex;
   align-items: center;
   border-bottom: 1px solid #c9c9c9;
   padding-bottom: 1rem;
 }
-.studentsPage .studentsPageMain .main .items .item .title img {
+.studentsPage  .main .items .item .title img {
   width: 4rem;
 }
-.studentsPage .studentsPageMain .main .items .item .title .text-box {
+.studentsPage  .main .items .item .title .text-box {
   margin-left: 20px;
 }
-.studentsPage .studentsPageMain .main .items .item .title .text-box h3 {
+.studentsPage  .main .items .item .title .text-box h3 {
   color: #333;
   font-size: 1.125rem;
   line-height: 1.75rem;
   font-weight: 500;
 }
-.studentsPage .studentsPageMain .main .items .item .title .text-box p {
+.studentsPage  .main .items .item .title .text-box p {
   display: flex;
   justify-content: space-between;
   font-size: 0.875rem;
 }
-.studentsPage .studentsPageMain .main .items .item .item-content p {
+.studentsPage  .main .items .item .item-content p {
   display: flex;
   justify-content: space-between;
   padding: 15px 0;
   font-size: 1rem;
   font-weight: 400;
 }
-.studentsPage .studentsPageMain .main .items .item .item-content .itemBtn {
+.studentsPage  .main .items .item .item-content .itemBtn {
   display: flex;
   justify-content: flex-end;
 }
-.studentsPage .studentsPageMain .main .items .item .item-content .itemBtn div {
+.studentsPage  .main .items .item .item-content .itemBtn div {
   padding: 5px;
 }
 .studentsPage
-  .studentsPageMain
+  
   .main
   .items
   .item
@@ -723,7 +816,7 @@ body::-webkit-scrollbar {
   align-items: center;
 }
 .studentsPage
-  .studentsPageMain
+  
   .main
   .items
   .item
@@ -735,7 +828,7 @@ body::-webkit-scrollbar {
   margin-right: 5px;
 }
 .studentsPage
-  .studentsPageMain
+  
   .main
   .items
   .item
@@ -746,7 +839,7 @@ body::-webkit-scrollbar {
   align-items: center;
 }
 .studentsPage
-  .studentsPageMain
+  
   .main
   .items
   .item
@@ -759,29 +852,23 @@ body::-webkit-scrollbar {
 }
 
 @media screen and (max-width: 800px) {
-  .studentsPage .studentsPageMain .main .items {
+  .studentsPage  .main .items {
     display: block;
   }
 }
 
-.locationPage {
-  display: flex;
+.locationPage  {
 }
-.locationPage .locationNav {
-  width: 21%;
-}
-.locationPage .locationMain {
-}
-.locationPage .locationMain .header {
+.locationPage  .header {
   display: flex;
   justify-content: space-between;
   padding-top: 40px;
   padding-bottom: 20px;
 }
-.locationPage .locationMain .header h1 {
+.locationPage  .header h1 {
   font-weight: 500;
 }
-.locationPage .locationMain .header button {
+.locationPage  .header button {
   background-color: #ee6c4d;
   padding: 10px 35px;
   border-radius: 30px;
@@ -790,15 +877,15 @@ body::-webkit-scrollbar {
   cursor: pointer;
   margin: auto 0;
 }
-.locationPage .locationMain .main {
+.locationPage  .main {
   max-width: 90%;
   margin: auto;
 }
-.locationPage .locationMain .main .items {
+.locationPage  .main .items {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
 }
-.locationPage .locationMain .main .items .item {
+.locationPage  .main .items .item {
   padding: 10px 5px;
   margin: 10px;
   display: flex;
@@ -806,9 +893,9 @@ body::-webkit-scrollbar {
   background-color: #fff;
   border-radius: 11px;
 }
-.locationPage .locationMain .main .items .item svg {
+.locationPage  .main .items .item svg {
   width: 3.5rem;
 }
-.locationPage .locationMain .main .items .item p {
+.locationPage  .main .items .item p {
   margin-left: 10px;
 }

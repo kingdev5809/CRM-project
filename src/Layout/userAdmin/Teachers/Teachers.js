@@ -12,11 +12,8 @@ const Teachers = () => {
 
   console.log(teacherPosts);
   return (
-    <div className="teacherPage">
-      <div className="teacherPageNav">
-        <Navbar />
-      </div>
-      <div className="teacherPageMain container">
+    <div className="teacherPage container">
+      
         <div className="main-header-pages  ">
           <h1>Responsible staff and teachers</h1>
           <button onClick={() => setVisibleModal("d-block")}>CREATE</button>
@@ -31,7 +28,7 @@ const Teachers = () => {
             <h5>@ info@onic.design</h5>
           </div>
         </div>
-      </div>
+      
 
       <AddTeacheModal
         visibleModal={visibleModal}

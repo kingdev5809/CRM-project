@@ -4,13 +4,11 @@ import Navbar from "../../../Components/Navbar";
 
 function Schedule() {
   return (
-    <div className="scheldulePage">
-      <div className="navbar-box">
-        <Navbar />
-      </div>
-      <div className="schelduleMain container">
+    <div className="scheldulePage container">
+      
+     
         <Calendar />
-      </div>
+   
     </div>
   );
 }

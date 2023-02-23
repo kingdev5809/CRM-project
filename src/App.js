@@ -57,50 +57,56 @@ const Routing = () => {
     }
   }
   return (
-    <Routes>
-      <Route
-        path="admin/scheldule"
-        element={
-          <AdminElement>
-            <Schedule />
-          </AdminElement>
-        }
-      />
-      <Route
-        path="admin/classes"
-        element={
-          <AdminElement>
-            <Classes />
-          </AdminElement>
-        }
-      />
-      <Route
-        path="admin/teacher"
-        element={
-          <AdminElement>
-            <Teachers />
-          </AdminElement>
-        }
-      />
-      <Route
-        path="admin/students"
-        element={
-          <AdminElement>
-            <Students />
-          </AdminElement>
-        }
-      />
-      <Route
-        path="admin/location"
-        element={
-          <AdminElement>
-            <Location />
-          </AdminElement>
-        }
-      />
-      <Route path="login" element={<Login />} />
-      {/* <Route path="*" element={<NoMatch />} /> */}
-    </Routes>
+    <div className="flex">
+      <div className="navbar-box">
+        <Navbar />
+      </div>
+
+      <Routes>
+        <Route
+          path="admin/scheldule"
+          element={
+            <AdminElement>
+              <Schedule />
+            </AdminElement>
+          }
+        />
+        <Route
+          path="admin/classes"
+          element={
+            <AdminElement>
+              <Classes />
+            </AdminElement>
+          }
+        />
+        <Route
+          path="admin/teacher"
+          element={
+            <AdminElement>
+              <Teachers />
+            </AdminElement>
+          }
+        />
+        <Route
+          path="admin/students"
+          element={
+            <AdminElement>
+              <Students />
+            </AdminElement>
+          }
+        />
+        <Route
+          path="admin/location"
+          element={
+            <AdminElement>
+              <Location />
+            </AdminElement>
+          }
+        />
+        <Route path="login" element={<Login />} />
+        {/* <Route path="*" element={<NoMatch />} /> */}
+      </Routes>
+    </div>
   );
 };
 function App() {
