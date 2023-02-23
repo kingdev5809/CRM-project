@@ -3,7 +3,7 @@ import {
   TEACHERS_FETCHED,
   TEACHER_FETCHING,
   TEACHER_FETCHING_ERROR,
-} from "../Constants/UserConstants";
+} from "../Constants/ModalContants";
 
 // const initialState = {
 //   teachers: [],
