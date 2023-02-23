@@ -1,19 +1,38 @@
-const initialState = {
-  teachers: [],
-  students: [],
-};
+import {
+  TEACHERS_CREATED,
+  TEACHERS_FETCHED,
+  TEACHER_FETCHING,
+  TEACHER_FETCHING_ERROR,
+} from "../Constants/UserConstants";
 
-const reducer = (state = initialState, action) => {
+// const initialState = {
+//   teachers: [],
+//   teachersLoadingStatus: "false",
+//   error: "",
+//   students: [],
+// };
+
+const reducer = (state = {}, action) => {
   switch (action.type) {
-    case "TEACHERS_FETCHED":
+    case TEACHER_FETCHING:
+      return {
+        ...state,
+        loading: "true",
+      };
+    case TEACHERS_FETCHED:
       return {
         ...state,
         teachers: action.payload,
       };
-    case "TEACHERS_CREATED":
+    case TEACHER_FETCHING_ERROR:
       return {
         ...state,
-        news: [...state.news, action.payload],
+        error: action.payload,
       };
+    // case TEACHERS_CREATED:
+    //   return {
+    //     ...state,
+    //     teachers: [...state.teachers, action.payload],
+    //   };
   }
 };
