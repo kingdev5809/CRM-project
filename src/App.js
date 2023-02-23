@@ -58,9 +58,7 @@ const Routing = () => {
   }
   return (
     <div className="flex">
-      <div className="navbar-box">
-        <Navbar />
-      </div>
+      <Navbar />
 
       <Routes>
         <Route
