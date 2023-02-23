@@ -163,7 +163,7 @@ body::-webkit-scrollbar {
   height: 70px;
   background-color: #fff;
   position: fixed;
-  bottom: 50px;
+  bottom: 0px;
   justify-content: center;
 }
 
@@ -171,6 +171,7 @@ body::-webkit-scrollbar {
   display: flex;
   width: 90%;
   margin: auto;
+  justify-content: space-between;
 }
 
 .navbar-component .mobile-nav ul li {
@@ -214,14 +215,16 @@ body::-webkit-scrollbar {
   font-weight: 400;
   font-display: 0.75rem;
   letter-spacing: 0.05em;
-  transition: 0.5;
+  transition: 0.5s;
   opacity: 0;
   transform: translateY(-20px);
+
 }
 
 .navbar-component .mobile-nav ul li a.active .text {
   opacity: 1;
   transform: translateY(50px);
+  font-size: .75rem;
 }
 
 .navbar-component .mobile-nav ul li a.active {
@@ -232,6 +235,7 @@ body::-webkit-scrollbar {
   border-radius: 50%;
   border: 6px solid #f5f7fb;
   transform: translateY(-32px);
+  transition: 0.3s;
 }
 
 .navbar-component .mobile-nav ul li a.active::before {
@@ -290,7 +294,7 @@ body::-webkit-scrollbar {
   }
 }
 
-@media screen and (max-width: 550px) {
+@media screen and (max-width: 600px) {
   .navbar-component {
     width: 0%;
   }
@@ -319,6 +323,25 @@ body::-webkit-scrollbar {
       display: block;
   }
 }
+
+@media screen and (max-width: 480px){
+  .navbar-component.active .deskop-nav{
+    display: none;
+  }
+  .response-nav-close,
+  .response-nav-open{
+      display: none;
+  }
+
+  .navbar-component .mobile-nav{
+    display: flex;
+    z-index: 999999;
+  }
+
+}
+
+
+
 .d-none {
   display: none;
 }
