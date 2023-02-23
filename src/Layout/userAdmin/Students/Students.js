@@ -41,11 +41,12 @@ const Students = () => {
     },
   ];
   return (
-    <div className="studentsPage container">
-      
+    <div className="flex">
+      <Navbar />
+      <div className="studentsPage container">
         <div className="main-header-pages ">
           <h1>All Students </h1>
-          <button onClick={()=> setVisibleModal('d-block')}>CREATE</button>
+          <button onClick={() => setVisibleModal("d-block")}>CREATE</button>
         </div>
         <div className="main">
           <div className="items">
@@ -94,10 +95,11 @@ const Students = () => {
             ))}
           </div>
         </div>
-      <AddStudentModal
-      visibleModal={visibleModal}
-      setVisibleModal={setVisibleModal}
-      /> 
+        <AddStudentModal
+          visibleModal={visibleModal}
+          setVisibleModal={setVisibleModal}
+        />
+      </div>
     </div>
   );
 };

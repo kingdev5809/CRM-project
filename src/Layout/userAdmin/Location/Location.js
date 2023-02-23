@@ -4,7 +4,9 @@ import Navbar from "../../../Components/Navbar";
 
 const Location = () => {
   return (
-    <div className="locationPage  container">
+   <div className="flex">
+    <Navbar/>
+     <div className="locationPage  container">
       <div className="main-header-pages  ">
         <h1>All Classes</h1>
         <button>Create</button>
@@ -42,6 +44,7 @@ const Location = () => {
         </div>
       </div>
     </div>
+   </div>
   );
 };
 

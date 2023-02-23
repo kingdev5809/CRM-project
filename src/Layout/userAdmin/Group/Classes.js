@@ -60,44 +60,47 @@ const Classes = () => {
     },
   ];
   return (
-    <div className="classes-page  main-box container ">
-      {/* <div className="navbar-box">
+    <div className="flex">
+      <Navbar/>
+      <div className="classes-page  main-box container ">
+        {/* <div className="navbar-box">
         <Navbar />
       </div> */}
-      <div className="main-header-pages ">
-        <h1>All Classes</h1>
-        <button onClick={() => setVisibleModal("d-block")}>CREATE</button>
-      </div>
-      <div className="items container-95">
-        {smallData.map((item) => (
-          <div className="item">
-            <img src={userImg} alt="" />
-            <div className="item-box">
-              <h3> {item.title} </h3>
-              <h4>
-                <b>Teacher:</b> {item.name}
-              </h4>
-              <div className="itemBtn">
-                <span>
-                  <i className="svg1">{studentIcon}</i> Student:14{" "}
-                </span>{" "}
-                <span>
-                  <i className="svg2">{editIcon}</i> Edit{" "}
-                </span>
-                <span>
-                  <i className="svg3">{deleteIcon}</i> Delete
-                </span>
+        <div className="main-header-pages ">
+          <h1>All Classes</h1>
+          <button onClick={() => setVisibleModal("d-block")}>CREATE</button>
+        </div>
+        <div className="items container-95">
+          {smallData.map((item) => (
+            <div className="item">
+              <img src={userImg} alt="" />
+              <div className="item-box">
+                <h3> {item.title} </h3>
+                <h4>
+                  <b>Teacher:</b> {item.name}
+                </h4>
+                <div className="itemBtn">
+                  <span>
+                    <i className="svg1">{studentIcon}</i> Student:14{" "}
+                  </span>{" "}
+                  <span>
+                    <i className="svg2">{editIcon}</i> Edit{" "}
+                  </span>
+                  <span>
+                    <i className="svg3">{deleteIcon}</i> Delete
+                  </span>
+                </div>
               </div>
+              <div className="item-box-2"></div>
             </div>
-            <div className="item-box-2"></div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
 
-      <AddClassModal
-        visibleModal={visibleModal}
-        setVisibleModal={setVisibleModal}
-      />
+        <AddClassModal
+          visibleModal={visibleModal}
+          setVisibleModal={setVisibleModal}
+        />
+      </div>
     </div>
   );
 };

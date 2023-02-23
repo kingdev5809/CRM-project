@@ -57,8 +57,7 @@ const Routing = () => {
     }
   }
   return (
-    <div className="flex">
-      <Navbar />
+   
 
       <Routes>
         <Route
@@ -104,7 +103,7 @@ const Routing = () => {
         <Route path="login" element={<Login />} />
         {/* <Route path="*" element={<NoMatch />} /> */}
       </Routes>
-    </div>
+    
   );
 };
 function App() {

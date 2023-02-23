@@ -11,7 +11,7 @@ import logoutImg from "../images/navbar-img/logout.png";
 import schelduleImg from "../images/navbar-img/scheldule.png";
 import closeBtn from "../images/navbar-img/chevron-left.png";
 
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { logout } from "../Redux/Actions/UserAction";
 import { useDispatch } from "react-redux";
 import barsImg from "../images/navbar-img/bars.jpg";
@@ -22,6 +22,9 @@ function Navbar() {
   const LOGOUT = () => {
     dispatch(logout());
   };
+
+  let navigate = useNavigate()
+  console.log(navigate);
   return (
     <div className={resNavActive}>
       <div onClick={() => setResNavActive("navbar-component active")} className="response-nav-open">

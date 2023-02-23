@@ -12,29 +12,32 @@ const Teachers = () => {
 
   console.log(teacherPosts);
   return (
-    <div className="teacherPage container">
+  <div className="flex">
+    <Navbar/>
+      <div className="teacherPage container">
       
-        <div className="main-header-pages  ">
-          <h1>Responsible staff and teachers</h1>
-          <button onClick={() => setVisibleModal("d-block")}>CREATE</button>
-        </div>
+      <div className="main-header-pages  ">
+        <h1>Responsible staff and teachers</h1>
+        <button onClick={() => setVisibleModal("d-block")}>CREATE</button>
+      </div>
 
-        <div className="items">
-          <div className="item ">
-            <img src={userImg} alt="" />
-            <h2>Shermorad Holmadov</h2>
-            <h4>Teacher</h4>
-            <p>{phoneIcon}0706077070</p>
-            <h5>@ info@onic.design</h5>
-          </div>
+      <div className="items">
+        <div className="item ">
+          <img src={userImg} alt="" />
+          <h2>Shermorad Holmadov</h2>
+          <h4>Teacher</h4>
+          <p>{phoneIcon}0706077070</p>
+          <h5>@ info@onic.design</h5>
         </div>
-      
+      </div>
+    
 
-      <AddTeacheModal
-        visibleModal={visibleModal}
-        setVisibleModal={setVisibleModal}
-      />
-    </div>
+    <AddTeacheModal
+      visibleModal={visibleModal}
+      setVisibleModal={setVisibleModal}
+    />
+  </div>
+  </div>
   );
 };
 
