@@ -19,12 +19,18 @@ export const login =
       } else {
         //   document.location.href = "/";
         toast.success(data.msg);
-        navigate("/admin/scheldule");
+        if (data?.rektor) {
+          navigate("/admin/scheldule");
+        } else if (data?.teacher) {
+          navigate("/teacher/scheldule");
+        }else if (data?.student) {
+          navigate("/student/scheldule");
+        }
       }
 
       dispatch({ type: USER_LOGIN_SUCCESS, payload: data });
       // if (checkbox) {
-        localStorage.setItem("userInfo", JSON.stringify(data));
+      localStorage.setItem("userInfo", JSON.stringify(data));
       // }
     } catch (error) {
       dispatch({

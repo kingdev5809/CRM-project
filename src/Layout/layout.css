@@ -1059,11 +1059,9 @@ body::-webkit-scrollbar {
 
 .messagesPage .messages-sec {
   width: 60%;
-  background-color: #f9f5f1;
   padding: 35px 20px;
   position: relative;
-  right: -100px;
-  padding-right: 100px;
+
   min-height: 100%;
 }
 .messagesPage .messages-sec h1 {
@@ -1097,7 +1095,7 @@ body::-webkit-scrollbar {
   border-radius: 10px;
   position: absolute;
   bottom: 40px;
-  width: 90%;
+  width: 95%;
 }
 
 .messagesPage .messages-sec .input-box input {
