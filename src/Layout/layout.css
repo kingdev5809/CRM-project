@@ -49,6 +49,7 @@ body::-webkit-scrollbar {
   border: none;
   color: white;
   cursor: pointer;
+  margin: auto 0;
 }
 @media screen and (max-width: 800px) {
   .container {
@@ -68,7 +69,6 @@ body::-webkit-scrollbar {
   position: fixed;
   transition: 0.5s;
   top: 0;
-
 }
 .navbar-component .deskop-nav .navbar-header {
   background-color: #f5cfc5;
@@ -218,13 +218,12 @@ body::-webkit-scrollbar {
   transition: 0.5s;
   opacity: 0;
   transform: translateY(-20px);
-
 }
 
 .navbar-component .mobile-nav ul li a.active .text {
   opacity: 1;
   transform: translateY(50px);
-  font-size: .75rem;
+  font-size: 0.75rem;
 }
 
 .navbar-component .mobile-nav ul li a.active {
@@ -319,28 +318,26 @@ body::-webkit-scrollbar {
     width: 50%;
   }
   .response-nav-close,
-  .response-nav-open{
-      display: block;
+  .response-nav-open {
+    display: block;
   }
 }
 
-@media screen and (max-width: 480px){
-  .navbar-component.active .deskop-nav{
+@media screen and (max-width: 480px) {
+  .navbar-component.active .deskop-nav {
     display: none;
   }
   .response-nav-close,
-  .response-nav-open{
-      display: none;
+  .response-nav-open {
+    display: none;
   }
 
-  .navbar-component .mobile-nav{
+  .navbar-component .mobile-nav {
     display: flex;
     z-index: 999999;
   }
-/* hhhh */
+  /* hhhh */
 }
-
-
 
 .d-none {
   display: none;
@@ -629,9 +626,17 @@ body::-webkit-scrollbar {
 .calendarComponent .fc-button:focus {
   background-color: #ee6c4d !important;
 }
-
 .scheldulePage {
   padding: 30px 20px;
+}
+@media screen and (max-width: 380px) {
+  .scheldulePage {
+    padding: 10px;
+  }
+
+  .calendarComponent .fc .fc-toolbar-title {
+    font-size: 1rem;
+  }
 }
 
 .classes-page .items {
@@ -749,6 +754,19 @@ body::-webkit-scrollbar {
   .classes-page .items .item .item-box .itemBtn span .svg3 svg {
     width: 0.5rem;
     height: 0.5rem;
+  }
+}
+
+@media screen and (max-width: 380px) {
+  .classes-page .items .item .item-box .itemBtn span {
+    padding: 1px;
+    font-size: 0.5rem;
+  }
+  .classes-page .items .item .item-box h4 {
+    font-size: 0.6rem;
+  }
+  .classes-page .items .item .item-box h3 {
+    font-size: 0.75rem;
   }
 }
 
@@ -889,6 +907,17 @@ body::-webkit-scrollbar {
 @media screen and (max-width: 800px) {
   .studentsPage .main .items {
     display: block;
+  }
+}
+@media screen and (max-width:380px) {
+  .studentsPage .main .items .item .item-content p {
+    font-size: 0.75rem;
+  }
+  .studentsPage .main .items .item .title .text-box h3 {
+    font-size: 1rem;
+  }
+  .studentsPage .main .items .item .item-content .itemBtn div{
+    font-size: 0.75rem;
   }
 }
 
