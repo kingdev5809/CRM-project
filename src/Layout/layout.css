@@ -1074,7 +1074,7 @@ body::-webkit-scrollbar {
   height: 84vh;
 }
 .homeworkPage .homework .items .item {
-  height: 170px;
+  height: 190px;
 }
 
 .homeworkPage .group-sec .items .item{
@@ -1082,6 +1082,18 @@ body::-webkit-scrollbar {
 
 }
 
+.homeworkPage .homework .items .item .item-title{
+  display: flex;
+  align-items: center;
+  margin: 5px 0;
+}
+.homeworkPage .homework .items .item .item-title img {
+  width: 30px;
+}
+.homeworkPage .homework .items .item .item-title h3{
+  font-weight: 500;
+  margin-left: 10px;
+}
 /* Homework page end */
 
 /* Homewwork and message page style start */
