@@ -1,43 +1,58 @@
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { deleteIcon, phoneIcon } from "../../../Components/icons/svgIcons";
 import Navbar from "../../../Components/Navbar";
 import userImg from "../../../images/navbar-img/userImg.png";
+import { getAllTeachers } from "../../../Redux/Actions/AdminAction";
 import { teacher } from "../../../Redux/Actions/ModalAction";
 import AddTeacheModal from "../Modals/AddTeacheModal";
 
 const Teachers = () => {
   const [visibleModal, setVisibleModal] = useState("d-none");
-  const teacherPosts = useSelector((state) => state.teacher);
+  const dispatch = useDispatch();
 
-  console.log(teacherPosts);
+  const getTeachers = useSelector((state) => state.teachers);
+  const { loading, data } = getTeachers;
+  console.log(data);
+
+  useEffect(() => {
+    dispatch(getAllTeachers());
+  }, []);
   return (
-  <div className="flex">
-    <Navbar/>
+    <div className="flex">
+      <Navbar />
       <div className="teacherPage main-box container">
-      
-      <div className="main-header-pages  ">
-        <h1>Responsible staff and teachers</h1>
-        <button onClick={() => setVisibleModal("d-block")}>CREATE</button>
-      </div>
-
-      <div className="items">
-        <div className="item ">
-          <img src={userImg} alt="" />
-          <h2>Shermorad Holmadov</h2>
-          <h4>Teacher</h4>
-          <p>{phoneIcon}0706077070</p>
-          <h5>@ info@onic.design</h5>
+        <div className="main-header-pages  ">
+          <h1>Responsible staff and teachers</h1>
+          <button onClick={() => setVisibleModal("d-block")}>CREATE</button>
         </div>
-      </div>
-    
 
-    <AddTeacheModal
-      visibleModal={visibleModal}
-      setVisibleModal={setVisibleModal}
-    />
-  </div>
-  </div>
+        <div className="items">
+          {data ? (
+            data.teachers.map((user) => (
+              <div className="item ">
+                <img src={userImg} alt="" />
+                <h2>
+                  {user.name} {user.surname}
+                </h2>
+                <h4>Teacher</h4>
+                <p>
+                  {phoneIcon} {user.phone_number}
+                </p>
+                <h5>{user.email}</h5>
+              </div>
+            ))
+          ) : (
+            <h1>LOADING . . .</h1>
+          )}
+        </div>
+
+        <AddTeacheModal
+          visibleModal={visibleModal}
+          setVisibleModal={setVisibleModal}
+        />
+      </div>
+    </div>
   );
 };
 
