@@ -95,13 +95,11 @@ function Homeworks() {
 
   return (
     <div className="homework messages-cards">
-      <h1>Engleska A2</h1>
+      <h1>Homeworks</h1>
       <div className="items">
         {smalData.map((item) => (
           <div className="item">
-            <div className="item-title">
-
-            </div>
+            <div className="item-title"></div>
             <p>{item.messageText}</p>
             <div className="item-box">
               <div className="user-box">

@@ -117,7 +117,7 @@ function Navbar() {
       },
     ],
   };
-
+  const navigate = useNavigate();
   useEffect(() => {
     if (user?.rektor) {
       setNavData(smallData.rektor);

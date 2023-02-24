@@ -52,7 +52,6 @@ function Groups() {
           <div className="item">
             <div className="item-box">
               <h3>{item.groupName}</h3>
-              
             </div>
             <div className="user-box">
               <img src={item.teacherImg} alt="" />
