@@ -54,11 +54,7 @@ function Navbar() {
         img: locationImg,
         slug: "admin/location",
       },
-      {
-        name: "Log out",
-        img: logoutImg,
-        slug: "/login",
-      },
+      
     ],
 
     teacher: [
@@ -82,11 +78,7 @@ function Navbar() {
       //   img: studentImg,
       //   slug: "/teacher/students",
       // },
-      {
-        name: "Log out",
-        img: logoutImg,
-        slug: "/login",
-      },
+    
     ],
 
     student: [
