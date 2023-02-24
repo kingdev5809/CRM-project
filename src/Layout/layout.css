@@ -1011,52 +1011,115 @@ body::-webkit-scrollbar {
 .messagesPage {
   display: flex;
   position: relative;
-  min-height: 95vh;
+  min-height: 80vh;
 }
 
-.messagesPage .class-sec {
+.messagesPage .input-box {
+  display: flex;
+  justify-content: space-between;
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 10px;
+  position: absolute;
+  bottom: 10px;
+  width: 95%;
+}
+
+.messagesPage .input-box input {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  width: 90%;
+  height: 40px;
+  font-size: 20px;
+}
+.messagesPage .input-box img {
+  width: 20px;
+  margin: auto 0;
+}
+.messagesPage .items {
+  height: 88vh;
+}
+.messagesPage .items .item {
+  height: 175px;
+}
+/* Message page end */
+
+/* Homework page start */
+.homeworkPage .user-box {
+  display: flex;
+  align-items: center;
+  margin-top: 15px;
+}
+.homeworkPage .user-box img {
+  width: 40px;
+}
+.homeworkPage .user-box .user-box-inner {
+  margin-left: 10px;
+}
+.homeworkPage h4 {
+  font-weight: 500;
+}
+.homeworkPage h6 {
+  color: #b5b5b5;
+}
+.homeworkPage {
+  display: flex;
+  position: relative;
+  min-height: 80vh;
+}
+.homeworkPage .items {
+  height: 84vh;
+}
+.homeworkPage .items .item {
+  height: 130px;
+}
+
+/* Homework page end */
+
+/* Homewwork and message page style start */
+
+.group-cards {
   height: 100%;
   width: 40%;
   padding-top: 35px;
   background-color: #f5f7fb;
 }
-.messagesPage .class-sec h1 {
+.group-cards h1 {
   font-weight: 600;
   font-size: 2.5rem;
 }
-.messagesPage .class-sec .items {
+.group-cards .items {
   margin-top: 20px;
   overflow-y: scroll;
-  height: 90vh;
 }
 
-.messagesPage .class-sec .items::-webkit-scrollbar {
+.group-cards .items::-webkit-scrollbar {
   width: 10px;
   border-radius: 10px;
   display: none;
 }
 
-
-.messagesPage .class-sec .items .item {
+.group-cards .items .item {
   position: relative;
   width: 90%;
   margin: 15px auto;
   background-color: #fff;
   padding: 20px;
-  height: 175px;
+
   border-radius: 15px;
 }
 
-.messagesPage .class-sec .items .item h3 {
+.group-cards .items .item h3 {
   font-weight: 500;
   font-size: 1.5rem;
 }
-.messagesPage .class-sec .items .item p {
+.group-cards .items .item p {
   font-size: 0.85rem;
   margin: 5px 0;
 }
 
-.messagesPage .class-sec .items .item .item-box-3 {
+.group-cards .items .item .item-box-3 {
   border-top-left-radius: 0.25rem;
   border-bottom-left-radius: 0.25rem;
   width: 1rem;
@@ -1067,79 +1130,56 @@ body::-webkit-scrollbar {
   background-color: red;
 }
 
-.messagesPage .messages-sec {
+.messages-cards {
   width: 60%;
   padding: 35px 20px;
   position: relative;
 
   min-height: 100%;
 }
-.messagesPage .messages-sec h1 {
+.messages-cards h1 {
   font-weight: 500;
 }
-.messagesPage .messages-sec .items {
+.messages-cards .items {
   margin-top: 20px;
   margin-top: 30px;
   overflow-y: scroll;
   height: 75vh;
 }
 /* width */
-.messagesPage .messages-sec .items::-webkit-scrollbar {
+.messages-cards .items::-webkit-scrollbar {
   width: 15px;
   border-radius: 10px;
 }
 
 /* Track */
-.messagesPage .messages-sec .items::-webkit-scrollbar-track {
+.messages-cards .items::-webkit-scrollbar-track {
   background: #f1f1f1;
 }
 
 /* Handle */
-.messagesPage .messages-sec .items::-webkit-scrollbar-thumb {
+.messages-cards .items::-webkit-scrollbar-thumb {
   background: #ee6c5d;
 }
 
 /* Handle on hover */
-.messagesPage .messages-sec .items::-webkit-scrollbar-thumb:hover {
+.messages-cards .items::-webkit-scrollbar-thumb:hover {
   background: #c75b4f;
 }
-.messagesPage .messages-sec .items .item {
+.messages-cards .items .item {
   background-color: #fff;
   border-radius: 20px;
-  height: 175px;
+
   padding: 20px;
   margin: 10px 0;
 }
-.messagesPage .messages-sec .items .item p {
+.messages-cards .items .item p {
   font-size: 13px;
 }
-.messagesPage .messages-sec .items .item .item-box {
+.messages-cards .items .item .item-box {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.messagesPage .messages-sec .input-box {
-  display: flex;
-  justify-content: space-between;
-  background-color: #fff;
-  padding: 10px;
-  border-radius: 10px;
-  position: absolute;
-  bottom: 20px;
-  width: 95%;
-}
-
-.messagesPage .messages-sec .input-box input {
-  border: none;
-  outline: none;
-  background-color: transparent;
-  width: 90%;
-  height: 40px;
-  font-size: 20px;
-}
-.messagesPage .messages-sec .input-box img {
-  width: 20px;
-  margin: auto 0;
-}
-/* Message page end */
+/* Homewwork and message page style end */

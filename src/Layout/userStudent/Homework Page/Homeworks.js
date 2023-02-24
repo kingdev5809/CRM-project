@@ -1,7 +1,7 @@
 import React from "react";
 import userImg from "../../../images/navbar-img/userImg.png";
 import sendImd from "../../../images/navbar-img/sendmessageicon.png";
-function Message() {
+function Homeworks() {
   const smalData = [
     {
       messageText:
@@ -94,11 +94,14 @@ function Message() {
   ];
 
   return (
-    <div className="messages-sec messages-cards">
+    <div className="homework messages-cards">
       <h1>Engleska A2</h1>
       <div className="items">
         {smalData.map((item) => (
           <div className="item">
+            <div className="item-title">
+
+            </div>
             <p>{item.messageText}</p>
             <div className="item-box">
               <div className="user-box">
@@ -114,14 +117,9 @@ function Message() {
             </div>
           </div>
         ))}
-
-        <div className="input-box">
-          <input type="text" placeholder="You can write message here..." />
-          <img src={sendImd} alt="" />
-        </div>
       </div>
     </div>
   );
 }
 
-export default Message;
+export default Homeworks;
