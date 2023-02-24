@@ -1037,8 +1037,10 @@ body::-webkit-scrollbar {
   width: 20px;
   margin: auto 0;
 }
-.messagesPage .items {
-  height: 88vh;
+.messagesPage .messages-sec .items {
+  height: 75vh;
+  /* height: 75vh; */
+
 }
 .messagesPage .items .item {
   height: 175px;
@@ -1071,8 +1073,13 @@ body::-webkit-scrollbar {
 .homeworkPage .items {
   height: 84vh;
 }
-.homeworkPage .items .item {
+.homeworkPage .homework .items .item {
+  height: 170px;
+}
+
+.homeworkPage .group-sec .items .item{
   height: 130px;
+
 }
 
 /* Homework page end */
@@ -1092,6 +1099,7 @@ body::-webkit-scrollbar {
 .group-cards .items {
   margin-top: 20px;
   overflow-y: scroll;
+  height: 88vh;
 }
 
 .group-cards .items::-webkit-scrollbar {
@@ -1144,7 +1152,7 @@ body::-webkit-scrollbar {
   margin-top: 20px;
   margin-top: 30px;
   overflow-y: scroll;
-  height: 75vh;
+  /* height: 75vh; */
 }
 /* width */
 .messages-cards .items::-webkit-scrollbar {

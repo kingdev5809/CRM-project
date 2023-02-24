@@ -45,7 +45,7 @@ function Groups() {
   ];
 
   return (
-    <div className="class-sec group-cards">
+    <div className="group-sec group-cards">
       <h1>Class Groups</h1>
       <div className="items">
         {smalData.map((item) => (
