@@ -8,6 +8,8 @@ import teacherImg from "../images/navbar-img/teacher.png";
 import studentImg from "../images/navbar-img/student.png";
 import locationImg from "../images/navbar-img/location.png";
 import logoutImg from "../images/navbar-img/logout.png";
+import messageImg from "../images/navbar-img/message.png";
+import homeworkImg from "../images/navbar-img/homework.png";
 import schelduleImg from "../images/navbar-img/scheldule.png";
 import closeBtn from "../images/navbar-img/chevron-left.png";
 
@@ -70,21 +72,16 @@ function Navbar() {
         img: classesImg,
         slug: "/teacher/classes",
       },
-      {
-        name: "Teacher",
-        img: teacherImg,
-        slug: "/teacher/teacher",
-      },
-      {
-        name: "Student",
-        img: studentImg,
-        slug: "/teacher/students",
-      },
-      {
-        name: "Location",
-        img: locationImg,
-        slug: "teacher/location",
-      },
+      // {
+      //   name: "Teacher",
+      //   img: teacherImg,
+      //   slug: "/teacher/teacher",
+      // },
+      // {
+      //   name: "Student",
+      //   img: studentImg,
+      //   slug: "/teacher/students",
+      // },
       {
         name: "Log out",
         img: logoutImg,
@@ -104,19 +101,14 @@ function Navbar() {
         slug: "/student/classes",
       },
       {
-        name: "Teacher",
-        img: teacherImg,
-        slug: "/student/teacher",
+        name: "Homework",
+        img: homeworkImg,
+        slug: "/student/homework",
       },
       {
-        name: "Student",
-        img: studentImg,
-        slug: "/student/students",
-      },
-      {
-        name: "Location",
-        img: locationImg,
-        slug: "student/location",
+        name: "Message",
+        img: messageImg,
+        slug: "/student/message",
       },
       {
         name: "Log out",

@@ -5,10 +5,12 @@
   text-decoration: none;
   list-style-type: none;
 }
+
 body {
   background-color: #f5f7fb;
   font-family: sans-serif;
 }
+
 .container {
   max-width: 75%;
   margin: auto;
@@ -59,6 +61,12 @@ body::-webkit-scrollbar {
     font-size: 1.25rem;
   }
 }
+
+@media screen and (max-width: 650px) {
+  .main-box {
+    position: unset;
+  }
+}
 .navbar-component {
   width: 20%;
 }
@@ -102,10 +110,18 @@ body::-webkit-scrollbar {
   width: 115px;
   margin-top: 20px;
 }
+.navbar-component .deskop-nav .box-2 h2 {
+  font-size: 1.35rem;
+  font-weight: 500;
+}
+.navbar-component .deskop-nav .box-2 h3 {
+  font-size: 1rem;
+}
 .navbar-component .deskop-nav .navbar-main {
   min-height: 100%;
 }
 .navbar-component .deskop-nav .navbar-main ul {
+  padding: 0;
   padding-top: 25px;
 }
 .navbar-component .deskop-nav .navbar-main ul li {
@@ -117,6 +133,7 @@ body::-webkit-scrollbar {
 .navbar-component .deskop-nav .navbar-main ul li a {
   display: flex;
   color: black;
+  text-decoration: none;
 }
 .navbar-component .deskop-nav .navbar-main ul li a:hover {
   color: #ee6c4d;
@@ -346,6 +363,7 @@ body::-webkit-scrollbar {
   display: block;
 }
 .w-screen {
+  position: fixed;
   background-color: black;
   opacity: 0.25;
   width: 100%;
@@ -353,6 +371,7 @@ body::-webkit-scrollbar {
   top: 0;
   left: 20%;
 }
+
 .modalWindows {
   z-index: 999;
   position: absolute;
@@ -384,13 +403,17 @@ body::-webkit-scrollbar {
 .modalWindows .w-full {
   width: 100%;
 }
+
 .modalWindows .modal-content .flex {
   display: flex;
   justify-content: space-between;
 }
-
+.modalWindows .modal-content .flex .modal-input {
+  width: 25%;
+}
 .modalWindows .modal-content .modal-input {
   margin: 10px 5px;
+  /* width: 100%; */
 }
 .modalWindows .modal-content .modal-input label {
   display: block;
@@ -453,11 +476,29 @@ body::-webkit-scrollbar {
 }
 
 @media screen and (max-width: 825px) {
+  .w-screen {
+    left: 0;
+  }
   .modalWindows {
     width: 80%;
   }
   .modalWindows .modal-content .btn-group button {
     padding: 5px 45px;
+  }
+  .modalWindows .modal-content .flex {
+    display: block;
+  }
+  .modalWindows .modal-content .flex .modal-input,
+  .modalWindows .modal-content .modal-input {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .modalWindows .modal-content .btn-group button {
+    width: 45%;
+    padding: 5px;
+    font-size: 1rem;
   }
 }
 
@@ -623,6 +664,10 @@ body::-webkit-scrollbar {
   border: none;
   color: black !important;
 }
+.calendarComponent .fc .fc-col-header-cell-cushion {
+  text-decoration: none;
+  color: black;
+}
 .calendarComponent .fc-button:focus {
   background-color: #ee6c4d !important;
 }
@@ -772,9 +817,6 @@ body::-webkit-scrollbar {
 
 /*  */
 
-.teacherPage {
-  position: relative;
-}
 .teacherPage .items {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -832,9 +874,6 @@ body::-webkit-scrollbar {
   }
 }
 
-.studentsPage {
-  position: relative;
-}
 .studentsPage .main {
   width: 99%;
   margin: auto;
@@ -909,14 +948,14 @@ body::-webkit-scrollbar {
     display: block;
   }
 }
-@media screen and (max-width:380px) {
+@media screen and (max-width: 380px) {
   .studentsPage .main .items .item .item-content p {
     font-size: 0.75rem;
   }
   .studentsPage .main .items .item .title .text-box h3 {
     font-size: 1rem;
   }
-  .studentsPage .main .items .item .item-content .itemBtn div{
+  .studentsPage .main .items .item .item-content .itemBtn div {
     font-size: 0.75rem;
   }
 }
@@ -943,3 +982,134 @@ body::-webkit-scrollbar {
 .locationPage .main .items .item p {
   margin-left: 10px;
 }
+
+/******************
+ STUDENT PAGE START
+ ****************** */
+
+/* Message page start */
+.messagesPage .user-box {
+  display: flex;
+  align-items: center;
+  margin-top: 15px;
+}
+.messagesPage .user-box img {
+  width: 40px;
+}
+.messagesPage .user-box .user-box-inner {
+  margin-left: 10px;
+}
+.messagesPage h4 {
+  font-weight: 500;
+}
+.messagesPage h6 {
+  color: #b5b5b5;
+}
+.back {
+  background-color: #f9f5f1;
+}
+.messagesPage {
+  display: flex;
+  position: relative;
+  min-height: 100vh;
+}
+
+.messagesPage .class-sec {
+  height: 100%;
+  width: 40%;
+  padding-top: 35px;
+  background-color: #f5f7fb;
+}
+.messagesPage .class-sec h1 {
+  font-weight: 600;
+  font-size: 2.5rem;
+}
+.messagesPage .class-sec .items {
+  margin-top: 20px;
+}
+.messagesPage .class-sec .items .item {
+  position: relative;
+  width: 90%;
+  margin: 15px auto;
+  background-color: #fff;
+  padding: 20px;
+  height: 175px;
+  border-radius: 15px;
+}
+
+.messagesPage .class-sec .items .item h3 {
+  font-weight: 500;
+  font-size: 1.5rem;
+}
+.messagesPage .class-sec .items .item p {
+  font-size: 0.85rem;
+  margin: 5px 0;
+}
+
+.messagesPage .class-sec .items .item .item-box-3 {
+  border-top-left-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
+  width: 1rem;
+  height: 2.75rem;
+  right: 0px;
+  top: 20px;
+  position: absolute;
+  background-color: red;
+}
+
+.messagesPage .messages-sec {
+  width: 60%;
+  background-color: #f9f5f1;
+  padding: 35px 20px;
+  position: relative;
+  right: -100px;
+  padding-right: 100px;
+  min-height: 100%;
+}
+.messagesPage .messages-sec h1 {
+  font-weight: 500;
+}
+.messagesPage .messages-sec .items {
+  margin-top: 20px;
+  margin-top: 30px;
+}
+.messagesPage .messages-sec .items .item {
+  background-color: #fff;
+  border-radius: 20px;
+  height: 175px;
+  padding: 20px;
+  margin: 10px 0;
+}
+.messagesPage .messages-sec .items .item p {
+  font-size: 13px;
+}
+.messagesPage .messages-sec .items .item .item-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.messagesPage .messages-sec .input-box {
+  display: flex;
+  justify-content: space-between;
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 10px;
+  position: absolute;
+  bottom: 40px;
+  width: 90%;
+}
+
+.messagesPage .messages-sec .input-box input {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  width: 90%;
+  height: 40px;
+  font-size: 20px;
+}
+.messagesPage .messages-sec .input-box img {
+  width: 20px;
+  margin: auto 0;
+}
+/* Message page end */

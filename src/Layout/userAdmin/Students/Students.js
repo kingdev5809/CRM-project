@@ -43,7 +43,7 @@ const Students = () => {
   return (
     <div className="flex">
       <Navbar />
-      <div className="studentsPage container">
+      <div className="studentsPage main-box container">
         <div className="main-header-pages ">
           <h1>All Students </h1>
           <button onClick={() => setVisibleModal("d-block")}>CREATE</button>

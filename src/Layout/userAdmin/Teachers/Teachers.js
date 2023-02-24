@@ -14,7 +14,7 @@ const Teachers = () => {
   return (
   <div className="flex">
     <Navbar/>
-      <div className="teacherPage container">
+      <div className="teacherPage main-box container">
       
       <div className="main-header-pages  ">
         <h1>Responsible staff and teachers</h1>

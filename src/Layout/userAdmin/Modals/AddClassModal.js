@@ -32,7 +32,7 @@ const AddClassModal = (props) => {
               <div className="flex">
                 <div className="modal-input">
                   <label>Select teacher</label>
-                  <input type="text" placeholder="Name" />
+                  <input type="text" className="w-full" placeholder="Name" />
                 </div>
 
                 <div className="modal-input">

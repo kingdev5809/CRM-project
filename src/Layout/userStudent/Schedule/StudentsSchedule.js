@@ -2,7 +2,7 @@ import React from "react";
 import Calendar from "../../../Components/calendar/calendar";
 import Navbar from "../../../Components/Navbar";
 
-function Schedule() {
+function StudentSchedule() {
   return (
     <div className="flex">
       <Navbar/>
@@ -13,4 +13,4 @@ function Schedule() {
   );
 }
 
-export default Schedule;
+export default StudentSchedule;

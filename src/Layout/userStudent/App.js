@@ -12,6 +12,7 @@ import Location from "./Layout/userAdmin/Location/Location";
 import Classes from "./Layout/userAdmin/Group/Classes";
 import Schedule from "./Layout/userAdmin/Schedule/Schedule";
 import { USER_LOGIN_SUCCESS } from "./Redux/Constants/UserConstants";
+import Message from "./Message Page/MessagePage";
 
 const Routing = () => {
   const dispatch = useDispatch();
@@ -24,10 +25,10 @@ const Routing = () => {
       navigate("/admin/scheldule");
     } else if (user?.techer) {
       dispatch({ type: USER_LOGIN_SUCCESS, payload: user });
-      navigate("/teacher/scheldule");
+      navigate("/teacher");
     } else if (user?.student) {
       dispatch({ type: USER_LOGIN_SUCCESS, payload: user });
-      navigate("/student/scheldule");
+      navigate("/student");
     } else {
       navigate("/login");
     }
@@ -109,11 +110,12 @@ const Routing = () => {
           /> */}
 
       <Route
-        path="student/scheldule"
+        path="student/message"
         element={
-        <StudentElement>
-            
-        </StudentElement>}
+          <StudentElement>
+            <Message />
+          </StudentElement>
+        }
       />
 
       <Route path="login" element={<Login />} />

@@ -12,7 +12,10 @@ import Location from "./Layout/userAdmin/Location/Location";
 import Classes from "./Layout/userAdmin/Group/Classes";
 import Schedule from "./Layout/userAdmin/Schedule/Schedule";
 import { USER_LOGIN_SUCCESS } from "./Redux/Constants/UserConstants";
-import StudentsSchedule from "./Layout/userStudent/Schedule/StudentsSchedule"
+import StudentsSchedule from "./Layout/userStudent/Schedule/StudentsSchedule";
+import StudentsClasses from "./Layout/userStudent/Group/StudentClasses.js";
+import MessagePage from "./Layout/userStudent/Message Page/MessagePage";
+import Homework from "./Layout/userStudent/Homework Page/StudentHomework";
 const Routing = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -111,9 +114,37 @@ const Routing = () => {
       <Route
         path="student/scheldule"
         element={
-        <StudentElement>
-            <StudentsSchedule/>
-        </StudentElement>}
+          <StudentElement>
+            <StudentsSchedule />
+          </StudentElement>
+        }
+      />
+
+      <Route
+        path="student/message"
+        element={
+          <StudentElement>
+            <MessagePage />
+          </StudentElement>
+        }
+      />
+
+      <Route
+        path="student/classes"
+        element={
+          <StudentElement>
+            <StudentsClasses />
+          </StudentElement>
+        }
+      />
+
+      <Route
+        path="student/homework"
+        element={
+          <StudentElement>
+            <Homework />
+          </StudentElement>
+        }
       />
 
       <Route path="login" element={<Login />} />
