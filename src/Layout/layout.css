@@ -1011,7 +1011,7 @@ body::-webkit-scrollbar {
 .messagesPage {
   display: flex;
   position: relative;
-  min-height: 100vh;
+  min-height: 95vh;
 }
 
 .messagesPage .class-sec {
@@ -1026,7 +1026,17 @@ body::-webkit-scrollbar {
 }
 .messagesPage .class-sec .items {
   margin-top: 20px;
+  overflow-y: scroll;
+  height: 90vh;
 }
+
+.messagesPage .class-sec .items::-webkit-scrollbar {
+  width: 10px;
+  border-radius: 10px;
+  display: none;
+}
+
+
 .messagesPage .class-sec .items .item {
   position: relative;
   width: 90%;
@@ -1070,6 +1080,28 @@ body::-webkit-scrollbar {
 .messagesPage .messages-sec .items {
   margin-top: 20px;
   margin-top: 30px;
+  overflow-y: scroll;
+  height: 75vh;
+}
+/* width */
+.messagesPage .messages-sec .items::-webkit-scrollbar {
+  width: 15px;
+  border-radius: 10px;
+}
+
+/* Track */
+.messagesPage .messages-sec .items::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+.messagesPage .messages-sec .items::-webkit-scrollbar-thumb {
+  background: #ee6c5d;
+}
+
+/* Handle on hover */
+.messagesPage .messages-sec .items::-webkit-scrollbar-thumb:hover {
+  background: #c75b4f;
 }
 .messagesPage .messages-sec .items .item {
   background-color: #fff;
@@ -1094,7 +1126,7 @@ body::-webkit-scrollbar {
   padding: 10px;
   border-radius: 10px;
   position: absolute;
-  bottom: 40px;
+  bottom: 20px;
   width: 95%;
 }
 

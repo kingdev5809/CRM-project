@@ -41,6 +41,56 @@ function Message() {
       sendData: "2023-Feb 15",
       groupName: "ENGELSKA A2",
     },
+
+    {
+      messageText:
+        " Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minim  dolores quod velit. Deserunt voluptas iure saepe, nihil asperiores  aliquam voluptatum recusandae ex repellat libero incidunt minima  voluptate nam nulla, iste earum atque! Possimus accusamus  repudiandae ipsa a commodi architecto hic. ",
+      userImg: userImg,
+      userName: "Shermorad Holmatov",
+      userGrade: "Student",
+      sendData: "2023-Feb 15",
+      groupName: "ENGELSKA A2",
+    },
+
+    {
+      messageText:
+        " Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minim  dolores quod velit. Deserunt voluptas iure saepe, nihil asperiores  aliquam voluptatum recusandae ex repellat libero incidunt minima  voluptate nam nulla, iste earum atque! Possimus accusamus  repudiandae ipsa a commodi architecto hic. ",
+      userImg: userImg,
+      userName: "Shermorad Holmatov",
+      userGrade: "Student",
+      sendData: "2023-Feb 15",
+      groupName: "ENGELSKA A2",
+    },
+
+    {
+      messageText:
+        " Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minim  dolores quod velit. Deserunt voluptas iure saepe, nihil asperiores  aliquam voluptatum recusandae ex repellat libero incidunt minima  voluptate nam nulla, iste earum atque! Possimus accusamus  repudiandae ipsa a commodi architecto hic. ",
+      userImg: userImg,
+      userName: "Shermorad Holmatov",
+      userGrade: "Student",
+      sendData: "2023-Feb 15",
+      groupName: "ENGELSKA A2",
+    },
+
+    {
+      messageText:
+        " Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minim  dolores quod velit. Deserunt voluptas iure saepe, nihil asperiores  aliquam voluptatum recusandae ex repellat libero incidunt minima  voluptate nam nulla, iste earum atque! Possimus accusamus  repudiandae ipsa a commodi architecto hic. ",
+      userImg: userImg,
+      userName: "Shermorad Holmatov",
+      userGrade: "Student",
+      sendData: "2023-Feb 15",
+      groupName: "ENGELSKA A2",
+    },
+
+    {
+      messageText:
+        " Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minim  dolores quod velit. Deserunt voluptas iure saepe, nihil asperiores  aliquam voluptatum recusandae ex repellat libero incidunt minima  voluptate nam nulla, iste earum atque! Possimus accusamus  repudiandae ipsa a commodi architecto hic. ",
+      userImg: userImg,
+      userName: "Shermorad Holmatov",
+      userGrade: "Student",
+      sendData: "2023-Feb 15",
+      groupName: "ENGELSKA A2",
+    },
   ];
 
   return (
