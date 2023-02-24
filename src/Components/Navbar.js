@@ -187,65 +187,19 @@ function Navbar() {
 
       <div className="mobile-nav">
         <ul>
-          <li className="list ">
-            <NavLink
-              to={`/admin/classes`}
-              className={({ isActive }) => (isActive ? "active" : "inactive")}
-            >
-              <span className="icon">
-                <img src={classesImg} alt="" />
-              </span>
-              <span className="text">Home</span>
-            </NavLink>
-          </li>
-
-          <li className="list-1">
-            <NavLink
-              className={({ isActive }) => (isActive ? "active" : "inactive")}
-              to={`/admin/teacher`}
-            >
-              <span className="icon">
-                <img src={teacherImg} alt="" />
-              </span>
-              <span className="text">Teacher</span>
-            </NavLink>
-          </li>
-
-          <li className="list-2">
-            <NavLink
-              className={({ isActive }) => (isActive ? "active" : "inactive")}
-              to={`/admin/scheldule`}
-            >
-              <span className="icon">
-                <img src={schelduleImg} alt="" />
-              </span>
-              <span className="text">Scheldule</span>
-            </NavLink>
-          </li>
-
-          <li className="list">
-            <NavLink
-              className={({ isActive }) => (isActive ? "active" : "inactive")}
-              to={`/admin/students`}
-            >
-              <span className="icon">
-                <img src={studentImg} alt="" />
-              </span>
-              <span className="text">Students</span>
-            </NavLink>
-          </li>
-
-          <li className="list">
-            <NavLink
-              className={({ isActive }) => (isActive ? "active" : "inactive")}
-              to={`/login`}
-            >
-              <span className="icon">
-                <img src={logoutImg} alt="" />
-              </span>
-              <span className="text">Log out</span>
-            </NavLink>
-          </li>
+          {navData.map((item) => (
+            <li className="list ">
+              <NavLink
+                to={item.slug}
+                className={({ isActive }) => (isActive ? "active" : "inactive")}
+              >
+                <span className="icon">
+                  <img src={item.img} alt="" />
+                </span>
+                <span className="text">{item.name}</span>
+              </NavLink>
+            </li>
+          ))}
         </ul>
       </div>
     </div>
