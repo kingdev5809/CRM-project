@@ -1040,7 +1040,6 @@ body::-webkit-scrollbar {
 .messagesPage .messages-sec .items {
   height: 75vh;
   /* height: 75vh; */
-
 }
 .messagesPage .items .item {
   height: 175px;
@@ -1077,12 +1076,11 @@ body::-webkit-scrollbar {
   height: 190px;
 }
 
-.homeworkPage .group-sec .items .item{
+.homeworkPage .group-sec .items .item {
   height: 130px;
-
 }
 
-.homeworkPage .homework .items .item .item-title{
+.homeworkPage .homework .items .item .item-title {
   display: flex;
   align-items: center;
   margin: 5px 0;
@@ -1090,10 +1088,12 @@ body::-webkit-scrollbar {
 .homeworkPage .homework .items .item .item-title img {
   width: 30px;
 }
-.homeworkPage .homework .items .item .item-title h3{
+.homeworkPage .homework .items .item .item-title h3 {
   font-weight: 500;
   margin-left: 10px;
 }
+
+
 /* Homework page end */
 
 /* Homewwork and message page style start */
@@ -1126,7 +1126,7 @@ body::-webkit-scrollbar {
   margin: 15px auto;
   background-color: #fff;
   padding: 20px;
-
+  cursor: pointer;
   border-radius: 15px;
 }
 

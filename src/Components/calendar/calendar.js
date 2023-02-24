@@ -39,7 +39,7 @@ export default function Calendar() {
     }else{
       setIsMobile(false)
     }
-    console.log(isMobile);
+    
   }
   
 
