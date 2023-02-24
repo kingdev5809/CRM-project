@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import userImg from "../../../images/navbar-img/userImg.png";
 
 function Groups() {
@@ -62,6 +63,9 @@ function Groups() {
             </div>
 
             <div className="item-box-3"></div>
+            <NavLink to={`/student/homework/engelska`}>
+              <div className="click-window"></div>
+            </NavLink>
           </div>
         ))}
       </div>

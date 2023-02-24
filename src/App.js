@@ -1,5 +1,4 @@
 import "./App.css";
-import Navbar from "./Components/Navbar";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Login from "./Components/Auth/Login";
@@ -15,7 +14,9 @@ import { USER_LOGIN_SUCCESS } from "./Redux/Constants/UserConstants";
 import StudentsSchedule from "./Layout/userStudent/Schedule/StudentsSchedule";
 import StudentsClasses from "./Layout/userStudent/Group/StudentClasses.js";
 import MessagePage from "./Layout/userStudent/Message Page/MessagePage";
-import Homework from "./Layout/userStudent/Homework Page/StudentHomework";
+import StudentHomework from "./Layout/userStudent/Homework Page/StudentHomework";
+import Homeworks from "./Layout/userStudent/Homework Page/Homeworks";
+import Message from "./Layout/userStudent/Message Page/Message";
 const Routing = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -142,7 +143,24 @@ const Routing = () => {
         path="student/homework"
         element={
           <StudentElement>
-            <Homework />
+            <StudentHomework />
+          </StudentElement>
+        }
+      />
+      <Route
+        path="student/homework/engelska"
+        element={
+          <StudentElement>
+            <Homeworks />
+          </StudentElement>
+        }
+      />
+
+      <Route
+        path="student/message/engelska"
+        element={
+          <StudentElement>
+            <Message />
           </StudentElement>
         }
       />

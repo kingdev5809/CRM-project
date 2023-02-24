@@ -1014,29 +1014,7 @@ body::-webkit-scrollbar {
   min-height: 80vh;
 }
 
-.messagesPage .input-box {
-  display: flex;
-  justify-content: space-between;
-  background-color: #fff;
-  padding: 10px;
-  border-radius: 10px;
-  position: absolute;
-  bottom: 10px;
-  width: 95%;
-}
 
-.messagesPage .input-box input {
-  border: none;
-  outline: none;
-  background-color: transparent;
-  width: 90%;
-  height: 40px;
-  font-size: 20px;
-}
-.messagesPage .input-box img {
-  width: 20px;
-  margin: auto 0;
-}
 .messagesPage .messages-sec .items {
   height: 75vh;
   /* height: 75vh; */
@@ -1080,19 +1058,6 @@ body::-webkit-scrollbar {
   height: 130px;
 }
 
-.homeworkPage .homework .items .item .item-title {
-  display: flex;
-  align-items: center;
-  margin: 5px 0;
-}
-.homeworkPage .homework .items .item .item-title img {
-  width: 30px;
-}
-.homeworkPage .homework .items .item .item-title h3 {
-  font-weight: 500;
-  margin-left: 11px;
-}
-
 
 /* Homework page end */
 
@@ -1129,6 +1094,15 @@ body::-webkit-scrollbar {
   cursor: pointer;
   border-radius: 15px;
 }
+.group-cards .items .item .click-window {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  display: none;
+}
 
 .group-cards .items .item h3 {
   font-weight: 500;
@@ -1150,12 +1124,15 @@ body::-webkit-scrollbar {
   background-color: red;
 }
 
-.messages-cards {
+.deskop-responsive {
   width: 60%;
   padding: 35px 20px;
   position: relative;
-
   min-height: 100%;
+  min-height: 80vh;
+
+}
+.messages-cards {
 }
 .messages-cards h1 {
   font-weight: 500;
@@ -1189,10 +1166,11 @@ body::-webkit-scrollbar {
 .messages-cards .items .item {
   background-color: #fff;
   border-radius: 20px;
-
+  position: relative;
   padding: 20px;
   margin: 10px 0;
 }
+
 .messages-cards .items .item p {
   font-size: 13px;
 }
@@ -1202,4 +1180,91 @@ body::-webkit-scrollbar {
   align-items: center;
 }
 
+.messages-cards .user-box {
+  display: flex;
+  align-items: center;
+  margin-top: 15px;
+}
+.messages-cards .user-box img {
+  width: 40px;
+}
+.messages-cards .user-box .user-box-inner {
+  margin-left: 10px;
+}
+.messages-cards h4 {
+  font-weight: 500;
+}
+.messages-cards h6 {
+  color: #b5b5b5;
+}
+
+.messages-cards .items {
+  height: 84vh;
+}
+.messages-cards .items .item {
+  height: 190px;
+}
+
+.messages-cards .group-sec .items .item {
+  height: 130px;
+}
+
+.messages-cards .items .item .item-title {
+  display: flex;
+  align-items: center;
+  margin: 5px 0;
+}
+.messages-cards .items .item .item-title img {
+  width: 30px;
+}
+.messages-cards .items .item .item-title h3 {
+  font-weight: 500;
+  margin-left: 11px;
+}
+
+.messages-cards .input-box {
+  display: flex;
+  justify-content: space-between;
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 10px;
+  position: absolute;
+  bottom: 10px;
+  width: 95%;
+}
+
+.messages-cards .input-box input {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  width: 90%;
+  height: 40px;
+  font-size: 20px;
+}
+.messages-cards .input-box img {
+  width: 20px;
+  margin: auto 0;
+}
+@media screen and (max-width: 1050px) {
+  .deskop-responsive {
+    display: none;
+    padding-bottom: 80px;
+  }
+  .messages-cards   {
+    max-width: 90%;
+    margin: auto;
+    margin-top: 20px;
+    
+  }
+  .group-cards {
+    width: 90%;
+  }
+
+  .group-cards .items .item .click-window {
+    display: block;
+  }
+  .messages-cards .input-box{
+    bottom: 0px;
+  }
+}
 /* Homewwork and message page style end */

@@ -10,7 +10,9 @@ function MessagePage() {
 
       <div className="messagesPage container">
         <Groups />
-        <Message />
+        <div className="deskop-responsive">
+          <Message />
+        </div>
       </div>
     </div>
   );

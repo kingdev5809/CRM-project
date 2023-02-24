@@ -1,6 +1,8 @@
 import React from "react";
 import userImg from "../../../images/navbar-img/userImg.png";
 import sendImd from "../../../images/navbar-img/sendmessageicon.png";
+import '../../layout.css'
+import { NavLink } from "react-router-dom";
 function Message() {
   const smalData = [
     {
@@ -112,6 +114,9 @@ function Message() {
                 <h6>{item.sendData}</h6>
               </div>
             </div>
+            <NavLink to={`/student/message/engelska`}>
+              <div className="click-window"></div>
+            </NavLink>
           </div>
         ))}
 

@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import userImg from "../../../images/navbar-img/userImg.png";
 
 function Groups() {
@@ -9,6 +10,7 @@ function Groups() {
         " Here you can write yo your teachers and schoolmates,your message   is visible to everyone",
       teacherName: "Shermorad Holmatov",
       teacherImg: userImg,
+      slug: "englesanka",
     },
 
     {
@@ -17,6 +19,7 @@ function Groups() {
         " Here you can write yo your teachers and schoolmates,your message   is visible to everyone",
       teacherName: "Shermorad Holmatov",
       teacherImg: userImg,
+      slug: "englesanka",
     },
 
     {
@@ -25,6 +28,7 @@ function Groups() {
         " Here you can write yo your teachers and schoolmates,your message   is visible to everyone",
       teacherName: "Shermorad Holmatov",
       teacherImg: userImg,
+      slug: "englesanka",
     },
 
     {
@@ -33,6 +37,7 @@ function Groups() {
         " Here you can write yo your teachers and schoolmates,your message   is visible to everyone",
       teacherName: "Shermorad Holmatov",
       teacherImg: userImg,
+      slug: "englesanka",
     },
 
     {
@@ -41,6 +46,7 @@ function Groups() {
         " Here you can write yo your teachers and schoolmates,your message   is visible to everyone",
       teacherName: "Shermorad Holmatov",
       teacherImg: userImg,
+      slug: "englesanka",
     },
   ];
 
@@ -63,6 +69,9 @@ function Groups() {
             </div>
 
             <div className="item-box-3"></div>
+            <NavLink to={`/student/message/engelska`}>
+              <div className="click-window"></div>
+            </NavLink>
           </div>
         ))}
       </div>
