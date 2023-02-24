@@ -9,6 +9,8 @@ import AddTeacheModal from "../Modals/AddTeacheModal";
 
 const Teachers = () => {
   const [visibleModal, setVisibleModal] = useState("d-none");
+  const [refresh, setRefresh] = useState('');
+
   const dispatch = useDispatch();
 
   const getTeachers = useSelector((state) => state.teachers);
@@ -17,7 +19,7 @@ const Teachers = () => {
 
   useEffect(() => {
     dispatch(getAllTeachers());
-  }, []);
+  }, [refresh]);
   return (
     <div className="flex">
       <Navbar />
@@ -41,7 +43,7 @@ const Teachers = () => {
                 </p>
                 <h5>{user.email}</h5>
               </div>
-            ))
+            )).reverse()
           ) : (
             <h1>LOADING . . .</h1>
           )}
@@ -50,6 +52,7 @@ const Teachers = () => {
         <AddTeacheModal
           visibleModal={visibleModal}
           setVisibleModal={setVisibleModal}
+          setRefresh={setRefresh}
         />
       </div>
     </div>

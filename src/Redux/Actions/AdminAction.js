@@ -1,3 +1,4 @@
+import { toast } from "react-toastify";
 import * as AdminApi from "../../api/AdminRequest";
 
 import {
@@ -7,6 +8,9 @@ import {
   TEACHER_GET_ALL_FAIL,
   TEACHER_GET_ALL_REQUEST,
   TEACHER_GET_ALL_SUCCESS,
+  TEACHER_POST_ALL_FAIL,
+  TEACHER_POST_ALL_REQUEST,
+  TEACHER_POST_ALL_SUCCESS,
 } from "../Constants/AdminContants";
 
 // GET ALL TEACHERS
@@ -43,3 +47,38 @@ export const getAllStudents = () => async (dispatch) => {
     });
   }
 };
+
+// POST TEACHERS
+
+export const postTeachers =
+  (name, email, address, surname, subject, phone_number,setVisibleModal,setRefresh) =>
+  async () => {
+    // dispatch({ type: TEACHER_POST_ALL_REQUEST });
+    try {
+      const { data } = await AdminApi.postTeachers({
+        name,
+        email,
+        address,
+        surname,
+        subject,
+        phone_number,
+      });
+      // dispatch({ type: TEACHER_POST_ALL_SUCCESS, payload: data });
+      if (data.error) {
+        toast.warning(data.error);
+      }else{
+        toast.success(data.msg)
+        setVisibleModal('d-none')
+        setRefresh(name)
+      }
+    } catch (error) {
+      // dispatch({
+      //   type: TEACHER_POST_ALL_FAIL,
+      //   payload:
+      //     error.response && error.response.data.message
+      //       ? error.response.data.message
+      //       : error.message,
+      // });
+      console.log(error);
+    }
+  };

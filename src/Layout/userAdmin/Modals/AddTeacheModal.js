@@ -1,9 +1,36 @@
-import React from "react";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { deleteIcon } from "../../../Components/icons/svgIcons";
-import '../../layout.css'
+import { postTeachers } from "../../../Redux/Actions/AdminAction";
+import "../../layout.css";
 
 function AddTeacheModal(props) {
-    const { visibleModal, setVisibleModal } = props;
+  const { visibleModal, setVisibleModal, refresh, setRefresh } = props;
+  const [name, setName] = useState("");
+  const [surname, setSurname] = useState("");
+  const [subject, setSubject] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone_number, setPhone_number] = useState("");
+  const [address, setAddress] = useState("");
+
+  const dispatch = useDispatch();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(
+      postTeachers(
+        name,
+        email,
+        address,
+        surname,
+        subject,
+        phone_number,
+        setVisibleModal,
+        setRefresh
+      )
+    );
+  };
+
   return (
     <div>
       <div className={visibleModal}>
@@ -28,12 +55,24 @@ function AddTeacheModal(props) {
                 <div className="flex ">
                   <div className="modal-input w-full">
                     <label>First name</label>
-                    <input className="w-full" type="text" placeholder="Name" />
+                    <input
+                      className="w-full"
+                      type="text"
+                      placeholder="Name"
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                    />
                   </div>
 
                   <div className="modal-input w-full">
                     <label>Last name</label>
-                    <input className="w-full" type="text" placeholder="Name" />
+                    <input
+                      className="w-full"
+                      type="text"
+                      placeholder="Name"
+                      value={surname}
+                      onChange={(e) => setSurname(e.target.value)}
+                    />
                   </div>
                 </div>
 
@@ -44,18 +83,41 @@ function AddTeacheModal(props) {
                       className="w-full"
                       type="text"
                       placeholder="Telephone number"
+                      value={phone_number}
+                      onChange={(e) => setPhone_number(e.target.value)}
                     />
                   </div>
 
                   <div className="modal-input w-full">
                     <label>Email </label>
-                    <input className="w-full" type="text" placeholder="Email" />
+                    <input
+                      className="w-full"
+                      type="text"
+                      placeholder="Email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                    />
                   </div>
                 </div>
-
+                <div className="modal-input">
+                  <label>Subject</label>
+                  <input
+                    className="w-full"
+                    type="text"
+                    placeholder="Subject"
+                    value={subject}
+                    onChange={(e) => setSubject(e.target.value)}
+                  />
+                </div>
                 <div className="modal-input">
                   <label>Adress</label>
-                  <input className="w-full" type="text" placeholder="Adress" />
+                  <input
+                    className="w-full"
+                    type="text"
+                    placeholder="Adress"
+                    value={address}
+                    onChange={(e) => setAddress(e.target.value)}
+                  />
                 </div>
                 <div className="modal-input">
                   <label>Image </label>
@@ -64,7 +126,9 @@ function AddTeacheModal(props) {
 
                 <div className="btn-group">
                   <button>DELELTE</button>
-                  <button className="btn-2">SAVE</button>
+                  <button onClick={handleSubmit} className="btn-2">
+                    SAVE
+                  </button>
                 </div>
               </form>
             </div>
