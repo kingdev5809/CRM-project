@@ -1,5 +1,5 @@
 import { combineReducers } from "redux";
-import { getAllTeachersReducers } from "./AdminReducers";
+import { getAllTeachersReducers } from "./AdminReduser";
 import { userLoginReducer } from "./UserReducers";
 
 export const reducers = combineReducers({
