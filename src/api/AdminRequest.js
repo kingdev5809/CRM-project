@@ -9,3 +9,5 @@ const config = {
   },
 };
 export const getTeachers = () => API.get("/rektor/teacher", config);
+
+export const getStudents = () => API.get("/rektor/student", config);
