@@ -110,11 +110,6 @@ function Navbar() {
         img: messageImg,
         slug: "/student/message",
       },
-      {
-        name: "Log out",
-        img: logoutImg,
-        slug: "/login",
-      },
     ],
   };
   const navigate = useNavigate();
@@ -173,6 +168,15 @@ function Navbar() {
                 </NavLink>
               </li>
             ))}
+
+            <li onClick={() => setResNavActive("navbar-component")}>
+              <NavLink to={'/login'}>
+                <span>
+                  <img src={logoutImg} alt="" />
+                </span>
+                <p onClick={LOGOUT}>Log out</p>
+              </NavLink>
+            </li>
           </ul>
         </div>
       </div>
@@ -192,6 +196,18 @@ function Navbar() {
               </NavLink>
             </li>
           ))}
+
+          <li className="list ">
+            <NavLink
+              to={'/login'}
+              className={({ isActive }) => (isActive ? "active" : "inactive")}
+            >
+              <span className="icon">
+                <img src={logoutImg} alt="" />
+              </span>
+              <span onClick={LOGOUT} className="text">Log out</span>
+            </NavLink>
+          </li>
         </ul>
       </div>
     </div>
