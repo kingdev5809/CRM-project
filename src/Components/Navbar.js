@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import navLogo from "../images/navbar-img/image_2023-02-21_19-16-22.png";
 import navLogo2 from "../images/navbar-img/nav-logo-2.png";
 import userImg from "../images/navbar-img/userImg.png";
@@ -17,25 +17,144 @@ import { useDispatch } from "react-redux";
 import barsImg from "../images/navbar-img/bars.jpg";
 function Navbar() {
   const [resNavActive, setResNavActive] = useState("navbar-component");
-
+  const [navData, setNavData] = useState([]);
   const dispatch = useDispatch();
   const LOGOUT = () => {
     dispatch(logout());
   };
 
-  let navigate = useNavigate()
-  console.log(navigate);
+  const user = JSON.parse(localStorage.getItem("userInfo"));
+
+  const smallData = {
+    rektor: [
+      {
+        name: "Schedule",
+        img: schelduleImg,
+        slug: "/admin/scheldule",
+      },
+      {
+        name: "Classes",
+        img: classesImg,
+        slug: "/admin/classes",
+      },
+      {
+        name: "Teacher",
+        img: teacherImg,
+        slug: "/admin/teacher",
+      },
+      {
+        name: "Student",
+        img: studentImg,
+        slug: "/admin/students",
+      },
+      {
+        name: "Location",
+        img: locationImg,
+        slug: "admin/location",
+      },
+      {
+        name: "Log out",
+        img: logoutImg,
+        slug: "/login",
+      },
+    ],
+
+    teacher: [
+      {
+        name: "Schedule",
+        img: schelduleImg,
+        slug: "/teacher/scheldule",
+      },
+      {
+        name: "Classes",
+        img: classesImg,
+        slug: "/teacher/classes",
+      },
+      {
+        name: "Teacher",
+        img: teacherImg,
+        slug: "/teacher/teacher",
+      },
+      {
+        name: "Student",
+        img: studentImg,
+        slug: "/teacher/students",
+      },
+      {
+        name: "Location",
+        img: locationImg,
+        slug: "teacher/location",
+      },
+      {
+        name: "Log out",
+        img: logoutImg,
+        slug: "/login",
+      },
+    ],
+
+    student: [
+      {
+        name: "Schedule",
+        img: schelduleImg,
+        slug: "/student/scheldule",
+      },
+      {
+        name: "Classes",
+        img: classesImg,
+        slug: "/student/classes",
+      },
+      {
+        name: "Teacher",
+        img: teacherImg,
+        slug: "/student/teacher",
+      },
+      {
+        name: "Student",
+        img: studentImg,
+        slug: "/student/students",
+      },
+      {
+        name: "Location",
+        img: locationImg,
+        slug: "student/location",
+      },
+      {
+        name: "Log out",
+        img: logoutImg,
+        slug: "/login",
+      },
+    ],
+  };
+
+  useEffect(() => {
+    if (user?.rektor) {
+      setNavData(smallData.rektor);
+    } else if (user?.teacher) {
+      setNavData(smallData.teacher);
+    } else if (user?.student) {
+      setNavData(smallData.student);
+    } else {
+      navigate("/login");
+    }
+  }, []);
+
   return (
     <div className={resNavActive}>
-      <div onClick={() => setResNavActive("navbar-component active")} className="response-nav-open">
-        <span >
+      <div
+        onClick={() => setResNavActive("navbar-component active")}
+        className="response-nav-open"
+      >
+        <span>
           <img src={barsImg} alt="" />
         </span>
       </div>
 
       <div className="deskop-nav">
         <div className="navbar-header">
-          <div onClick={() => setResNavActive("navbar-component")} className="response-nav-close">
+          <div
+            onClick={() => setResNavActive("navbar-component")}
+            className="response-nav-close"
+          >
             <img src={closeBtn} alt="" />
           </div>
           <div className="box-1">
@@ -52,65 +171,16 @@ function Navbar() {
 
         <div className="navbar-main">
           <ul>
-            <li onClick={() => setResNavActive("navbar-component")}>
-              <NavLink to={`/admin/scheldule`}>
-                <span>
-                  {" "}
-                  <img src={schelduleImg} alt="" />{" "}
-                </span>
-                <p>Schedule</p>
-              </NavLink>
-            </li>
-
-            {/* <li>
-            <Link href="#">
-              <span> {homeworkIcon} </span>
-              <p>Homework</p>
-            </Link>
-          </li> */}
-
-            <li onClick={() => setResNavActive("navbar-component")}>
-              <NavLink to={`/admin/classes`}>
-                <span>
-                  {" "}
-                  <img src={classesImg} alt="" />{" "}
-                </span>
-                <p>classes</p>
-              </NavLink>
-            </li>
-            <li onClick={() => setResNavActive("navbar-component")}>
-              <NavLink to={`/admin/teacher`}>
-                <span>
-                  <img src={teacherImg} alt="" />
-                </span>
-                <p>teacher </p>
-              </NavLink>
-            </li>
-            <li onClick={() => setResNavActive("navbar-component")}>
-              <NavLink to={`/admin/students`}>
-                <span>
-                  <img src={studentImg} alt="" />
-                </span>
-                <p>Students </p>
-              </NavLink>
-            </li>
-            <li onClick={() => setResNavActive("navbar-component")}>
-              <NavLink to={`/admin/location`}>
-                <span>
-                  <img src={locationImg} alt="" />
-                </span>
-                <p>location</p>
-              </NavLink>
-            </li>
-            <li onClick={() => setResNavActive("navbar-component")}>
-              <NavLink to={`/login`}>
-                <span>
-                  {" "}
-                  <img src={logoutImg} alt="" />
-                </span>
-                <p onClick={LOGOUT}>Log out </p>
-              </NavLink>
-            </li>
+            {navData.map((item) => (
+              <li onClick={() => setResNavActive("navbar-component")}>
+                <NavLink to={item.slug}>
+                  <span>
+                    <img src={`${item.img}`} alt="" />
+                  </span>
+                  <p>{item.name}</p>
+                </NavLink>
+              </li>
+            ))}
           </ul>
         </div>
       </div>

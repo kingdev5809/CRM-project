@@ -12,7 +12,7 @@ import Location from "./Layout/userAdmin/Location/Location";
 import Classes from "./Layout/userAdmin/Group/Classes";
 import Schedule from "./Layout/userAdmin/Schedule/Schedule";
 import { USER_LOGIN_SUCCESS } from "./Redux/Constants/UserConstants";
-import StudentsSchedule from "./Layout/userStudent/Schedule/StudentsSchedule"
+
 const Routing = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -112,7 +112,7 @@ const Routing = () => {
         path="student/scheldule"
         element={
         <StudentElement>
-            <StudentsSchedule/>
+            
         </StudentElement>}
       />
 

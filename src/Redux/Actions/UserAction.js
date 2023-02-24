@@ -23,9 +23,9 @@ export const login =
       }
 
       dispatch({ type: USER_LOGIN_SUCCESS, payload: data });
-      if (checkbox) {
+      // if (checkbox) {
         localStorage.setItem("userInfo", JSON.stringify(data));
-      }
+      // }
     } catch (error) {
       dispatch({
         type: USER_LOGIN_FAIL,
