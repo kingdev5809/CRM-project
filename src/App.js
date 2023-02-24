@@ -17,6 +17,8 @@ import MessagePage from "./Layout/userStudent/Message Page/MessagePage";
 import StudentHomework from "./Layout/userStudent/Homework Page/StudentHomework";
 import Homeworks from "./Layout/userStudent/Homework Page/Homeworks";
 import Message from "./Layout/userStudent/Message Page/Message";
+import TeacherSchedule from "./Layout/userTeacher/Schedule/TeacherSchedule";
+import TeacherClasses from "./Layout/userTeacher/Group/TeacherClasses";
 const Routing = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -46,7 +48,7 @@ const Routing = () => {
   }
 
   function TeacherElement({ children }) {
-    if (user?.techer) {
+    if (user?.teacher) {
       return <>{children}</>;
     } else {
       navigate("/login");
@@ -103,14 +105,26 @@ const Routing = () => {
         }
       />
 
-      {/* <Route 
-          path="teacher/scheldule"
-          element={
-            <TeacherElement>
-                
-            </TeacherElement>
-          }
-          /> */}
+      <Route
+        path="teacher/scheldule"
+        element={
+          <TeacherElement>
+            <TeacherSchedule />
+          </TeacherElement>
+        }
+      />
+
+      <Route
+        path="teacher/classes"
+        element={
+          <TeacherElement>
+            <TeacherClasses />
+          </TeacherElement>
+        }
+      />
+
+
+
 
       <Route
         path="student/scheldule"
