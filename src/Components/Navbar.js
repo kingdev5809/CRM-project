@@ -52,7 +52,7 @@ function Navbar() {
       {
         name: "Location",
         img: locationImg,
-        slug: "admin/location",
+        slug: "/admin/location",
       },
       
     ],
