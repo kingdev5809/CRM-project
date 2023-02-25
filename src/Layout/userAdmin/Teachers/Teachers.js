@@ -45,6 +45,7 @@ const Teachers = () => {
                   </p>
                   <h4> Login</h4>
                   <h5>{user.email}</h5>
+                  <h4>Password</h4>
                   <h6> {user.show_password}</h6>
                 </div>
               ))
