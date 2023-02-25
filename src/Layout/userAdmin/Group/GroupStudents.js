@@ -23,7 +23,7 @@ function GroupStudents() {
 
   useEffect(() => {
     dispatch(getOneGroup(token));
-  }, []);
+  }, [refresh]);
 
   return (
     <div className="flex">
