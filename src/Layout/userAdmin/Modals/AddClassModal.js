@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { deleteIcon } from "../../../Components/icons/svgIcons";
-import { postClasses } from "../../../Redux/Actions/AdminAction";
+import { postGroups } from "../../../Redux/Actions/AdminAction";
 import "../../layout.css";
 
 const AddClassModal = (props) => {
@@ -15,12 +15,12 @@ const AddClassModal = (props) => {
   //     "teacher": "63e9ccd667477e5625f435eb"
   // }
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    dispatch(
-      postClasses(group_name, subject, teacher, setVisibleModal, setRefresh)
-    );
-  };
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   dispatch(
+  //     postClasses(group_name, subject, teacher, setVisibleModal, setRefresh)
+  //   );
+  // };
 
   return (
     <>
