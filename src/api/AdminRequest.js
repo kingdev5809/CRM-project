@@ -12,5 +12,8 @@ export const getTeachers = () => API.get("/rektor/teacher", config);
 
 export const getStudents = () => API.get("/rektor/student", config);
 
-export const postTeachers = (data) =>
-  API.post("/rektor/teacher", data, config);
+export const getGroups = () => API.get("/rektor/group", config);
+
+export const postTeachers = (data) => API.post("/rektor/teacher", data, config);
+
+export const postGroups = (data) => API.post("/rektor/group", data, config);

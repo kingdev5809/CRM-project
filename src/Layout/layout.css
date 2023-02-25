@@ -416,7 +416,8 @@ body::-webkit-scrollbar {
 }
 .modalWindows .modal-content .modal-input label {
   display: block;
-  font-size: 12px;
+  font-size: 13px;
+  font-weight: 500;
 }
 
 .modalWindows .modal-content .modal-input input {

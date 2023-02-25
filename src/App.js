@@ -28,7 +28,7 @@ const Routing = () => {
     if (user?.rektor) {
       dispatch({ type: USER_LOGIN_SUCCESS, payload: user });
       navigate("/admin/scheldule");
-    } else if (user?.techer) {
+    } else if (user?.teacher) {
       dispatch({ type: USER_LOGIN_SUCCESS, payload: user });
       navigate("/teacher/scheldule");
     } else if (user?.student) {

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   deleteIcon,
   editIcon,
@@ -8,57 +8,26 @@ import Navbar from "../../../Components/Navbar";
 import "../../layout.css";
 import userImg from "../../../images/navbar-img/userImg.png";
 import AddClassModal from "../Modals/AddClassModal";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllGroups } from "../../../Redux/Actions/AdminAction";
 
 const Classes = () => {
   const [visibleModal, setVisibleModal] = useState("d-none");
 
-  const smallData = [
-    {
-      title: "Engelska A2",
-      name: "Shermorad Holmatov",
-      color: "bg-red-500",
-    },
-    {
-      title: "Engelska A2",
-      name: "Shermorad Holmatov",
-      color: "bg-red-500",
-    },
-    {
-      title: "Engelska A2",
-      name: "Shermorad Holmatov",
-      color: "bg-red-500",
-    },
-    {
-      title: "Engelska A2",
-      name: "Shermorad Holmatov",
-      color: "bg-red-500",
-    },
-    {
-      title: "Engelska A2",
-      name: "Shermorad Holmatov",
-      color: "bg-red-500",
-    },
-    {
-      title: "Engelska A2",
-      name: "Shermorad Holmatov",
-      color: "bg-red-500",
-    },
-    {
-      title: "Engelska A2",
-      name: "Shermorad Holmatov",
-      color: "bg-red-500",
-    },
-    {
-      title: "Engelska A2",
-      name: "Shermorad Holmatov",
-      color: "bg-red-500",
-    },
-    {
-      title: "Engelska A2",
-      name: "Shermorad Holmatov",
-      color: "bg-red-500",
-    },
-  ];
+  const [refresh, setRefresh] = useState('');
+
+  const dispatch = useDispatch();
+
+  const getGroups = useSelector((state) => state.group);
+  const {  data } = getGroups;
+  console.log(data);
+
+  useEffect(() => {
+    dispatch(getAllGroups());
+  }, [refresh]);
+
+
+ 
   return (
     <div className="flex">
       <Navbar/>

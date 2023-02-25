@@ -1,9 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import { deleteIcon } from "../../../Components/icons/svgIcons";
-import '../../layout.css'
+import { postClasses } from "../../../Redux/Actions/AdminAction";
+import "../../layout.css";
 
 const AddClassModal = (props) => {
-  const { visibleModal, setVisibleModal } = props;
+  const { visibleModal, setVisibleModal, setRefresh } = props;
+  const [group_name, setGroup_name] = useState("");
+  const [subject, setSubject] = useState("");
+  const [teacher, setTeacher] = useState("");
+
+  //   {
+  //     "group_name": "English A",
+  //     "subject": "en",
+  //     "teacher": "63e9ccd667477e5625f435eb"
+  // }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(
+      postClasses(group_name, subject, teacher, setVisibleModal, setRefresh)
+    );
+  };
+
   return (
     <>
       <div className={visibleModal}>
@@ -26,18 +44,24 @@ const AddClassModal = (props) => {
             <form action="">
               <div className="modal-input">
                 <label>Class name</label>
-                <input className="w-full" type="text" placeholder="Name" />
+                <input
+                  className="w-full"
+                  type="text"
+                  placeholder="Name"
+                  value={group_name}
+                  onChange={(e) => setGroup_name(e.target.value)}
+                />
               </div>
 
               <div className="flex">
                 <div className="modal-input">
                   <label>Select teacher</label>
-                  <input type="text" className="w-full" placeholder="Name" />
+                  <input type="text" className="w-full" placeholder="Name" value={teacher} onChange={(e)=> setTeacher(e.target.value)} />
                 </div>
 
                 <div className="modal-input">
                   <label>Select BG color</label>
-                  <select className="w-full" name="selectColor" id="color">
+                  <select className="w-full" name="selectColor" id="color" >
                     <option value="">Yellow</option>
                     <option value="red">Red</option>
                     <option value="green">green</option>

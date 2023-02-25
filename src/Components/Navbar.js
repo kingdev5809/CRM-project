@@ -54,7 +54,6 @@ function Navbar() {
         img: locationImg,
         slug: "/admin/location",
       },
-      
     ],
 
     teacher: [
@@ -68,6 +67,7 @@ function Navbar() {
         img: classesImg,
         slug: "/teacher/classes",
       },
+      
       // {
       //   name: "Teacher",
       //   img: teacherImg,
@@ -78,7 +78,6 @@ function Navbar() {
       //   img: studentImg,
       //   slug: "/teacher/students",
       // },
-    
     ],
 
     student: [
@@ -143,7 +142,9 @@ function Navbar() {
           <div className="box-2">
             <img className="userImg" src={userImg} alt="" />
             <h2>Muzzaffar Holmatov</h2>
-            <h3>STUDENT</h3>
+            <h3>
+              {user?.rektor ? "ADMIN" : user?.teacher ? "TEACHER" : "STUDENT"}
+            </h3>
             <img className="starImg" src={starImg} alt="" />
           </div>
         </div>
@@ -162,7 +163,7 @@ function Navbar() {
             ))}
 
             <li onClick={() => setResNavActive("navbar-component")}>
-              <NavLink to={'/login'}>
+              <NavLink to={"/login"}>
                 <span>
                   <img src={logoutImg} alt="" />
                 </span>
@@ -191,13 +192,15 @@ function Navbar() {
 
           <li className="list ">
             <NavLink
-              to={'/login'}
+              to={"/login"}
               className={({ isActive }) => (isActive ? "active" : "inactive")}
             >
               <span className="icon">
                 <img src={logoutImg} alt="" />
               </span>
-              <span onClick={LOGOUT} className="text">Log out</span>
+              <span onClick={LOGOUT} className="text">
+                Log out
+              </span>
             </NavLink>
           </li>
         </ul>

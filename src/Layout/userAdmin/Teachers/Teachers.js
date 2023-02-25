@@ -15,11 +15,13 @@ const Teachers = () => {
 
   const getTeachers = useSelector((state) => state.teachers);
   const { loading, data } = getTeachers;
-  console.log(data);
+  
 
   useEffect(() => {
     dispatch(getAllTeachers());
   }, [refresh]);
+
+  
   return (
     <div className="flex">
       <Navbar />
@@ -47,7 +49,10 @@ const Teachers = () => {
           ) : (
             <h1>LOADING . . .</h1>
           )}
+          
         </div>
+
+
 
         <AddTeacheModal
           visibleModal={visibleModal}
