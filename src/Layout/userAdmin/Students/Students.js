@@ -65,6 +65,15 @@ const Students = () => {
                       <span>Parent number:</span>
                       <span>{item.phone_number}</span>
                     </p>
+                    <p>
+                      <span>Login</span>
+                      <span>{item.email}</span>
+                    </p>
+                    <p>
+                      <span>Password</span>
+                      <span>{item.show_password}</span>
+                    </p>
+
                     <div className="itemBtn">
                       <div className="btn1">{editIcon} Edit</div>
                       <div className="btn2">{deleteIcon} Delete</div>

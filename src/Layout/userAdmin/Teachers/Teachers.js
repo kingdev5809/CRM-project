@@ -9,19 +9,18 @@ import AddTeacheModal from "../Modals/AddTeacheModal";
 
 const Teachers = () => {
   const [visibleModal, setVisibleModal] = useState("d-none");
-  const [refresh, setRefresh] = useState('');
+  const [refresh, setRefresh] = useState("");
 
   const dispatch = useDispatch();
 
   const getTeachers = useSelector((state) => state.teachers);
   const { loading, data } = getTeachers;
-  
 
+  console.log(data);
   useEffect(() => {
     dispatch(getAllTeachers());
   }, [refresh]);
 
-  
   return (
     <div className="flex">
       <Navbar />
@@ -33,26 +32,27 @@ const Teachers = () => {
 
         <div className="items">
           {data ? (
-            data.teachers.map((user) => (
-              <div className="item ">
-                <img src={userImg} alt="" />
-                <h2>
-                  {user.name} {user.surname}
-                </h2>
-                <h4>Teacher</h4>
-                <p>
-                  {phoneIcon} {user.phone_number}
-                </p>
-                <h5>{user.email}</h5>
-              </div>
-            )).reverse()
+            data.teachers
+              .map((user) => (
+                <div className="item ">
+                  <img src={userImg} alt="" />
+                  <h2>
+                    {user.name} {user.surname}
+                  </h2>
+                  <h4>Teacher</h4>
+                  <p>
+                    {phoneIcon} {user.phone_number}
+                  </p>
+                  <h4> Login</h4>
+                  <h5>{user.email}</h5>
+                  <h6> {user.show_password}</h6>
+                </div>
+              ))
+              .reverse()
           ) : (
             <h1>LOADING . . .</h1>
           )}
-          
         </div>
-
-
 
         <AddTeacheModal
           visibleModal={visibleModal}

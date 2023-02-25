@@ -27,7 +27,53 @@ const Classes = () => {
   }, [refresh]);
 
 
- 
+  const smallData = [
+    {
+      title: "Engelska A2",
+      name: "Shermorad Holmatov",
+      color: "bg-red-500",
+    },
+    {
+      title: "Engelska A2",
+      name: "Shermorad Holmatov",
+      color: "bg-red-500",
+    },
+    {
+      title: "Engelska A2",
+      name: "Shermorad Holmatov",
+      color: "bg-red-500",
+    },
+    {
+      title: "Engelska A2",
+      name: "Shermorad Holmatov",
+      color: "bg-red-500",
+    },
+    {
+      title: "Engelska A2",
+      name: "Shermorad Holmatov",
+      color: "bg-red-500",
+    },
+    {
+      title: "Engelska A2",
+      name: "Shermorad Holmatov",
+      color: "bg-red-500",
+    },
+    {
+      title: "Engelska A2",
+      name: "Shermorad Holmatov",
+      color: "bg-red-500",
+    },
+    {
+      title: "Engelska A2",
+      name: "Shermorad Holmatov",
+      color: "bg-red-500",
+    },
+    {
+      title: "Engelska A2",
+      name: "Shermorad Holmatov",
+      color: "bg-red-500",
+    },
+  ];
   return (
     <div className="flex">
       <Navbar/>
