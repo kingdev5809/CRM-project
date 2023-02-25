@@ -19,6 +19,7 @@ import Homeworks from "./Layout/userStudent/Homework Page/Homeworks";
 import Message from "./Layout/userStudent/Message Page/Message";
 import TeacherSchedule from "./Layout/userTeacher/Schedule/TeacherSchedule";
 import TeacherClasses from "./Layout/userTeacher/Group/TeacherClasses";
+import GroupStudents from "./Layout/userAdmin/Group/GroupStudents";
 const Routing = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -80,6 +81,15 @@ const Routing = () => {
           </AdminElement>
         }
       />
+
+      <Route
+        path="admin/classes/:token"
+        element={
+          <AdminElement>
+            <GroupStudents />
+          </AdminElement>
+        }
+      />
       <Route
         path="admin/teacher"
         element={
@@ -122,9 +132,6 @@ const Routing = () => {
           </TeacherElement>
         }
       />
-
-
-
 
       <Route
         path="student/scheldule"

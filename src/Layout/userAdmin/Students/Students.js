@@ -7,16 +7,17 @@ import { getAllStudents } from "../../../Redux/Actions/AdminAction";
 import AddStudentModal from "../Modals/AddStudentModal";
 const Students = () => {
   const [visibleModal, setVisibleModal] = useState("d-none");
+  const [refresh, setRefresh] = useState("");
 
   const dispatch = useDispatch();
 
   const getStudents = useSelector((state) => state.students);
   const { loading, data } = getStudents;
-  console.log(data?.students);
+  
 
   useEffect(() => {
     dispatch(getAllStudents());
-  }, []);
+  }, [refresh]);
 
   return (
     <div className="flex">
@@ -29,58 +30,60 @@ const Students = () => {
         <div className="main">
           <div className="items">
             {data ? (
-              data?.students.map((item) => (
-                <div className="item">
-                  <div className="title">
-                    <img src={userImg} alt="" />
-                    <div className="text-box">
-                      <h3>Shermorad Holmatov</h3>
+              data?.students
+                .map((item) => (
+                  <div className="item">
+                    <div className="title">
+                      <img src={userImg} alt="" />
+                      <div className="text-box">
+                        <h3>{`${item.surname} ${" "} ${item.name}`}</h3>
+                        <p>
+                          <span>Student</span> <span>Points 20993</span>
+                        </p>
+                      </div>
+                    </div>
+                    <div className="item-content">
                       <p>
-                        <span>Student</span> <span>Points 20993</span>
+                        <span>Telefon:</span>
+                        <span> {item.phone_number} </span>
                       </p>
-                    </div>
-                  </div>
-                  <div className="item-content">
-                    <p>
-                      <span>Telefon:</span>
-                      <span> {item.phone_number} </span>
-                    </p>
-                    <p>
-                      <span>Email:</span>
-                      <span>{item.email}</span>
-                    </p>
-                    <p>
-                      <span>Adress:</span>
-                      <span>{item.address}</span>
-                    </p>
-                    <p>
-                      <span>ID number:</span>
-                      <span>{item.person_nr} </span>
-                    </p>
-                    <p>
-                      <span>Parents name:</span>
-                      <span>{item.parents_name}</span>
-                    </p>
-                    <p>
-                      <span>Parent number:</span>
-                      <span>{item.phone_number}</span>
-                    </p>
-                    <p>
-                      <span>Login</span>
-                      <span>{item.email}</span>
-                    </p>
-                    <p>
-                      <span>Password</span>
-                      <span>{item.show_password}</span>
-                    </p>
+                      <p>
+                        <span>Email:</span>
+                        <span>{item.email}</span>
+                      </p>
+                      <p>
+                        <span>Adress:</span>
+                        <span>{item.address}</span>
+                      </p>
+                      <p>
+                        <span>ID number:</span>
+                        <span>{item.person_nr} </span>
+                      </p>
+                      <p>
+                        <span>Parents name:</span>
+                        <span>{item.parents_name}</span>
+                      </p>
+                      <p>
+                        <span>Parent number:</span>
+                        <span>{item.phone_number}</span>
+                      </p>
+                      <p>
+                        <span>Login</span>
+                        <span>{item.email}</span>
+                      </p>
+                      <p>
+                        <span>Password</span>
+                        <span>{item.show_password}</span>
+                      </p>
 
-                    <div className="itemBtn">
-                      <div className="btn1">{editIcon} Edit</div>
-                      <div className="btn2">{deleteIcon} Delete</div>
+                      <div className="itemBtn">
+                        <div className="btn1">{editIcon} Edit</div>
+                        <div className="btn2">{deleteIcon} Delete</div>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))
+                ))
+                .reverse()
             ) : (
               <h1>LOADING . . .</h1>
             )}
@@ -89,6 +92,7 @@ const Students = () => {
         <AddStudentModal
           visibleModal={visibleModal}
           setVisibleModal={setVisibleModal}
+          setRefresh={setRefresh}
         />
       </div>
     </div>

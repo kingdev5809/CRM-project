@@ -10,6 +10,7 @@ import userImg from "../../../images/navbar-img/userImg.png";
 import AddClassModal from "../Modals/AddClassModal";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllGroups } from "../../../Redux/Actions/AdminAction";
+import { NavLink } from "react-router-dom";
 
 const Classes = () => {
   const [visibleModal, setVisibleModal] = useState("d-none");
@@ -37,29 +38,37 @@ const Classes = () => {
           <button onClick={() => setVisibleModal("d-block")}>CREATE</button>
         </div>
         <div className="items container-95">
-          {data?.groups.map((item) => (
-            <div className="item">
-              <img src={userImg} alt="" />
-              <div className="item-box">
-                <h3> {item.group_name} </h3>
-                <h4>
-                  <b>Teacher:</b> {item.teacher.name}
-                </h4>
-                <div className="itemBtn">
-                  <span>
-                    <i className="svg1">{studentIcon}</i> Student:14{" "}
-                  </span>{" "}
-                  <span>
-                    <i className="svg2">{editIcon}</i> Edit{" "}
-                  </span>
-                  <span>
-                    <i className="svg3">{deleteIcon}</i> Delete
-                  </span>
+          {data ? (
+            data?.groups
+              .map((item) => (
+                <div className="item">
+                  <img src={userImg} alt="" />
+                  <div className="item-box">
+                    <NavLink to={`/admin/classes/${item._id}`}>
+                      <h3> {item.group_name} </h3>
+                    </NavLink>
+                    <h4>
+                      <b>Teacher:</b> {item.teacher.name}
+                    </h4>
+                    <div className="itemBtn">
+                      <span>
+                        <i className="svg1">{studentIcon}</i> Student:14{" "}
+                      </span>{" "}
+                      <span>
+                        <i className="svg2">{editIcon}</i> Edit{" "}
+                      </span>
+                      <span>
+                        <i className="svg3">{deleteIcon}</i> Delete
+                      </span>
+                    </div>
+                  </div>
+                  <div className="item-box-2"></div>
                 </div>
-              </div>
-              <div className="item-box-2"></div>
-            </div>
-          ))}
+              ))
+              .reverse()
+          ) : (
+            <h1>Loading...</h1>
+          )}
         </div>
 
         <AddClassModal
