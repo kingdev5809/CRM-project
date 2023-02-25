@@ -14,69 +14,20 @@ import { getAllGroups } from "../../../Redux/Actions/AdminAction";
 const Classes = () => {
   const [visibleModal, setVisibleModal] = useState("d-none");
 
-  const [refresh, setRefresh] = useState('');
+  const [refresh, setRefresh] = useState("");
 
   const dispatch = useDispatch();
 
-  const getGroups = useSelector((state) => state.group);
-  const {  data } = getGroups;
-  console.log(data);
+  const getGroups = useSelector((state) => state.groups);
+  const { data } = getGroups;
 
   useEffect(() => {
     dispatch(getAllGroups());
   }, [refresh]);
 
-
-  const smallData = [
-    {
-      title: "Engelska A2",
-      name: "Shermorad Holmatov",
-      color: "bg-red-500",
-    },
-    {
-      title: "Engelska A2",
-      name: "Shermorad Holmatov",
-      color: "bg-red-500",
-    },
-    {
-      title: "Engelska A2",
-      name: "Shermorad Holmatov",
-      color: "bg-red-500",
-    },
-    {
-      title: "Engelska A2",
-      name: "Shermorad Holmatov",
-      color: "bg-red-500",
-    },
-    {
-      title: "Engelska A2",
-      name: "Shermorad Holmatov",
-      color: "bg-red-500",
-    },
-    {
-      title: "Engelska A2",
-      name: "Shermorad Holmatov",
-      color: "bg-red-500",
-    },
-    {
-      title: "Engelska A2",
-      name: "Shermorad Holmatov",
-      color: "bg-red-500",
-    },
-    {
-      title: "Engelska A2",
-      name: "Shermorad Holmatov",
-      color: "bg-red-500",
-    },
-    {
-      title: "Engelska A2",
-      name: "Shermorad Holmatov",
-      color: "bg-red-500",
-    },
-  ];
   return (
     <div className="flex">
-      <Navbar/>
+      <Navbar />
       <div className="classes-page  main-box container ">
         {/* <div className="navbar-box">
         <Navbar />
@@ -86,13 +37,13 @@ const Classes = () => {
           <button onClick={() => setVisibleModal("d-block")}>CREATE</button>
         </div>
         <div className="items container-95">
-          {smallData.map((item) => (
+          {data?.groups.map((item) => (
             <div className="item">
               <img src={userImg} alt="" />
               <div className="item-box">
-                <h3> {item.title} </h3>
+                <h3> {item.group_name} </h3>
                 <h4>
-                  <b>Teacher:</b> {item.name}
+                  <b>Teacher:</b> {item.teacher.name}
                 </h4>
                 <div className="itemBtn">
                   <span>
@@ -114,6 +65,7 @@ const Classes = () => {
         <AddClassModal
           visibleModal={visibleModal}
           setVisibleModal={setVisibleModal}
+          setRefresh={setRefresh}
         />
       </div>
     </div>

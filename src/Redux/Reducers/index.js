@@ -6,5 +6,5 @@ export const reducers = combineReducers({
   login: userLoginReducer,
   teachers: getAllTeachersReducers,
   students: getAllStudentsReducers,
-  group: getAllGroupReducers,
+  groups: getAllGroupReducers,
 });

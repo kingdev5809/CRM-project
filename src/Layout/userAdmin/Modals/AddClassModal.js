@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { deleteIcon } from "../../../Components/icons/svgIcons";
-import { postGroups } from "../../../Redux/Actions/AdminAction";
+import { getAllTeachers, postGroups } from "../../../Redux/Actions/AdminAction";
 import "../../layout.css";
 
 const AddClassModal = (props) => {
@@ -14,13 +15,20 @@ const AddClassModal = (props) => {
   //     "subject": "en",
   //     "teacher": "63e9ccd667477e5625f435eb"
   // }
+  const getTeachers = useSelector((state) => state.teachers);
+  const dispatch = useDispatch();
+  const { data } = getTeachers;
 
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   dispatch(
-  //     postClasses(group_name, subject, teacher, setVisibleModal, setRefresh)
-  //   );
-  // };
+  useEffect(() => {
+    dispatch(getAllTeachers());
+  }, []);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(
+      postGroups(group_name, subject, teacher, setVisibleModal, setRefresh)
+    );
+  };
 
   return (
     <>
@@ -56,12 +64,22 @@ const AddClassModal = (props) => {
               <div className="flex">
                 <div className="modal-input">
                   <label>Select teacher</label>
-                  <input type="text" className="w-full" placeholder="Name" value={teacher} onChange={(e)=> setTeacher(e.target.value)} />
+                  <select
+                    className="w-full"
+                    name="selectColor"
+                    id="color"
+                    value={teacher}
+                    onChange={(e) => setTeacher(e.target.value)}
+                  >
+                    {data?.teachers.map((item) => (
+                      <option value={item._id}>{item.name}</option>
+                    ))}
+                  </select>
                 </div>
 
                 <div className="modal-input">
                   <label>Select BG color</label>
-                  <select className="w-full" name="selectColor" id="color" >
+                  <select className="w-full" name="selectColor" id="color">
                     <option value="">Yellow</option>
                     <option value="red">Red</option>
                     <option value="green">green</option>
@@ -82,13 +100,18 @@ const AddClassModal = (props) => {
               </div>
 
               <div className="modal-input">
-                <label>Choose Studdents</label>
-                <select className="w-full" name="selectColor" id="color">
-                  <option value="">White</option>
-                  <option value="">Yellow</option>
-                  <option value="red">Red</option>
-                  <option value="green">green</option>
-                  <option value="blue">Blue</option>
+                <label>Choose Subject</label>
+                <select
+                  className="w-full"
+                  name="selectColor"
+                  id="color"
+                  value={subject}
+                  onChange={(e) => setSubject(e.target.value)}
+                >
+                  <option value="English">English</option>
+                  <option value="Russia">Russia</option>
+                  <option value="Math">Math</option>
+                  <option value="Biology">Biology</option>
                 </select>
               </div>
               <div className="modal-input">
@@ -104,7 +127,9 @@ const AddClassModal = (props) => {
 
               <div className="btn-group">
                 <button>DELELTE</button>
-                <button className="btn-2">SAVE</button>
+                <button onClick={handleSubmit} className="btn-2">
+                  SAVE
+                </button>
               </div>
             </form>
           </div>

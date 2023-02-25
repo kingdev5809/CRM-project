@@ -16,7 +16,7 @@ const Teachers = () => {
   const getTeachers = useSelector((state) => state.teachers);
   const { loading, data } = getTeachers;
 
-  console.log(data);
+
   useEffect(() => {
     dispatch(getAllTeachers());
   }, [refresh]);
@@ -59,6 +59,7 @@ const Teachers = () => {
           visibleModal={visibleModal}
           setVisibleModal={setVisibleModal}
           setRefresh={setRefresh}
+          
         />
       </div>
     </div>
@@ -66,3 +67,4 @@ const Teachers = () => {
 };
 
 export default Teachers;
+
