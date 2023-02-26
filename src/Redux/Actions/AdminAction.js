@@ -81,7 +81,6 @@ export const getOneGroup = (token) => async (dispatch) => {
   dispatch({ type: GROUPS_GET_ONE_REQUEST });
   try {
     const { data } = await AdminApi.getGroupStudents(token);
-    console.log(data);
     dispatch({ type: GROUPS_GET_ONE_SUCCESS, payload: data });
   } catch (error) {
     dispatch({
@@ -93,8 +92,6 @@ export const getOneGroup = (token) => async (dispatch) => {
     });
   }
 };
-
-
 
 // GET All GROUP Times
 
@@ -114,7 +111,6 @@ export const getAllGroupTimes = () => async (dispatch) => {
     });
   }
 };
-
 
 // POST TEACHERS
 
@@ -260,6 +256,46 @@ export const postStudentToGroup =
         toast.success(data.msg);
         setVisibleModal("d-none");
         setRefresh(student);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+// POST Group Times
+
+export const postGroupTime =
+  (
+    group_id,
+    start_day,
+    start,
+    end_day,
+    end,
+    address,
+    color,
+    teacher_id,
+    setVisibleModal,
+    setRefresh
+  ) =>
+  async () => {
+    try {
+      const { data } = await AdminApi.postGroupTimes({
+        group_id,
+        start_day,
+        start,
+        end_day,
+        end,
+        address,
+        color,
+        teacher_id,
+      });
+
+      if (data.error) {
+        toast.warning(data.error);
+      } else {
+        toast.success(data.msg);
+        setVisibleModal("d-none");
+        setRefresh(start_day);
       }
     } catch (error) {
       console.log(error);

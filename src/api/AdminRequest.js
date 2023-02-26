@@ -29,3 +29,6 @@ export const postStudents = (data) => API.post("/rektor/student", data, config);
 
 export const postStudentToGroup = (data) =>
   API.post("/rektor/room", data, config);
+
+export const postGroupTimes = (data) =>
+  API.post("/rektor/group_time", data, config);

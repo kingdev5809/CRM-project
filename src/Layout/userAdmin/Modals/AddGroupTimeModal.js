@@ -1,29 +1,47 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { postStudentToGroup } from "../../../Redux/Actions/AdminAction";
+import {
+  getAllGroups,
+  postGroupTime,
+} from "../../../Redux/Actions/AdminAction";
 import { deleteIcon } from "../../../Components/icons/svgIcons";
 
 function AddGroupTimeModal(props) {
   const { visibleModal, setVisibleModal, setRefresh, refresh, token } = props;
-  const [group_name, setGroup_name] = useState("");
+  const [group_id, setGroup_id] = useState("");
   const [start_day, setStart_day] = useState("");
   const [start, setStart] = useState("");
   const [end_day, setEnd_day] = useState("");
   const [end, setEnd] = useState("");
   const [address, setAddress] = useState("");
+  const [color, setColor] = useState("");
+  const [teacher_id, setTeacher_id] = useState();
+  const dispatch = useDispatch();
 
-  //   const dispatch = useDispatch();
-  //   const getStudents = useSelector((state) => state.students);
-  //   const { loading, data } = getStudents;
+  const getGroups = useSelector((state) => state.groups);
+  const { data } = getGroups;
 
-  //   const handleSubmit = (e) => {
-  //     e.preventDefault();
-  //     dispatch(postStudentToGroup(student, group, setVisibleModal, setRefresh));
-  //   };
+  useEffect(() => {
+    dispatch(getAllGroups());
+  }, [refresh]);
 
-  //   useEffect(() => {
-  //     dispatch(getAllStudents());
-  //   }, []);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(
+      postGroupTime(
+        group_id,
+        start_day,
+        start,
+        end_day,
+        end,
+        address,
+        color,
+        teacher_id,
+        setVisibleModal,
+        setRefresh
+      )
+    );
+  };
 
   return (
     <div>
@@ -52,18 +70,31 @@ function AddGroupTimeModal(props) {
                     className="w-full"
                     name="selectColor"
                     id="color"
-                    value={group_name}
-                    onChange={(e) => setGroup_name(e.target.value)}
+                    value={group_id}
+                    onChange={(e) => setGroup_id(e.target.value)}
                   >
-                    <option value="">KING e2</option>
-                    <option value="">KING e32</option>
-                    {/* {data?.students.map((item) => (
+                    {data?.groups.map((item) => (
                       <option value={item._id} key={item._id}>
-                        {`${item.surname}
-                      ${" "}  
-                      ${item.name}`}
+                        {`${item.group_name}`}
                       </option>
-                    ))} */}
+                    ))}
+                  </select>
+                </div>
+
+                <div className="modal-input w-full">
+                  <label>Select Teacher</label>
+                  <select
+                    className="w-full"
+                    name="selectColor"
+                    id="color"
+                    value={teacher_id}
+                    onChange={(e) => setTeacher_id(e.target.value)}
+                  >
+                    {data?.groups.map((item) => (
+                      <option value={item._id} key={item._id}>
+                        {`${item.teacher.name} ${item.teacher.surname}`}
+                      </option>
+                    ))}
                   </select>
                 </div>
                 <div className="flex">
@@ -74,6 +105,7 @@ function AddGroupTimeModal(props) {
                       type="date"
                       value={start_day}
                       onChange={(e) => setStart_day(e.target.value)}
+                      placeholder="Name"
                     />
                   </div>
                   <div className="modal-input">
@@ -90,7 +122,7 @@ function AddGroupTimeModal(props) {
                     <label>Start</label>
                     <input
                       className="w-full"
-                      type="date"
+                      type="time"
                       value={start}
                       onChange={(e) => setStart(e.target.value)}
                     />
@@ -99,31 +131,49 @@ function AddGroupTimeModal(props) {
                     <label>End</label>
                     <input
                       className="w-full"
-                      type="date"
+                      type="time"
                       value={end}
                       onChange={(e) => setEnd(e.target.value)}
                     />
                   </div>
                 </div>
-                <div className="modal-input w-full">
-                  <label>Choose location</label>
-                  <select
-                    className="w-full"
-                    name="selectColor"
-                    id="color"
-                    value={address}
-                    onChange={(e) => setAddress(e.target.value)}
-                  >
-                    <option value="">Tashkent</option>
-                    <option value="">Samarqand</option>
-                    {/* {data?.students.map((item) => (
+                <div className="flex">
+                  <div className="modal-input w-full">
+                    <label>Choose location</label>
+                    <select
+                      className="w-full"
+                      name="selectColor"
+                      id="color"
+                      value={address}
+                      onChange={(e) => setAddress(e.target.value)}
+                    >
+                      <option value="tashkent">Tashkent</option>
+                      <option value="samarqand">Samarqand</option>
+                      {/* {data?.students.map((item) => (
                       <option value={item._id} key={item._id}>
                         {`${item.surname}
                       ${" "}  
                       ${item.name}`}
                       </option>
                     ))} */}
-                  </select>
+                    </select>
+                  </div>
+
+                  <div className="modal-input w-full">
+                    <label>Choose Color</label>
+                    <select
+                      className="w-full"
+                      name="selectColor"
+                      id="color"
+                      value={color}
+                      onChange={(e) => setColor(e.target.value)}
+                    >
+                      <option value="bg-red">Red</option>
+                      <option value="bg-yellow">Yellow</option>
+                      <option value="bg-blue">Blue</option>
+                      <option value="bg-green">Green</option>
+                    </select>
+                  </div>
                 </div>
                 <div className="modal-input w-full ">
                   <label>Write text here</label>
@@ -137,7 +187,9 @@ function AddGroupTimeModal(props) {
                 </div>
                 <div className="btn-group">
                   <button>DELELTE</button>
-                  <button className="btn-2">SAVE</button>
+                  <button onClick={handleSubmit} className="btn-2">
+                    SAVE
+                  </button>
                 </div>
               </form>
             </div>

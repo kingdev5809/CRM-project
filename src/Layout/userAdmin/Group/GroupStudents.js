@@ -5,10 +5,12 @@ import { useParams } from "react-router-dom";
 import Navbar from "../../../Components/Navbar";
 import userImg from "../../../images/navbar-img/userImg.png";
 import { getOneGroup } from "../../../Redux/Actions/AdminAction";
+import AddGroupTimeModal from "../Modals/AddGroupTimeModal";
 import AddStudentToGroupModal from "../Modals/AddStudentToGroupModal";
 
 function GroupStudents() {
   const [visibleModal, setVisibleModal] = useState("d-none");
+  const [visibleModalTwo, setVisibleModalTwo] = useState("d-none");
   const [refresh, setRefresh] = useState("");
   const { name } = useParams();
   // const { goBack } = useHistory;
@@ -19,14 +21,11 @@ function GroupStudents() {
   const getGroup = useSelector((state) => state.groupStudents);
   const { data } = getGroup;
 
-  console.log(data);
+  
 
   useEffect(() => {
     dispatch(getOneGroup(token));
   }, [refresh]);
-
-
-
 
   return (
     <div className="flex">
@@ -34,9 +33,7 @@ function GroupStudents() {
       <div className="studentsPage main-box container">
         <div className="main-header-pages ">
           <h1>All Students </h1>
-          <button>
-            Add Group Time
-          </button>
+          <button onClick={() => setVisibleModalTwo('d-block')}>Add Group Time</button>
           <button onClick={() => setVisibleModal("d-block")}>
             Add Student
           </button>
@@ -81,6 +78,13 @@ function GroupStudents() {
           setRefresh={setRefresh}
           refresh={refresh}
           token={token}
+        />
+
+        <AddGroupTimeModal
+          visibleModal={visibleModalTwo}
+          setVisibleModal={setVisibleModalTwo}
+          setRefresh={setRefresh}
+          refresh={refresh}
         />
       </div>
     </div>
