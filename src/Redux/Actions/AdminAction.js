@@ -8,6 +8,9 @@ import {
   GROUPS_GET_ONE_FAIL,
   GROUPS_GET_ONE_REQUEST,
   GROUPS_GET_ONE_SUCCESS,
+  GROUPS_TIMES_GET_ONE_FAIL,
+  GROUPS_TIMES_GET_ONE_REQUEST,
+  GROUPS_TIMES_GET_ONE_SUCCESS,
   STUDENT_GET_ALL_FAIL,
   STUDENT_GET_ALL_REQUEST,
   STUDENT_GET_ALL_SUCCESS,
@@ -91,6 +94,28 @@ export const getOneGroup = (token) => async (dispatch) => {
   }
 };
 
+
+
+// GET All GROUP Times
+
+export const getAllGroupTimes = () => async (dispatch) => {
+  dispatch({ type: GROUPS_TIMES_GET_ONE_REQUEST });
+  try {
+    const { data } = await AdminApi.getAllGroupTimes();
+
+    dispatch({ type: GROUPS_TIMES_GET_ONE_SUCCESS, payload: data });
+  } catch (error) {
+    dispatch({
+      type: GROUPS_TIMES_GET_ONE_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
+
+
 // POST TEACHERS
 
 export const postTeachers =
@@ -138,13 +163,26 @@ export const postTeachers =
 // POST GROUPS
 
 export const postGroups =
-  (group_name, subject, teacher, setVisibleModal, setRefresh) => async () => {
+  (
+    group_name,
+    subject,
+    teacher,
+    bg_color,
+    text_color,
+    text,
+    setVisibleModal,
+    setRefresh
+  ) =>
+  async () => {
     // dispatch({ type: TEACHER_POST_ALL_REQUEST });
     try {
       const { data } = await AdminApi.postGroups({
         group_name,
         subject,
         teacher,
+        bg_color,
+        text_color,
+        text,
       });
       // dispatch({ type: TEACHER_POST_ALL_SUCCESS, payload: data });
       if (data.error) {
@@ -206,7 +244,7 @@ export const postStudents =
     }
   };
 
-// POST Students
+// POST Students to group
 
 export const postStudentToGroup =
   (student, group, setVisibleModal, setRefresh) => async () => {

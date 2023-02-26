@@ -8,13 +8,8 @@ import listPlugin from "@fullcalendar/list";
 import interactionPlugin from "@fullcalendar/interaction";
 
 import events from "./events.js";
-import { useDispatch, useSelector } from "react-redux";
-import {
-  getAllGroups,
-  getAllGroupTimes,
-} from "../../Redux/Actions/AdminAction.js";
 
-export default function Calendar() {
+export default function Calendar2() {
   const [isMobile, setIsMobile] = useState(false);
   function getHeaderToolbar() {
     if (isMobile) {
@@ -45,39 +40,6 @@ export default function Calendar() {
     }
   }
 
-  const dispatch = useDispatch();
-
-  const getGroupTimes = useSelector((state) => state.groupTimes);
-  const { data } = getGroupTimes;
-  // function getDate(dayString) {
-  //   const today = new Date();
-  //   const year = today.getFullYear().toString();
-  //   let month = (today.getMonth() + 1).toString();
-
-  //   if (month.length === 1) {
-  //     month = "0" + month;
-  //   }
-
-  //   return dayString.replace("YEAR", year).replace("MONTH", month);
-  // }
-  //  console.log(data);
-  useEffect(() => {
-    dispatch(getAllGroupTimes());
-  }, []);
-
-  const GroupEvents = [
-    data?.groupTimes.map((event) => ({
-      groupId: event.group_id._id,
-      title: event.group_id.group_name,
-      // start: getDate(`${event.start_day}T${event.start}+05:000`),
-      // end: getDate(`${event.end_day}T${event.end}+05:000`),
-      start: `${event.start_day}T${event.start}+05:00`,
-      end: `${event.end_day}T${event.end}+05:00`,
-    })),
-  ];
-
-  console.log(GroupEvents);
-
   return (
     <div className="calendarComponent">
       <FullCalendar
@@ -91,7 +53,7 @@ export default function Calendar() {
         }}
         themeSystem="Simplex"
         plugins={[dayGridPlugin, timeGridPlugin, listPlugin, interactionPlugin]}
-        events={GroupEvents[0]}
+        events={events}
         // eventColor={"#" + Math.floor(Math.random() * 16777215).toString(16)}
 
         //eventContent={renderEventContent} // custom render function
@@ -101,6 +63,27 @@ export default function Calendar() {
         eventAdd={function(){}}
         eventChange={function(){}}
         eventRemove={function(){}}*/
+        customButtons={
+          (addEventButton = {
+            text: "add event...",
+            click: function () {
+              var dateStr = prompt("Enter a date in YYYY-MM-DD format");
+              var date = new Date(dateStr + "T00:00:00"); // will be in local time
+
+              if (!isNaN(date.valueOf())) {
+                // valid?
+                calendar.addEvent({
+                  title: "dynamic event",
+                  start: date,
+                  allDay: true,
+                });
+                alert("Great. Now, update your database...");
+              } else {
+                alert("Invalid date.");
+              }
+            },
+          })
+        }
       />
     </div>
   );

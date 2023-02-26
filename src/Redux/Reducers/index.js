@@ -8,4 +8,5 @@ export const reducers = combineReducers({
   students: getAllStudentsReducers,
   groups: getAllGroupReducers,
   groupStudents: getOneGroupReducers,
+  groupTimes: getOneGroupReducers
 });

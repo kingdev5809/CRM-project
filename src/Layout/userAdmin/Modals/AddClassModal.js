@@ -9,7 +9,9 @@ const AddClassModal = (props) => {
   const [group_name, setGroup_name] = useState("");
   const [subject, setSubject] = useState("");
   const [teacher, setTeacher] = useState("");
-
+  const [bg_color, setBg_color] = useState("");
+  const [text_color, setText_color] = useState("");
+  const [text, setText] = useState("");
   //   {
   //     "group_name": "English A",
   //     "subject": "en",
@@ -26,7 +28,16 @@ const AddClassModal = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(
-      postGroups(group_name, subject, teacher, setVisibleModal, setRefresh)
+      postGroups(
+        group_name,
+        subject,
+        teacher,
+        bg_color,
+        text_color,
+        text,
+        setVisibleModal,
+        setRefresh
+      )
     );
   };
 
@@ -79,22 +90,34 @@ const AddClassModal = (props) => {
 
                 <div className="modal-input">
                   <label>Select BG color</label>
-                  <select className="w-full" name="selectColor" id="color">
-                    <option value="">Yellow</option>
-                    <option value="red">Red</option>
-                    <option value="green">green</option>
-                    <option value="blue">Blue</option>
+                  <select
+                    className="w-full"
+                    name="selectColor"
+                    id="color"
+                    value={bg_color}
+                    onChange={(e) => setBg_color(e.target.value)}
+                  >
+                    <option value="bg-yellow">Yellow</option>
+                    <option value="bg-red">Red</option>
+                    <option value="bg-green">green</option>
+                    <option value="bg-blue">Blue</option>
                   </select>
                 </div>
 
                 <div className="modal-input">
                   <label>Text color</label>
-                  <select className="w-full" name="selectColor" id="color">
-                    <option value="">White</option>
-                    <option value="">Yellow</option>
-                    <option value="red">Red</option>
-                    <option value="green">green</option>
-                    <option value="blue">Blue</option>
+                  <select
+                    className="w-full"
+                    name="selectColor"
+                    id="color"
+                    value={text_color}
+                    onChange={(e) => setText_color(e.target.value)}
+                  >
+                    <option value="bg-white">White</option>
+                    <option value="bg-yellow">Yellow</option>
+                    <option value="bg-red">Red</option>
+                    <option value="bg-green">green</option>
+                    <option value="bg-blue">Blue</option>
                   </select>
                 </div>
               </div>
@@ -115,13 +138,15 @@ const AddClassModal = (props) => {
                 </select>
               </div>
               <div className="modal-input">
-                <label>Choose Students</label>
+                <label>Write text here</label>
                 <textarea
                   className="w-full"
                   name=""
                   id=""
                   cols="30"
                   rows="4"
+                  value={text}
+                  onChange={(e) => setText(e.target.value)}
                 ></textarea>
               </div>
 

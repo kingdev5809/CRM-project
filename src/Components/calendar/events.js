@@ -7,8 +7,8 @@ const events = [
     },
     {
       groupId: "999",
-      title: "Repeating Event",
-      start: getDate("YEAR-MONTH-09T16:00:00+00:00")
+      title: "KINg",
+      start: "2023-02-20T08:00:00+05:00"
     },
     {
       groupId: "999",
@@ -34,7 +34,7 @@ const events = [
   
   function getDate(dayString) {
     const today = new Date();
-    const year = today.getFullYear().toString();
+    const year = today.getFullYear(2023).toString();
     let month = (today.getMonth() + 1).toString();
   
     if (month.length === 1) {

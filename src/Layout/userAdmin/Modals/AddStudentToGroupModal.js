@@ -21,7 +21,7 @@ function AddStudentToGroupModal(props) {
 
   useEffect(() => {
     dispatch(getAllStudents());
-  }, [refresh]);
+  }, []);
 
   return (
     <div>
