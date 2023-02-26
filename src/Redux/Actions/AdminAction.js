@@ -81,7 +81,7 @@ export const getOneGroup = (token) => async (dispatch) => {
   dispatch({ type: GROUPS_GET_ONE_REQUEST });
   try {
     const { data } = await AdminApi.getGroupStudents(token);
-
+    console.log(data);
     dispatch({ type: GROUPS_GET_ONE_SUCCESS, payload: data });
   } catch (error) {
     dispatch({

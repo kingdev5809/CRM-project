@@ -76,7 +76,6 @@ export default function Calendar() {
     })),
   ];
 
-  console.log(GroupEvents);
 
   return (
     <div className="calendarComponent">
@@ -102,6 +101,8 @@ export default function Calendar() {
         eventChange={function(){}}
         eventRemove={function(){}}*/
       />
+
+      
     </div>
   );
 }

@@ -25,12 +25,18 @@ function GroupStudents() {
     dispatch(getOneGroup(token));
   }, [refresh]);
 
+
+
+
   return (
     <div className="flex">
       <Navbar />
       <div className="studentsPage main-box container">
         <div className="main-header-pages ">
           <h1>All Students </h1>
+          <button>
+            Add Group Time
+          </button>
           <button onClick={() => setVisibleModal("d-block")}>
             Add Student
           </button>

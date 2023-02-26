@@ -1,5 +1,5 @@
 import { combineReducers } from "redux";
-import { getAllTeachersReducers,getAllStudentsReducers, getAllGroupReducers, getOneGroupReducers } from "./AdminReduser";
+import { getAllTeachersReducers,getAllStudentsReducers, getAllGroupReducers, getOneGroupReducers, getAllGroupTimesReducers } from "./AdminReduser";
 import { userLoginReducer } from "./UserReducers";
 
 export const reducers = combineReducers({
@@ -8,5 +8,5 @@ export const reducers = combineReducers({
   students: getAllStudentsReducers,
   groups: getAllGroupReducers,
   groupStudents: getOneGroupReducers,
-  groupTimes: getOneGroupReducers
+  groupTimes: getAllGroupTimesReducers
 });
