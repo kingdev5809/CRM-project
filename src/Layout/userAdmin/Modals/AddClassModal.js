@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteIcon } from "../../../Components/icons/svgIcons";
-import { getAllTeachers, postGroups } from "../../../Redux/Actions/AdminAction";
+import {
+  getAllSubject,
+  getAllTeachers,
+  postGroups,
+} from "../../../Redux/Actions/AdminAction";
 import "../../layout.css";
 
 const AddClassModal = (props) => {
@@ -17,12 +21,15 @@ const AddClassModal = (props) => {
   //     "subject": "en",
   //     "teacher": "63e9ccd667477e5625f435eb"
   // }
-  const getTeachers = useSelector((state) => state.teachers);
   const dispatch = useDispatch();
+  const getTeachers = useSelector((state) => state.teachers);
+  const getSubjects = useSelector((state) => state.subjects);
   const { data } = getTeachers;
+  const { subjectData } = getSubjects;
 
   useEffect(() => {
     dispatch(getAllTeachers());
+    dispatch(getAllSubject());
   }, []);
 
   const handleSubmit = (e) => {
@@ -131,10 +138,9 @@ const AddClassModal = (props) => {
                   value={subject}
                   onChange={(e) => setSubject(e.target.value)}
                 >
-                  <option value="English">English</option>
-                  <option value="Russia">Russia</option>
-                  <option value="Math">Math</option>
-                  <option value="Biology">Biology</option>
+                  {subjectData?.books?.map((item) => (
+                    <option value={item._id}>{item.subject}</option>
+                  ))}
                 </select>
               </div>
               <div className="modal-input">

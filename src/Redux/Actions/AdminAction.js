@@ -14,6 +14,9 @@ import {
   STUDENT_GET_ALL_FAIL,
   STUDENT_GET_ALL_REQUEST,
   STUDENT_GET_ALL_SUCCESS,
+  SUBJECTS_GET_ALL_FAIL,
+  SUBJECTS_GET_ALL_REQUEST,
+  SUBJECTS_GET_ALL_SUCCESS,
   TEACHER_GET_ALL_FAIL,
   TEACHER_GET_ALL_REQUEST,
   TEACHER_GET_ALL_SUCCESS,
@@ -107,6 +110,25 @@ export const getAllGroupTimes = () => async (dispatch) => {
       payload:
         error.response && error.response.data.message
           ? error.response.data.message
+          : error.message,
+    });
+  }
+};
+
+// GET All Subjects
+export const getAllSubject = () => async (dispatch) => {
+  dispatch({ type: SUBJECTS_GET_ALL_REQUEST });
+  try {
+    const { data } = await AdminApi.getSubjects();
+
+
+    dispatch({ type: SUBJECTS_GET_ALL_SUCCESS, payload: data });
+  } catch (error) {
+    dispatch({
+      type: SUBJECTS_GET_ALL_FAIL,
+      payload:
+        error.response && error.response.subjectData.message
+          ? error.response.subjectData.message
           : error.message,
     });
   }

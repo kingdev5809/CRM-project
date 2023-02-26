@@ -20,6 +20,10 @@ export const getGroupStudents = (token) =>
 
 export const getAllGroupTimes = () => API.get("/rektor/group_time", config);
 
+
+export const getSubjects = () => API.get("/rektor/book", config);
+
+
 // Post
 export const postTeachers = (data) => API.post("/rektor/teacher", data, config);
 

@@ -11,6 +11,9 @@ import {
   STUDENT_GET_ALL_FAIL,
   STUDENT_GET_ALL_REQUEST,
   STUDENT_GET_ALL_SUCCESS,
+  SUBJECTS_GET_ALL_FAIL,
+  SUBJECTS_GET_ALL_REQUEST,
+  SUBJECTS_GET_ALL_SUCCESS,
   TEACHER_GET_ALL_FAIL,
   TEACHER_GET_ALL_REQUEST,
   TEACHER_GET_ALL_SUCCESS,
@@ -85,3 +88,21 @@ export const getOneGroupReducers  = (state = {}, action) => {
       return state;
   }
 };
+
+const initialState = {
+  subjectData:[]
+}
+// GET Subjects
+export const getAllSubjectsReducers = (state = initialState, action) => {
+  switch (action.type) {
+    case SUBJECTS_GET_ALL_REQUEST:
+      return { loading: true };
+    case SUBJECTS_GET_ALL_SUCCESS:
+      return { loading: false, subjectData: action.payload };
+    case SUBJECTS_GET_ALL_FAIL:
+      return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
+

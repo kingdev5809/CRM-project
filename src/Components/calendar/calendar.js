@@ -65,6 +65,10 @@ export default function Calendar() {
     dispatch(getAllGroupTimes());
   }, []);
 
+const CalendarFunc = () => {
+  
+}
+
   const GroupEvents = [
     data?.groupTimes.map((event) => ({
       groupId: event.group_id._id,
