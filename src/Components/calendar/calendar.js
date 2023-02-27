@@ -65,28 +65,18 @@ export default function Calendar() {
     dispatch(getAllGroupTimes());
   }, []);
 
-  const CalendarFunc = () => {};
-
-  const [events, setEvents] = useState([
-    {
-      title: "Monday Event",
-      startRecur: "2023-03-06T09:00:00",
-      endRecur: "2023-04-08T10:00:00",
-      daysOfWeek: [1], // Monday
-    },
-  ]);
-
-  console.log(events);
-  const GroupEvents = [
-    data?.groupTimes.map((event) => ({
-      groupId: event.group_id._id,
+  const CalendarFunc = (event) => {
+    let day = new Date(event.start_day).getDay();
+    const events = {
       title: event.group_id.group_name,
-      // start: getDate(`${event.start_day}T${event.start}+05:000`),
-      // end: getDate(`${event.end_day}T${event.end}+05:000`),
-      start: `${event.start_day}T${event.start}+05:00`,
-      end: `${event.end_day}T${event.end}+05:00`,
-    })),
-  ];
+      startRecur: `${event.start_day}T${event.start}+05:00`,
+      endRecur: `${event.end_day}T${event.end}+05:00`,
+      daysOfWeek: [day],
+    };
+    return events;
+  };
+
+  const events = [data?.groupTimes.map((event) => CalendarFunc(event))];
 
   return (
     <div className="calendarComponent">
@@ -101,7 +91,7 @@ export default function Calendar() {
         }}
         themeSystem="Simplex"
         plugins={[dayGridPlugin, timeGridPlugin, listPlugin, interactionPlugin]}
-        events={events}
+        events={events[0]}
         // eventColor={"#" + Math.floor(Math.random() * 16777215).toString(16)}
 
         //eventContent={renderEventContent} // custom render function
