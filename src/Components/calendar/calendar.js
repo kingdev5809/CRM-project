@@ -72,12 +72,14 @@ export default function Calendar() {
       startRecur: `${event.start_day}T${event.start}+05:00`,
       endRecur: `${event.end_day}T${event.end}+05:00`,
       daysOfWeek: [day],
+     startTime: event.start,
+     endTime: event.end
     };
     return events;
   };
 
   const events = [data?.groupTimes.map((event) => CalendarFunc(event))];
-
+console.log(events);
   return (
     <div className="calendarComponent">
       <FullCalendar
