@@ -6,6 +6,7 @@ import listPlugin from "@fullcalendar/list";
 import interactionPlugin from "@fullcalendar/interaction";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllGroupTimes } from "../../Redux/Actions/AdminAction.js";
+import ScheduleInfoModal from "../../Layout/userTeacher/Modal/ScheduleInfoModal.js";
 
 export default function Calendar() {
   const [isMobile, setIsMobile] = useState(false);
@@ -56,12 +57,23 @@ export default function Calendar() {
       daysOfWeek: [day],
       startTime: event.start,
       endTime: event.end,
+      groupId: event._id,
     };
     return events;
   };
+  const events = [data?.groupTimes?.map((event) => CalendarFunc(event))];
 
-  const events = [data?.groupTimes.map((event) => CalendarFunc(event))];
-  console.log(events);
+  const handleEventClick = (clickInfo) => {
+    // if (
+    //   confirm(
+    //     `Are you sure you want to delete the event '${clickInfo.event.start}'`
+    //   )
+    // ) {
+    //   clickInfo.event.remove();
+    // }
+    console.log(clickInfo.event.groupId);
+  };
+
   return (
     <div className="calendarComponent">
       <FullCalendar
@@ -76,6 +88,7 @@ export default function Calendar() {
         themeSystem="Simplex"
         plugins={[dayGridPlugin, timeGridPlugin, listPlugin, interactionPlugin]}
         events={events[0]}
+        eventClick={handleEventClick}
         // eventColor={"#" + Math.floor(Math.random() * 16777215).toString(16)}
 
         //eventContent={renderEventContent} // custom render function

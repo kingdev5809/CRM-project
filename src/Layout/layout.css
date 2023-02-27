@@ -380,7 +380,7 @@ body::-webkit-scrollbar {
   background-color: #fff;
   padding: 2.5rem;
   border-radius: 40px;
-  width: 600px;
+  width: 650px;
   left: 0;
   right: 0;
   margin: auto;
@@ -1014,7 +1014,6 @@ body::-webkit-scrollbar {
   min-height: 80vh;
 }
 
-
 .messagesPage .messages-sec .items {
   height: 75vh;
   /* height: 75vh; */
@@ -1057,7 +1056,6 @@ body::-webkit-scrollbar {
 .homeworkPage .group-sec .items .item {
   height: 130px;
 }
-
 
 /* Homework page end */
 
@@ -1130,7 +1128,6 @@ body::-webkit-scrollbar {
   position: relative;
   min-height: 100%;
   min-height: 80vh;
-
 }
 .messages-cards {
 }
@@ -1250,11 +1247,10 @@ body::-webkit-scrollbar {
     display: none;
     padding-bottom: 80px;
   }
-  .messages-cards   {
+  .messages-cards {
     max-width: 90%;
     margin: auto;
     margin-top: 20px;
-    
   }
   .group-cards {
     width: 90%;
@@ -1263,8 +1259,145 @@ body::-webkit-scrollbar {
   .group-cards .items .item .click-window {
     display: block;
   }
-  .messages-cards .input-box{
+  .messages-cards .input-box {
     bottom: 0px;
   }
 }
 /* Homewwork and message page style end */
+
+/* ***************
+******************
+Teacher Page start
+******************
+****************** */
+
+/* schedule info modal style start */
+.scheduleInfoModal {
+}
+.scheduleInfoModal .modal-content .user-box {
+  display: flex;
+}
+
+.scheduleInfoModal .modal-content .user-box img {
+  width: 42px;
+  height: 42px;
+}
+.scheduleInfoModal .modal-content .user-box .box {
+  padding: 5px;
+  font-size: 12px;
+}
+.scheduleInfoModal .modal-content .user-box .box p {
+  color: rgb(153, 152, 152);
+  font-size: 12px;
+}
+
+.scheduleInfoModal .modal-title {
+}
+.scheduleInfoModal .modal-title h1 {
+  display: flex;
+}
+.scheduleInfoModal .modal-title h1 img {
+  width: 40px;
+  margin: auto 0;
+  margin-top: 0;
+  padding: 10px;
+  padding-left: 0;
+  padding-top: 0;
+}
+.scheduleInfoModal .modal-title h1 span {
+  font-weight: 600;
+  margin-left: 10px;
+  font-size: 26px;
+}
+
+.scheduleInfoModal .modal-content {
+}
+
+.scheduleInfoModal .modal-content .teacher-box {
+  margin: 10px 0;
+}
+.scheduleInfoModal .modal-content .comment-box {
+  line-height: 20px;
+  font-size: 13px;
+}
+
+.scheduleInfoModal .modal-content .schedule-box {
+  margin-top: 10px;
+}
+.scheduleInfoModal .modal-content .schedule-box .flex {
+  justify-content: flex-start;
+}
+.scheduleInfoModal .modal-content .schedule-box .box {
+  display: flex;
+  padding: 5px 0px;
+  padding-right: 35px;
+  align-items: center;
+}
+.scheduleInfoModal .modal-content .schedule-box .box img {
+  width: 20px;
+  padding: 5px;
+  padding-left: 0;
+}
+.scheduleInfoModal .modal-content .schedule-box .box h4 {
+  font-size: 14px;
+  margin-left: 7px;
+}
+
+.scheduleInfoModal .modal-content .student-box {
+  border: 1px solid #000;
+  padding: 15px;
+  border-radius: 10px;
+  margin: 10px 0;
+}
+.scheduleInfoModal .modal-content .student-box .items {
+  height: 295px;
+  overflow-y: scroll;
+  padding: 10px;
+}
+
+/* width */
+.scheduleInfoModal .modal-content .student-box .items::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+.scheduleInfoModal .modal-content .student-box .items::-webkit-scrollbar-track {
+  background: #f1f1f100;
+  margin-top: 10px;
+}
+
+/* Handle */
+.scheduleInfoModal .modal-content .student-box .items::-webkit-scrollbar-thumb {
+  background: #ee6c5d;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+.scheduleInfoModal
+  .modal-content
+  .student-box
+  .items::-webkit-scrollbar-thumb:hover {
+  background: #c75b4f;
+}
+
+.scheduleInfoModal .modal-content .student-box .items .item {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+}
+.scheduleInfoModal .modal-content .student-box img {
+  margin: auto 0;
+}
+.scheduleInfoModal .modal-content .student-box .star-img {
+  width: 100px;
+  cursor: pointer;
+}
+.scheduleInfoModal .modal-content .student-box .success-img {
+  width: 30px;
+  cursor: pointer;
+}
+.scheduleInfoModal .modal-content .student-box .exclamation-img {
+  cursor: pointer;
+  width: 30px;
+}
+/* schedule info modal style end */
