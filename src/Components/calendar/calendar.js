@@ -21,11 +21,20 @@ export default function Calendar() {
       return {
         start: "prev,today,next",
         center: "title",
-        end: "timeGridDay,dayGridMonth,dayGridWeek,dayGridYear",
+        end: "timeGridDay,timeGridSevenDay,dayGridMonth,dayGridYear",
       };
     }
   }
 
+  function getResponsiveView() {
+    if (isMobile) {
+      return "timeGridDay";
+    } else {
+      return "dayGridMonth";
+    }
+  }
+
+  console.log(getResponsiveView());
   useEffect(() => {
     window.addEventListener("resize", checkMobile);
     checkMobile();
@@ -77,14 +86,22 @@ export default function Calendar() {
   return (
     <div className="calendarComponent">
       <FullCalendar
-        defaultView="dayGridMonth"
+        initialView={getResponsiveView()}
         editable={true}
         headerToolbar={getHeaderToolbar()}
         header={{
           left: "prev,next",
           center: "title",
-          right: "dayGridMonth,timeGridWeek,timeGridDay",
+          right: "dayGridMonth,timeGridSevenDay,timeGridDay ",
         }}
+        views={{
+          timeGridSevenDay: {
+            type: "timeGrid",
+            duration: { days: 7 },
+            buttonText: "Week",
+          },
+        }}
+        // displayEventEnd={{timeGridWeek:true,dayGridMonth:true, default:false}}
         themeSystem="Simplex"
         plugins={[dayGridPlugin, timeGridPlugin, listPlugin, interactionPlugin]}
         events={events[0]}

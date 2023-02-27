@@ -20,6 +20,8 @@ import Message from "./Layout/userStudent/Message Page/Message";
 import TeacherSchedule from "./Layout/userTeacher/Schedule/TeacherSchedule";
 import TeacherClasses from "./Layout/userTeacher/Group/TeacherClasses";
 import GroupStudents from "./Layout/userAdmin/Group/GroupStudents";
+import TeacherGroupStudents from "./Layout/userTeacher/Group/TeacherGroupStudents";
+import PageNotFound from "./Components/Page404/PageNotFound";
 const Routing = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -28,15 +30,15 @@ const Routing = () => {
   useEffect(() => {
     if (user?.rektor) {
       dispatch({ type: USER_LOGIN_SUCCESS, payload: user });
-      navigate("/admin/scheldule");
+      navigate("/admin/schedule");
     } else if (user?.teacher) {
       dispatch({ type: USER_LOGIN_SUCCESS, payload: user });
-      navigate("/teacher/scheldule");
+      navigate("/teacher/schedule");
     } else if (user?.student) {
       dispatch({ type: USER_LOGIN_SUCCESS, payload: user });
-      navigate("/student/scheldule");
+      navigate("/student/schedule");
     } else {
-      navigate("/login");
+      navigate("/notFound");
     }
   }, []);
 
@@ -44,7 +46,7 @@ const Routing = () => {
     if (user?.rektor) {
       return <>{children}</>;
     } else {
-      navigate("/login");
+      navigate("/notFound");
     }
   }
 
@@ -52,7 +54,7 @@ const Routing = () => {
     if (user?.teacher) {
       return <>{children}</>;
     } else {
-      navigate("/login");
+      navigate("/notFound");
     }
   }
 
@@ -60,13 +62,13 @@ const Routing = () => {
     if (user?.student) {
       return <>{children}</>;
     } else {
-      navigate("/login");
+      navigate("/notFound");
     }
   }
   return (
     <Routes>
       <Route
-        path="admin/scheldule"
+        path="admin/schedule"
         element={
           <AdminElement>
             <Schedule />
@@ -116,7 +118,7 @@ const Routing = () => {
       />
 
       <Route
-        path="teacher/scheldule"
+        path="teacher/schedule"
         element={
           <TeacherElement>
             <TeacherSchedule />
@@ -134,7 +136,16 @@ const Routing = () => {
       />
 
       <Route
-        path="student/scheldule"
+        path="teacher/classes/:token"
+        element={
+          <TeacherElement>
+            <TeacherGroupStudents />
+          </TeacherElement>
+        }
+      />
+
+      <Route
+        path="student/schedule"
         element={
           <StudentElement>
             <StudentsSchedule />
@@ -185,7 +196,7 @@ const Routing = () => {
           </StudentElement>
         }
       />
-
+    <Route path='notFound' element={<PageNotFound/>} />
       <Route path="login" element={<Login />} />
       {/* <Route path="*" element={<NoMatch />} /> */}
     </Routes>

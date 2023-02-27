@@ -10,7 +10,7 @@ import locationImg from "../images/navbar-img/location.png";
 import logoutImg from "../images/navbar-img/logout.png";
 import messageImg from "../images/navbar-img/message.png";
 import homeworkImg from "../images/navbar-img/homework.png";
-import schelduleImg from "../images/navbar-img/scheldule.png";
+import scheduleImg from "../images/navbar-img/scheldule.png";
 import closeBtn from "../images/navbar-img/chevron-left.png";
 
 import { NavLink, useNavigate } from "react-router-dom";
@@ -31,8 +31,8 @@ function Navbar() {
     rektor: [
       {
         name: "Schedule",
-        img: schelduleImg,
-        slug: "/admin/scheldule",
+        img: scheduleImg,
+        slug: "/admin/schedule",
       },
       {
         name: "Classes",
@@ -59,15 +59,15 @@ function Navbar() {
     teacher: [
       {
         name: "Schedule",
-        img: schelduleImg,
-        slug: "/teacher/scheldule",
+        img: scheduleImg,
+        slug: "/teacher/schedule",
       },
       {
         name: "Classes",
         img: classesImg,
         slug: "/teacher/classes",
       },
-      
+
       // {
       //   name: "Teacher",
       //   img: teacherImg,
@@ -83,8 +83,8 @@ function Navbar() {
     student: [
       {
         name: "Schedule",
-        img: schelduleImg,
-        slug: "/student/scheldule",
+        img: scheduleImg,
+        slug: "/student/schedule",
       },
       {
         name: "Classes",

@@ -4,7 +4,6 @@ import Navbar from "../../../Components/Navbar";
 import ScheduleInfoModal from "../Modal/ScheduleInfoModal";
 
 function TeacherSchedule() {
-  const [visibleModal, setVisibleModal] = useState("d-block");
 
   return (
     <div className="flex">
@@ -12,10 +11,7 @@ function TeacherSchedule() {
       <div className="scheldulePage container">
         <Calendar />
       </div>
-      <ScheduleInfoModal
-        visibleModal={visibleModal}
-        setVisibleModal={setVisibleModal}
-      />
+    
     </div>
   );
 }
