@@ -9,7 +9,7 @@ import { getAllGroupTimes } from "../../Redux/Actions/AdminAction.js";
 import ScheduleInfoModal from "../../Layout/userTeacher/Modal/ScheduleInfoModal.js";
 
 export default function Calendar() {
-  const [isMobile, setIsMobile] = useState(false);
+  const [isMobile, setIsMobile] = useState(true);
   function getHeaderToolbar() {
     if (isMobile) {
       return {
@@ -87,14 +87,9 @@ export default function Calendar() {
   return (
     <div className="calendarComponent">
       <FullCalendar
-        initialView={isMobile ? "timeGridDay" : "dayGridMonth"}
+        initialView='timeGridDay'
         editable={true}
         headerToolbar={getHeaderToolbar()}
-        // header={{
-        //   left: "prev,next",
-        //   center: "title",
-        //   right: "dayGridMonth,timeGridSevenDay,timeGridDay ",
-        // }}
         views={{
           timeGridSevenDay: {
             type: "timeGrid",
@@ -102,7 +97,6 @@ export default function Calendar() {
             buttonText: "Week",
           },
         }}
-        // displayEventEnd={{timeGridWeek:true,dayGridMonth:true, default:false}}
         themeSystem="Simplex"
         plugins={[dayGridPlugin, timeGridPlugin, listPlugin, interactionPlugin]}
         events={events[0]}
