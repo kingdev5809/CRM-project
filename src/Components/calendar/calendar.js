@@ -65,10 +65,18 @@ export default function Calendar() {
     dispatch(getAllGroupTimes());
   }, []);
 
-const CalendarFunc = () => {
-  
-}
+  const CalendarFunc = () => {};
 
+  const [events, setEvents] = useState([
+    {
+      title: "Monday Event",
+      startRecur: "2023-03-06T09:00:00",
+      endRecur: "2023-04-08T10:00:00",
+      daysOfWeek: [1], // Monday
+    },
+  ]);
+
+  console.log(events);
   const GroupEvents = [
     data?.groupTimes.map((event) => ({
       groupId: event.group_id._id,
@@ -79,7 +87,6 @@ const CalendarFunc = () => {
       end: `${event.end_day}T${event.end}+05:00`,
     })),
   ];
-
 
   return (
     <div className="calendarComponent">
@@ -94,7 +101,7 @@ const CalendarFunc = () => {
         }}
         themeSystem="Simplex"
         plugins={[dayGridPlugin, timeGridPlugin, listPlugin, interactionPlugin]}
-        events={GroupEvents[0]}
+        events={events}
         // eventColor={"#" + Math.floor(Math.random() * 16777215).toString(16)}
 
         //eventContent={renderEventContent} // custom render function
@@ -105,8 +112,6 @@ const CalendarFunc = () => {
         eventChange={function(){}}
         eventRemove={function(){}}*/
       />
-
-      
     </div>
   );
 }
