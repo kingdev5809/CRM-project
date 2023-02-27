@@ -1,18 +1,11 @@
 import React, { useEffect, useState } from "react";
-// import "../../Layout/layout.css";
-
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import listPlugin from "@fullcalendar/list";
 import interactionPlugin from "@fullcalendar/interaction";
-
-import events from "./events.js";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  getAllGroups,
-  getAllGroupTimes,
-} from "../../Redux/Actions/AdminAction.js";
+import { getAllGroupTimes } from "../../Redux/Actions/AdminAction.js";
 
 export default function Calendar() {
   const [isMobile, setIsMobile] = useState(false);
@@ -49,18 +42,7 @@ export default function Calendar() {
 
   const getGroupTimes = useSelector((state) => state.groupTimes);
   const { data } = getGroupTimes;
-  // function getDate(dayString) {
-  //   const today = new Date();
-  //   const year = today.getFullYear().toString();
-  //   let month = (today.getMonth() + 1).toString();
 
-  //   if (month.length === 1) {
-  //     month = "0" + month;
-  //   }
-
-  //   return dayString.replace("YEAR", year).replace("MONTH", month);
-  // }
-  //  console.log(data);
   useEffect(() => {
     dispatch(getAllGroupTimes());
   }, []);
