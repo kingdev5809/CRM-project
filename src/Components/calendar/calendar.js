@@ -35,6 +35,7 @@ export default function Calendar() {
   }
 
   console.log(getResponsiveView());
+
   useEffect(() => {
     window.addEventListener("resize", checkMobile);
     checkMobile();
@@ -86,14 +87,14 @@ export default function Calendar() {
   return (
     <div className="calendarComponent">
       <FullCalendar
-        initialView={getResponsiveView()}
+        initialView={isMobile ? "timeGridDay" : "dayGridMonth"}
         editable={true}
         headerToolbar={getHeaderToolbar()}
-        header={{
-          left: "prev,next",
-          center: "title",
-          right: "dayGridMonth,timeGridSevenDay,timeGridDay ",
-        }}
+        // header={{
+        //   left: "prev,next",
+        //   center: "title",
+        //   right: "dayGridMonth,timeGridSevenDay,timeGridDay ",
+        // }}
         views={{
           timeGridSevenDay: {
             type: "timeGrid",
