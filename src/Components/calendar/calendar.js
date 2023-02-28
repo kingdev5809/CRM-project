@@ -28,13 +28,11 @@ export default function Calendar() {
 
   function getResponsiveView() {
     if (isMobile) {
-      return "timeGridDay";
+      return 1;
     } else {
-      return "dayGridMonth";
+      return 7;
     }
   }
-
-  console.log(getResponsiveView());
 
   useEffect(() => {
     window.addEventListener("resize", checkMobile);
@@ -87,13 +85,13 @@ export default function Calendar() {
   return (
     <div className="calendarComponent">
       <FullCalendar
-        initialView='timeGridDay'
+        initialView="timeGridSevenDay"
         editable={true}
         headerToolbar={getHeaderToolbar()}
         views={{
           timeGridSevenDay: {
             type: "timeGrid",
-            duration: { days: 7 },
+            duration: { days: getResponsiveView() },
             buttonText: "Week",
           },
         }}
