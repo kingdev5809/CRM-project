@@ -66,6 +66,7 @@ export default function Calendar() {
       startTime: event.start,
       endTime: event.end,
       groupId: event._id,
+      classNames: event.color,
     };
     return events;
   };
@@ -79,7 +80,7 @@ export default function Calendar() {
     // ) {
     //   clickInfo.event.remove();
     // }
-    console.log(clickInfo.event.groupId);
+    console.log(clickInfo.event);
   };
 
   return (
@@ -99,6 +100,7 @@ export default function Calendar() {
         plugins={[dayGridPlugin, timeGridPlugin, listPlugin, interactionPlugin]}
         events={events[0]}
         eventClick={handleEventClick}
+
         // eventColor={"#" + Math.floor(Math.random() * 16777215).toString(16)}
 
         //eventContent={renderEventContent} // custom render function

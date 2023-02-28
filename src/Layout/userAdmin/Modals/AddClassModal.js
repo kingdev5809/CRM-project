@@ -47,6 +47,11 @@ const AddClassModal = (props) => {
       )
     );
   };
+  const handleDelete = (e) => {
+    e.preventDefault();
+    setLocation("");
+    setVisibleModal("d-none");
+  };
 
   return (
     <>
@@ -157,7 +162,7 @@ const AddClassModal = (props) => {
               </div>
 
               <div className="btn-group">
-                <button>DELELTE</button>
+                <button onClick={handleDelete}>DELELTE</button>
                 <button onClick={handleSubmit} className="btn-2">
                   SAVE
                 </button>

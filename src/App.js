@@ -38,7 +38,7 @@ const Routing = () => {
       dispatch({ type: USER_LOGIN_SUCCESS, payload: user });
       navigate("/student/schedule");
     } else {
-      navigate("/notFound");
+      navigate("/login");
     }
   }, []);
 
@@ -196,7 +196,7 @@ const Routing = () => {
           </StudentElement>
         }
       />
-    <Route path='notFound' element={<PageNotFound/>} />
+      <Route path="notFound" element={<PageNotFound />} />
       <Route path="login" element={<Login />} />
       {/* <Route path="*" element={<NoMatch />} /> */}
     </Routes>

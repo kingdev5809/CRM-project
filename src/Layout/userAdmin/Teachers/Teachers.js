@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteIcon, phoneIcon } from "../../../Components/icons/svgIcons";
+import {
+  deleteIcon,
+  editIcon,
+  phoneIcon,
+} from "../../../Components/icons/svgIcons";
 import Navbar from "../../../Components/Navbar";
 import userImg from "../../../images/navbar-img/userImg.png";
 import { getAllTeachers } from "../../../Redux/Actions/AdminAction";
@@ -15,7 +19,6 @@ const Teachers = () => {
 
   const getTeachers = useSelector((state) => state.teachers);
   const { loading, data } = getTeachers;
-
 
   useEffect(() => {
     dispatch(getAllTeachers());
@@ -43,10 +46,24 @@ const Teachers = () => {
                   <p>
                     {phoneIcon} {user.phone_number}
                   </p>
-                  <h4> Login</h4>
-                  <h5>{user.email}</h5>
-                  <h4>Password</h4>
-                  <h6> {user.show_password}</h6>
+                  <div className="item-inner">
+                    <div className="box box-logn">
+                      {/* <h4> Login</h4> */}
+                      <h5>{user.email}</h5>
+                    </div>
+                    <div className="box box-logn">
+                      {/* <h4>Password</h4> */}
+                      <h6> {user.show_password}</h6>
+                    </div>
+                    <div className="box itemBtn">
+                      <span className="editBtn">
+                        <i className="svg2">{editIcon}</i> Edit
+                      </span>
+                      <span className="deleteBtn">
+                        <i className="svg3">{deleteIcon}</i> Delete
+                      </span>
+                    </div>
+                  </div>
                 </div>
               ))
               .reverse()
@@ -59,7 +76,6 @@ const Teachers = () => {
           visibleModal={visibleModal}
           setVisibleModal={setVisibleModal}
           setRefresh={setRefresh}
-          
         />
       </div>
     </div>
@@ -67,4 +83,3 @@ const Teachers = () => {
 };
 
 export default Teachers;
-

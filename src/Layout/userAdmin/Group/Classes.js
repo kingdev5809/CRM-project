@@ -48,16 +48,16 @@ const Classes = () => {
                       <h3> {item.group_name} </h3>
                     </NavLink>
                     <h4>
-                      <b>Teacher:</b> {item.teacher.name}
+                      <b>Teacher:</b> {item?.teacher?.name}
                     </h4>
                     <div className="itemBtn">
                       <span>
                         <i className="svg1">{studentIcon}</i> Student:14{" "}
                       </span>{" "}
-                      <span>
+                      <span className="editBtn">
                         <i className="svg2">{editIcon}</i> Edit{" "}
                       </span>
-                      <span>
+                      <span className="deleteBtn">
                         <i className="svg3">{deleteIcon}</i> Delete
                       </span>
                     </div>

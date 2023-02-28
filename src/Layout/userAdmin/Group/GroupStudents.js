@@ -49,7 +49,7 @@ function GroupStudents() {
                     <div className="title">
                       <img src={userImg} alt="" />
                       <div className="text-box">
-                        <h3>{`${item.student.surname} ${" "} ${
+                        <h3>{`${item.student?.surname} ${" "} ${
                           item.student.name
                         }`}</h3>
 
@@ -61,7 +61,7 @@ function GroupStudents() {
                     <div className="item-content">
                       <p>
                         <span>Email:</span>
-                        <span>{item.student.email}</span>
+                        <span>{item.student?.email}</span>
                       </p>
                     </div>
                   </div>

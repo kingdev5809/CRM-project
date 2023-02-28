@@ -54,6 +54,35 @@ body::-webkit-scrollbar {
   cursor: pointer;
   margin: auto 0;
 }
+
+.itemBtn {
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+}
+.itemBtn span {
+  margin: 5px;
+}
+.itemBtn svg {
+  display: inline-block;
+  margin-right: 0.25rem;
+}
+.itemBtn .svg1 svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.itemBtn .editBtn svg {
+  width: 1rem;
+  height: 1rem;
+  cursor: pointer;
+}
+.itemBtn .deleteBtn svg {
+  width: 0.75rem;
+  cursor: pointer;
+  height: 0.75rem;
+}
+
 @media screen and (max-width: 800px) {
   .container {
     max-width: 70%;
@@ -658,10 +687,21 @@ body::-webkit-scrollbar {
     display: none;
   }
 }
+/* .scheldulePage{
+  min-height: 99vh;
+}
 
+.calendarComponent{
+  min-height: 99vh;
+} */
+.calendarComponent .fc-media-screen {
+  height: 95vh;
+  margin-top: 30px;
+}
 .calendarComponent .fc-button {
-  background-color: transparent !important;
-  border: none;
+  background-color: rgba(222, 12, 12, 0) !important;
+
+  border: none !important;
   color: black !important;
 }
 .calendarComponent .fc .fc-col-header-cell-cushion {
@@ -670,10 +710,75 @@ body::-webkit-scrollbar {
 }
 .calendarComponent .fc-button:focus {
   background-color: #ee6c4d !important;
+  border: none !important;
 }
-.scheldulePage {
+
+.calendarComponent .fc-toolbar .fc-toolbar-chunk:first-child button {
+  background-color: #dad7d7 !important;
+}
+.calendarComponent .fc-toolbar .fc-toolbar-chunk:nth-child(3) button {
+  border-radius: 10px;
+  padding: 5px 20px;
+  margin: 5px;
+}
+
+.calendarComponent .fc .fc-button-group button {
+  border: none;
+  outline: none !important;
+}
+.calendarComponent .fc .fc-button-group button:focus {
+  outline: none !important;
+}
+.calendarComponent .fc-timegrid-slot .fc-timegrid-slot-lane {
   padding: 30px 20px;
 }
+.calendarComponent .fc .fc-timegrid-slot {
+  height: 3rem;
+}
+.calendarComponent .fc .fc-timegrid-slot-minor {
+  border-top-style: none;
+}
+
+.calendarComponent .fc .fc-col-header-cell-cushion {
+  padding: 30px 10px;
+  display: block;
+  font-size: 20px;
+}
+.calendarComponent .fc-timegrid-slot-label {
+  border: none;
+  text-align: center;
+}
+.calendarComponent .fc .fc-scrollgrid {
+  border-left-width: 0;
+}
+.calendarComponent .fc-direction-ltr .fc-timegrid-slot-label-frame {
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+.calendarComponent .fc-v-event {
+  background-color: #8a5cf634;
+  border: none;
+  border-left: 5px solid #8b5cf6;
+  padding: 10px;
+  border-radius: 6px;
+}
+.calendarComponent .fc-v-event .fc-event-main-frame {
+  color: #8b5cf6;
+}
+
+/* .calendarComponent .colorRed  .fc-event-main-frame {
+  color: #8B5CF6;
+}
+ .calendarComponent .colorRed{
+  background-color:#8a5cf634 ;
+  color: #8B5CF6;
+  
+ }
+ .calendarComponent .colorRed a{
+  color: #8B5CF6;
+ } */
+
 @media screen and (max-width: 380px) {
   .scheldulePage {
     padding: 10px;
@@ -855,6 +960,19 @@ body::-webkit-scrollbar {
   margin-right: 5px;
 }
 .teacherPage .items .item h5 {
+  font-weight: 400;
+}
+
+.teacherPage .items .item .item-inner .box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.teacherPage .items .item .item-inner .box h5 {
+  margin: 5px;
+}
+.teacherPage .items .item .item-inner .box h6 {
+  font-size: 12px;
   font-weight: 400;
 }
 

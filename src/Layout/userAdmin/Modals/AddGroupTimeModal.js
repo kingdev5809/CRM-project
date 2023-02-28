@@ -42,6 +42,11 @@ function AddGroupTimeModal(props) {
       )
     );
   };
+  const handleDelete = (e) => {
+    e.preventDefault();
+    setLocation("");
+    setVisibleModal("d-none");
+  };
 
   return (
     <div>
@@ -92,7 +97,7 @@ function AddGroupTimeModal(props) {
                   >
                     {data?.groups.map((item) => (
                       <option value={item._id} key={item._id}>
-                        {`${item.teacher.name} ${item.teacher.surname}`}
+                        {`${item?.teacher?.name} ${item?.teacher?.surname}`}
                       </option>
                     ))}
                   </select>
@@ -186,7 +191,7 @@ function AddGroupTimeModal(props) {
                   ></textarea>
                 </div>
                 <div className="btn-group">
-                  <button>DELELTE</button>
+                  <button onClick={handleDelete}>DELELTE</button>
                   <button onClick={handleSubmit} className="btn-2">
                     SAVE
                   </button>

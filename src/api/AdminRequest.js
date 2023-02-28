@@ -20,9 +20,9 @@ export const getGroupStudents = (token) =>
 
 export const getAllGroupTimes = () => API.get("/rektor/group_time", config);
 
-
 export const getSubjects = () => API.get("/rektor/book", config);
 
+export const getLocations = () => API.get("/rektor/location", config);
 
 // Post
 export const postTeachers = (data) => API.post("/rektor/teacher", data, config);
@@ -36,3 +36,9 @@ export const postStudentToGroup = (data) =>
 
 export const postGroupTimes = (data) =>
   API.post("/rektor/group_time", data, config);
+
+export const postLocations = (data) =>
+  API.post("/rektor/location", data, config);
+
+export const deleteStudents = (student_id) =>
+  API.delete(`/rektor/student/${student_id}`, config);

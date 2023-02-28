@@ -20,11 +20,11 @@ export const login =
         //   document.location.href = "/";
         toast.success(data.msg);
         if (data?.rektor) {
-          navigate("/admin/scheldule");
+          navigate("/admin/schedule");
         } else if (data?.teacher) {
-          navigate("/teacher/scheldule");
+          navigate("/teacher/schedule");
         }else if (data?.student) {
-          navigate("/student/scheldule");
+          navigate("/student/schedule");
         }
       }
 

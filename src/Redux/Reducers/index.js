@@ -6,6 +6,7 @@ import {
   getOneGroupReducers,
   getAllGroupTimesReducers,
   getAllSubjectsReducers,
+  getAllLocationReducers,
 } from "./AdminReduser";
 import { userLoginReducer } from "./UserReducers";
 
@@ -17,4 +18,5 @@ export const reducers = combineReducers({
   groupStudents: getOneGroupReducers,
   groupTimes: getAllGroupTimesReducers,
   subjects: getAllSubjectsReducers,
+  locations: getAllLocationReducers
 });

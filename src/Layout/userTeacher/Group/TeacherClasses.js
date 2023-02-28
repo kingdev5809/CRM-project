@@ -46,7 +46,7 @@ const TeacherClasses = () => {
                       <h3> {item.group_name} </h3>
                     </NavLink>
                     <h4>
-                      <b>Teacher:</b> {item.teacher.name}
+                      <b>Teacher:</b> {item.teacher?.name}
                     </h4>
                     <div className="itemBtn">
                       <span>

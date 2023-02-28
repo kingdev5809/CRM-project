@@ -3,22 +3,32 @@ import { useDispatch, useSelector } from "react-redux";
 import { deleteIcon, editIcon } from "../../../Components/icons/svgIcons";
 import Navbar from "../../../Components/Navbar";
 import userImg from "../../../images/navbar-img/userImg.png";
-import { getAllStudents } from "../../../Redux/Actions/AdminAction";
+import {
+  deleteStudent,
+  getAllStudents,
+} from "../../../Redux/Actions/AdminAction";
 import AddStudentModal from "../Modals/AddStudentModal";
 const Students = () => {
   const [visibleModal, setVisibleModal] = useState("d-none");
   const [refresh, setRefresh] = useState("");
+  const [student_id, setStudent_id] = useState("");
 
   const dispatch = useDispatch();
 
   const getStudents = useSelector((state) => state.students);
   const { loading, data } = getStudents;
-  
 
   useEffect(() => {
     dispatch(getAllStudents());
   }, [refresh]);
 
+  const handleDelete = (item) => {
+    console.log(item);
+    alert(`Are you sure remove ${item.name}`);
+    setStudent_id(item._id);
+    dispatch(deleteStudent(student_id, setRefresh));
+  };
+  
   return (
     <div className="flex">
       <Navbar />
@@ -32,7 +42,7 @@ const Students = () => {
             {data ? (
               data?.students
                 .map((item) => (
-                  <div className="item">
+                  <div className="item" key={item._id}>
                     <div className="title">
                       <img src={userImg} alt="" />
                       <div className="text-box">
@@ -77,8 +87,15 @@ const Students = () => {
                       </p>
 
                       <div className="itemBtn">
-                        <div className="btn1">{editIcon} Edit</div>
-                        <div className="btn2">{deleteIcon} Delete</div>
+                        <span className="editBtn ">
+                          <i className="svg2">{editIcon}</i> Edit{" "}
+                        </span>
+                        <span
+                          className="deleteBtn"
+                          onClick={() => handleDelete(item)}
+                        >
+                          <i className="svg3">{deleteIcon}</i> Delete
+                        </span>
                       </div>
                     </div>
                   </div>

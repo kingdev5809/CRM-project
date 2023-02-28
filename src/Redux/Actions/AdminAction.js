@@ -11,6 +11,9 @@ import {
   GROUPS_TIMES_GET_ONE_FAIL,
   GROUPS_TIMES_GET_ONE_REQUEST,
   GROUPS_TIMES_GET_ONE_SUCCESS,
+  LOCATION_GET_ALL_FAIL,
+  LOCATION_GET_ALL_REQUEST,
+  LOCATION_GET_ALL_SUCCESS,
   STUDENT_GET_ALL_FAIL,
   STUDENT_GET_ALL_REQUEST,
   STUDENT_GET_ALL_SUCCESS,
@@ -121,7 +124,6 @@ export const getAllSubject = () => async (dispatch) => {
   try {
     const { data } = await AdminApi.getSubjects();
 
-
     dispatch({ type: SUBJECTS_GET_ALL_SUCCESS, payload: data });
   } catch (error) {
     dispatch({
@@ -129,6 +131,24 @@ export const getAllSubject = () => async (dispatch) => {
       payload:
         error.response && error.response.subjectData.message
           ? error.response.subjectData.message
+          : error.message,
+    });
+  }
+};
+
+// GET ALL Locations
+
+export const getAllLocation = () => async (dispatch) => {
+  dispatch({ type: LOCATION_GET_ALL_REQUEST });
+  try {
+    const { data } = await AdminApi.getLocations();
+    dispatch({ type: LOCATION_GET_ALL_SUCCESS, payload: data });
+  } catch (error) {
+    dispatch({
+      type: LOCATION_GET_ALL_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
           : error.message,
     });
   }
@@ -323,3 +343,41 @@ export const postGroupTime =
       console.log(error);
     }
   };
+
+// POST Locations
+
+export const postLocation =
+  (location, setVisibleModal, setRefresh) => async () => {
+    try {
+      const { data } = await AdminApi.postLocations({
+        location,
+      });
+
+      if (data.error) {
+        toast.warning(data.error);
+      } else {
+        toast.success(data.msg);
+        setVisibleModal("d-none");
+        setRefresh(location);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+// Delete Students
+
+export const deleteStudent = (student_id, setRefresh) => async () => {
+  try {
+    const { data } = await AdminApi.deleteStudents(student_id);
+
+    if (data.error) {
+      toast.warning(data.error);
+    } else {
+      toast.success(data.msg);
+      setRefresh(student_id);
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};

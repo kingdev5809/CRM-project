@@ -8,6 +8,9 @@ import {
   GROUPS_TIMES_GET_ONE_FAIL,
   GROUPS_TIMES_GET_ONE_REQUEST,
   GROUPS_TIMES_GET_ONE_SUCCESS,
+  LOCATION_GET_ALL_FAIL,
+  LOCATION_GET_ALL_REQUEST,
+  LOCATION_GET_ALL_SUCCESS,
   STUDENT_GET_ALL_FAIL,
   STUDENT_GET_ALL_REQUEST,
   STUDENT_GET_ALL_SUCCESS,
@@ -61,8 +64,8 @@ export const getAllGroupReducers = (state = {}, action) => {
   }
 };
 
- // GET All Groups Times
-export const  getAllGroupTimesReducers = (state = {}, action) => {
+// GET All Groups Times
+export const getAllGroupTimesReducers = (state = {}, action) => {
   switch (action.type) {
     case GROUPS_TIMES_GET_ONE_REQUEST:
       return { loading: true };
@@ -76,7 +79,7 @@ export const  getAllGroupTimesReducers = (state = {}, action) => {
 };
 
 // GET One Groups
-export const getOneGroupReducers  = (state = {}, action) => {
+export const getOneGroupReducers = (state = {}, action) => {
   switch (action.type) {
     case GROUPS_GET_ONE_REQUEST:
       return { loading: true };
@@ -90,8 +93,8 @@ export const getOneGroupReducers  = (state = {}, action) => {
 };
 
 const initialState = {
-  subjectData:[]
-}
+  subjectData: [],
+};
 // GET Subjects
 export const getAllSubjectsReducers = (state = initialState, action) => {
   switch (action.type) {
@@ -106,3 +109,17 @@ export const getAllSubjectsReducers = (state = initialState, action) => {
   }
 };
 
+
+// GET ALL Groups
+export const getAllLocationReducers = (state = {}, action) => {
+  switch (action.type) {
+    case LOCATION_GET_ALL_REQUEST:
+      return { loading: true };
+    case LOCATION_GET_ALL_SUCCESS:
+      return { loading: false, data: action.payload };
+    case LOCATION_GET_ALL_FAIL:
+      return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
