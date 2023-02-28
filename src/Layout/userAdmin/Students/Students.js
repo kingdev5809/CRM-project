@@ -119,9 +119,6 @@ const Students = () => {
         <DeleteModal
           deleteModalVisible={deleteModalVisible}
           setDeleteModalVisible={setDeleteModalVisible}
-          student_id={student_id}
-          setRefresh={setRefresh}
-          setStudent_Id={setStudent_Id}
           handleDelete={handleDelete}
           deletedName='student'
         />

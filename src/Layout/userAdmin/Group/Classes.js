@@ -9,11 +9,14 @@ import "../../layout.css";
 import userImg from "../../../images/navbar-img/userImg.png";
 import AddClassModal from "../Modals/AddClassModal";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllGroups } from "../../../Redux/Actions/AdminAction";
+import { deleteClass, getAllGroups } from "../../../Redux/Actions/AdminAction";
 import { NavLink } from "react-router-dom";
+import DeleteModal from "../Modals/DeleteModal";
 
 const Classes = () => {
   const [visibleModal, setVisibleModal] = useState("d-none");
+  const [deleteModalVisible, setDeleteModalVisible] = useState("d-none");
+  const [classes_id, setClasses_Id] = useState();
 
   const [refresh, setRefresh] = useState("");
 
@@ -25,7 +28,16 @@ const Classes = () => {
   useEffect(() => {
     dispatch(getAllGroups());
   }, [refresh]);
+  const handleSetItem = (item) => {
+    setDeleteModalVisible("d-block");
+    setClasses_Id(item._id);
+  };
 
+  function handleDelete() {
+    dispatch(deleteClass(classes_id, setRefresh));
+    setDeleteModalVisible("d-none");
+    setClasses_Id();
+  }
   return (
     <div className="flex">
       <Navbar />
@@ -57,7 +69,10 @@ const Classes = () => {
                       <span className="editBtn">
                         <i className="svg2">{editIcon}</i> Edit{" "}
                       </span>
-                      <span className="deleteBtn">
+                      <span
+                        className="deleteBtn"
+                        onClick={() => handleSetItem(item)}
+                      >
                         <i className="svg3">{deleteIcon}</i> Delete
                       </span>
                     </div>
@@ -75,6 +90,12 @@ const Classes = () => {
           visibleModal={visibleModal}
           setVisibleModal={setVisibleModal}
           setRefresh={setRefresh}
+        />
+        <DeleteModal
+          deleteModalVisible={deleteModalVisible}
+          setDeleteModalVisible={setDeleteModalVisible}
+          handleDelete={handleDelete}
+          deletedName="Group"
         />
       </div>
     </div>

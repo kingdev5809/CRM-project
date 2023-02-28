@@ -398,3 +398,21 @@ export const deleteTeacher = (teacher_id, setRefresh) => async () => {
     console.log(error);
   }
 };
+
+
+// Delete classes
+
+export const deleteClass = (classes_id, setRefresh) => async () => {
+  try {
+    const { data } = await AdminApi.deleteClasses(classes_id);
+
+    if (data.error) {
+      toast.warning(data.error);
+    } else {
+      toast.success(data.msg);
+      setRefresh(classes_id);
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};

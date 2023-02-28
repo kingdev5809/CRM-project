@@ -14,7 +14,7 @@ function DeleteModal({
           onClick={() => setDeleteModalVisible("d-none")}
           className="w-screen"
         ></div>
-        <div className="modalWindows delete-modal">
+        <div className="modalWindows delete-modal"> 
           <div className="modal-inner">
             <div className="modal-title">
               <h1>Are you sure delete this {deletedName}</h1>
