@@ -42,3 +42,6 @@ export const postLocations = (data) =>
 
 export const deleteStudents = (student_id) =>
   API.delete(`/rektor/student/${student_id}`, config);
+
+export const deleteTeachers = (teacher_id) =>
+  API.delete(`/rektor/teacher/${teacher_id}`, config);

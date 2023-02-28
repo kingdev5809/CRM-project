@@ -504,6 +504,11 @@ body::-webkit-scrollbar {
   color: white;
 }
 
+
+.delete-modal{
+  position: fixed;
+  top: 250px;
+}
 @media screen and (max-width: 825px) {
   .w-screen {
     left: 0;

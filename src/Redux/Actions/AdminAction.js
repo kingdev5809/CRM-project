@@ -381,3 +381,20 @@ export const deleteStudent = (student_id, setRefresh) => async () => {
     console.log(error);
   }
 };
+
+// Delete Teachers
+
+export const deleteTeacher = (teacher_id, setRefresh) => async () => {
+  try {
+    const { data } = await AdminApi.deleteTeachers(teacher_id);
+
+    if (data.error) {
+      toast.warning(data.error);
+    } else {
+      toast.success(data.msg);
+      setRefresh(teacher_id);
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};

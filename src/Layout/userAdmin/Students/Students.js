@@ -8,11 +8,12 @@ import {
   getAllStudents,
 } from "../../../Redux/Actions/AdminAction";
 import AddStudentModal from "../Modals/AddStudentModal";
+import DeleteModal from "../Modals/DeleteModal";
 const Students = () => {
   const [visibleModal, setVisibleModal] = useState("d-none");
   const [refresh, setRefresh] = useState("");
-  const [student_id, setStudent_id] = useState("");
-
+  const [deleteModalVisible, setDeleteModalVisible] = useState("d-none");
+  const [student_id, setStudent_Id] = useState();
   const dispatch = useDispatch();
 
   const getStudents = useSelector((state) => state.students);
@@ -22,13 +23,17 @@ const Students = () => {
     dispatch(getAllStudents());
   }, [refresh]);
 
-  const handleDelete = (item) => {
-    console.log(item);
-    alert(`Are you sure remove ${item.name}`);
-    setStudent_id(item._id);
-    dispatch(deleteStudent(student_id, setRefresh));
+  const handleSetItem = (item) => {
+    setDeleteModalVisible("d-block");
+    setStudent_Id(item._id);
   };
-  
+
+  function handleDelete() {
+    dispatch(deleteStudent(student_id, setRefresh));
+    setDeleteModalVisible("d-none");
+    setStudent_Id();
+  }
+
   return (
     <div className="flex">
       <Navbar />
@@ -92,7 +97,7 @@ const Students = () => {
                         </span>
                         <span
                           className="deleteBtn"
-                          onClick={() => handleDelete(item)}
+                          onClick={() => handleSetItem(item)}
                         >
                           <i className="svg3">{deleteIcon}</i> Delete
                         </span>
@@ -110,6 +115,15 @@ const Students = () => {
           visibleModal={visibleModal}
           setVisibleModal={setVisibleModal}
           setRefresh={setRefresh}
+        />
+        <DeleteModal
+          deleteModalVisible={deleteModalVisible}
+          setDeleteModalVisible={setDeleteModalVisible}
+          student_id={student_id}
+          setRefresh={setRefresh}
+          setStudent_Id={setStudent_Id}
+          handleDelete={handleDelete}
+          deletedName='student'
         />
       </div>
     </div>

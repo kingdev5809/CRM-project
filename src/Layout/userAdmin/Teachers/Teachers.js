@@ -7,14 +7,19 @@ import {
 } from "../../../Components/icons/svgIcons";
 import Navbar from "../../../Components/Navbar";
 import userImg from "../../../images/navbar-img/userImg.png";
-import { getAllTeachers } from "../../../Redux/Actions/AdminAction";
+import {
+  deleteTeacher,
+  getAllTeachers,
+} from "../../../Redux/Actions/AdminAction";
 import { teacher } from "../../../Redux/Actions/ModalAction";
 import AddTeacheModal from "../Modals/AddTeacheModal";
+import DeleteModal from "../Modals/DeleteModal";
 
 const Teachers = () => {
   const [visibleModal, setVisibleModal] = useState("d-none");
   const [refresh, setRefresh] = useState("");
-
+  const [deleteModalVisible, setDeleteModalVisible] = useState("d-none");
+  const [teacher_id, setTeacher_Id] = useState();
   const dispatch = useDispatch();
 
   const getTeachers = useSelector((state) => state.teachers);
@@ -24,6 +29,16 @@ const Teachers = () => {
     dispatch(getAllTeachers());
   }, [refresh]);
 
+  const handleSetItem = (item) => {
+    setDeleteModalVisible("d-block");
+    setTeacher_Id(item._id);
+  };
+
+  function handleDelete() {
+    dispatch(deleteTeacher(teacher_id, setRefresh));
+    setDeleteModalVisible("d-none");
+    setTeacher_Id();
+  }
   return (
     <div className="flex">
       <Navbar />
@@ -59,7 +74,10 @@ const Teachers = () => {
                       <span className="editBtn">
                         <i className="svg2">{editIcon}</i> Edit
                       </span>
-                      <span className="deleteBtn">
+                      <span
+                        className="deleteBtn"
+                        onClick={() => handleSetItem(user)}
+                      >
                         <i className="svg3">{deleteIcon}</i> Delete
                       </span>
                     </div>
@@ -76,6 +94,15 @@ const Teachers = () => {
           visibleModal={visibleModal}
           setVisibleModal={setVisibleModal}
           setRefresh={setRefresh}
+        />
+        <DeleteModal
+          deleteModalVisible={deleteModalVisible}
+          setDeleteModalVisible={setDeleteModalVisible}
+          student_id={teacher_id}
+          setRefresh={setRefresh}
+          setStudent_Id={setTeacher_Id}
+          handleDelete={handleDelete}
+          deletedName="teacher"
         />
       </div>
     </div>
