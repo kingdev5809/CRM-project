@@ -51,3 +51,6 @@ export const deleteClasses = (classes_id) =>
 
 export const updateTeachers = (data, teacher_id) =>
   API.put(`/rektor/teacher/${teacher_id}`, data, config);
+
+export const updateStudents = (data, student_id) =>
+  API.put(`/rektor/student/${student_id}`, data, config);

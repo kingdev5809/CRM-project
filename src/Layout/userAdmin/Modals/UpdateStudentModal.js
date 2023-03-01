@@ -1,42 +1,48 @@
 import React, { useState } from "react";
-import { updateTeacher } from "../../../Redux/Actions/AdminAction";
+import { updateStudent } from "../../../Redux/Actions/AdminAction";
 import { deleteIcon } from "../../../Components/icons/svgIcons";
 import { useDispatch } from "react-redux";
 
-function UpdateTeacherModal(props) {
+function UpdateStudentModal(props) {
   const {
     updateVisibleModal,
     setUpdateVisibleModal,
     setRefresh,
     name,
     surname,
-    subject,
     email,
     phone_number,
     address,
     photo,
-    teacher_id,
+    person_nr,
+    parents_name,
+    parents_phone_number,
+    student_id,
     setName,
     setSurname,
-    setSubject,
     setEmail,
     setPhone_number,
     setAddress,
+    setPerson_nr,
+    setParents_name,
+    setParents_phone_number,
   } = props;
   const dispatch = useDispatch();
 
   const handleUpdate = (e) => {
     e.preventDefault();
     dispatch(
-      updateTeacher(
+      updateStudent(
         name,
         surname,
-        subject,
         email,
         phone_number,
         address,
         photo,
-        teacher_id,
+        person_nr,
+        parents_name,
+        parents_phone_number,
+        student_id,
         setRefresh,
         setUpdateVisibleModal
       )
@@ -110,16 +116,7 @@ function UpdateTeacherModal(props) {
                     />
                   </div>
                 </div>
-                <div className="modal-input">
-                  <label>Subject</label>
-                  <input
-                    className="w-full"
-                    type="text"
-                    placeholder="Subject"
-                    value={subject}
-                    onChange={(e) => setSubject(e.target.value)}
-                  />
-                </div>
+
                 <div className="modal-input">
                   <label>Adress</label>
                   <input
@@ -130,9 +127,51 @@ function UpdateTeacherModal(props) {
                     onChange={(e) => setAddress(e.target.value)}
                   />
                 </div>
-                <div className="modal-input">
-                  <label>Image </label>
-                  <input className="w-full" type="file" placeholder="Image" />
+                <div className="flex ">
+                  <div className="modal-input w-full">
+                    <label>Id number </label>
+                    <input
+                      className="w-full"
+                      type="text"
+                      placeholder="Id number here"
+                      value={person_nr}
+                      onChange={(e) => setPerson_nr(e.target.value)}
+                    />
+                  </div>
+
+                  <div className="modal-input w-full">
+                    <label>Parent name</label>
+                    <input
+                      className="w-full"
+                      type="text"
+                      placeholder="Parent nam"
+                      value={parents_name}
+                      onChange={(e) => setParents_name(e.target.value)}
+                    />
+                  </div>
+                </div>
+                <div className="flex ">
+                  <div className="modal-input w-full">
+                    <label>Parent number </label>
+                    <input
+                      className="w-full"
+                      type="text"
+                      placeholder="Name"
+                      value={parents_phone_number}
+                      onChange={(e) => setParents_phone_number(e.target.value)}
+                    />
+                  </div>
+
+                  <div className="modal-input w-full">
+                    <label>Email </label>
+                    <input
+                      className="w-full"
+                      type="text"
+                      placeholder="Email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                    />
+                  </div>
                 </div>
 
                 <div className="btn-group">
@@ -152,4 +191,4 @@ function UpdateTeacherModal(props) {
   );
 }
 
-export default UpdateTeacherModal;
+export default UpdateStudentModal;

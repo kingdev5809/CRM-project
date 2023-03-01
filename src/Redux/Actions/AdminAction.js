@@ -457,3 +457,49 @@ export const updateTeacher =
       console.log(error);
     }
   };
+
+// Update Student
+
+export const updateStudent =
+  (
+    name,
+    surname,
+    email,
+    phone_number,
+    address,
+    photo,
+    person_nr,
+    parents_name,
+    parents_phone_number,
+    student_id,
+    setRefresh,
+    setUpdateVisibleModal
+  ) =>
+  async () => {
+    try {
+      const { data } = await AdminApi.updateStudents(
+        {
+          name,
+          surname,
+          email,
+          phone_number,
+          address,
+          photo,
+          person_nr,
+          parents_name,
+          parents_phone_number,
+        },
+        student_id
+      );
+
+      if (data.error) {
+        toast.warning(data.error);
+      } else {
+        toast.success(data.msg);
+        setRefresh(name);
+        setUpdateVisibleModal("d-none");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };

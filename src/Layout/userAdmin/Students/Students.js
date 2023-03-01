@@ -9,6 +9,7 @@ import {
 } from "../../../Redux/Actions/AdminAction";
 import AddStudentModal from "../Modals/AddStudentModal";
 import DeleteModal from "../Modals/DeleteModal";
+import UpdateStudentModal from "../Modals/UpdateStudentModal";
 const Students = () => {
   const [visibleModal, setVisibleModal] = useState("d-none");
   const [refresh, setRefresh] = useState("");
@@ -16,13 +17,27 @@ const Students = () => {
   const [student_id, setStudent_Id] = useState();
   const dispatch = useDispatch();
 
+  // update useStates
+  const [name, setName] = useState("");
+  const [surname, setSurname] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone_number, setPhone_number] = useState("");
+  const [address, setAddress] = useState("");
+  const [photo, setPhoto] = useState(
+    "http://cdn.onlinewebfonts.com/svg/img_518099.png"
+  );
+  const [person_nr, setPerson_nr] = useState("");
+  const [parents_name, setParents_name] = useState("");
+  const [parents_phone_number, setParents_phone_number] = useState("");
+  const [updateVisibleModal, setUpdateVisibleModal] = useState("d-none");
+
   const getStudents = useSelector((state) => state.students);
   const { loading, data } = getStudents;
 
   useEffect(() => {
     dispatch(getAllStudents());
   }, [refresh]);
-
+  // handles delte item
   const handleSetItem = (item) => {
     setDeleteModalVisible("d-block");
     setStudent_Id(item._id);
@@ -33,6 +48,20 @@ const Students = () => {
     setDeleteModalVisible("d-none");
     setStudent_Id();
   }
+
+  // handle put
+  const handleUpdateSetItem = (item) => {
+    setName(item.name);
+    setSurname(item.surname);
+    setEmail(item.email);
+    setPhone_number(item.phone_number);
+    setAddress(item.address);
+    setStudent_Id(item._id);
+    setPerson_nr(item.person_nr);
+    setParents_name(item.parents_name);
+    setParents_phone_number(item.parents_phone_number);
+    setUpdateVisibleModal("d-block");
+  };
 
   return (
     <div className="flex">
@@ -92,7 +121,10 @@ const Students = () => {
                       </p>
 
                       <div className="itemBtn">
-                        <span className="editBtn ">
+                        <span
+                          className="editBtn "
+                          onClick={()=> handleUpdateSetItem(item)}
+                        >
                           <i className="svg2">{editIcon}</i> Edit{" "}
                         </span>
                         <span
@@ -120,7 +152,30 @@ const Students = () => {
           deleteModalVisible={deleteModalVisible}
           setDeleteModalVisible={setDeleteModalVisible}
           handleDelete={handleDelete}
-          deletedName='student'
+          deletedName="student"
+        />
+        <UpdateStudentModal
+          updateVisibleModal={updateVisibleModal}
+          setUpdateVisibleModal={setUpdateVisibleModal}
+          setRefresh={setRefresh}
+          name={name}
+          surname={surname}
+          email={email}
+          phone_number={phone_number}
+          address={address}
+          photo={photo}
+          person_nr={person_nr}
+          parents_name={parents_name}
+          parents_phone_number={parents_phone_number}
+          student_id={student_id}
+          setName={setName}
+          setSurname={setSurname}
+          setEmail={setEmail}
+          setPhone_number={setPhone_number}
+          setAddress={setAddress}
+          setPerson_nr={setPerson_nr}
+          setParents_name={setParents_name}
+          setParents_phone_number={setParents_phone_number}
         />
       </div>
     </div>

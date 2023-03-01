@@ -49,7 +49,7 @@ function AddStudentModal(props) {
         <div className="modalWindows class-modal">
           <div className="modal-inner">
             <div className="modal-title">
-              <h1>Create Class</h1>
+              <h1>Create Student</h1>
               <span
                 onClick={() => setVisibleModal("d-none")}
                 className="closeModal"
@@ -155,7 +155,13 @@ function AddStudentModal(props) {
 
                   <div className="modal-input w-full">
                     <label>Email </label>
-                    <input className="w-full" type="text" placeholder="Email" />
+                    <input
+                      className="w-full"
+                      type="text"
+                      placeholder="Email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                    />
                   </div>
                 </div>
 
