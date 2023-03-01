@@ -404,7 +404,7 @@ body::-webkit-scrollbar {
 
 .modalWindows {
   z-index: 999;
-  position: absolute;
+  position: fixed;
   top: 1.625rem;
   background-color: #fff;
   padding: 2.5rem;
