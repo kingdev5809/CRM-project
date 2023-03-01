@@ -6,7 +6,12 @@ function DeleteModal({
   deleteModalVisible,
   handleDelete,
   deletedName,
-}) {
+})
+const handleDelete = (e) => {
+  e.preventDefault();
+  setDeleteModalVisible("d-none");
+};
+{
   return (
     <div>
       <div className={deleteModalVisible}>
@@ -14,7 +19,7 @@ function DeleteModal({
           onClick={() => setDeleteModalVisible("d-none")}
           className="w-screen"
         ></div>
-        <div className="modalWindows delete-modal"> 
+        <div className="modalWindows delete-modal">
           <div className="modal-inner">
             <div className="modal-title">
               <h1>Are you sure delete this {deletedName}</h1>
@@ -28,7 +33,7 @@ function DeleteModal({
 
             <div className="modal-content">
               <div className="btn-group">
-                <button onClick={() => setDeleteModalVisible("d-none")}>
+                <button onClick={handleDelete}>
                   Cancel
                 </button>
                 <button onClick={handleDelete} className="btn-2">

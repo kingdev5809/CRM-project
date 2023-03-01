@@ -42,6 +42,10 @@ function UpdateTeacherModal(props) {
       )
     );
   };
+  const handleDelete = (e) => {
+    e.preventDefault();
+    setUpdateVisibleModal("d-none");
+  };
   return (
     <div>
       <div className={updateVisibleModal}>
@@ -136,7 +140,7 @@ function UpdateTeacherModal(props) {
                 </div>
 
                 <div className="btn-group">
-                  <button onClick={() => setUpdateVisibleModal("none")}>
+                  <button onClick={handleDelete}>
                     Cancel
                   </button>
                   <button onClick={handleUpdate} className="btn-2">
