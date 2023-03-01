@@ -16,6 +16,7 @@ function AddGroupTimeModal(props) {
   const [end, setEnd] = useState("");
   const [address, setAddress] = useState("");
   const [color, setColor] = useState("");
+  const [text, setText] = useState("");
   const [teacher_id, setTeacher_id] = useState();
 
   const dispatch = useDispatch();
@@ -42,6 +43,7 @@ function AddGroupTimeModal(props) {
         end,
         address,
         color,
+        text,
         teacher_id,
         setVisibleModal,
         setRefresh
@@ -197,6 +199,8 @@ function AddGroupTimeModal(props) {
                     id=""
                     cols="30"
                     rows="4"
+                    value={text}
+                    onChange={(e) => setText(e.target.value)}
                   ></textarea>
                 </div>
                 <div className="btn-group">

@@ -315,6 +315,7 @@ export const postGroupTime =
     end,
     address,
     color,
+    text,
     teacher_id,
     setVisibleModal,
     setRefresh
@@ -329,6 +330,7 @@ export const postGroupTime =
         end,
         address,
         color,
+        text,
         teacher_id,
       });
 
