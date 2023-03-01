@@ -14,7 +14,7 @@ function AddTeacheModal(props) {
   const [address, setAddress] = useState("");
 
   const dispatch = useDispatch();
-// this is
+  // this is
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(
@@ -34,7 +34,7 @@ function AddTeacheModal(props) {
     e.preventDefault();
     setVisibleModal("d-none");
     setName("");
-    setSurname;
+    setSurname("");
     setSubject("");
     setEmail("");
     setPhone_number("");
@@ -135,8 +135,8 @@ function AddTeacheModal(props) {
                 </div>
 
                 <div className="btn-group">
-                  <button onClick={(e) => handleDelete(e)}>DELELTE</button>
-                  <button onClick={(e) => handleSubmit(e)} className="btn-2">
+                  <button onClick={handleDelete}>DELELTE</button>
+                  <button onClick={handleSubmit} className="btn-2">
                     SAVE
                   </button>
                 </div>
