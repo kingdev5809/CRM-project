@@ -184,10 +184,11 @@ function AddGroupTimeModal(props) {
                       value={color}
                       onChange={(e) => setColor(e.target.value)}
                     >
-                      <option value="bg-red">Red</option>
-                      <option value="bg-yellow">Yellow</option>
-                      <option value="bg-blue">Blue</option>
-                      <option value="bg-green">Green</option>
+                      <option value="bg_red">Red</option>
+                      <option value="bg_yellow">Yellow</option>
+                      <option value="bg_blue">Blue</option>
+                      <option value="bg_green">Green</option>
+                      <option value="bg_violet">Violet</option>
                     </select>
                   </div>
                 </div>

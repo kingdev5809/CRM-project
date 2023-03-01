@@ -761,27 +761,76 @@ body::-webkit-scrollbar {
 }
 
 .calendarComponent .fc-v-event {
-  background-color: #8a5cf634;
-  border: none;
-  border-left: 5px solid #8b5cf6;
   padding: 10px;
   border-radius: 6px;
 }
-.calendarComponent .fc-v-event .fc-event-main-frame {
+
+/* color item start bg_violet  */
+
+.calendarComponent .bg_violet .fc-event-main-frame {
   color: #8b5cf6;
 }
-
-.calendarComponent .colorRed  .fc-event-main-frame {
-  color: #8B5CF6;
+.calendarComponent .bg_violet {
+  background-color: #8a5cf634;
+  border: none;
+  border-left: 5px solid #8b5cf6;
 }
- .calendarComponent .colorRed{
-  background-color:#8a5cf634 ;
-  color: #8B5CF6;
-  
- }
- .calendarComponent .colorRed a{
-  color: #8B5CF6;
- }
+
+/* color item end  bg_violet*/
+
+/* color item start bg_red  */
+
+.calendarComponent .bg_red .fc-event-main-frame {
+  color: #be123c;
+}
+.calendarComponent .bg_red {
+  background-color: #f43f5d3c;
+  border: none;
+  border-left: 5px solid #f43f5e;
+}
+
+/* color item end  bg_red*/
+
+/* color item start bg_yellow  */
+
+.calendarComponent .bg_yellow .fc-event-main-frame {
+  color: #b45309;
+}
+.calendarComponent .bg_yellow {
+  background-color: #db900543;
+  border: none;
+  border-left: 5px solid #f59e01;
+}
+
+/* color item end  bg_red*/
+
+/* color item start bg_blue  */
+
+.calendarComponent .bg_blue .fc-event-main-frame {
+  color: #0369a1;
+}
+.calendarComponent .bg_blue {
+  background-color: #0787c23d;
+  border: none;
+  border-left: 5px solid #0ea5e9;
+}
+
+/* color item end  bg_blue*/
+
+/* color item start bg_green  */
+
+.calendarComponent .bg_green .fc-event-main-frame {
+  color: #047857;
+  font-size: 14px;
+  font-weight: 400;
+}
+.calendarComponent .bg_green {
+  background-color: #10b9813a;
+  border: none;
+  border-left: 5px solid #10b981;
+}
+
+/* color item end  bg_green*/
 
 @media screen and (max-width: 380px) {
   .scheldulePage {
