@@ -5,7 +5,7 @@ import { postTeachers } from "../../../Redux/Actions/AdminAction";
 import "../../layout.css";
 
 function AddTeacheModal(props) {
-  const { visibleModal, setVisibleModal, refresh, setRefresh } = props;
+  const { visibleModal, setVisibleModal, setRefresh } = props;
   const [name, setName] = useState("");
   const [surname, setSurname] = useState("");
   const [subject, setSubject] = useState("");
