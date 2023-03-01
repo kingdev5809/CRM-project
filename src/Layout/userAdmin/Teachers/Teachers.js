@@ -121,11 +121,11 @@ const Teachers = () => {
           )}
         </div>
 
-        {/* <AddTeacheModal
+        <AddTeacheModal
           visibleModal={visibleModal}
           setVisibleModal={setVisibleModal}
           setRefresh={setRefresh}
-        /> */}
+        />
         <DeleteModal
           deleteModalVisible={deleteModalVisible}
           setDeleteModalVisible={setDeleteModalVisible}
