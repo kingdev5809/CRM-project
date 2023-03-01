@@ -66,7 +66,7 @@ const Classes = () => {
                     </h4>
                     <div className="itemBtn">
                       <span>
-                        <i className="svg1">{studentIcon}</i> Student:14{" "}
+                        <i className="svg1">{studentIcon}</i> Student:{item.students}{" "}
                       </span>{" "}
                       <span className="editBtn">
                         <i className="svg2">{editIcon}</i> Edit{" "}
