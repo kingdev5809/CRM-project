@@ -54,8 +54,7 @@ const Classes = () => {
         </div>
         <div className="items container-95">
           {data ? (
-            data?.groups
-              .map((item) => (
+            data?.groups?.map((item) => (
                 <div className="item" key={item._id}>
                   <img src={userImg} alt="" />
                   <div className="item-box">
