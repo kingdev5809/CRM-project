@@ -1,17 +1,17 @@
 import React from "react";
 import { deleteIcon } from "../../../Components/icons/svgIcons";
 
-function DeleteModal({
-  setDeleteModalVisible,
-  deleteModalVisible,
-  handleDelete,
-  deletedName,
-})
-const handleDelete = (e) => {
-  e.preventDefault();
-  setDeleteModalVisible("d-none");
-};
-{
+function DeleteModal(props) {
+  const {
+    setDeleteModalVisible,
+    deleteModalVisible,
+    handleDelete,
+    deletedName,
+  } = props;
+  const handleCloseDelete = (e) => {
+    e.preventDefault();
+    setDeleteModalVisible("d-none");
+  };
   return (
     <div>
       <div className={deleteModalVisible}>
@@ -33,9 +33,7 @@ const handleDelete = (e) => {
 
             <div className="modal-content">
               <div className="btn-group">
-                <button onClick={handleDelete}>
-                  Cancel
-                </button>
+                <button onClick={handleCloseDelete}>Cancel</button>
                 <button onClick={handleDelete} className="btn-2">
                   Enter
                 </button>
