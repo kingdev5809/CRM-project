@@ -7,6 +7,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { getOneGroup, putComment } from "../../../Redux/Actions/StudentAction";
 function Message({ group_id, group_name }) {
   const [message, setMessage] = useState("");
+  const [refresh, setRefresh] = useState("");
+
   const smalData = [
     {
       messageText:
