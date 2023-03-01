@@ -135,8 +135,8 @@ function AddTeacheModal(props) {
                 </div>
 
                 <div className="btn-group">
-                  <button onClick={handleDelete}>DELELTE</button>
-                  <button onClick={handleSubmit} className="btn-2">
+                  <button onClick={(e) => handleDelete(e)}>DELELTE</button>
+                  <button onClick={(e) => handleSubmit(e)} className="btn-2">
                     SAVE
                   </button>
                 </div>
