@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getAllGroups,
+  getAllLocation,
   postGroupTime,
 } from "../../../Redux/Actions/AdminAction";
 import { deleteIcon } from "../../../Components/icons/svgIcons";
@@ -16,6 +17,7 @@ function AddGroupTimeModal(props) {
   const [address, setAddress] = useState("");
   const [color, setColor] = useState("");
   const [teacher_id, setTeacher_id] = useState();
+
   const dispatch = useDispatch();
 
   const getGroups = useSelector((state) => state.groups);
@@ -23,7 +25,11 @@ function AddGroupTimeModal(props) {
 
   useEffect(() => {
     dispatch(getAllGroups());
+    dispatch(getAllLocation());
   }, [refresh]);
+
+  const getLocations = useSelector((state) => state.locations);
+  const { locationData } = getLocations;
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -45,6 +51,14 @@ function AddGroupTimeModal(props) {
   const handleDelete = (e) => {
     e.preventDefault();
     setVisibleModal("d-none");
+    setGroup_id("");
+    setStart_day("");
+    setStart("");
+    setEnd_day("");
+    setEnd("");
+    setAddress("");
+    setColor("");
+    setTeacher_id("");
   };
 
   return (
@@ -151,15 +165,11 @@ function AddGroupTimeModal(props) {
                       value={address}
                       onChange={(e) => setAddress(e.target.value)}
                     >
-                      <option value="tashkent">Tashkent</option>
-                      <option value="samarqand">Samarqand</option>
-                      {/* {data?.students.map((item) => (
-                      <option value={item._id} key={item._id}>
-                        {`${item.surname}
-                      ${" "}  
-                      ${item.name}`}
-                      </option>
-                    ))} */}
+                      {locationData?.map((item) => (
+                        <option value={item.location} key={item.location}>
+                          {`${item.location}`}
+                        </option>
+                      ))}
                     </select>
                   </div>
 

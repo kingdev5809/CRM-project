@@ -50,6 +50,12 @@ const AddClassModal = (props) => {
   const handleDelete = (e) => {
     e.preventDefault();
     setVisibleModal("d-none");
+    setGroup_name("");
+    setSubject("");
+    setTeacher("");
+    setBg_color("");
+    setText_color("");
+    setText("");
   };
 
   return (

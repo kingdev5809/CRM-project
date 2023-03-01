@@ -1,93 +1,48 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import Navbar from "../../../Components/Navbar";
 import "../../layout.css";
 import userImg from "../../../images/navbar-img/userImg.png";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllGroups } from "../../../Redux/Actions/StudentAction";
 
 const StudentClasses = () => {
+  const dispatch = useDispatch();
 
-  const smallData = [
-    {
-      title: "Engelska A2",
-      name: "Shermorad Holmatov",
-      color: "bg-red-500",
-    },
-    {
-      title: "Engelska A2",
-      name: "Shermorad Holmatov",
-      color: "bg-red-500",
-    },
-    {
-      title: "Engelska A2",
-      name: "Shermorad Holmatov",
-      color: "bg-red-500",
-    },
-    {
-      title: "Engelska A2",
-      name: "Shermorad Holmatov",
-      color: "bg-red-500",
-    },
-    {
-      title: "Engelska A2",
-      name: "Shermorad Holmatov",
-      color: "bg-red-500",
-    },
-    {
-      title: "Engelska A2",
-      name: "Shermorad Holmatov",
-      color: "bg-red-500",
-    },
-    {
-      title: "Engelska A2",
-      name: "Shermorad Holmatov",
-      color: "bg-red-500",
-    },
-    {
-      title: "Engelska A2",
-      name: "Shermorad Holmatov",
-      color: "bg-red-500",
-    },
-    {
-      title: "Engelska A2",
-      name: "Shermorad Holmatov",
-      color: "bg-red-500",
-    },
-  ];
+  const getGroups = useSelector((state) => state.groups);
+  const { data } = getGroups;
+
+  useEffect(() => {
+    dispatch(getAllGroups());
+  }, []);
+
+ console.log(data);
   return (
     <div className="flex">
-      <Navbar/>
+      <Navbar />
       <div className="classes-page  main-box container ">
         <div className="main-header-pages ">
           <h1>All Classes</h1>
           {/* <button onClick={() => setVisibleModal("d-block")}>CREATE</button> */}
         </div>
         <div className="items container-95">
-          {smallData.map((item) => (
-            <div className="item">
-              <img src={userImg} alt="" />
-              <div className="item-box">
-                <h3> {item.title} </h3>
-                <h4>
-                  <b>Teacher:</b> {item.name}
-                </h4>
-                {/* <div className="itemBtn">
-                  <span>
-                    <i className="svg1">{studentIcon}</i> Student:14{" "}
-                  </span>{" "}
-                  <span>
-                    <i className="svg2">{editIcon}</i> Edit{" "}
-                  </span>
-                  <span>
-                    <i className="svg3">{deleteIcon}</i> Delete
-                  </span>
-                </div> */}
+          {data ? (
+            data?.groups?.map((item) => (
+              <div className="item">
+                <img src={userImg} alt="" />
+                <div className="item-box">
+                  <h3> {item.group_name} </h3>
+                  <h4>
+                    <b>Teacher:</b> {item.teacher.name}
+                  </h4>
+                </div>
+                <div className="item-box-2"></div>
               </div>
-              <div className="item-box-2"></div>
-            </div>
-          ))}
+            ))
+          ) : (
+            <h1>Loading...</h1>
+          )}
         </div>
-
-        
       </div>
     </div>
   );

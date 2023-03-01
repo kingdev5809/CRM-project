@@ -36,6 +36,14 @@ function AddStudentModal(props) {
   const handleDelete = (e) => {
     e.preventDefault();
     setVisibleModal("d-none");
+    setName("");
+    setSurname("");
+    setEmail("");
+    setPhone_number("");
+    setAddress("");
+    setPerson_nr("");
+    setParents_name("");
+    setParents_phone_number("");
   };
 
   return (

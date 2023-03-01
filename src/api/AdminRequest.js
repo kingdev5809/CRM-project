@@ -50,7 +50,7 @@ export const deleteClasses = (classes_id) =>
   API.delete(`/rektor/group/${classes_id}`, config);
 
 export const deleteStudentFromGroups = (data) =>
-  API.delete(`/rektor/room`, data, config);
+  API.delete("/rektor/room", data, config);
 
 export const updateTeachers = (data, teacher_id) =>
   API.put(`/rektor/teacher/${teacher_id}`, data, config);

@@ -13,7 +13,7 @@ const Location = () => {
   const dispatch = useDispatch();
 
   const getLocations = useSelector((state) => state.locations);
-  const { data } = getLocations;
+  const { locationData } = getLocations;
 
   useEffect(() => {
     dispatch(getAllLocation());
@@ -29,7 +29,7 @@ const Location = () => {
         </div>
         <div className="main">
           <div className="items">
-            {data
+            {locationData
               ?.map((item) => (
                 <div className="item" key={item.location}>
                   {homeIcon}

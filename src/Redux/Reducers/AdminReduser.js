@@ -95,6 +95,9 @@ export const getOneGroupReducers = (state = {}, action) => {
 const initialState = {
   subjectData: [],
 };
+
+
+
 // GET Subjects
 export const getAllSubjectsReducers = (state = initialState, action) => {
   switch (action.type) {
@@ -110,13 +113,13 @@ export const getAllSubjectsReducers = (state = initialState, action) => {
 };
 
 
-// GET ALL Groups
+// GET ALL Locations
 export const getAllLocationReducers = (state = {}, action) => {
   switch (action.type) {
     case LOCATION_GET_ALL_REQUEST:
       return { loading: true };
     case LOCATION_GET_ALL_SUCCESS:
-      return { loading: false, data: action.payload };
+      return { loading: false, locationData: action.payload };
     case LOCATION_GET_ALL_FAIL:
       return { loading: false, error: action.payload };
     default:

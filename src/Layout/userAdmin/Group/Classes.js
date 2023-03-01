@@ -12,11 +12,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { deleteClass, getAllGroups } from "../../../Redux/Actions/AdminAction";
 import { NavLink } from "react-router-dom";
 import DeleteModal from "../Modals/DeleteModal";
+import AddGroupTimeModal from "../Modals/AddGroupTimeModal";
 
 const Classes = () => {
   const [visibleModal, setVisibleModal] = useState("d-none");
   const [deleteModalVisible, setDeleteModalVisible] = useState("d-none");
   const [classes_id, setClasses_Id] = useState();
+
+  const [visibleModalTwo, setVisibleModalTwo] = useState("d-none");
 
   const [refresh, setRefresh] = useState("");
 
@@ -29,6 +32,7 @@ const Classes = () => {
     dispatch(getAllGroups());
   }, [refresh]);
 
+  
   // handle set item for delete modal
   const handleSetItem = (item) => {
     setDeleteModalVisible("d-block");
@@ -50,11 +54,15 @@ const Classes = () => {
       </div> */}
         <div className="main-header-pages ">
           <h1>All Classes</h1>
+          <button onClick={() => setVisibleModalTwo("d-block")}>
+            Add Group Time
+          </button>
           <button onClick={() => setVisibleModal("d-block")}>CREATE</button>
         </div>
         <div className="items container-95">
           {data ? (
-            data?.groups?.map((item) => (
+            data?.groups
+              ?.map((item) => (
                 <div className="item" key={item._id}>
                   <img src={userImg} alt="" />
                   <div className="item-box">
@@ -66,7 +74,8 @@ const Classes = () => {
                     </h4>
                     <div className="itemBtn">
                       <span>
-                        <i className="svg1">{studentIcon}</i> Student:{item.students}{" "}
+                        <i className="svg1">{studentIcon}</i> Student:
+                        {item.students}{" "}
                       </span>{" "}
                       <span className="editBtn">
                         <i className="svg2">{editIcon}</i> Edit{" "}
@@ -98,6 +107,13 @@ const Classes = () => {
           setDeleteModalVisible={setDeleteModalVisible}
           handleDelete={handleDelete}
           deletedName="Group"
+        />
+
+        <AddGroupTimeModal
+          visibleModal={visibleModalTwo}
+          setVisibleModal={setVisibleModalTwo}
+          setRefresh={setRefresh}
+          refresh={refresh}
         />
       </div>
     </div>

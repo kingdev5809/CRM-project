@@ -49,7 +49,6 @@ function UpdateStudentModal(props) {
     );
   };
 
-
   const handleDelete = (e) => {
     e.preventDefault();
     setUpdateVisibleModal("d-none");
@@ -182,9 +181,7 @@ function UpdateStudentModal(props) {
                 </div>
 
                 <div className="btn-group">
-                  <button onClick={handleDelete}>
-                    Cancel
-                  </button>
+                  <button onClick={handleDelete}>Cancel</button>
                   <button onClick={handleUpdate} className="btn-2">
                     Enter
                   </button>

@@ -503,3 +503,25 @@ export const updateStudent =
       console.log(error);
     }
   };
+
+// Delete classes
+
+export const deleteStudentFromGroup =
+  (student, group, setRefresh, setDeleteModalVisible) => async () => {
+    try {
+      const { data } = await AdminApi.deleteStudentFromGroups({
+        student,
+        group,
+      });
+      console.log(student);
+      if (data.error) {
+        toast.warning(data.error);
+      } else {
+        toast.success(data.msg);
+        setRefresh(group);
+        setDeleteModalVisible("d-none");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };

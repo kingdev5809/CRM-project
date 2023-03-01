@@ -504,8 +504,7 @@ body::-webkit-scrollbar {
   color: white;
 }
 
-
-.delete-modal{
+.delete-modal {
   position: fixed;
   top: 250px;
 }
@@ -772,7 +771,7 @@ body::-webkit-scrollbar {
   color: #8b5cf6;
 }
 
-/* .calendarComponent .colorRed  .fc-event-main-frame {
+.calendarComponent .colorRed  .fc-event-main-frame {
   color: #8B5CF6;
 }
  .calendarComponent .colorRed{
@@ -782,7 +781,7 @@ body::-webkit-scrollbar {
  }
  .calendarComponent .colorRed a{
   color: #8B5CF6;
- } */
+ }
 
 @media screen and (max-width: 380px) {
   .scheldulePage {
@@ -1178,6 +1177,7 @@ body::-webkit-scrollbar {
 
 .homeworkPage .group-sec .items .item {
   height: 130px;
+  box-shadow: 0px 0px 1px 0px;
 }
 
 /* Homework page end */
@@ -1224,7 +1224,14 @@ body::-webkit-scrollbar {
   right: 0;
   display: none;
 }
-
+.group-cards .items .item .click-window-2 {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+}
 .group-cards .items .item h3 {
   font-weight: 500;
   font-size: 1.5rem;
@@ -1381,6 +1388,9 @@ body::-webkit-scrollbar {
 
   .group-cards .items .item .click-window {
     display: block;
+  }
+  .group-cards .items .item .click-window-2 {
+    display: none;
   }
   .messages-cards .input-box {
     bottom: 0px;

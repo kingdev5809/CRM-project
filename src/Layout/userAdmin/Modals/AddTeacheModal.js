@@ -33,10 +33,13 @@ function AddTeacheModal(props) {
   const handleDelete = (e) => {
     e.preventDefault();
     setVisibleModal("d-none");
+    setName("");
+    setSurname;
+    setSubject("");
+    setEmail("");
+    setPhone_number("");
+    setAddress("");
   };
-
-  
-
 
   return (
     <div>

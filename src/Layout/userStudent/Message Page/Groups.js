@@ -51,31 +51,7 @@ function Groups() {
   ];
 
   return (
-    <div className="class-sec group-cards">
-      <h1>Class Groups</h1>
-      <div className="items">
-        {smalData.map((item) => (
-          <div className="item">
-            <div className="item-box">
-              <h3>{item.groupName}</h3>
-              <p>{item.describtion}</p>
-            </div>
-            <div className="user-box">
-              <img src={item.teacherImg} alt="" />
-              <div className="user-box-inner">
-                <h4>{item.teacherName}</h4>
-                <h6>Teacher class group</h6>
-              </div>
-            </div>
-
-            <div className="item-box-3"></div>
-            <NavLink to={`/student/message/engelska`}>
-              <div className="click-window"></div>
-            </NavLink>
-          </div>
-        ))}
-      </div>
-    </div>
+   <></>
   );
 }
 

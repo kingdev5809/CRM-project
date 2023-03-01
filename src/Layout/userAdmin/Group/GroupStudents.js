@@ -1,17 +1,26 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import { deleteIcon } from "../../../Components/icons/svgIcons";
 
 import Navbar from "../../../Components/Navbar";
 import userImg from "../../../images/navbar-img/userImg.png";
-import { getOneGroup } from "../../../Redux/Actions/AdminAction";
+import {
+  deleteStudentFromGroup,
+  getOneGroup,
+} from "../../../Redux/Actions/AdminAction";
 import AddGroupTimeModal from "../Modals/AddGroupTimeModal";
 import AddStudentToGroupModal from "../Modals/AddStudentToGroupModal";
+import DeleteModal from "../Modals/DeleteModal";
 
 function GroupStudents() {
   const [visibleModal, setVisibleModal] = useState("d-none");
-  const [visibleModalTwo, setVisibleModalTwo] = useState("d-none");
+  const [deleteModalVisible, setDeleteModalVisible] = useState("d-none");
+  
   const [refresh, setRefresh] = useState("");
+  const [group, setGroup] = useState("");
+  const [student, setStudent] = useState("");
+
   const { name } = useParams();
   // const { goBack } = useHistory;
   const { token } = useParams();
@@ -25,15 +34,29 @@ function GroupStudents() {
     dispatch(getOneGroup(token));
   }, [refresh]);
 
+  // handle set item for delete modal
+
+  const handleSetItem = (item) => {
+    setDeleteModalVisible("d-block");
+    setGroup(token);
+    setStudent(item.student._id);
+  };
+
+  const handleDelete = () => {
+    dispatch(
+      deleteStudentFromGroup(student, group, setRefresh, setDeleteModalVisible)
+    );
+    setGroup();
+    setStudent();
+  };
+
   return (
     <div className="flex">
       <Navbar />
       <div className="studentsPage main-box container">
         <div className="main-header-pages ">
           <h1>All Students </h1>
-          <button onClick={() => setVisibleModalTwo("d-block")}>
-            Add Group Time
-          </button>
+         
           <button onClick={() => setVisibleModal("d-block")}>
             Add Student
           </button>
@@ -50,7 +73,7 @@ function GroupStudents() {
                       <img src={userImg} alt="" />
                       <div className="text-box">
                         <h3>{`${item.student?.surname} ${" "} ${
-                          item.student.name
+                          item.student?.name
                         }`}</h3>
 
                         <p>
@@ -63,6 +86,14 @@ function GroupStudents() {
                         <span>Email:</span>
                         <span>{item.student?.email}</span>
                       </p>
+                      <div className="itemBtn">
+                        <span
+                          className="deleteBtn"
+                          onClick={() => handleSetItem(item)}
+                        >
+                          <i className="svg3">{deleteIcon}</i> Remove
+                        </span>
+                      </div>
                     </div>
                   </div>
                 ))
@@ -80,11 +111,12 @@ function GroupStudents() {
           token={token}
         />
 
-        <AddGroupTimeModal
-          visibleModal={visibleModalTwo}
-          setVisibleModal={setVisibleModalTwo}
-          setRefresh={setRefresh}
-          refresh={refresh}
+       
+        <DeleteModal
+          handleDelete={handleDelete}
+          deleteModalVisible={deleteModalVisible}
+          setDeleteModalVisible={setDeleteModalVisible}
+          deletedName="student"
         />
       </div>
     </div>
