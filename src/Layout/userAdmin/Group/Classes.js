@@ -28,6 +28,9 @@ const Classes = () => {
   useEffect(() => {
     dispatch(getAllGroups());
   }, [refresh]);
+
+
+  // handle set item for delete modal
   const handleSetItem = (item) => {
     setDeleteModalVisible("d-block");
     setClasses_Id(item._id);
@@ -38,6 +41,7 @@ const Classes = () => {
     setDeleteModalVisible("d-none");
     setClasses_Id();
   }
+  
   return (
     <div className="flex">
       <Navbar />

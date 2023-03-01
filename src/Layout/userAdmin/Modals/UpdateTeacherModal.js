@@ -1,49 +1,53 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { updateTeacher } from "../../../Redux/Actions/AdminAction";
 import { deleteIcon } from "../../../Components/icons/svgIcons";
-import { postTeachers } from "../../../Redux/Actions/AdminAction";
-import "../../layout.css";
+import { useDispatch } from "react-redux";
 
-function AddTeacheModal(props) {
-  const { visibleModal, setVisibleModal, refresh, setRefresh } = props;
-  const [name, setName] = useState("");
-  const [surname, setSurname] = useState("");
-  const [subject, setSubject] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone_number, setPhone_number] = useState("");
-  const [address, setAddress] = useState("");
-
+function UpdateTeacherModal(props) {
+  const {
+    updateVisibleModal,
+    setUpdateVisibleModal,
+    refresh,
+    setRefresh,
+    name,
+    surname,
+    subject,
+    email,
+    phone_number,
+    address,
+    photo,
+    teacher_id,
+    setName,
+    setSurname,
+    setSubject,
+    setEmail,
+    setPhone_number,
+    setAddress,
+  } = props;
   const dispatch = useDispatch();
 
-  const handleSubmit = (e) => {
+  const handleUpdate = (e) => {
     e.preventDefault();
     dispatch(
-      postTeachers(
+      updateTeacher(
         name,
-        email,
-        address,
         surname,
         subject,
+        email,
         phone_number,
-        setVisibleModal,
-        setRefresh
+        address,
+        photo,
+        teacher_id,
+        setRefresh,
+        setUpdateVisibleModal
       )
     );
   };
-  const handleDelete = (e) => {
-    e.preventDefault();
-    setLocation("");
-    setVisibleModal("d-none");
-  };
-
-  
-
-
   return (
     <div>
-      <div className={visibleModal}>
+      <div className={updateVisibleModal}>
         <div
-          onClick={() => setVisibleModal("d-none")}
+          onClick={() => setUpdateVisibleModal("d-none")}
           className="w-screen"
         ></div>
         <div className="modalWindows class-modal">
@@ -51,7 +55,7 @@ function AddTeacheModal(props) {
             <div className="modal-title">
               <h1>Create Class</h1>
               <span
-                onClick={() => setVisibleModal("d-none")}
+                onClick={() => setUpdateVisibleModal("d-none")}
                 className="closeModal"
               >
                 {deleteIcon}
@@ -133,9 +137,11 @@ function AddTeacheModal(props) {
                 </div>
 
                 <div className="btn-group">
-                  <button onClick={handleDelete}>DELELTE</button>
-                  <button onClick={handleSubmit} className="btn-2">
-                    SAVE
+                  <button onClick={() => setUpdateVisibleModal("none")}>
+                    Cancel
+                  </button>
+                  <button onClick={handleUpdate} className="btn-2">
+                    Enter
                   </button>
                 </div>
               </form>
@@ -147,4 +153,4 @@ function AddTeacheModal(props) {
   );
 }
 
-export default AddTeacheModal;
+export default UpdateTeacherModal;

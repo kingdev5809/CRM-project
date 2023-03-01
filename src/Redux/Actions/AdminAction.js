@@ -399,7 +399,6 @@ export const deleteTeacher = (teacher_id, setRefresh) => async () => {
   }
 };
 
-
 // Delete classes
 
 export const deleteClass = (classes_id, setRefresh) => async () => {
@@ -416,3 +415,45 @@ export const deleteClass = (classes_id, setRefresh) => async () => {
     console.log(error);
   }
 };
+
+// Update teacher
+
+export const updateTeacher =
+  (
+    name,
+    surname,
+    subject,
+    email,
+    phone_number,
+    address,
+    photo,
+    teacher_id,
+    setRefresh,
+    setUpdateVisibleModal
+  ) =>
+  async () => {
+    try {
+      const { data } = await AdminApi.updateTeachers(
+        {
+          name,
+          surname,
+          subject,
+          email,
+          phone_number,
+          address,
+          photo,
+        },
+        teacher_id
+      );
+
+      if (data.error) {
+        toast.warning(data.error);
+      } else {
+        toast.success(data.msg);
+        setRefresh(name);
+        setUpdateVisibleModal("d-none");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
