@@ -11,7 +11,7 @@ import {
   deleteTeacher,
   getAllTeachers,
 } from "../../../Redux/Actions/AdminAction";
-import AddTeacheModal from "../Modals/AddTeacheModal";
+// import AddTeacheModal from "../Modals/AddTeacheModal";
 import DeleteModal from "../Modals/DeleteModal";
 import UpdateTeacherModal from "../Modals/UpdateTeacherModal";
 
