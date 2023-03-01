@@ -11,7 +11,6 @@ import {
   deleteTeacher,
   getAllTeachers,
 } from "../../../Redux/Actions/AdminAction";
-import { teacher } from "../../../Redux/Actions/ModalAction";
 import AddTeacheModal from "../Modals/AddTeacheModal";
 import DeleteModal from "../Modals/DeleteModal";
 import UpdateTeacherModal from "../Modals/UpdateTeacherModal";
@@ -81,7 +80,7 @@ const Teachers = () => {
           {data ? (
             data.teachers
               .map((user) => (
-                <div className="item ">
+                <div className="item " key={user._id}>
                   <img src={userImg} alt="" />
                   <h2>
                     {user.name} {user.surname}

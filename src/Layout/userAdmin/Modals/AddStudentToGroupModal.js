@@ -20,7 +20,6 @@ function AddStudentToGroupModal(props) {
   };
   const handleDelete = (e) => {
     e.preventDefault();
-    setLocation("");
     setVisibleModal("d-none");
   };
 

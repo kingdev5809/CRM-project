@@ -29,7 +29,6 @@ const Classes = () => {
     dispatch(getAllGroups());
   }, [refresh]);
 
-
   // handle set item for delete modal
   const handleSetItem = (item) => {
     setDeleteModalVisible("d-block");
@@ -41,7 +40,7 @@ const Classes = () => {
     setDeleteModalVisible("d-none");
     setClasses_Id();
   }
-  
+
   return (
     <div className="flex">
       <Navbar />
@@ -57,7 +56,7 @@ const Classes = () => {
           {data ? (
             data?.groups
               .map((item) => (
-                <div className="item">
+                <div className="item" key={item._id}>
                   <img src={userImg} alt="" />
                   <div className="item-box">
                     <NavLink to={`/admin/classes/${item._id}`}>

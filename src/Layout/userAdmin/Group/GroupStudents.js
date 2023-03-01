@@ -21,8 +21,6 @@ function GroupStudents() {
   const getGroup = useSelector((state) => state.groupStudents);
   const { data } = getGroup;
 
-  
-
   useEffect(() => {
     dispatch(getOneGroup(token));
   }, [refresh]);
@@ -33,7 +31,9 @@ function GroupStudents() {
       <div className="studentsPage main-box container">
         <div className="main-header-pages ">
           <h1>All Students </h1>
-          <button onClick={() => setVisibleModalTwo('d-block')}>Add Group Time</button>
+          <button onClick={() => setVisibleModalTwo("d-block")}>
+            Add Group Time
+          </button>
           <button onClick={() => setVisibleModal("d-block")}>
             Add Student
           </button>
