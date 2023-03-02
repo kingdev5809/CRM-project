@@ -27,20 +27,16 @@ function Schedule() {
     if (startMinutes < 10) startMinutes = "0" + startMinutes;
     if (endHours < 10) endHours = "0" + endHours;
     if (endMinutes < 10) endMinutes = "0" + endMinutes;
-
     setStart_day(`${startYear}-${startMonth}-${startDay}`);
     setStart(`${startHours}:${startMinutes}`);
     setEnd(`${endHours}:${endMinutes}`);
     setVisibleModalTwo("d-block");
-    setRefresh(startDate)
   };
   return (
     <div className="flex ">
       <Navbar />
       <div className="scheldulePage container">
-        <Calendar handleEventClick={handleEventClick} 
-          refresh={refresh}
-          />
+        <Calendar handleEventClick={handleEventClick} refresh={refresh} />
         <AddGroupTimeModal
           visibleModal={visibleModalTwo}
           setVisibleModal={setVisibleModalTwo}
