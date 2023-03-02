@@ -10,12 +10,15 @@ import {
   GROUPS_GET_ONE_FAIL,
   GROUPS_GET_ONE_REQUEST,
   GROUPS_GET_ONE_SUCCESS,
+  GROUPS_TIMES_GET_ONE_FAIL,
+  GROUPS_TIMES_GET_ONE_REQUEST,
+  GROUPS_TIMES_GET_ONE_SUCCESS,
 } from "../Constants/AdminContants";
 
 // GET All GROUPS
 
 export const getAllGroups = () => async (dispatch) => {
-  dispatch({ type: GROUPS_GET_ALL_REQUEST }); 
+  dispatch({ type: GROUPS_GET_ALL_REQUEST });
   try {
     const { data } = await AdminApi.getGroups();
     dispatch({ type: GROUPS_GET_ALL_SUCCESS, payload: data });
@@ -48,19 +51,38 @@ export const getOneGroup = (group_id) => async (dispatch) => {
   }
 };
 
+// GET All GROUP Times
+
+export const getAllGroupTimes = () => async (dispatch) => {
+  dispatch({ type: GROUPS_TIMES_GET_ONE_REQUEST });
+  try {
+    const { data } = await AdminApi.getAllGroupTimes();
+
+    dispatch({ type: GROUPS_TIMES_GET_ONE_SUCCESS, payload: data });
+  } catch (error) {
+    dispatch({
+      type: GROUPS_TIMES_GET_ONE_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
+
 // Send comment
 
-export const putComment = (group_id, message,) => async () => {
+export const putComment = (group_id, message) => async () => {
   try {
     const { data } = await AdminApi.putComments({
-      group_id, message,
+      group_id,
+      message,
     });
-console.log(data);
+    console.log(data);
     if (data.error) {
       toast.warning(data.error);
     } else {
       toast.success(data.msg);
-      
     }
   } catch (error) {
     console.log(error);

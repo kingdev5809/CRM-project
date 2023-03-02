@@ -141,9 +141,6 @@ function Navbar() {
           <div className="box-2">
             <img className="userImg" src={userImg} alt="" />
             <h2>
-              {user?.teach?.name} {user?.teach?.surname}
-            </h2>
-            <h2>
               {user?.rektor
                 ? `${user?.admin?.name} ${user?.admin?.surname} `
                 : user?.teacher

@@ -9,19 +9,6 @@ function TeacherSchedule() {
   const [isMobile, setIsMobile] = useState(false);
   const [refresh, setRefresh] = useState("");
 
-  function checkMobile() {
-    if (window.innerWidth < 768) {
-      setIsMobile(true);
-    } else {
-      setIsMobile(false);
-    }
-  }
-
-  useEffect(() => {
-    window.addEventListener("resize", checkMobile);
-    checkMobile();
-  });
-
   const dispatch = useDispatch();
 
   const getGroupTimes = useSelector((state) => state.groupTimes);
@@ -30,7 +17,6 @@ function TeacherSchedule() {
   useEffect(() => {
     dispatch(getAllGroupTimes());
   }, [refresh]);
-  console.log(data);
   const CalendarFunc = (event) => {
     let day = new Date(event.start_day).getDay();
     const events = {
