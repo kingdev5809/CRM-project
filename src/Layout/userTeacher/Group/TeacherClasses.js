@@ -25,6 +25,8 @@ const TeacherClasses = () => {
     dispatch(getAllGroups());
   }, [refresh]);
 
+  console.log(data);
+
   return (
     <div className="flex">
       <Navbar />
@@ -50,8 +52,8 @@ const TeacherClasses = () => {
                     </h4>
                     <div className="itemBtn">
                       <span>
-                        <i className="svg1">{studentIcon}</i> Student:14
-                        {/* {item.students} */}
+                        <i className="svg1">{studentIcon}</i> Student:
+                        {item.students.length}
                       </span>{" "}
                     </div>
                   </div>

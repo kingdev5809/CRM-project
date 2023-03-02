@@ -114,6 +114,7 @@ function Navbar() {
       navigate("/login");
     }
   }, []);
+  console.log(user);
 
   return (
     <div className={resNavActive}>
@@ -140,14 +141,20 @@ function Navbar() {
           </div>
           <div className="box-2">
             <img className="userImg" src={userImg} alt="" />
-            <h2>Muzzaffar Holmatov</h2>
+            <h2>{user.teach.name} {user.teach.surname}</h2>
             <h3>
               {user?.rektor ? "ADMIN" : user?.teacher ? "TEACHER" : "STUDENT"}
             </h3>
-            <img className="starImg" src={starImg} alt="" />
+
+            {user?.rektor ? (
+              ""
+            ) : user?.teacher ? (
+              <img className="starImg" src={starImg} alt="" />
+            ) : (
+              <img className="starImg" src={starImg} alt="" />
+            )}
           </div>
         </div>
-
         <div className="navbar-main">
           <ul>
             {navData.map((item) => (

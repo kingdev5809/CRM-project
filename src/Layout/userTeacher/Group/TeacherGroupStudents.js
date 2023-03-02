@@ -8,7 +8,7 @@ import { getOneGroup } from "../../../Redux/Actions/AdminAction";
 import ScheduleInfoModal from "../Modal/ScheduleInfoModal";
 
 function TeacherGroupStudents() {
-  const [visibleModal, setVisibleModal] = useState("d-block");
+  const [visibleModal, setVisibleModal] = useState("d-none");
   const [visibleModalTwo, setVisibleModalTwo] = useState("d-none");
   const [refresh, setRefresh] = useState("");
   const { name } = useParams();
@@ -20,8 +20,6 @@ function TeacherGroupStudents() {
   const getGroup = useSelector((state) => state.groupStudents);
   const { data } = getGroup;
 
-  
-
   useEffect(() => {
     dispatch(getOneGroup(token));
   }, [refresh]);
@@ -32,7 +30,7 @@ function TeacherGroupStudents() {
       <div className="studentsPage main-box container">
         <div className="main-header-pages ">
           <h1>All Students </h1>
-         
+          <button onClick={() => setVisibleModal("d-block")}>Rate</button>
         </div>
         <div className="main">
           <div className="items">
@@ -69,10 +67,10 @@ function TeacherGroupStudents() {
           </div>
         </div>
         <ScheduleInfoModal
-        visibleModal={visibleModal}
-        setVisibleModal={setVisibleModal}
-        data={data}
-      />
+          visibleModal={visibleModal}
+          setVisibleModal={setVisibleModal}
+          data={data}
+        />
       </div>
     </div>
   );
