@@ -8,12 +8,21 @@ import {
 import { deleteIcon } from "../../../Components/icons/svgIcons";
 
 function AddGroupTimeModal(props) {
-  const { visibleModal, setVisibleModal, setRefresh, refresh, token } = props;
+  const {
+    visibleModal,
+    setVisibleModal,
+    setRefresh,
+    refresh,
+    token,
+    start_day,
+    start,
+    end,
+    setStart_day,
+    setStart,
+    setEnd,
+  } = props;
   const [group_id, setGroup_id] = useState("");
-  const [start_day, setStart_day] = useState("");
-  const [start, setStart] = useState("");
   const [end_day, setEnd_day] = useState("");
-  const [end, setEnd] = useState("");
   const [address, setAddress] = useState("");
   const [color, setColor] = useState("");
   const [text, setText] = useState("");
@@ -63,6 +72,7 @@ function AddGroupTimeModal(props) {
     setTeacher_id("");
   };
 
+  console.log(start_day);
   return (
     <div>
       <div className={visibleModal}>
@@ -124,7 +134,7 @@ function AddGroupTimeModal(props) {
                       className="w-full"
                       type="date"
                       value={start_day}
-                      onChange={(e) => setStart_day(e.target.value)}
+                      // onChange={(e) => setStart_day(e.target.value)}
                       placeholder="Name"
                     />
                   </div>

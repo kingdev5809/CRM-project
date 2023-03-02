@@ -20,6 +20,11 @@ const Classes = () => {
   const [classes_id, setClasses_Id] = useState();
 
   const [visibleModalTwo, setVisibleModalTwo] = useState("d-none");
+  
+  // add time states
+  const [start_day, setStart_day] = useState("");
+  const [start, setStart] = useState("");
+  const [end, setEnd] = useState("");
 
   const [refresh, setRefresh] = useState("");
 
@@ -32,7 +37,6 @@ const Classes = () => {
     dispatch(getAllGroups());
   }, [refresh]);
 
-  
   // handle set item for delete modal
   const handleSetItem = (item) => {
     setDeleteModalVisible("d-block");
@@ -114,6 +118,12 @@ const Classes = () => {
           setVisibleModal={setVisibleModalTwo}
           setRefresh={setRefresh}
           refresh={refresh}
+          start_day={start_day}
+          start={start}
+          end={end}
+          setStart_day={setStart_day}
+          setStart={setStart}
+          setEnd={setEnd}
         />
       </div>
     </div>

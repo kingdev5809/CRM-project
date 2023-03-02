@@ -6,10 +6,10 @@ import listPlugin from "@fullcalendar/list";
 import interactionPlugin from "@fullcalendar/interaction";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllGroupTimes } from "../../Redux/Actions/AdminAction.js";
-import ScheduleInfoModal from "../../Layout/userTeacher/Modal/ScheduleInfoModal.js";
 import { USER_LOGIN_SUCCESS } from "../../Redux/Constants/UserConstants.js";
 
-export default function Calendar() {
+export default function Calendar(props) {
+  const {handleEventClick} = props
   const [isMobile, setIsMobile] = useState(true);
   const [selectable, setSelectable] = useState(false);
   function getHeaderToolbar() {
@@ -37,6 +37,7 @@ export default function Calendar() {
       setSelectable(false);
     }
   }, []);
+
   function getResponsiveView() {
     if (isMobile) {
       return 1;
@@ -81,16 +82,7 @@ export default function Calendar() {
   };
   const events = [data?.groupTimes?.map((event) => CalendarFunc(event))];
 
-  const handleEventClick = (clickInfo) => {
-    // if (
-    //   confirm(
-    //     `Are you sure you want to delete the event '${clickInfo.event.start}'`
-    //   )
-    // ) {
-    //   clickInfo.event.remove();
-    // }
-    console.log(clickInfo);
-  };
+ 
 
   return (
     <div className="calendarComponent">
