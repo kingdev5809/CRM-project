@@ -9,6 +9,8 @@ function Schedule() {
   const [start_day, setStart_day] = useState("");
   const [start, setStart] = useState("");
   const [end, setEnd] = useState("");
+  const [refresh, setRefresh] = useState("");
+
   const handleEventClick = (clickInfo) => {
     let startDate = new Date(clickInfo.startStr);
     let endDate = new Date(clickInfo.endStr);
@@ -30,12 +32,15 @@ function Schedule() {
     setStart(`${startHours}:${startMinutes}`);
     setEnd(`${endHours}:${endMinutes}`);
     setVisibleModalTwo("d-block");
+    setRefresh(startDate)
   };
   return (
     <div className="flex ">
       <Navbar />
       <div className="scheldulePage container">
-        <Calendar handleEventClick={handleEventClick} />
+        <Calendar handleEventClick={handleEventClick} 
+          refresh={refresh}
+          />
         <AddGroupTimeModal
           visibleModal={visibleModalTwo}
           setVisibleModal={setVisibleModalTwo}
@@ -45,6 +50,7 @@ function Schedule() {
           setStart_day={setStart_day}
           setStart={setStart}
           setEnd={setEnd}
+          setRefresh={setRefresh}
         />
       </div>
     </div>

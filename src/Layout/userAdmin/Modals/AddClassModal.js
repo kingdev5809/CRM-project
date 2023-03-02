@@ -99,6 +99,7 @@ const AddClassModal = (props) => {
                     value={teacher}
                     onChange={(e) => setTeacher(e.target.value)}
                   >
+                    <option value="">Choose teacher...</option>
                     {data?.teachers.map((item) => (
                       <option value={item._id}>{item.name}</option>
                     ))}
@@ -114,6 +115,8 @@ const AddClassModal = (props) => {
                     value={bg_color}
                     onChange={(e) => setBg_color(e.target.value)}
                   >
+                    <option value="">Choose BG color...</option>
+
                     <option value="bg-yellow">Yellow</option>
                     <option value="bg-red">Red</option>
                     <option value="bg-green">green</option>
@@ -122,7 +125,7 @@ const AddClassModal = (props) => {
                 </div>
 
                 <div className="modal-input">
-                  <label>Text color</label>
+                  <label>Select text color</label>
                   <select
                     className="w-full"
                     name="selectColor"
@@ -130,6 +133,7 @@ const AddClassModal = (props) => {
                     value={text_color}
                     onChange={(e) => setText_color(e.target.value)}
                   >
+                    <option value="">Choose text color...</option>
                     <option value="bg-white">White</option>
                     <option value="bg-yellow">Yellow</option>
                     <option value="bg-red">Red</option>
@@ -140,7 +144,7 @@ const AddClassModal = (props) => {
               </div>
 
               <div className="modal-input">
-                <label>Choose Subject</label>
+                <label>Select Subject</label>
                 <select
                   className="w-full"
                   name="selectColor"
@@ -148,6 +152,8 @@ const AddClassModal = (props) => {
                   value={subject}
                   onChange={(e) => setSubject(e.target.value)}
                 >
+                    <option value="">Choose subject...</option>
+
                   {subjectData?.books?.map((item) => (
                     <option value={item._id}>{item.subject}</option>
                   ))}

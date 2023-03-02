@@ -738,16 +738,22 @@ body::-webkit-scrollbar {
   padding: 30px 20px;
 }
 .calendarComponent .fc .fc-timegrid-slot {
-  height: 3rem;
+  height: 2rem;
 }
 .calendarComponent .fc .fc-timegrid-slot-minor {
   border-top-style: none;
 }
 
 .calendarComponent .fc .fc-col-header-cell-cushion {
-  padding: 30px 10px;
+  padding: 15px 10px;
   display: block;
   font-size: 20px;
+}
+.calendarComponent .fc .fc-toolbar.fc-header-toolbar {
+  margin-bottom: 0.5rem;
+}
+.calendarComponent .fc .fc-daygrid-body-natural .fc-daygrid-day-events{
+  margin-bottom: 0;
 }
 .calendarComponent .fc-timegrid-slot-label {
   border: none;

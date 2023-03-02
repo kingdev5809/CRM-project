@@ -9,7 +9,7 @@ import { getAllGroupTimes } from "../../Redux/Actions/AdminAction.js";
 import { USER_LOGIN_SUCCESS } from "../../Redux/Constants/UserConstants.js";
 
 export default function Calendar(props) {
-  const {handleEventClick} = props
+  const {handleEventClick,refresh} = props
   const [isMobile, setIsMobile] = useState(true);
   const [selectable, setSelectable] = useState(false);
   function getHeaderToolbar() {
@@ -64,7 +64,7 @@ export default function Calendar(props) {
 
   useEffect(() => {
     dispatch(getAllGroupTimes());
-  }, []);
+  }, [refresh]);
 
   const CalendarFunc = (event) => {
     let day = new Date(event.start_day).getDay();
@@ -103,17 +103,7 @@ export default function Calendar(props) {
         events={events[0]}
         // dateClick={handleEventClick}
         select={handleEventClick}
-        // eventClick={handleEventClick}
-        // eventAdd={handleEventClick}
-        // eventChange={handleEventClick}
-        // eventsSet={handleEventClick}
-        // eventColor={"#" + Math.floor(Math.random() * 16777215).toString(16)}
-
-        //eventContent={renderEventContent} // custom render function
-        // eventClick={this.handleEventClick}
-        //eventsSet={this.handleEvents} // called after events are initialized/added/changed/removed
-        /* you can update a remote database when these fire:
-        eventRemove={function(){}}*/
+       
       />
     </div>
   );

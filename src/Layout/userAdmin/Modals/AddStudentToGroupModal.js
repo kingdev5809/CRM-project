@@ -49,14 +49,16 @@ function AddStudentToGroupModal(props) {
             <div className="modal-content">
               <form action="">
                 <div className="modal-input w-full">
-                  <label>First name</label>
+                  <label>Select student</label>
                   <select
                     className="w-full"
-                    name="selectColor"
-                    id="color"
+                    name="name"
+                    id="name"
                     value={student}
                     onChange={(e) => setStudent(e.target.value)}
                   >
+                    <option value="">Choose Student...</option>
+
                     {data?.students.map((item) => (
                       <option value={item._id} key={item._id}>
                         {`${item.surname}

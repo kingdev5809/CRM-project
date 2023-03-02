@@ -103,6 +103,8 @@ function AddGroupTimeModal(props) {
                     value={group_id}
                     onChange={(e) => setGroup_id(e.target.value)}
                   >
+                    <option value="">Choose group...</option>
+
                     {data?.groups.map((item) => (
                       <option value={item._id} key={item._id}>
                         {`${item.group_name}`}
@@ -120,6 +122,7 @@ function AddGroupTimeModal(props) {
                     value={teacher_id}
                     onChange={(e) => setTeacher_id(e.target.value)}
                   >
+                    <option value="">Choose teacher...</option>
                     {data?.groups.map((item) => (
                       <option value={item._id} key={item._id}>
                         {`${item?.teacher?.name} ${item?.teacher?.surname}`}
@@ -169,7 +172,7 @@ function AddGroupTimeModal(props) {
                 </div>
                 <div className="flex">
                   <div className="modal-input w-full">
-                    <label>Choose location</label>
+                    <label>Select location</label>
                     <select
                       className="w-full"
                       name="selectColor"
@@ -177,6 +180,8 @@ function AddGroupTimeModal(props) {
                       value={address}
                       onChange={(e) => setAddress(e.target.value)}
                     >
+                      <option value="">Choose location...</option>
+
                       {locationData?.map((item) => (
                         <option value={item.location} key={item.location}>
                           {`${item.location}`}
@@ -194,6 +199,7 @@ function AddGroupTimeModal(props) {
                       value={color}
                       onChange={(e) => setColor(e.target.value)}
                     >
+                      <option value="">Choose color...</option>
                       <option value="bg_red">Red</option>
                       <option value="bg_yellow">Yellow</option>
                       <option value="bg_blue">Blue</option>
