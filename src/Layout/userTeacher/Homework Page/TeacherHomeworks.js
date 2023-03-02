@@ -32,8 +32,9 @@ function TeacherHomeworks({ group_id }) {
 
   return (
     <div className="homework messages-cards">
-      <div className="flex">
+      <div className="flex homework-title">
         <h1>Homeworks</h1>
+        <button>Create</button>
       </div>
       <div className="items">
         {data ? (

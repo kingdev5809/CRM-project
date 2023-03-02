@@ -1274,8 +1274,21 @@ body::-webkit-scrollbar {
   position: relative;
   min-height: 80vh;
 }
+
 .homeworkPage .items {
   height: 84vh;
+}
+.homeworkPage .homework .homework-title {
+  justify-content: space-between;
+}
+.homeworkPage .homework .homework-title button {
+  background-color: #ee6c4d;
+  border: none;
+  border-radius: 30px;
+  color: #fff;
+  cursor: pointer;
+  margin: auto 0;
+  padding: 7px 25px;
 }
 .homeworkPage .homework .items .item {
   height: 190px;

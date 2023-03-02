@@ -123,7 +123,7 @@ function AddGroupTimeModal(props) {
                   >
                     <option value="">Choose teacher...</option>
                     {data?.groups.map((item) => (
-                      <option value={item._id} key={item._id}>
+                      <option value={item.teacher._id} key={item._id}>
                         {`${item?.teacher?.name} ${item?.teacher?.surname}`}
                       </option>
                     ))}
