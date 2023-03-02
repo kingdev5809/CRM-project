@@ -149,7 +149,7 @@ function Navbar() {
                 ? `${user?.admin?.name} ${user?.admin?.surname} `
                 : user?.teacher
                 ? `${user?.teach?.name} ${user?.teach?.surname} `
-                : "STUDENT"}
+                : `${user?.stud?.name} ${user?.stud?.surname} `}
             </h2>
             <h3>
               {user?.rektor ? "ADMIN" : user?.teacher ? "TEACHER" : "STUDENT"}
