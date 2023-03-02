@@ -80,10 +80,8 @@ export default function Calendar() {
     // ) {
     //   clickInfo.event.remove();
     // }
-    console.log(clickInfo.event);
+    console.log(clickInfo);
   };
-
-  
 
   return (
     <div className="calendarComponent">
@@ -98,9 +96,12 @@ export default function Calendar() {
             buttonText: "Week",
           },
         }}
+        selectable={true}
         themeSystem="Simplex"
         plugins={[dayGridPlugin, timeGridPlugin, listPlugin, interactionPlugin]}
         events={events[0]}
+        // dateClick={handleEventClick}
+        select={handleEventClick}
         // eventClick={handleEventClick}
         // eventAdd={handleEventClick}
         // eventChange={handleEventClick}
