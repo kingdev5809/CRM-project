@@ -24,7 +24,7 @@ const AddClassModal = (props) => {
   const dispatch = useDispatch();
   const getTeachers = useSelector((state) => state.teachers);
   const getSubjects = useSelector((state) => state.subjects);
-  const { data } = getTeachers;
+  const { Teacherdata } = getTeachers;
   const { subjectData } = getSubjects;
 
   useEffect(() => {
@@ -100,7 +100,7 @@ const AddClassModal = (props) => {
                     onChange={(e) => setTeacher(e.target.value)}
                   >
                     <option value="">Choose teacher...</option>
-                    {data?.teachers.map((item) => (
+                    {Teacherdata?.teachers.map((item) => (
                       <option value={item._id}>{item.name}</option>
                     ))}
                   </select>

@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   getAllGroups,
   getAllLocation,
+  getAllTeachers,
   postGroupTime,
 } from "../../../Redux/Actions/AdminAction";
 import { deleteIcon } from "../../../Components/icons/svgIcons";
@@ -40,6 +41,13 @@ function AddGroupTimeModal(props) {
   const getLocations = useSelector((state) => state.locations);
   const { locationData } = getLocations;
 
+  const getTeachers = useSelector((state) => state.teachers);
+  const { Teacherdata } = getTeachers;
+
+  useEffect(() => {
+    dispatch(getAllTeachers());
+  }, [refresh]);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(
@@ -71,7 +79,7 @@ function AddGroupTimeModal(props) {
     setTeacher_id("");
   };
 
-  console.log(start_day);
+  console.log(data);
   return (
     <div>
       <div className={visibleModal}>
@@ -122,9 +130,9 @@ function AddGroupTimeModal(props) {
                     onChange={(e) => setTeacher_id(e.target.value)}
                   >
                     <option value="">Choose teacher...</option>
-                    {data?.groups.map((item) => (
-                      <option value={item.teacher._id} key={item._id}>
-                        {`${item?.teacher?.name} ${item?.teacher?.surname}`}
+                    {Teacherdata?.teachers.map((item) => (
+                      <option value={item._id} key={item._id}>
+                        {`${item?.name} ${item?.surname}`}
                       </option>
                     ))}
                   </select>

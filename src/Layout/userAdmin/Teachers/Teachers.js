@@ -36,7 +36,7 @@ const Teachers = () => {
   const dispatch = useDispatch();
 
   const getTeachers = useSelector((state) => state.teachers);
-  const { loading, data } = getTeachers;
+  const {  Teacherdata } = getTeachers;
 
   useEffect(() => {
     dispatch(getAllTeachers());
@@ -77,8 +77,8 @@ const Teachers = () => {
         </div>
 
         <div className="items">
-          {data ? (
-            data.teachers
+          {Teacherdata ? (
+            Teacherdata.teachers
               .map((user) => (
                 <div className="item " key={user._id}>
                   <img src={userImg} alt="" />

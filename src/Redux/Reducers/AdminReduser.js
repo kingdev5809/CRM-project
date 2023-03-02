@@ -28,7 +28,7 @@ export const getAllTeachersReducers = (state = {}, action) => {
     case TEACHER_GET_ALL_REQUEST:
       return { loading: true };
     case TEACHER_GET_ALL_SUCCESS:
-      return { loading: false, data: action.payload };
+      return { loading: false, Teacherdata: action.payload };
     case TEACHER_GET_ALL_FAIL:
       return { loading: false, error: action.payload };
     default:
