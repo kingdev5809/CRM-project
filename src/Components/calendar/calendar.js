@@ -7,9 +7,11 @@ import interactionPlugin from "@fullcalendar/interaction";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllGroupTimes } from "../../Redux/Actions/AdminAction.js";
 import ScheduleInfoModal from "../../Layout/userTeacher/Modal/ScheduleInfoModal.js";
+import { USER_LOGIN_SUCCESS } from "../../Redux/Constants/UserConstants.js";
 
 export default function Calendar() {
   const [isMobile, setIsMobile] = useState(true);
+  const [selectable, setSelectable] = useState(false);
   function getHeaderToolbar() {
     if (isMobile) {
       return {
@@ -25,7 +27,16 @@ export default function Calendar() {
       };
     }
   }
+  const dispatch = useDispatch();
 
+  const user = JSON.parse(localStorage.getItem("userInfo"));
+  useEffect(() => {
+    if (user?.rektor) {
+      setSelectable(true);
+    } else {
+      setSelectable(false);
+    }
+  }, []);
   function getResponsiveView() {
     if (isMobile) {
       return 1;
@@ -46,8 +57,6 @@ export default function Calendar() {
       setIsMobile(false);
     }
   }
-
-  const dispatch = useDispatch();
 
   const getGroupTimes = useSelector((state) => state.groupTimes);
   const { data } = getGroupTimes;
@@ -96,7 +105,7 @@ export default function Calendar() {
             buttonText: "Week",
           },
         }}
-        selectable={true}
+        selectable={selectable}
         themeSystem="Simplex"
         plugins={[dayGridPlugin, timeGridPlugin, listPlugin, interactionPlugin]}
         events={events[0]}
