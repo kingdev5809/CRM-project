@@ -27,6 +27,7 @@ body {
 .flex {
   display: flex;
 }
+
 .navbar-box {
   width: 21%;
 }
@@ -722,7 +723,7 @@ body::-webkit-scrollbar {
 }
 .calendarComponent .fc-toolbar .fc-toolbar-chunk:nth-child(3) button {
   border-radius: 10px;
-  padding: 5px 20px;
+  padding: 3px 15px;
   margin: 5px;
 }
 
@@ -775,6 +776,9 @@ body::-webkit-scrollbar {
   border: none;
   border-left: 5px solid #8b5cf6;
 }
+.calendarComponent .bg_violet .fc-daygrid-event-dot {
+  border-color: #8b5cf6;
+}
 
 /* color item end  bg_violet*/
 
@@ -787,6 +791,9 @@ body::-webkit-scrollbar {
   background-color: #f43f5d3c;
   border: none;
   border-left: 5px solid #f43f5e;
+}
+.calendarComponent .bg_red .fc-daygrid-event-dot {
+  border-color: #f43f5e;
 }
 
 /* color item end  bg_red*/
@@ -801,6 +808,9 @@ body::-webkit-scrollbar {
   border: none;
   border-left: 5px solid #f59e01;
 }
+.calendarComponent .bg_yellow .fc-daygrid-event-dot {
+  border-color: #f59e01;
+}
 
 /* color item end  bg_red*/
 
@@ -814,7 +824,9 @@ body::-webkit-scrollbar {
   border: none;
   border-left: 5px solid #0ea5e9;
 }
-
+.calendarComponent .bg_blue .fc-daygrid-event-dot {
+  border-color: #0ea5e9;
+}
 /* color item end  bg_blue*/
 
 /* color item start bg_green  */
@@ -830,8 +842,15 @@ body::-webkit-scrollbar {
   border-left: 5px solid #10b981;
 }
 
+.calendarComponent .bg_green .fc-daygrid-event-dot {
+  border-color: #10b981;
+}
 /* color item end  bg_green*/
-
+@media screen and (max-width: 768px) {
+  .calendarComponent .fc-toolbar .fc-toolbar-chunk button {
+    background-color: #dad7d7 !important;
+  }
+}
 @media screen and (max-width: 380px) {
   .scheldulePage {
     padding: 10px;

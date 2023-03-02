@@ -83,6 +83,8 @@ export default function Calendar() {
     console.log(clickInfo.event);
   };
 
+  
+
   return (
     <div className="calendarComponent">
       <FullCalendar
@@ -99,16 +101,16 @@ export default function Calendar() {
         themeSystem="Simplex"
         plugins={[dayGridPlugin, timeGridPlugin, listPlugin, interactionPlugin]}
         events={events[0]}
-        eventClick={handleEventClick}
-
+        // eventClick={handleEventClick}
+        // eventAdd={handleEventClick}
+        // eventChange={handleEventClick}
+        // eventsSet={handleEventClick}
         // eventColor={"#" + Math.floor(Math.random() * 16777215).toString(16)}
 
         //eventContent={renderEventContent} // custom render function
         // eventClick={this.handleEventClick}
         //eventsSet={this.handleEvents} // called after events are initialized/added/changed/removed
         /* you can update a remote database when these fire:
-        eventAdd={function(){}}
-        eventChange={function(){}}
         eventRemove={function(){}}*/
       />
     </div>
