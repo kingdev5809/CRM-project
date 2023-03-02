@@ -38,7 +38,7 @@ const TeacherClasses = () => {
         <div className="items container-95">
           {data ? (
             data?.groups
-              .map((item) => (
+              ?.map((item) => (
                 <div className="item">
                   <img src={userImg} alt="" />
                   <div className="item-box">
@@ -50,7 +50,8 @@ const TeacherClasses = () => {
                     </h4>
                     <div className="itemBtn">
                       <span>
-                        <i className="svg1">{studentIcon}</i> Student:14{" "}
+                        <i className="svg1">{studentIcon}</i> Student:14
+                        {/* {item.students} */}
                       </span>{" "}
                     </div>
                   </div>

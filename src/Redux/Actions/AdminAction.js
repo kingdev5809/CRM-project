@@ -318,7 +318,13 @@ export const postGroupTime =
     text,
     teacher_id,
     setVisibleModal,
-    setRefresh
+    setRefresh,
+    setGroup_id,
+    setEnd_day,
+    setAddress,
+    setColor,
+    setText,
+    setTeacher_id
   ) =>
   async () => {
     try {
@@ -340,6 +346,12 @@ export const postGroupTime =
         toast.success(data.msg);
         setVisibleModal("d-none");
         setRefresh(start_day);
+        setGroup_id("");
+        setEnd_day("");
+        setAddress("");
+        setColor("");
+        setText("");
+        setTeacher_id("");
       }
     } catch (error) {
       console.log(error);

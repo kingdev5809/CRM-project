@@ -62,7 +62,13 @@ function AddGroupTimeModal(props) {
         text,
         teacher_id,
         setVisibleModal,
-        setRefresh
+        setRefresh,
+        setGroup_id,
+        setEnd_day,
+        setAddress,
+        setColor,
+        setText,
+        setTeacher_id
       )
     );
   };
