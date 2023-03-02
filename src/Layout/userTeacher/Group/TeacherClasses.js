@@ -8,7 +8,7 @@ import Navbar from "../../../Components/Navbar";
 import "../../layout.css";
 import userImg from "../../../images/navbar-img/userImg.png";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllGroups } from "../../../Redux/Actions/AdminAction";
+import { getAllGroups } from "../../../Redux/Actions/TeacherAction";
 import { NavLink } from "react-router-dom";
 
 const TeacherClasses = () => {

@@ -22,6 +22,9 @@ import TeacherClasses from "./Layout/userTeacher/Group/TeacherClasses";
 import GroupStudents from "./Layout/userAdmin/Group/GroupStudents";
 import TeacherGroupStudents from "./Layout/userTeacher/Group/TeacherGroupStudents";
 import PageNotFound from "./Components/Page404/PageNotFound";
+import TeacherMessagePage from "./Layout/userTeacher/Message Page/TeacherMessagePage";
+import TeacherHomeworkPage from "./Layout/userTeacher/Homework Page/TeacherHomeworkPage";
+import TeacherHomeworks from "./Layout/userTeacher/Homework Page/TeacherHomeworks";
 const Routing = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -67,6 +70,7 @@ const Routing = () => {
   }
   return (
     <Routes>
+      {/* admin page start */}
       <Route
         path="admin/schedule"
         element={
@@ -116,7 +120,9 @@ const Routing = () => {
           </AdminElement>
         }
       />
+      {/* admin page end */}
 
+      {/* teacher page start */}
       <Route
         path="teacher/schedule"
         element={
@@ -144,6 +150,36 @@ const Routing = () => {
         }
       />
 
+      <Route
+        path="teacher/message"
+        element={
+          <TeacherElement>
+            <TeacherMessagePage />
+          </TeacherElement>
+        }
+      />
+
+      <Route
+        path="teacher/homework"
+        element={
+          <TeacherElement>
+            <TeacherHomeworkPage />
+          </TeacherElement>
+        }
+      />
+
+      <Route
+        path="teacher/homework/engelska"
+        element={
+          <TeacherElement>
+            <TeacherHomeworks />
+          </TeacherElement>
+        }
+      />
+
+      {/* teacher page end */}
+
+      {/* student page start */}
       <Route
         path="student/schedule"
         element={
@@ -196,6 +232,9 @@ const Routing = () => {
           </StudentElement>
         }
       />
+
+      {/* student page end */}
+
       <Route path="notFound" element={<PageNotFound />} />
       <Route path="login" element={<Login />} />
       {/* <Route path="*" element={<NoMatch />} /> */}

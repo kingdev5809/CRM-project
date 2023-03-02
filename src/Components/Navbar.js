@@ -67,17 +67,16 @@ function Navbar() {
         img: classesImg,
         slug: "/teacher/classes",
       },
-
-      // {
-      //   name: "Teacher",
-      //   img: teacherImg,
-      //   slug: "/teacher/teacher",
-      // },
-      // {
-      //   name: "Student",
-      //   img: studentImg,
-      //   slug: "/teacher/students",
-      // },
+      {
+        name: "Homework",
+        img: homeworkImg,
+        slug: "/teacher/homework",
+      },
+      {
+        name: "Message",
+        img: messageImg,
+        slug: "/teacher/message",
+      },
     ],
 
     student: [
