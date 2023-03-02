@@ -114,7 +114,6 @@ function Navbar() {
       navigate("/login");
     }
   }, []);
-  console.log(user);
 
   return (
     <div className={resNavActive}>
