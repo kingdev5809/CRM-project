@@ -9,7 +9,7 @@ import { getAllGroupTimes } from "../../Redux/Actions/AdminAction.js";
 import { USER_LOGIN_SUCCESS } from "../../Redux/Constants/UserConstants.js";
 
 export default function Calendar(props) {
-  const { handleEventClick, CalendarFunc, data } = props;
+  const { handleEventClick, events } = props;
   const [isMobile, setIsMobile] = useState(true);
   const [selectable, setSelectable] = useState(false);
   function getHeaderToolbar() {
@@ -58,7 +58,6 @@ export default function Calendar(props) {
     }
   }
 
-  const events = [data?.groupTimes?.map((event) => CalendarFunc(event))];
 
   return (
     <div className="calendarComponent">

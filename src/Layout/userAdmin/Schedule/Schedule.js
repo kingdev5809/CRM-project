@@ -57,6 +57,9 @@ function Schedule() {
     };
     return events;
   };
+
+  const events = [data?.groupTimes?.map((event) => CalendarFunc(event))];
+
   return (
     <div className="flex ">
       <Navbar />
@@ -64,8 +67,7 @@ function Schedule() {
         <Calendar
           handleEventClick={handleEventClick}
           refresh={refresh}
-          CalendarFunc={CalendarFunc}
-          data={data}
+          events={events}
         />
         <AddGroupTimeModal
           visibleModal={visibleModalTwo}

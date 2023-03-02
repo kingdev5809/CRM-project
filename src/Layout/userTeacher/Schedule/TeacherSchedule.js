@@ -31,11 +31,13 @@ function TeacherSchedule() {
     };
     return events;
   };
+  const events = [data?.groupTimes?.map((event) => CalendarFunc(event))];
+
   return (
     <div className="flex">
       <Navbar />
       <div className="scheldulePage container">
-        <Calendar refresh={refresh} CalendarFunc={CalendarFunc} data={data} />
+        <Calendar refresh={refresh} events={events} />
       </div>
     </div>
   );

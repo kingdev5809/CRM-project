@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Calendar from "../../../Components/calendar/calendar";
 import Navbar from "../../../Components/Navbar";
@@ -15,6 +15,7 @@ function StudentSchedule() {
   useEffect(() => {
     dispatch(getAllGroupTimes());
   }, [refresh]);
+
   const CalendarFunc = (event) => {
     let day = new Date(event.start_day).getDay();
     const events = {
@@ -28,12 +29,16 @@ function StudentSchedule() {
       classNames: event.color,
     };
     return events;
+  };
+
+  const events = [data?.group_times?.map((event) => CalendarFunc(event))];
+console.log(events);
   return (
     <div className="flex">
-      <Navbar/>
+      <Navbar />
       <div className="scheldulePage container">
-      <Calendar />
-    </div>
+        <Calendar refresh={refresh} events={events} />
+      </div>
     </div>
   );
 }
