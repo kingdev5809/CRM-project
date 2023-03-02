@@ -141,7 +141,7 @@ function Navbar() {
           </div>
           <div className="box-2">
             <img className="userImg" src={userImg} alt="" />
-            <h2>{user.teach.name} {user.teach.surname}</h2>
+            <h2>{user?.teach?.name} {user?.teach?.surname}</h2>
             <h3>
               {user?.rektor ? "ADMIN" : user?.teacher ? "TEACHER" : "STUDENT"}
             </h3>
