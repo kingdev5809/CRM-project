@@ -9,7 +9,7 @@ import { getAllGroupTimes } from "../../Redux/Actions/AdminAction.js";
 import { USER_LOGIN_SUCCESS } from "../../Redux/Constants/UserConstants.js";
 
 export default function Calendar(props) {
-  const {handleEventClick,refresh} = props
+  const { handleEventClick, CalendarFunc, data } = props;
   const [isMobile, setIsMobile] = useState(true);
   const [selectable, setSelectable] = useState(false);
   function getHeaderToolbar() {
@@ -27,7 +27,6 @@ export default function Calendar(props) {
       };
     }
   }
-  const dispatch = useDispatch();
 
   const user = JSON.parse(localStorage.getItem("userInfo"));
   useEffect(() => {
@@ -59,30 +58,7 @@ export default function Calendar(props) {
     }
   }
 
-  const getGroupTimes = useSelector((state) => state.groupTimes);
-  const { data } = getGroupTimes;
-
-  useEffect(() => {
-    dispatch(getAllGroupTimes());
-  }, [refresh]);
-
-  const CalendarFunc = (event) => {
-    let day = new Date(event.start_day).getDay();
-    const events = {
-      title: event.group_id.group_name,
-      startRecur: `${event.start_day}T${event.start}+05:00`,
-      endRecur: `${event.end_day}T${event.end}+05:00`,
-      daysOfWeek: [day],
-      startTime: event.start,
-      endTime: event.end,
-      groupId: event._id,
-      classNames: event.color,
-    };
-    return events;
-  };
   const events = [data?.groupTimes?.map((event) => CalendarFunc(event))];
-
- 
 
   return (
     <div className="calendarComponent">
@@ -103,7 +79,6 @@ export default function Calendar(props) {
         events={events[0]}
         // dateClick={handleEventClick}
         select={handleEventClick}
-       
       />
     </div>
   );

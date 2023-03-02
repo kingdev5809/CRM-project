@@ -752,7 +752,7 @@ body::-webkit-scrollbar {
 .calendarComponent .fc .fc-toolbar.fc-header-toolbar {
   margin-bottom: 0.5rem;
 }
-.calendarComponent .fc .fc-daygrid-body-natural .fc-daygrid-day-events{
+.calendarComponent .fc .fc-daygrid-body-natural .fc-daygrid-day-events {
   margin-bottom: 0;
 }
 .calendarComponent .fc-timegrid-slot-label {
@@ -933,6 +933,38 @@ body::-webkit-scrollbar {
   right: 0px;
   position: absolute;
   background-color: red;
+}
+
+.classes-page .items .item .text-blue {
+  color: #0369a1;
+}
+.classes-page .items .item .bg-blue {
+  background-color: #0369a1;
+}
+.classes-page .items .item .text-yellow {
+  color: #b45309;
+}
+.classes-page .items .item .bg-yellow {
+  background-color: #b45309;
+}
+.classes-page .items .item .text-red {
+  color: #be123c;
+}
+.classes-page .items .item .bg-red {
+  background-color: #be123c;
+}
+.classes-page .items .item .text-violet {
+  color: #8b5cf6;
+}
+.classes-page .items .item .bg-violet {
+  background-color: #8b5cf6;
+}
+.classes-page .items .item .text-green {
+  color: #047857;
+}
+
+.classes-page .items .item .bg-green {
+  background-color: #047857;
 }
 @media screen and (max-width: 1500px) {
   .classes-page .items .item {

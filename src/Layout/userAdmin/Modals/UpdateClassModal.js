@@ -4,26 +4,34 @@ import { deleteIcon } from "../../../Components/icons/svgIcons";
 import {
   getAllSubject,
   getAllTeachers,
-  postGroups,
+  updateClass,
 } from "../../../Redux/Actions/AdminAction";
-import "../../layout.css";
 
-const AddClassModal = (props) => {
-  const { visibleModal, setVisibleModal, setRefresh } = props;
-  const [group_name, setGroup_name] = useState("");
-  const [subject, setSubject] = useState("");
-  const [teacher, setTeacher] = useState("");
-  const [bg_color, setBg_color] = useState("");
-  const [text_color, setText_color] = useState("");
-  const [text, setText] = useState("");
-  //   {
-  //     "group_name": "English A",
-  //     "subject": "en",
-  //     "teacher": "63e9ccd667477e5625f435eb"
-  // }
+function UpdateClassModal(props) {
+  const {
+    visibleModal,
+    setVisibleModal,
+    group_name,
+    setGroup_name,
+    subject,
+    setSubject,
+    teacher,
+    setTeacher,
+    bg_color,
+    setBg_color,
+    text_color,
+    setText_color,
+    text,
+    setText,
+    group_id,
+    setGroup_id,
+    setRefresh,
+  } = props;
+  
   const dispatch = useDispatch();
   const getTeachers = useSelector((state) => state.teachers);
   const getSubjects = useSelector((state) => state.subjects);
+
   const { data } = getTeachers;
   const { subjectData } = getSubjects;
 
@@ -32,21 +40,6 @@ const AddClassModal = (props) => {
     dispatch(getAllSubject());
   }, []);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    dispatch(
-      postGroups(
-        group_name,
-        subject,
-        teacher,
-        bg_color,
-        text_color,
-        text,
-        setVisibleModal,
-        setRefresh
-      )
-    );
-  };
   const handleDelete = (e) => {
     e.preventDefault();
     setVisibleModal("d-none");
@@ -56,10 +49,27 @@ const AddClassModal = (props) => {
     setBg_color("");
     setText_color("");
     setText("");
+    setGroup_id("");
   };
 
+  const handleUpdate = (e) => {
+    e.preventDefault();
+    dispatch(
+      updateClass(
+        group_name,
+        subject,
+        teacher,
+        bg_color,
+        text_color,
+        text,
+        group_id,
+        setRefresh,
+        setVisibleModal
+      )
+    );
+  };
   return (
-    <>
+    <div>
       <div className={visibleModal}>
         <div
           onClick={() => setVisibleModal("d-none")}
@@ -175,7 +185,7 @@ const AddClassModal = (props) => {
 
               <div className="btn-group">
                 <button onClick={handleDelete}>DELELTE</button>
-                <button onClick={handleSubmit} className="btn-2">
+                <button onClick={handleUpdate} className="btn-2">
                   SAVE
                 </button>
               </div>
@@ -183,8 +193,8 @@ const AddClassModal = (props) => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
-};
+}
 
-export default AddClassModal;
+export default UpdateClassModal;

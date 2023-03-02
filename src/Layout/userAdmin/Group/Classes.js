@@ -13,6 +13,7 @@ import { deleteClass, getAllGroups } from "../../../Redux/Actions/AdminAction";
 import { NavLink } from "react-router-dom";
 import DeleteModal from "../Modals/DeleteModal";
 import AddGroupTimeModal from "../Modals/AddGroupTimeModal";
+import UpdateClassModal from "../Modals/UpdateClassModal";
 
 const Classes = () => {
   const [visibleModal, setVisibleModal] = useState("d-none");
@@ -20,7 +21,17 @@ const Classes = () => {
   const [classes_id, setClasses_Id] = useState();
 
   const [visibleModalTwo, setVisibleModalTwo] = useState("d-none");
-  
+
+  // update classes states
+  const [updateVisibleModal, setUpdateVisibleModal] = useState("d-none");
+  const [group_name, setGroup_name] = useState("");
+  const [subject, setSubject] = useState("");
+  const [teacher, setTeacher] = useState("");
+  const [bg_color, setBg_color] = useState("");
+  const [text_color, setText_color] = useState("");
+  const [text, setText] = useState("");
+  const [group_id, setGroup_id] = useState();
+
   // add time states
   const [start_day, setStart_day] = useState("");
   const [start, setStart] = useState("");
@@ -49,6 +60,18 @@ const Classes = () => {
     setClasses_Id();
   }
 
+  // handle update classes
+  const handleUpdateSetItem = (item) => {
+    setGroup_name(item.group_name);
+    setSubject(item.subject);
+    setTeacher(item.teacher._id);
+    setBg_color(item.bg_color);
+    setText_color(item.text_color);
+    setText(item.text);
+    setGroup_id(item._id);
+    setUpdateVisibleModal("d-block");
+    console.log(item);
+  };
   return (
     <div className="flex">
       <Navbar />
@@ -58,10 +81,15 @@ const Classes = () => {
       </div> */}
         <div className="main-header-pages ">
           <h1>All Classes</h1>
-          <button onClick={() => setVisibleModalTwo("d-block")}>
-            Add Group Time
-          </button>
-          <button onClick={() => setVisibleModal("d-block")}>CREATE</button>
+          <div>
+            <button
+              style={{ margin: "0px 10px" }}
+              onClick={() => setVisibleModalTwo("d-block")}
+            >
+              Add Group Time
+            </button>
+            <button onClick={() => setVisibleModal("d-block")}>CREATE</button>
+          </div>
         </div>
         <div className="items container-95">
           {data ? (
@@ -71,7 +99,7 @@ const Classes = () => {
                   <img src={userImg} alt="" />
                   <div className="item-box">
                     <NavLink to={`/admin/classes/${item._id}`}>
-                      <h3> {item.group_name} </h3>
+                      <h3 className={item.text_color}> {item.group_name} </h3>
                     </NavLink>
                     <h4>
                       <b>Teacher:</b> {item?.teacher?.name}
@@ -81,7 +109,10 @@ const Classes = () => {
                         <i className="svg1">{studentIcon}</i> Student:
                         {item.students}{" "}
                       </span>{" "}
-                      <span className="editBtn">
+                      <span
+                        className="editBtn"
+                        onClick={() => handleUpdateSetItem(item)}
+                      >
                         <i className="svg2">{editIcon}</i> Edit{" "}
                       </span>
                       <span
@@ -92,7 +123,7 @@ const Classes = () => {
                       </span>
                     </div>
                   </div>
-                  <div className="item-box-2"></div>
+                  <div className={`item-box-2 ${item.bg_color}`}></div>
                 </div>
               ))
               .reverse()
@@ -124,6 +155,25 @@ const Classes = () => {
           setStart_day={setStart_day}
           setStart={setStart}
           setEnd={setEnd}
+        />
+        <UpdateClassModal
+          visibleModal={updateVisibleModal}
+          setVisibleModal={setUpdateVisibleModal}
+          group_name={group_name}
+          setGroup_name={setGroup_name}
+          subject={subject}
+          setSubject={setSubject}
+          teacher={teacher}
+          setTeacher={setTeacher}
+          bg_color={bg_color}
+          setBg_color={setBg_color}
+          text_color={text_color}
+          setText_color={setText_color}
+          text={text}
+          setText={setText}
+          group_id={group_id}
+          setGroup_id={setGroup_id}
+          setRefresh={setRefresh}
         />
       </div>
     </div>

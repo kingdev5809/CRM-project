@@ -16,7 +16,7 @@ import DeleteModal from "../Modals/DeleteModal";
 function GroupStudents() {
   const [visibleModal, setVisibleModal] = useState("d-none");
   const [deleteModalVisible, setDeleteModalVisible] = useState("d-none");
-  
+
   const [refresh, setRefresh] = useState("");
   const [group, setGroup] = useState("");
   const [student, setStudent] = useState("");
@@ -44,19 +44,26 @@ function GroupStudents() {
 
   const handleDelete = () => {
     dispatch(
-      deleteStudentFromGroup(student, group, setRefresh, setDeleteModalVisible)
+      deleteStudentFromGroup(
+        student,
+        group,
+        setGroup,
+        setStudent,
+        setRefresh,
+        setDeleteModalVisible
+      )
     );
-    setGroup();
-    setStudent();
   };
 
+  console.log(student);
+  console.log(group);
   return (
     <div className="flex">
       <Navbar />
       <div className="studentsPage main-box container">
         <div className="main-header-pages ">
           <h1>All Students </h1>
-         
+
           <button onClick={() => setVisibleModal("d-block")}>
             Add Student
           </button>
@@ -111,7 +118,6 @@ function GroupStudents() {
           token={token}
         />
 
-       
         <DeleteModal
           handleDelete={handleDelete}
           deleteModalVisible={deleteModalVisible}

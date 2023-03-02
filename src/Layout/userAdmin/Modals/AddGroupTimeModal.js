@@ -13,7 +13,6 @@ function AddGroupTimeModal(props) {
     setVisibleModal,
     setRefresh,
     refresh,
-    token,
     start_day,
     start,
     end,
@@ -137,7 +136,7 @@ function AddGroupTimeModal(props) {
                       className="w-full"
                       type="date"
                       value={start_day}
-                      // onChange={(e) => setStart_day(e.target.value)}
+                      onChange={(e) => setStart_day(e.target.value)}
                       placeholder="Name"
                     />
                   </div>

@@ -506,22 +506,64 @@ export const updateStudent =
     }
   };
 
+// update class
+export const updateClass =
+  (
+    group_name,
+    subject,
+    teacher,
+    bg_color,
+    text_color,
+    text,
+    group_id,
+    setRefresh,
+    setVisibleModal
+  ) =>
+  async () => {
+    try {
+      const { data } = await AdminApi.updateClasses(
+        {
+          group_name,
+          subject,
+          teacher,
+          bg_color,
+          text_color,
+          text,
+        },
+        group_id
+      );
+      console.log(group_name);
+      if (data.error) {
+        toast.warning(data.error);
+      } else {
+        toast.success(data.msg);
+        setRefresh(group_name);
+        setVisibleModal("d-none");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
 // Delete classes
 
 export const deleteStudentFromGroup =
-  (student, group, setRefresh, setDeleteModalVisible) => async () => {
+  (student, group, setGroup, setStudent, setRefresh, setDeleteModalVisible) =>
+  async () => {
     try {
       const { data } = await AdminApi.deleteStudentFromGroups({
         student,
         group,
       });
-      console.log(student);
+      console.log(data);
       if (data.error) {
         toast.warning(data.error);
       } else {
         toast.success(data.msg);
         setRefresh(group);
         setDeleteModalVisible("d-none");
+        setGroup();
+        setStudent();
       }
     } catch (error) {
       console.log(error);

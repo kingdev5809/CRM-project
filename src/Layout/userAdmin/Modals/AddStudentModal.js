@@ -115,17 +115,17 @@ function AddStudentModal(props) {
                   </div>
                 </div>
 
-                <div className="modal-input">
-                  <label>Adress</label>
-                  <input
-                    className="w-full"
-                    type="text"
-                    placeholder="Adress"
-                    value={address}
-                    onChange={(e) => setAddress(e.target.value)}
-                  />
-                </div>
-                <div className="flex ">
+                <div className="flex">
+                  <div className="modal-input w-full" >
+                    <label>Adress</label>
+                    <input
+                      className="w-full"
+                      type="text"
+                      placeholder="Adress"
+                      value={address}
+                      onChange={(e) => setAddress(e.target.value)}
+                    />
+                  </div>
                   <div className="modal-input w-full">
                     <label>Id number </label>
                     <input
@@ -136,7 +136,8 @@ function AddStudentModal(props) {
                       onChange={(e) => setPerson_nr(e.target.value)}
                     />
                   </div>
-
+                </div>
+                <div className="flex ">
                   <div className="modal-input w-full">
                     <label>Parent name</label>
                     <input
@@ -147,8 +148,7 @@ function AddStudentModal(props) {
                       onChange={(e) => setParents_name(e.target.value)}
                     />
                   </div>
-                </div>
-                <div className="flex ">
+
                   <div className="modal-input w-full">
                     <label>Parent number </label>
                     <input
@@ -157,17 +157,6 @@ function AddStudentModal(props) {
                       placeholder="Name"
                       value={parents_phone_number}
                       onChange={(e) => setParents_phone_number(e.target.value)}
-                    />
-                  </div>
-
-                  <div className="modal-input w-full">
-                    <label>Email </label>
-                    <input
-                      className="w-full"
-                      type="text"
-                      placeholder="Email"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
                     />
                   </div>
                 </div>

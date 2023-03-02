@@ -57,3 +57,6 @@ export const updateTeachers = (data, teacher_id) =>
 
 export const updateStudents = (data, student_id) =>
   API.put(`/rektor/student/${student_id}`, data, config);
+
+export const updateClasses = (data, group_id) =>
+  API.put(`/rektor/group/${group_id}`, data, config);
