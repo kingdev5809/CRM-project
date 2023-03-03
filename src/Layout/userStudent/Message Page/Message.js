@@ -5,6 +5,7 @@ import "../../layout.css";
 import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getOneGroup, putComment } from "../../../Redux/Actions/StudentAction";
+import { toast } from "react-toastify";
 function Message({ group_id, group_name }) {
   const [message, setMessage] = useState("");
   const [refresh, setRefresh] = useState("");
@@ -30,18 +31,29 @@ function Message({ group_id, group_name }) {
     dispatch(getOneGroup(group_id));
   }, [group_id]);
 
-  const handleSendMessage = () => {
+  const handleSendMessage = (e) => {
+    if (!group_id) {
+      toast.warning("choose group");
+      return;
+    }
+    if (!message.trim()) {
+      toast.warning("Enter comment");
+      return;
+    }
+
     dispatch(putComment(group_id, message, setRefresh));
-    setMessage('')
+    setMessage("");
   };
+  console.log(data);
 
   return (
     <div className="messages-sec messages-cards">
       <h1>{group_name}</h1>
+      {group_id ? "" : <h1>Choose group</h1>}
       <div className="items">
-        {data?.group?.comment?.map((item) => (
+        {data?.group?.comments?.map((item) => (
           <div className="item">
-            <p>{item.messageText}</p>
+            <p>{item.content}</p>
             <div className="item-box">
               <div className="user-box">
                 <img src={item.userImg} alt="" />
@@ -65,7 +77,12 @@ function Message({ group_id, group_name }) {
             type="text"
             placeholder="You can write message here..."
             value={message}
-            onChange={(e)=> setMessage(e.target.value)}
+            onChange={(e) => setMessage(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key == "Enter") {
+                handleSendMessage();
+              }
+            }}
           />
           <span onClick={handleSendMessage}>
             <img src={sendImd} alt="" />

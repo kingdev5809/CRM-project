@@ -14,6 +14,7 @@ import {
   GROUPS_TIMES_GET_ONE_REQUEST,
   GROUPS_TIMES_GET_ONE_SUCCESS,
 } from "../Constants/AdminContants";
+import { SEND_MESSAGE } from "../Constants/StudentContants";
 
 // GET All GROUPS
 
@@ -72,13 +73,13 @@ export const getAllGroupTimes = () => async (dispatch) => {
 
 // Send comment
 
-export const putComment = (group_id, message) => async () => {
+export const putComment = (group_id, message) => async (dispatch) => {
   try {
     const { data } = await AdminApi.putComments({
       group_id,
       message,
     });
-    console.log(data);
+    dispatch({ type: SEND_MESSAGE, payload: data.result });
     if (data.error) {
       toast.warning(data.error);
     } else {

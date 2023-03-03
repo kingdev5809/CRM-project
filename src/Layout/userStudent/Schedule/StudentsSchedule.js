@@ -32,7 +32,6 @@ function StudentSchedule() {
   };
 
   const events = [data?.group_times?.map((event) => CalendarFunc(event))];
-console.log(events);
   return (
     <div className="flex">
       <Navbar />

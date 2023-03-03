@@ -21,6 +21,7 @@ import {
   TEACHER_GET_ALL_REQUEST,
   TEACHER_GET_ALL_SUCCESS,
 } from "../Constants/AdminContants";
+import { SEND_MESSAGE } from "../Constants/StudentContants";
 
 // GET ALL USERS
 export const getAllTeachersReducers = (state = {}, action) => {
@@ -87,6 +88,12 @@ export const getOneGroupReducers = (state = {}, action) => {
       return { loading: false, data: action.payload };
     case GROUPS_GET_ONE_FAIL:
       return { loading: false, error: action.payload };
+    case SEND_MESSAGE:
+      console.log(state);
+      return {
+        ...state,
+        data: { ...state.data.group.comments, group: action.payload },
+      };
     default:
       return state;
   }
@@ -95,8 +102,6 @@ export const getOneGroupReducers = (state = {}, action) => {
 const initialState = {
   subjectData: [],
 };
-
-
 
 // GET Subjects
 export const getAllSubjectsReducers = (state = initialState, action) => {
@@ -111,7 +116,6 @@ export const getAllSubjectsReducers = (state = initialState, action) => {
       return state;
   }
 };
-
 
 // GET ALL Locations
 export const getAllLocationReducers = (state = {}, action) => {

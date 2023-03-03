@@ -18,7 +18,6 @@ function MessagePage() {
     dispatch(getAllGroups());
   }, []);
 
-  console.log(data);
 
   const handleChangeGroup = (item) => {
     setGroup_id(item._id);

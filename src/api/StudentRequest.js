@@ -16,4 +16,4 @@ export const getOneGroup = (group_id) =>
 
 export const getAllGroupTimes = () => API.get("/student/group_time", config);
 
-export const putComments = () => API.put("/student/comment", config);
+export const putComments = (data) => API.put("/student/comment",data, config);

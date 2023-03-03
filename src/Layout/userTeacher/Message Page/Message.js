@@ -5,6 +5,7 @@ import "../../layout.css";
 import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getOneGroup, putComment } from "../../../Redux/Actions/StudentAction";
+import { toast } from "react-toastify";
 function Message({ group_id, group_name }) {
   const [message, setMessage] = useState("");
   const [refresh, setRefresh] = useState("");
@@ -30,9 +31,13 @@ function Message({ group_id, group_name }) {
     dispatch(getOneGroup(group_id));
   }, [group_id]);
 
-  const handleSendMessage = () => {
+  const handleSendMessage = (e) => {
+    if (!message.trim()) {
+      toast.warning("Enter comment");
+      return;
+    }
     dispatch(putComment(group_id, message, setRefresh));
-    setMessage('')
+    setMessage("");
   };
 
   return (
@@ -65,7 +70,12 @@ function Message({ group_id, group_name }) {
             type="text"
             placeholder="You can write message here..."
             value={message}
-            onChange={(e)=> setMessage(e.target.value)}
+            onChange={(e) => setMessage(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                handleSendMessage();
+              }
+            }}
           />
           <span onClick={handleSendMessage}>
             <img src={sendImd} alt="" />

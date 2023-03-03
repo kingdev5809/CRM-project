@@ -36,31 +36,30 @@ function Homeworks({ group_id }) {
         <h1>Homeworks</h1>
       </div>
       <div className="items">
-        {data?(
-          data?.group?.homeworks?.map((item) => (
-            <div className="item">
-              <div className="item-title">
-                <img src={item.titleImg} alt="" />
-                <h3>Engelska book 23 page eassy</h3>
-              </div>
-              <div className="item-content">
-                <p>{item.messageText}</p>
-                <div className="item-box">
-                  <div className="user-box">
-                    <img src={item.userImg} alt="" />
-                    <div className="user-box-inner">
-                      <h4>{item.userName}</h4>
-                      <h6>{item.userGrade}</h6>
-                    </div>
+        {group_id ? "" : <h1>Choose group</h1>}
+        {data?.group?.homeworks?.map((item) => (
+          <div className="item">
+            <div className="item-title">
+              <img src={item.titleImg} alt="" />
+              <h3>Engelska book 23 page eassy</h3>
+            </div>
+            <div className="item-content">
+              <p>{item.messageText}</p>
+              <div className="item-box">
+                <div className="user-box">
+                  <img src={item.userImg} alt="" />
+                  <div className="user-box-inner">
+                    <h4>{item.userName}</h4>
+                    <h6>{item.userGrade}</h6>
                   </div>
-                  <div className="created-time">
-                    <h6>{item.sendData}</h6>
-                  </div>
+                </div>
+                <div className="created-time">
+                  <h6>{item.sendData}</h6>
                 </div>
               </div>
             </div>
-          ))
-        ): <h1>Loading...</h1>}
+          </div>
+        ))}
       </div>
     </div>
   );
