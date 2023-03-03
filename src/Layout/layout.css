@@ -1431,6 +1431,7 @@ body::-webkit-scrollbar {
   align-items: center;
   margin-top: 15px;
 }
+
 .messages-cards .user-box img {
   width: 40px;
 }
@@ -1478,7 +1479,10 @@ body::-webkit-scrollbar {
   bottom: 10px;
   width: 95%;
 }
-
+.messages-cards .input-box span {
+  display: flex;
+  align-items: center;
+}
 .messages-cards .input-box input {
   border: none;
   outline: none;
@@ -1488,8 +1492,9 @@ body::-webkit-scrollbar {
   font-size: 20px;
 }
 .messages-cards .input-box img {
-  width: 20px;
+  width: 30px;
   margin: auto 0;
+  cursor: pointer;
 }
 @media screen and (max-width: 1050px) {
   .deskop-responsive {
