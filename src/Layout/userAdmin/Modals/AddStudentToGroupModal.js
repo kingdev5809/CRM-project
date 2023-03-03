@@ -59,17 +59,16 @@ function AddStudentToGroupModal(props) {
                   >
                     <option value="">Choose Student...</option>
 
-                    {data?.students.map((item) => (
+                    {data?.map((item) => (
                       <option value={item._id} key={item._id}>
                         {`${item.surname}
-                      ${" "}  
                       ${item.name}`}
                       </option>
                     ))}
                   </select>
                 </div>
                 <div className="btn-group">
-                <button onClick={handleDelete}>DELELTE</button>
+                  <button onClick={handleDelete}>DELELTE</button>
                   <button onClick={handleSubmit} className="btn-2">
                     SAVE
                   </button>

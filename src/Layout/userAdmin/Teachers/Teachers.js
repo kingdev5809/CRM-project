@@ -78,8 +78,7 @@ const Teachers = () => {
 
         <div className="items">
           {Teacherdata ? (
-            Teacherdata.teachers
-              .map((user) => (
+            Teacherdata?.map((user) => (
                 <div className="item " key={user._id}>
                   <img src={userImg} alt="" />
                   <h2>

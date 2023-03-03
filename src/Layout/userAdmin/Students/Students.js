@@ -74,8 +74,8 @@ const Students = () => {
         <div className="main">
           <div className="items">
             {data ? (
-              data?.students
-                .map((item) => (
+              data
+                ?.map((item) => (
                   <div className="item" key={item._id}>
                     <div className="title">
                       <img src={userImg} alt="" />
@@ -123,7 +123,7 @@ const Students = () => {
                       <div className="itemBtn">
                         <span
                           className="editBtn "
-                          onClick={()=> handleUpdateSetItem(item)}
+                          onClick={() => handleUpdateSetItem(item)}
                         >
                           <i className="svg2">{editIcon}</i> Edit{" "}
                         </span>

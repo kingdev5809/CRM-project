@@ -29,7 +29,15 @@ function AddStudentModal(props) {
         parents_name,
         parents_phone_number,
         setVisibleModal,
-        setRefresh
+        setRefresh,
+        setName,
+        setSurname,
+        setEmail,
+        setPhone_number,
+        setAddress,
+        setPerson_nr,
+        setParents_name,
+        setParents_phone_number
       )
     );
   };
@@ -116,7 +124,7 @@ function AddStudentModal(props) {
                 </div>
 
                 <div className="flex">
-                  <div className="modal-input w-full" >
+                  <div className="modal-input w-full">
                     <label>Adress</label>
                     <input
                       className="w-full"

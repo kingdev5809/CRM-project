@@ -48,7 +48,7 @@ const Classes = () => {
     dispatch(getAllGroups());
   }, []);
 
-  console.log(data);
+  
   // handle set item for delete modal
   const handleSetItem = (item) => {
     setDeleteModalVisible("d-block");

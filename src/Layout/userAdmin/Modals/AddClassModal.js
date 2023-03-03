@@ -16,11 +16,7 @@ const AddClassModal = (props) => {
   const [bg_color, setBg_color] = useState("");
   const [text_color, setText_color] = useState("");
   const [text, setText] = useState("");
-  //   {
-  //     "group_name": "English A",
-  //     "subject": "en",
-  //     "teacher": "63e9ccd667477e5625f435eb"
-  // }
+
   const dispatch = useDispatch();
   const getTeachers = useSelector((state) => state.teachers);
   const getSubjects = useSelector((state) => state.subjects);
@@ -49,7 +45,7 @@ const AddClassModal = (props) => {
         setTeacher,
         setBg_color,
         setText_color,
-        setText,
+        setText
       )
     );
   };
@@ -106,7 +102,7 @@ const AddClassModal = (props) => {
                     onChange={(e) => setTeacher(e.target.value)}
                   >
                     <option value="">Choose teacher...</option>
-                    {Teacherdata?.teachers.map((item) => (
+                    {Teacherdata?.map((item) => (
                       <option value={item._id}>{item.name}</option>
                     ))}
                   </select>

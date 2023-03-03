@@ -12,15 +12,18 @@ import {
   GROUPS_TIMES_GET_ONE_FAIL,
   GROUPS_TIMES_GET_ONE_REQUEST,
   GROUPS_TIMES_GET_ONE_SUCCESS,
+  LOCATION_GET_ALL_CREATED,
   LOCATION_GET_ALL_FAIL,
   LOCATION_GET_ALL_REQUEST,
   LOCATION_GET_ALL_SUCCESS,
+  STUDENT_GET_ALL_CREATED,
   STUDENT_GET_ALL_FAIL,
   STUDENT_GET_ALL_REQUEST,
   STUDENT_GET_ALL_SUCCESS,
   SUBJECTS_GET_ALL_FAIL,
   SUBJECTS_GET_ALL_REQUEST,
   SUBJECTS_GET_ALL_SUCCESS,
+  TEACHER_GET_ALL_CREATED,
   TEACHER_GET_ALL_FAIL,
   TEACHER_GET_ALL_REQUEST,
   TEACHER_GET_ALL_SUCCESS,
@@ -34,7 +37,7 @@ export const getAllTeachers = () => async (dispatch) => {
   dispatch({ type: TEACHER_GET_ALL_REQUEST });
   try {
     const { data } = await AdminApi.getTeachers();
-    dispatch({ type: TEACHER_GET_ALL_SUCCESS, payload: data });
+    dispatch({ type: TEACHER_GET_ALL_SUCCESS, payload: data.teachers });
   } catch (error) {
     dispatch({
       type: TEACHER_GET_ALL_FAIL,
@@ -52,7 +55,7 @@ export const getAllStudents = () => async (dispatch) => {
   dispatch({ type: STUDENT_GET_ALL_REQUEST });
   try {
     const { data } = await AdminApi.getStudents();
-    dispatch({ type: STUDENT_GET_ALL_SUCCESS, payload: data });
+    dispatch({ type: STUDENT_GET_ALL_SUCCESS, payload: data.students });
   } catch (error) {
     dispatch({
       type: STUDENT_GET_ALL_FAIL,
@@ -168,8 +171,7 @@ export const postTeachers =
     setVisibleModal,
     setRefresh
   ) =>
-  async () => {
-    // dispatch({ type: TEACHER_POST_ALL_REQUEST });
+  async (dispatch) => {
     try {
       const { data } = await AdminApi.postTeachers({
         name,
@@ -179,22 +181,17 @@ export const postTeachers =
         subject,
         phone_number,
       });
-      // dispatch({ type: TEACHER_POST_ALL_SUCCESS, payload: data });
+      console.log(data);
+
       if (data.error) {
         toast.warning(data.error);
       } else {
         toast.success(data.msg);
         setVisibleModal("d-none");
-        setRefresh(name);
+        dispatch({ type: TEACHER_GET_ALL_CREATED, payload: data.teacher });
+        // setRefresh(name);
       }
     } catch (error) {
-      // dispatch({
-      //   type: TEACHER_POST_ALL_FAIL,
-      //   payload:
-      //     error.response && error.response.data.message
-      //       ? error.response.data.message
-      //       : error.message,
-      // });
       console.log(error);
     }
   };
@@ -228,7 +225,7 @@ export const postGroups =
         text_color,
         text,
       });
-      console.log(data);
+
       if (data.error) {
         toast.warning(data.error);
       } else {
@@ -260,9 +257,17 @@ export const postStudents =
     parents_name,
     parents_phone_number,
     setVisibleModal,
-    setRefresh
+    setRefresh,
+    setName,
+    setSurname,
+    setEmail,
+    setPhone_number,
+    setAddress,
+    setPerson_nr,
+    setParents_name,
+    setParents_phone_number
   ) =>
-  async () => {
+  async (dispatch) => {
     try {
       const { data } = await AdminApi.postStudents({
         name,
@@ -274,13 +279,23 @@ export const postStudents =
         parents_name,
         parents_phone_number,
       });
-
+      console.log(data);
       if (data.error) {
         toast.warning(data.error);
       } else {
         toast.success(data.msg);
         setVisibleModal("d-none");
-        setRefresh(name);
+        dispatch({ type: STUDENT_GET_ALL_CREATED, payload: data.student });
+        setName("");
+        setSurname("");
+        setEmail("");
+        setPhone_number("");
+        setAddress("");
+        setPerson_nr("");
+        setParents_name("");
+        setParents_phone_number("");
+
+        // setRefresh(name);
       }
     } catch (error) {
       console.log(error);
@@ -366,18 +381,20 @@ export const postGroupTime =
 // POST Locations
 
 export const postLocation =
-  (location, setVisibleModal, setRefresh) => async () => {
+  (location, setVisibleModal, setRefresh) => async (dispatch) => {
     try {
       const { data } = await AdminApi.postLocations({
         location,
       });
-
+      console.log(data);
       if (data.error) {
         toast.warning(data.error);
       } else {
         toast.success(data.msg);
         setVisibleModal("d-none");
-        setRefresh(location);
+        dispatch({ type: LOCATION_GET_ALL_CREATED, payload: data });
+
+        // setRefresh(location);
       }
     } catch (error) {
       console.log(error);
@@ -423,7 +440,6 @@ export const deleteTeacher = (teacher_id, setRefresh) => async () => {
 export const deleteClass = (classes_id, setRefresh) => async () => {
   try {
     const { data } = await AdminApi.deleteClasses(classes_id);
-
     if (data.error) {
       toast.warning(data.error);
     } else {

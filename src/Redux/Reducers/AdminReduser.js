@@ -9,22 +9,25 @@ import {
   GROUPS_TIMES_GET_ONE_FAIL,
   GROUPS_TIMES_GET_ONE_REQUEST,
   GROUPS_TIMES_GET_ONE_SUCCESS,
+  LOCATION_GET_ALL_CREATED,
   LOCATION_GET_ALL_FAIL,
   LOCATION_GET_ALL_REQUEST,
   LOCATION_GET_ALL_SUCCESS,
+  STUDENT_GET_ALL_CREATED,
   STUDENT_GET_ALL_FAIL,
   STUDENT_GET_ALL_REQUEST,
   STUDENT_GET_ALL_SUCCESS,
   SUBJECTS_GET_ALL_FAIL,
   SUBJECTS_GET_ALL_REQUEST,
   SUBJECTS_GET_ALL_SUCCESS,
+  TEACHER_GET_ALL_CREATED,
   TEACHER_GET_ALL_FAIL,
   TEACHER_GET_ALL_REQUEST,
   TEACHER_GET_ALL_SUCCESS,
 } from "../Constants/AdminContants";
 import { SEND_MESSAGE } from "../Constants/StudentContants";
 
-// GET ALL USERS
+// GET ALL teachers
 export const getAllTeachersReducers = (state = {}, action) => {
   switch (action.type) {
     case TEACHER_GET_ALL_REQUEST:
@@ -33,12 +36,17 @@ export const getAllTeachersReducers = (state = {}, action) => {
       return { loading: false, Teacherdata: action.payload };
     case TEACHER_GET_ALL_FAIL:
       return { loading: false, error: action.payload };
+    case TEACHER_GET_ALL_CREATED:
+      return {
+        ...state,
+        Teacherdata: [...state.Teacherdata, action.payload],
+      };
     default:
       return state;
   }
 };
 
-// GET ALL Teachers
+// GET ALL students
 export const getAllStudentsReducers = (state = {}, action) => {
   switch (action.type) {
     case STUDENT_GET_ALL_REQUEST:
@@ -47,6 +55,11 @@ export const getAllStudentsReducers = (state = {}, action) => {
       return { loading: false, data: action.payload };
     case STUDENT_GET_ALL_FAIL:
       return { loading: false, error: action.payload };
+    case STUDENT_GET_ALL_CREATED:
+      return {
+        ...state,
+        data: [...state.data, action.payload],
+      };
     default:
       return state;
   }
@@ -62,11 +75,11 @@ export const getAllGroupReducers = (state = {}, action) => {
     case GROUPS_GET_ALL_FAIL:
       return { loading: false, error: action.payload };
     case GROUPS_GET_ALL_CREATED:
-      console.log(state);
       return {
         ...state,
         data: [...state.data, action.payload],
       };
+
     default:
       return state;
   }
@@ -133,6 +146,11 @@ export const getAllLocationReducers = (state = {}, action) => {
       return { loading: false, locationData: action.payload };
     case LOCATION_GET_ALL_FAIL:
       return { loading: false, error: action.payload };
+    case LOCATION_GET_ALL_CREATED:
+      return {
+        ...state,
+        locationData: [...state.locationData, action.payload],
+      };
     default:
       return state;
   }

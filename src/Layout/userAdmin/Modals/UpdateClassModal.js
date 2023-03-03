@@ -110,7 +110,7 @@ function UpdateClassModal(props) {
                     onChange={(e) => setTeacher(e.target.value)}
                   >
                     <option value="">Choose teacher...</option>
-                    {data?.teachers.map((item) => (
+                    {data?.map((item) => (
                       <option value={item._id}>{item.name}</option>
                     ))}
                   </select>
