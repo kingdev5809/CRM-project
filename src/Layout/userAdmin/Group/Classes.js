@@ -46,8 +46,9 @@ const Classes = () => {
 
   useEffect(() => {
     dispatch(getAllGroups());
-  }, [refresh]);
+  }, []);
 
+  console.log(data);
   // handle set item for delete modal
   const handleSetItem = (item) => {
     setDeleteModalVisible("d-block");
@@ -70,7 +71,6 @@ const Classes = () => {
     setText(item.text);
     setGroup_id(item._id);
     setUpdateVisibleModal("d-block");
-    console.log(item);
   };
   return (
     <div className="flex">
@@ -93,8 +93,7 @@ const Classes = () => {
         </div>
         <div className="items container-95">
           {data ? (
-            data?.groups
-              ?.map((item) => (
+            data?.map((item) => (
                 <div className="item" key={item._id}>
                   <img src={userImg} alt="" />
                   <div className="item-box">

@@ -85,7 +85,7 @@ function AddGroupTimeModal(props) {
     setTeacher_id("");
   };
 
-  console.log(data);
+  
   return (
     <div>
       <div className={visibleModal}>
@@ -118,7 +118,7 @@ function AddGroupTimeModal(props) {
                   >
                     <option value="">Choose group...</option>
 
-                    {data?.groups.map((item) => (
+                    {data?.groups?.map((item) => (
                       <option value={item._id} key={item._id}>
                         {`${item.group_name}`}
                       </option>

@@ -2,6 +2,7 @@ import { toast } from "react-toastify";
 import * as AdminApi from "../../api/AdminRequest";
 
 import {
+  GROUPS_GET_ALL_CREATED,
   GROUPS_GET_ALL_FAIL,
   GROUPS_GET_ALL_REQUEST,
   GROUPS_GET_ALL_SUCCESS,
@@ -69,7 +70,7 @@ export const getAllGroups = () => async (dispatch) => {
   dispatch({ type: GROUPS_GET_ALL_REQUEST });
   try {
     const { data } = await AdminApi.getGroups();
-    dispatch({ type: GROUPS_GET_ALL_SUCCESS, payload: data });
+    dispatch({ type: GROUPS_GET_ALL_SUCCESS, payload: data.groups });
   } catch (error) {
     dispatch({
       type: GROUPS_GET_ALL_FAIL,
@@ -209,10 +210,15 @@ export const postGroups =
     text_color,
     text,
     setVisibleModal,
-    setRefresh
+    setRefresh,
+    setGroup_name,
+    setSubject,
+    setTeacher,
+    setBg_color,
+    setText_color,
+    setText
   ) =>
-  async () => {
-    // dispatch({ type: TEACHER_POST_ALL_REQUEST });
+  async (dispatch) => {
     try {
       const { data } = await AdminApi.postGroups({
         group_name,
@@ -222,22 +228,21 @@ export const postGroups =
         text_color,
         text,
       });
-      // dispatch({ type: TEACHER_POST_ALL_SUCCESS, payload: data });
+      console.log(data);
       if (data.error) {
         toast.warning(data.error);
       } else {
         toast.success(data.msg);
+        dispatch({ type: GROUPS_GET_ALL_CREATED, payload: data.group });
         setVisibleModal("d-none");
-        setRefresh(group_name);
+        setGroup_name("");
+        setSubject("");
+        setTeacher("");
+        setBg_color("");
+        setText_color("");
+        setText("");
       }
     } catch (error) {
-      // dispatch({
-      //   type: TEACHER_POST_ALL_FAIL,
-      //   payload:
-      //     error.response && error.response.data.message
-      //       ? error.response.data.message
-      //       : error.message,
-      // });
       console.log(error);
     }
   };

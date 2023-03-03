@@ -80,6 +80,7 @@ export const putComment = (group_id, message) => async (dispatch) => {
       message,
     });
     dispatch({ type: SEND_MESSAGE, payload: data.result });
+
     if (data.error) {
       toast.warning(data.error);
     } else {

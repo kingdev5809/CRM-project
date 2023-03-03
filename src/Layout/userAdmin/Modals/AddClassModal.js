@@ -43,7 +43,13 @@ const AddClassModal = (props) => {
         text_color,
         text,
         setVisibleModal,
-        setRefresh
+        setRefresh,
+        setGroup_name,
+        setSubject,
+        setTeacher,
+        setBg_color,
+        setText_color,
+        setText,
       )
     );
   };
