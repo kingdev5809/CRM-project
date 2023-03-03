@@ -1314,9 +1314,9 @@ body::-webkit-scrollbar {
   font-size: 2.5rem;
 }
 .group-cards .items {
-  margin-top: 20px;
+  margin-top: 10px;
   overflow-y: scroll;
-  height: 88vh;
+  height: 85vh;
 }
 
 .group-cards .items::-webkit-scrollbar {
@@ -1508,6 +1508,7 @@ body::-webkit-scrollbar {
   }
   .group-cards {
     width: 90%;
+    margin:  auto ;
   }
 
   .group-cards .items .item .click-window {
