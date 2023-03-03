@@ -74,6 +74,7 @@ export const getAllGroupTimesReducers = (state = {}, action) => {
       return { loading: false, data: action.payload };
     case GROUPS_TIMES_GET_ONE_FAIL:
       return { loading: false, error: action.payload };
+      
     default:
       return state;
   }
@@ -89,7 +90,6 @@ export const getOneGroupReducers = (state = {}, action) => {
     case GROUPS_GET_ONE_FAIL:
       return { loading: false, error: action.payload };
     case SEND_MESSAGE:
-      console.log(state);
       return {
         ...state,
         data: { ...state.data.group.comments, group: action.payload },

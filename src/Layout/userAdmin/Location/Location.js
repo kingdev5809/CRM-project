@@ -29,8 +29,7 @@ const Location = () => {
         </div>
         <div className="main">
           <div className="items">
-            {locationData
-              ?.map((item) => (
+            {locationData?.map((item) => (
                 <div className="item" key={item.location}>
                   {homeIcon}
                   <p>{item.location}</p>
