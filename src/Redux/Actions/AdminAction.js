@@ -9,6 +9,7 @@ import {
   GROUPS_GET_ONE_FAIL,
   GROUPS_GET_ONE_REQUEST,
   GROUPS_GET_ONE_SUCCESS,
+  GROUPS_TIMES_GET_ONE_CREATED,
   GROUPS_TIMES_GET_ONE_FAIL,
   GROUPS_TIMES_GET_ONE_REQUEST,
   GROUPS_TIMES_GET_ONE_SUCCESS,
@@ -110,7 +111,7 @@ export const getAllGroupTimes = () => async (dispatch) => {
   try {
     const { data } = await AdminApi.getAllGroupTimes();
 
-    dispatch({ type: GROUPS_TIMES_GET_ONE_SUCCESS, payload: data });
+    dispatch({ type: GROUPS_TIMES_GET_ONE_SUCCESS, payload: data.groupTimes });
   } catch (error) {
     dispatch({
       type: GROUPS_TIMES_GET_ONE_FAIL,
@@ -311,7 +312,7 @@ export const postStudentToGroup =
         student,
         group,
       });
-
+      console.log(data);
       if (data.error) {
         toast.warning(data.error);
       } else {
@@ -346,7 +347,7 @@ export const postGroupTime =
     setText,
     setTeacher_id
   ) =>
-  async () => {
+  async (dispatch) => {
     try {
       const { data } = await AdminApi.postGroupTimes({
         group_id,
@@ -359,13 +360,15 @@ export const postGroupTime =
         text,
         teacher_id,
       });
-
+      console.log(data);
       if (data.error) {
         toast.warning(data.error);
       } else {
         toast.success(data.msg);
+        dispatch({ type: GROUPS_TIMES_GET_ONE_CREATED, payload: data.groupTime });
+
         setVisibleModal("d-none");
-        setRefresh(start_day);
+        // setRefresh(start_day);
         setGroup_id("");
         setEnd_day("");
         setAddress("");
@@ -381,7 +384,7 @@ export const postGroupTime =
 // POST Locations
 
 export const postLocation =
-  (location, setVisibleModal, setRefresh) => async (dispatch) => {
+  (location, setVisibleModal, setLocation) => async (dispatch) => {
     try {
       const { data } = await AdminApi.postLocations({
         location,
@@ -393,8 +396,7 @@ export const postLocation =
         toast.success(data.msg);
         setVisibleModal("d-none");
         dispatch({ type: LOCATION_GET_ALL_CREATED, payload: data });
-
-        // setRefresh(location);
+        setLocation("");
       }
     } catch (error) {
       console.log(error);
@@ -450,6 +452,31 @@ export const deleteClass = (classes_id, setRefresh) => async () => {
     console.log(error);
   }
 };
+
+// Delete student from room
+
+export const deleteStudentFromGroup =
+  (student, group, setGroup, setStudent, setRefresh, setDeleteModalVisible) =>
+  async () => {
+    try {
+      const { data } = await AdminApi.deleteStudentFromGroups({
+        student,
+        group,
+      });
+      console.log(data);
+      if (data.error) {
+        toast.warning(data.error);
+      } else {
+        toast.success(data.msg);
+        setRefresh(group);
+        setDeleteModalVisible("d-none");
+        setGroup();
+        setStudent();
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
 // Update teacher
 
@@ -572,31 +599,6 @@ export const updateClass =
         toast.success(data.msg);
         setRefresh(group_name);
         setVisibleModal("d-none");
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-// Delete classes
-
-export const deleteStudentFromGroup =
-  (student, group, setGroup, setStudent, setRefresh, setDeleteModalVisible) =>
-  async () => {
-    try {
-      const { data } = await AdminApi.deleteStudentFromGroups({
-        student,
-        group,
-      });
-      console.log(data);
-      if (data.error) {
-        toast.warning(data.error);
-      } else {
-        toast.success(data.msg);
-        setRefresh(group);
-        setDeleteModalVisible("d-none");
-        setGroup();
-        setStudent();
       }
     } catch (error) {
       console.log(error);

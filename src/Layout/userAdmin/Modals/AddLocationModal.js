@@ -10,7 +10,7 @@ function AddLocationModal(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(postLocation(location, setVisibleModal, setRefresh));
+    dispatch(postLocation(location, setVisibleModal,setLocation));
   };
 
   const handleDelete = (e) => {

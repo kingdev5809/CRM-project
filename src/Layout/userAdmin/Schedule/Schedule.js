@@ -58,7 +58,7 @@ function Schedule() {
     return events;
   };
 
-  const events = [data?.groupTimes?.map((event) => CalendarFunc(event))];
+  const events = [data?.map((event) => CalendarFunc(event))];
 
   return (
     <div className="flex ">

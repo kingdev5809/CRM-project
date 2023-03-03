@@ -6,6 +6,7 @@ import {
   GROUPS_GET_ONE_FAIL,
   GROUPS_GET_ONE_REQUEST,
   GROUPS_GET_ONE_SUCCESS,
+  GROUPS_TIMES_GET_ONE_CREATED,
   GROUPS_TIMES_GET_ONE_FAIL,
   GROUPS_TIMES_GET_ONE_REQUEST,
   GROUPS_TIMES_GET_ONE_SUCCESS,
@@ -79,7 +80,6 @@ export const getAllGroupReducers = (state = {}, action) => {
         ...state,
         data: [...state.data, action.payload],
       };
-
     default:
       return state;
   }
@@ -94,7 +94,11 @@ export const getAllGroupTimesReducers = (state = {}, action) => {
       return { loading: false, data: action.payload };
     case GROUPS_TIMES_GET_ONE_FAIL:
       return { loading: false, error: action.payload };
-
+      case GROUPS_TIMES_GET_ONE_CREATED:
+        return {
+          ...state,
+          data: [...state.data, action.payload],
+        };
     default:
       return state;
   }
