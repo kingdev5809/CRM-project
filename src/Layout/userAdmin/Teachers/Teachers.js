@@ -80,7 +80,7 @@ const Teachers = () => {
           {Teacherdata ? (
             Teacherdata?.map((user) => (
                 <div className="item " key={user._id}>
-                  <img src={userImg} alt="" />
+                  <img src={user.photo} alt="" />
                   <h2>
                     {user.name} {user.surname}
                   </h2>

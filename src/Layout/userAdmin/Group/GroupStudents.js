@@ -77,7 +77,7 @@ function GroupStudents() {
                 .map((item) => (
                   <div className="item" key={item._id}>
                     <div className="title">
-                      <img src={userImg} alt="" />
+                      <img src={item.photo} alt="" />
                       <div className="text-box">
                         <h3>{`${item.student?.surname} ${" "} ${
                           item.student?.name

@@ -1047,6 +1047,9 @@ body::-webkit-scrollbar {
   margin: 5px;
   box-shadow: 5px 5px 13px 2px rgba(0, 0, 0, 0.14);
 }
+.teacherPage .items .item img {
+  width: 150px;
+}
 .teacherPage .items .item h2 {
   font-size: 1.25rem;
   line-height: 1.75rem;
@@ -1508,7 +1511,7 @@ body::-webkit-scrollbar {
   }
   .group-cards {
     width: 90%;
-    margin:  auto ;
+    margin: auto;
   }
 
   .group-cards .items .item .click-window {

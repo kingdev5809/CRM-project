@@ -365,7 +365,10 @@ export const postGroupTime =
         toast.warning(data.error);
       } else {
         toast.success(data.msg);
-        dispatch({ type: GROUPS_TIMES_GET_ONE_CREATED, payload: data.groupTime });
+        dispatch({
+          type: GROUPS_TIMES_GET_ONE_CREATED,
+          payload: data.groupTime,
+        });
 
         setVisibleModal("d-none");
         // setRefresh(start_day);
