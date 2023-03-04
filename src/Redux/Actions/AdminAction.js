@@ -456,11 +456,11 @@ export const deleteClass = (classes_id, setRefresh) => async () => {
 
 // Delete student from room
 
-export const deleteStudentFromGroup =
+export const removeStudent =
   (student, group, setGroup, setStudent, setRefresh, setDeleteModalVisible) =>
   async () => {
     try {
-      const { data } = await AdminApi.deleteStudentFromGroups({
+      const { data } = await AdminApi.removeStudents({
         student,
         group,
       });

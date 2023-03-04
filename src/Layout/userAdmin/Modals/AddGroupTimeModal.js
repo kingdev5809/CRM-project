@@ -190,12 +190,13 @@ function AddGroupTimeModal(props) {
                       onChange={(e) => setAddress(e.target.value)}
                     >
                       <option value="">Choose location...</option>
-
-                      {locationData?.map((item) => (
-                        <option value={item.location} key={item.location}>
-                          {`${item.location}`}
-                        </option>
-                      ))}
+                      {locationData
+                        ? locationData?.map((item) => (
+                            <option value={item.location} key={item.location}>
+                              {`${item.location}`}
+                            </option>
+                          ))
+                        : ""}
                     </select>
                   </div>
 

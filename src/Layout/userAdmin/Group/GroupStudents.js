@@ -2,14 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { deleteIcon } from "../../../Components/icons/svgIcons";
-
 import Navbar from "../../../Components/Navbar";
-import userImg from "../../../images/navbar-img/userImg.png";
-import {
-  deleteStudentFromGroup,
-  getOneGroup,
-} from "../../../Redux/Actions/AdminAction";
-import AddGroupTimeModal from "../Modals/AddGroupTimeModal";
+import { getOneGroup, removeStudent } from "../../../Redux/Actions/AdminAction";
 import AddStudentToGroupModal from "../Modals/AddStudentToGroupModal";
 import DeleteModal from "../Modals/DeleteModal";
 
@@ -21,8 +15,6 @@ function GroupStudents() {
   const [group, setGroup] = useState("");
   const [student, setStudent] = useState("");
 
-  const { name } = useParams();
-  // const { goBack } = useHistory;
   const { token } = useParams();
 
   const dispatch = useDispatch();
@@ -44,7 +36,7 @@ function GroupStudents() {
 
   const handleDelete = () => {
     dispatch(
-      deleteStudentFromGroup(
+      removeStudent(
         student,
         group,
         setGroup,
