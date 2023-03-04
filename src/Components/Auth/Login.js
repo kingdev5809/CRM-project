@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import "../../Layout/layout.css";
 
 import backImg from "../../images/login-page-img.png";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faEyeSlash, faLock, faEye } from "@fortawesome/free-solid-svg-icons";
+import lockImg from "../../images/lock-icon.png";
+import showEyeImg from "../../images/showEye.png";
+import hideEyeImg from "../../images/hideEye.png";
 import "react-bootstrap";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../../Redux/Actions/UserAction";
 export default function Login() {
@@ -64,7 +65,9 @@ export default function Login() {
               />
             </div>
             <div className="input-box">
-              <span>{/* <FontAwesomeIcon icon={faLock} />{" "} */}</span>
+              <span>
+                <img src={lockImg} alt="" />
+              </span>
               <input
                 type={passwordShown ? "text" : "password"}
                 placeholder="Password"
@@ -72,7 +75,7 @@ export default function Login() {
                 onChange={(e) => setPassword(e.target.value)}
               />
               <span onClick={togglePassword} className="eyeSlash">
-                {/* <FontAwesomeIcon icon={passwordShown ? faEye : faEyeSlash} /> */}
+                <img src={passwordShown ? showEyeImg : hideEyeImg} alt="" />
               </span>
             </div>
             <div className="checkbox">

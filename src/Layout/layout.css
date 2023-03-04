@@ -98,6 +98,8 @@ body::-webkit-scrollbar {
     position: unset;
   }
 }
+
+
 .navbar-component {
   width: 20%;
 }
@@ -633,6 +635,10 @@ body::-webkit-scrollbar {
   border-radius: 8px;
   margin: 20px 0;
   display: flex;
+  align-items: center;
+}
+.login-page .login-sec main .login-box .input-box img{
+  width: 20px;
 }
 .login-page .login-sec main .login-box .input-box span {
   color: #84a2a9;
@@ -650,6 +656,9 @@ body::-webkit-scrollbar {
 .login-page .login-sec main .login-box .input-box .eyeSlash {
   cursor: pointer;
   color: #c2d1d4;
+}
+.login-page .login-sec main .login-box .input-box .eyeSlash img{
+  width: 25px;
 }
 .login-page .login-sec main .login-box .checkbox {
   display: flex;
