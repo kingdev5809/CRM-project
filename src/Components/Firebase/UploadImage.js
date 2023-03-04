@@ -21,11 +21,10 @@ const UploadImage = (props) => {
       });
     });
   };
-  console.log(imageUpload);
   return (
     <>
       <div className="upload_photo">
-        <label for="image_upload">Chooose Image </label>
+        <label for="image_upload">Choose Photo </label>
         <p>{imageUpload?.name}</p>
         <input
           id="image_upload"

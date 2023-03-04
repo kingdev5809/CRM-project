@@ -45,7 +45,6 @@ function AddTeacheModal(props) {
     setPhone_number("");
     setAddress("");
   };
-  console.log(photo);
   return (
     <div>
       <div className={visibleModal}>

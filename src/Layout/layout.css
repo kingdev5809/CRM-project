@@ -484,12 +484,12 @@ body::-webkit-scrollbar {
   margin: 5px 0;
 }
 .modalWindows .modal-content .modal-input .upload_photo label {
-  padding: 10px 35px;
+  padding: 5px 35px;
   cursor: pointer;
   /* width: 50%; */
   border: 1px solid #b7b7b7;
   border-radius: 50px;
-  font-size: 12px;
+  font-size: 1.125rem;
 
 }
 .modalWindows .modal-content .modal-input .upload_photo button {
