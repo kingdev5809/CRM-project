@@ -8,9 +8,9 @@ import {
   GROUPS_TIMES_GET_ONE_FAIL,
   GROUPS_TIMES_GET_ONE_REQUEST,
   GROUPS_TIMES_GET_ONE_SUCCESS,
+  SEND_MESSAGE 
 } from "../Constants/AdminContants";
 import * as AdminApi from "../../api/TeacherRequest";
-import { SEND_MESSAGE } from "../Constants/StudentContants";
 import { toast } from "react-toastify";
 
 // GET ALL GROUPS

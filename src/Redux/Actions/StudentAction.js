@@ -13,8 +13,9 @@ import {
   GROUPS_TIMES_GET_ONE_FAIL,
   GROUPS_TIMES_GET_ONE_REQUEST,
   GROUPS_TIMES_GET_ONE_SUCCESS,
+  SEND_MESSAGE 
 } from "../Constants/AdminContants";
-import { SEND_MESSAGE } from "../Constants/StudentContants";
+
 
 // GET All GROUPS
 

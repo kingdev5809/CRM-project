@@ -25,8 +25,8 @@ import {
   TEACHER_GET_ALL_FAIL,
   TEACHER_GET_ALL_REQUEST,
   TEACHER_GET_ALL_SUCCESS,
+  SEND_MESSAGE,
 } from "../Constants/AdminContants";
-import { SEND_MESSAGE } from "../Constants/StudentContants";
 
 const initialState = {
   subjectData: [],
