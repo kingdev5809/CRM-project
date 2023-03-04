@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
+import UploadImage from "../../../Components/Firebase/UploadImage";
 import { deleteIcon } from "../../../Components/icons/svgIcons";
 import { postTeachers } from "../../../Redux/Actions/AdminAction";
 import "../../layout.css";
@@ -12,7 +13,11 @@ function AddTeacheModal(props) {
   const [email, setEmail] = useState("");
   const [phone_number, setPhone_number] = useState("");
   const [address, setAddress] = useState("");
+  const [photo, setPhoto] = useState("");
 
+  // upload image states
+  const [imageUpload, setImageUpload] = useState(null);
+  const [showModal, setShowModal] = useState(false);
   const dispatch = useDispatch();
   // this is
   const handleSubmit = (e) => {
@@ -40,7 +45,7 @@ function AddTeacheModal(props) {
     setPhone_number("");
     setAddress("");
   };
-
+  console.log(photo);
   return (
     <div>
       <div className={visibleModal}>
@@ -131,7 +136,12 @@ function AddTeacheModal(props) {
                 </div>
                 <div className="modal-input">
                   <label>Image </label>
-                  <input className="w-full" type="file" placeholder="Image" />
+                  <UploadImage
+                    imageUpload={imageUpload}
+                    setImgUrl={setPhoto}
+                    setImageUpload={setImageUpload}
+                    setShowModal={setShowModal}
+                  />
                 </div>
 
                 <div className="btn-group">

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
+import UploadImage from "../../../Components/Firebase/UploadImage";
 import { deleteIcon } from "../../../Components/icons/svgIcons";
 import { postStudents } from "../../../Redux/Actions/AdminAction";
 import "../../layout.css";
@@ -13,7 +14,13 @@ function AddStudentModal(props) {
   const [person_nr, setPerson_nr] = useState("");
   const [parents_name, setParents_name] = useState("");
   const [parents_phone_number, setParents_phone_number] = useState("");
+  const [photo, setPhoto] = useState("");
 
+  // upload image states
+  const [imageUpload, setImageUpload] = useState(null);
+  const [showModal, setShowModal] = useState(false);
+
+ 
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {

@@ -464,6 +464,44 @@ body::-webkit-scrollbar {
 }
 .modalWindows .modal-content .modal-input input[type="file"] {
   background-color: transparent;
+  border: none;
+  padding: 0;
+  display: none;
+}
+.modalWindows .modal-content .modal-input .upload_photo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 50px;
+  border: 1px solid #b7b7b7;
+  outline: 2px solid transparent;
+  padding: 5px;
+  font-size: 12px;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  margin: 5px 0;
+}
+.modalWindows .modal-content .modal-input .upload_photo label {
+  padding: 10px 35px;
+  cursor: pointer;
+  /* width: 50%; */
+  border: 1px solid #b7b7b7;
+  border-radius: 50px;
+  font-size: 12px;
+
+}
+.modalWindows .modal-content .modal-input .upload_photo button {
+  padding: 5px 35px;
+  border-radius: 50px;
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  outline: none;
+  cursor: pointer;
+  background-color: #ff7b54;
+  border: none;
+  color: white;
 }
 .modalWindows .modal-content .modal-input select {
   border-radius: 50px;
