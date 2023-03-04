@@ -6,12 +6,11 @@ import {
   phoneIcon,
 } from "../../../Components/icons/svgIcons";
 import Navbar from "../../../Components/Navbar";
-import userImg from "../../../images/navbar-img/userImg.png";
 import {
   deleteTeacher,
   getAllTeachers,
 } from "../../../Redux/Actions/AdminAction";
-import AddTeacheModal from "../Modals/AddTeacheModal";
+import AddTeacherModal from "../Modals/AddTeacherModal";
 import DeleteModal from "../Modals/DeleteModal";
 import UpdateTeacherModal from "../Modals/UpdateTeacherModal";
 
@@ -36,7 +35,7 @@ const Teachers = () => {
   const dispatch = useDispatch();
 
   const getTeachers = useSelector((state) => state.teachers);
-  const {  Teacherdata } = getTeachers;
+  const { Teacherdata } = getTeachers;
 
   useEffect(() => {
     dispatch(getAllTeachers());
@@ -79,48 +78,47 @@ const Teachers = () => {
         <div className="items">
           {Teacherdata ? (
             Teacherdata?.map((user) => (
-                <div className="item " key={user._id}>
-                  <img src={user.photo} alt="" />
-                  <h2>
-                    {user.name} {user.surname}
-                  </h2>
-                  <h4>Teacher</h4>
-                  <p>
-                    {phoneIcon} {user.phone_number}
-                  </p>
-                  <div className="item-inner">
-                    <div className="box box-logn">
-                      {/* <h4> Login</h4> */}
-                      <h5>{user.email}</h5>
-                    </div>
-                    <div className="box box-logn">
-                      {/* <h4>Password</h4> */}
-                      <h6> {user.show_password}</h6>
-                    </div>
-                    <div className="box itemBtn">
-                      <span
-                        className="editBtn"
-                        onClick={() => handleUpdateSetItem(user)}
-                      >
-                        <i className="svg2">{editIcon}</i> Edit
-                      </span>
-                      <span
-                        className="deleteBtn"
-                        onClick={() => handleSetItem(user)}
-                      >
-                        <i className="svg3">{deleteIcon}</i> Delete
-                      </span>
-                    </div>
+              <div className="item " key={user._id}>
+                <img src={user.photo} alt="" />
+                <h2>
+                  {user.name} {user.surname}
+                </h2>
+                <h4>Teacher</h4>
+                <p>
+                  {phoneIcon} {user.phone_number}
+                </p>
+                <div className="item-inner">
+                  <div className="box box-logn">
+                    {/* <h4> Login</h4> */}
+                    <h5>{user.email}</h5>
+                  </div>
+                  <div className="box box-logn">
+                    {/* <h4>Password</h4> */}
+                    <h6> {user.show_password}</h6>
+                  </div>
+                  <div className="box itemBtn">
+                    <span
+                      className="editBtn"
+                      onClick={() => handleUpdateSetItem(user)}
+                    >
+                      <i className="svg2">{editIcon}</i> Edit
+                    </span>
+                    <span
+                      className="deleteBtn"
+                      onClick={() => handleSetItem(user)}
+                    >
+                      <i className="svg3">{deleteIcon}</i> Delete
+                    </span>
                   </div>
                 </div>
-              ))
-              .reverse()
+              </div>
+            )).reverse()
           ) : (
             <h1>LOADING . . .</h1>
           )}
         </div>
 
-        <AddTeacheModal
+        <AddTeacherModal
           visibleModal={visibleModal}
           setVisibleModal={setVisibleModal}
           setRefresh={setRefresh}
@@ -151,6 +149,7 @@ const Teachers = () => {
           setEmail={setEmail}
           setPhone_number={setPhone_number}
           setAddress={setAddress}
+          setPhoto={setPhoto}
         />
       </div>
     </div>

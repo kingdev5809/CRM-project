@@ -13,5 +13,6 @@ export const getAllGroups = () => API.get("/teacher/group", config);
 
 export const getAllGroupTimes = () => API.get("/teacher/group_time", config);
 
-export const getOneGroup = (token) =>
-  API.get(`/rektor/group/${token}`, config);
+export const getOneGroup = (token) => API.get(`/rektor/group/${token}`, config);
+
+export const putComments = (data) => API.put("/teacher/comment", data, config);

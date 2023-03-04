@@ -5,16 +5,14 @@ import Navbar from "../../../Components/Navbar";
 import { getAllGroupTimes } from "../../../Redux/Actions/StudentAction";
 
 function StudentSchedule() {
-  const [refresh, setRefresh] = useState("");
-
   const dispatch = useDispatch();
 
   const getGroupTimes = useSelector((state) => state.groupTimes);
-  const { data } = getGroupTimes;
+  const { allGroupTimes } = getGroupTimes;
 
   useEffect(() => {
     dispatch(getAllGroupTimes());
-  }, [refresh]);
+  }, []);
 
   const CalendarFunc = (event) => {
     let day = new Date(event.start_day).getDay();
@@ -31,12 +29,14 @@ function StudentSchedule() {
     return events;
   };
 
-  const events = [data?.group_times?.map((event) => CalendarFunc(event))];
+  const events = [
+    allGroupTimes?.group_times?.map((event) => CalendarFunc(event)),
+  ];
   return (
     <div className="flex">
       <Navbar />
       <div className="scheldulePage container">
-        <Calendar refresh={refresh} events={events} />
+        <Calendar  events={events} />
       </div>
     </div>
   );

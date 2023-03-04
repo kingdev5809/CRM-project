@@ -12,34 +12,27 @@ import { getAllGroups } from "../../../Redux/Actions/TeacherAction";
 import { NavLink } from "react-router-dom";
 
 const TeacherClasses = () => {
-  const [visibleModal, setVisibleModal] = useState("d-none");
-
-  const [refresh, setRefresh] = useState("");
-
   const dispatch = useDispatch();
 
   const getGroups = useSelector((state) => state.groups);
-  const { data } = getGroups;
+  const { allGroupData } = getGroups;
 
   useEffect(() => {
     dispatch(getAllGroups());
-  }, [refresh]);
+  }, []);
 
-  console.log(data);
 
+console.log(allGroupData);
   return (
     <div className="flex">
       <Navbar />
       <div className="classes-page  main-box container ">
-        {/* <div className="navbar-box">
-        <Navbar />
-      </div> */}
         <div className="main-header-pages ">
           <h1>All Classes</h1>
         </div>
         <div className="items container-95">
-          {data ? (
-            data?.groups
+          {allGroupData ? (
+            allGroupData?.groups
               ?.map((item) => (
                 <div className="item">
                   <img src={userImg} alt="" />

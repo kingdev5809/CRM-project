@@ -10,24 +10,23 @@ const StudentClasses = () => {
   const dispatch = useDispatch();
 
   const getGroups = useSelector((state) => state.groups);
-  const { data } = getGroups;
+  const { allGroupData } = getGroups;
 
   useEffect(() => {
     dispatch(getAllGroups());
   }, []);
 
- console.log(data);
+
   return (
     <div className="flex">
       <Navbar />
       <div className="classes-page  main-box container ">
         <div className="main-header-pages ">
           <h1>All Classes</h1>
-          {/* <button onClick={() => setVisibleModal("d-block")}>CREATE</button> */}
         </div>
         <div className="items container-95">
-          {data ? (
-            data?.groups?.map((item) => (
+          {allGroupData ? (
+            allGroupData?.groups?.map((item) => (
               <div className="item">
                 <img src={userImg} alt="" />
                 <div className="item-box">

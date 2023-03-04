@@ -15,7 +15,7 @@ export const reducers = combineReducers({
   teachers: getAllTeachersReducers,
   students: getAllStudentsReducers,
   groups: getAllGroupReducers,
-  groupStudents: getOneGroupReducers,
+  oneGroup: getOneGroupReducers,
   groupTimes: getAllGroupTimesReducers,
   subjects: getAllSubjectsReducers,
   locations: getAllLocationReducers

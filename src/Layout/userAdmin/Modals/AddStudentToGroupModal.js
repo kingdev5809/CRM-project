@@ -10,7 +10,8 @@ function AddStudentToGroupModal(props) {
   const { visibleModal, setVisibleModal, setRefresh, refresh, token } = props;
   const dispatch = useDispatch();
   const getStudents = useSelector((state) => state.students);
-  const { loading, data } = getStudents;
+  const { loading, studentData } = getStudents;
+
   const [student, setStudent] = useState("");
   const group = token;
 
@@ -59,7 +60,7 @@ function AddStudentToGroupModal(props) {
                   >
                     <option value="">Choose Student...</option>
 
-                    {data?.map((item) => (
+                    {studentData?.map((item) => (
                       <option value={item._id} key={item._id}>
                         {`${item.surname}
                       ${item.name}`}

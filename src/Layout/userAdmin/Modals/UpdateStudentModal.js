@@ -26,6 +26,7 @@ function UpdateStudentModal(props) {
     setPerson_nr,
     setParents_name,
     setParents_phone_number,
+    setPhoto
   } = props;
   const dispatch = useDispatch();
 
@@ -144,6 +145,7 @@ function UpdateStudentModal(props) {
                       onChange={(e) => setPerson_nr(e.target.value)}
                     />
                   </div>
+
 
                   <div className="modal-input w-full">
                     <label>Parent name</label>

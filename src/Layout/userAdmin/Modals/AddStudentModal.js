@@ -20,7 +20,6 @@ function AddStudentModal(props) {
   const [imageUpload, setImageUpload] = useState(null);
   const [showModal, setShowModal] = useState(false);
 
- 
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
@@ -152,6 +151,7 @@ function AddStudentModal(props) {
                     />
                   </div>
                 </div>
+
                 <div className="flex ">
                   <div className="modal-input w-full">
                     <label>Parent name</label>
@@ -175,7 +175,15 @@ function AddStudentModal(props) {
                     />
                   </div>
                 </div>
-
+                <div className="modal-input">
+                  <label>Image </label>
+                  <UploadImage
+                    imageUpload={imageUpload}
+                    setImgUrl={setPhoto}
+                    setImageUpload={setImageUpload}
+                    setShowModal={setShowModal}
+                  />
+                </div>
                 <div className="btn-group">
                   <button onClick={handleDelete}>DELELTE</button>
                   <button onClick={handleSubmit} className="btn-2">

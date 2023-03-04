@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { updateTeacher } from "../../../Redux/Actions/AdminAction";
 import { deleteIcon } from "../../../Components/icons/svgIcons";
 import { useDispatch } from "react-redux";
+import UploadImage from "../../../Components/Firebase/UploadImage";
 
 function UpdateTeacherModal(props) {
   const {
@@ -22,7 +23,12 @@ function UpdateTeacherModal(props) {
     setEmail,
     setPhone_number,
     setAddress,
+    setPhoto,
   } = props;
+  // upload image states
+  const [imageUpload, setImageUpload] = useState(null);
+  const [showModal, setShowModal] = useState(false);
+
   const dispatch = useDispatch();
 
   const handleUpdate = (e) => {
@@ -136,7 +142,12 @@ function UpdateTeacherModal(props) {
                 </div>
                 <div className="modal-input">
                   <label>Image </label>
-                  <input className="w-full" type="file" placeholder="Image" />
+                  <UploadImage
+                    imageUpload={imageUpload}
+                    setImgUrl={setPhoto}
+                    setImageUpload={setImageUpload}
+                    setShowModal={setShowModal}
+                  />
                 </div>
 
                 <div className="btn-group">

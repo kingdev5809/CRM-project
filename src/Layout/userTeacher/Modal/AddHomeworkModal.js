@@ -2,7 +2,7 @@ import React from "react";
 import { deleteIcon } from "../../../Components/icons/svgIcons";
 
 function AddHomeworkModal(props) {
-  const { visibleModal, setVisibleModal, setRefresh } = props;
+  const { visibleModal, setVisibleModal } = props;
 
   const handleSubmit = (e) => {
     e.preventDefault();

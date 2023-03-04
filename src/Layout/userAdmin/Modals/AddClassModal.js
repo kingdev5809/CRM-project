@@ -49,6 +49,8 @@ const AddClassModal = (props) => {
       )
     );
   };
+
+  // cancel posting group time
   const handleDelete = (e) => {
     e.preventDefault();
     setVisibleModal("d-none");

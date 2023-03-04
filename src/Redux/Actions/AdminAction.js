@@ -339,7 +339,6 @@ export const postGroupTime =
     text,
     teacher_id,
     setVisibleModal,
-    setRefresh,
     setGroup_id,
     setEnd_day,
     setAddress,
@@ -360,7 +359,7 @@ export const postGroupTime =
         text,
         teacher_id,
       });
-      console.log(data);
+     
       if (data.error) {
         toast.warning(data.error);
       } else {
@@ -371,7 +370,6 @@ export const postGroupTime =
         });
 
         setVisibleModal("d-none");
-        // setRefresh(start_day);
         setGroup_id("");
         setEnd_day("");
         setAddress("");

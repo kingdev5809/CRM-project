@@ -1,34 +1,18 @@
 import React, { useEffect } from "react";
-import userImg from "../../../images/navbar-img/userImg.png";
-import sendImd from "../../../images/navbar-img/sendmessageicon.png";
-import succsesImg from "../../../images/navbar-img/success.png";
-import exclamationImg from "../../../images/navbar-img/exclamation.png";
 import { useDispatch, useSelector } from "react-redux";
 import { getOneGroup } from "../../../Redux/Actions/StudentAction";
 
 function Homeworks({ group_id }) {
   const dispatch = useDispatch();
 
-  const getGroup = useSelector((state) => state.groupStudents);
-  const { data } = getGroup;
+  const getGroup = useSelector((state) => state.oneGroup);
+  const { oneGroupData } = getGroup;
 
   useEffect(() => {
     dispatch(getOneGroup(group_id));
   }, [group_id]);
 
-  console.log(data);
-  const smalData = [
-    {
-      messageText:
-        " Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minim  dolores quod velit. Deserunt voluptas iure saepe, nihil asperiores  aliquam voluptatum recusandae ex repellat libero incidunt minima  voluptate nam nulla, iste earum atque! Possimus accusamus  repudiandae ipsa a commodi architecto hic. ",
-      userImg: userImg,
-      userName: "Shermorad Holmatov",
-      userGrade: "Student",
-      sendData: "2023-Feb 15",
-      groupName: "ENGELSKA A2",
-      titleImg: exclamationImg,
-    },
-  ];
+
 
   return (
     <div className="homework messages-cards">
@@ -37,7 +21,7 @@ function Homeworks({ group_id }) {
       </div>
       <div className="items">
         {group_id ? "" : <h1>Choose group</h1>}
-        {data?.group?.homeworks?.map((item) => (
+        {oneGroupData?.group?.homeworks?.map((item) => (
           <div className="item">
             <div className="item-title">
               <img src={item.titleImg} alt="" />

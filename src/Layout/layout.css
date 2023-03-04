@@ -489,14 +489,14 @@ body::-webkit-scrollbar {
   /* width: 50%; */
   border: 1px solid #b7b7b7;
   border-radius: 50px;
-  font-size: 1.125rem;
-
+  font-size: 12px;
+  line-height: 1.5rem;
 }
 .modalWindows .modal-content .modal-input .upload_photo button {
   padding: 5px 35px;
   border-radius: 50px;
-  font-size: 1.125rem;
-  line-height: 1.75rem;
+  font-size: 12px;
+  line-height: 1.5rem;
   outline: none;
   cursor: pointer;
   background-color: #ff7b54;
@@ -1285,11 +1285,8 @@ body::-webkit-scrollbar {
 
 .messagesPage .messages-sec .items {
   height: 75vh;
-  /* height: 75vh; */
-}
-.messagesPage .items .item {
-  height: 175px;
-}
+  }
+
 /* Message page end w*/
 
 /* Homework page start */
@@ -1490,7 +1487,7 @@ body::-webkit-scrollbar {
   height: 84vh;
 }
 .messages-cards .items .item {
-  height: 190px;
+  min-height: 50px;
 }
 
 .messages-cards .group-sec .items .item {

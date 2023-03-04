@@ -11,13 +11,12 @@ function MessagePage() {
   const [group_name, setGroup_name] = useState();
 
   const getGroups = useSelector((state) => state.groups);
-  const { data } = getGroups;
+  const { allGroupData } = getGroups;
 
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getAllGroups());
   }, []);
-
 
   const handleChangeGroup = (item) => {
     setGroup_id(item._id);
@@ -30,7 +29,7 @@ function MessagePage() {
         <div className="class-sec group-cards">
           <h1>Class Groups</h1>
           <div className="items">
-            {data?.groups?.map((item) => (
+            {allGroupData?.groups?.map((item) => (
               <div className="item">
                 <div className="item-box">
                   <h3>{item.group_name}</h3>

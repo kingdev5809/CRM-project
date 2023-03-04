@@ -1,31 +1,17 @@
 import React, { useEffect, useState } from "react";
-import userImg from "../../../images/navbar-img/userImg.png";
 import sendImd from "../../../images/navbar-img/sendmessageicon.png";
 import "../../layout.css";
 import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getOneGroup, putComment } from "../../../Redux/Actions/StudentAction";
+import { getOneGroup, putComment } from "../../../Redux/Actions/TeacherAction";
 import { toast } from "react-toastify";
 function Message({ group_id, group_name }) {
   const [message, setMessage] = useState("");
-  const [refresh, setRefresh] = useState("");
-
-  const smalData = [
-    {
-      messageText:
-        " Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minim  dolores quod velit. Deserunt voluptas iure saepe, nihil asperiores  aliquam voluptatum recusandae ex repellat libero incidunt minima  voluptate nam nulla, iste earum atque! Possimus accusamus  repudiandae ipsa a commodi architecto hic. ",
-      userImg: userImg,
-      userName: "Shermorad Holmatov",
-      userGrade: "Student",
-      sendData: "2023-Feb 15",
-      groupName: "ENGELSKA A2",
-    },
-  ];
 
   const dispatch = useDispatch();
 
-  const getGroup = useSelector((state) => state.groupStudents);
-  const { data } = getGroup;
+  const getGroup = useSelector((state) => state.oneGroup);
+  const { oneGroupData } = getGroup;
 
   useEffect(() => {
     dispatch(getOneGroup(group_id));
@@ -36,7 +22,7 @@ function Message({ group_id, group_name }) {
       toast.warning("Enter comment");
       return;
     }
-    dispatch(putComment(group_id, message, setRefresh));
+    dispatch(putComment(group_id, message));
     setMessage("");
   };
 
@@ -44,7 +30,7 @@ function Message({ group_id, group_name }) {
     <div className="messages-sec messages-cards">
       <h1>{group_name}</h1>
       <div className="items">
-        {data?.group?.comment?.map((item) => (
+        {oneGroupData?.group?.comment?.map((item) => (
           <div className="item">
             <p>{item.messageText}</p>
             <div className="item-box">

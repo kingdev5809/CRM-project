@@ -9,20 +9,17 @@ import ScheduleInfoModal from "../Modal/ScheduleInfoModal";
 
 function TeacherGroupStudents() {
   const [visibleModal, setVisibleModal] = useState("d-none");
-  const [visibleModalTwo, setVisibleModalTwo] = useState("d-none");
-  const [refresh, setRefresh] = useState("");
-  const { name } = useParams();
-  // const { goBack } = useHistory;
+
   const { token } = useParams();
 
   const dispatch = useDispatch();
 
-  const getGroup = useSelector((state) => state.groupStudents);
-  const { data } = getGroup;
+  const getGroup = useSelector((state) => state.oneGroup);
+  const { oneGroupData } = getGroup;
 
   useEffect(() => {
     dispatch(getOneGroup(token));
-  }, [refresh]);
+  }, []);
 
   return (
     <div className="flex">
@@ -34,10 +31,12 @@ function TeacherGroupStudents() {
         </div>
         <div className="main">
           <div className="items">
-            {data?.group?.students?.length == 0 && <h1>Not Students</h1>}
+            {oneGroupData?.group?.students?.length == 0 && (
+              <h1>Not Students</h1>
+            )}
 
-            {data ? (
-              data?.group?.students
+            {oneGroupData ? (
+              oneGroupData?.group?.students
                 .map((item) => (
                   <div className="item" key={item._id}>
                     <div className="title">
@@ -69,7 +68,7 @@ function TeacherGroupStudents() {
         <ScheduleInfoModal
           visibleModal={visibleModal}
           setVisibleModal={setVisibleModal}
-          data={data}
+          data={oneGroupData}
         />
       </div>
     </div>

@@ -10,7 +10,7 @@ import starImg from "../../../images/navbar-img/starts.png";
 import succsesImg from "../../../images/navbar-img/success.png";
 import exclamationImg from "../../../images/navbar-img/exclamation.png";
 function ScheduleInfoModal(props) {
-  const { visibleModal, setVisibleModal, setRefresh } = props;
+  const { visibleModal, setVisibleModal } = props;
 
   return (
     <div>

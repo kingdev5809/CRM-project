@@ -41,14 +41,15 @@ const Classes = () => {
 
   const dispatch = useDispatch();
 
+  
   const getGroups = useSelector((state) => state.groups);
-  const { data } = getGroups;
-
+  const { allGroupData } = getGroups;
   useEffect(() => {
     dispatch(getAllGroups());
+    
   }, []);
-
   
+
   // handle set item for delete modal
   const handleSetItem = (item) => {
     setDeleteModalVisible("d-block");
@@ -92,8 +93,9 @@ const Classes = () => {
           </div>
         </div>
         <div className="items container-95">
-          {data ? (
-            data?.map((item) => (
+          {allGroupData ? (
+            allGroupData
+              ?.map((item) => (
                 <div className="item" key={item._id}>
                   <img src={userImg} alt="" />
                   <div className="item-box">

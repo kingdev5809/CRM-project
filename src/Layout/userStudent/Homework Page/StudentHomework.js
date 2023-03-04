@@ -12,12 +12,11 @@ function Homework() {
   const dispatch = useDispatch();
 
   const getGroups = useSelector((state) => state.groups);
-  const { data } = getGroups;
+  const { allGroupData } = getGroups;
 
   useEffect(() => {
     dispatch(getAllGroups());
   }, []);
-  console.log(data);
 
   const handleChangeGroup = (item) => {
     setGroup_id(item._id);
@@ -29,7 +28,7 @@ function Homework() {
         <div className="group-sec group-cards">
           <h1>Class Groups</h1>
           <div className="items">
-            {data?.groups?.map((item) => (
+            {allGroupData?.groups?.map((item) => (
               <div className="item">
                 <div className="item-box">
                   <h3>{item.group_name}</h3>

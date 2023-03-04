@@ -5,7 +5,7 @@ import { deleteIcon } from "../../../Components/icons/svgIcons";
 import { postTeachers } from "../../../Redux/Actions/AdminAction";
 import "../../layout.css";
 
-function AddTeacheModal(props) {
+function AddTeacherModal(props) {
   const { visibleModal, setVisibleModal, setRefresh } = props;
   const [name, setName] = useState("");
   const [surname, setSurname] = useState("");
@@ -158,4 +158,4 @@ function AddTeacheModal(props) {
   );
 }
 
-export default AddTeacheModal;
+export default AddTeacherModal;

@@ -4,9 +4,7 @@ import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import listPlugin from "@fullcalendar/list";
 import interactionPlugin from "@fullcalendar/interaction";
-import { useDispatch, useSelector } from "react-redux";
-import { getAllGroupTimes } from "../../Redux/Actions/AdminAction.js";
-import { USER_LOGIN_SUCCESS } from "../../Redux/Constants/UserConstants.js";
+
 
 export default function Calendar(props) {
   const { handleEventClick, events } = props;

@@ -6,17 +6,16 @@ import { getAllGroupTimes } from "../../../Redux/Actions/TeacherAction";
 import ScheduleInfoModal from "../Modal/ScheduleInfoModal";
 
 function TeacherSchedule() {
-  const [isMobile, setIsMobile] = useState(false);
-  const [refresh, setRefresh] = useState("");
-
   const dispatch = useDispatch();
 
   const getGroupTimes = useSelector((state) => state.groupTimes);
-  const { data } = getGroupTimes;
+  const { allGroupTimes } = getGroupTimes;
 
   useEffect(() => {
     dispatch(getAllGroupTimes());
-  }, [refresh]);
+  }, []);
+
+  // set group times
   const CalendarFunc = (event) => {
     let day = new Date(event.start_day).getDay();
     const events = {
@@ -31,13 +30,15 @@ function TeacherSchedule() {
     };
     return events;
   };
-  const events = [data?.groupTimes?.map((event) => CalendarFunc(event))];
+  const events = [
+    allGroupTimes?.groupTimes?.map((event) => CalendarFunc(event)),
+  ];
 
   return (
     <div className="flex">
       <Navbar />
       <div className="scheldulePage container">
-        <Calendar refresh={refresh} events={events} />
+        <Calendar events={events} />
       </div>
     </div>
   );

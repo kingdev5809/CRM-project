@@ -12,8 +12,6 @@ function AddGroupTimeModal(props) {
   const {
     visibleModal,
     setVisibleModal,
-    setRefresh,
-    refresh,
     start_day,
     start,
     end,
@@ -33,11 +31,6 @@ function AddGroupTimeModal(props) {
   const getGroups = useSelector((state) => state.groups);
   const { data } = getGroups;
 
-  useEffect(() => {
-    dispatch(getAllGroups());
-    dispatch(getAllLocation());
-  }, [refresh]);
-
   const getLocations = useSelector((state) => state.locations);
   const { locationData } = getLocations;
 
@@ -45,9 +38,12 @@ function AddGroupTimeModal(props) {
   const { Teacherdata } = getTeachers;
 
   useEffect(() => {
+    dispatch(getAllGroups());
+    dispatch(getAllLocation());
     dispatch(getAllTeachers());
-  }, [refresh]);
+  }, []);
 
+  // post group Time
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(
@@ -62,7 +58,6 @@ function AddGroupTimeModal(props) {
         text,
         teacher_id,
         setVisibleModal,
-        setRefresh,
         setGroup_id,
         setEnd_day,
         setAddress,
@@ -72,6 +67,8 @@ function AddGroupTimeModal(props) {
       )
     );
   };
+
+  // cancel posting group time
   const handleDelete = (e) => {
     e.preventDefault();
     setVisibleModal("d-none");
@@ -85,7 +82,6 @@ function AddGroupTimeModal(props) {
     setTeacher_id("");
   };
 
-  
   return (
     <div>
       <div className={visibleModal}>

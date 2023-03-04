@@ -28,8 +28,17 @@ import {
 } from "../Constants/AdminContants";
 import { SEND_MESSAGE } from "../Constants/StudentContants";
 
+const initialState = {
+  subjectData: [],
+  Teacherdata: [],
+  studentData: [],
+  allGroupData: [],
+  oneGroupData: [],
+  locationData: [],
+  allGroupTimes: [],
+};
 // GET ALL teachers
-export const getAllTeachersReducers = (state = {}, action) => {
+export const getAllTeachersReducers = (state = initialState, action) => {
   switch (action.type) {
     case TEACHER_GET_ALL_REQUEST:
       return { loading: true };
@@ -48,18 +57,18 @@ export const getAllTeachersReducers = (state = {}, action) => {
 };
 
 // GET ALL students
-export const getAllStudentsReducers = (state = {}, action) => {
+export const getAllStudentsReducers = (state = initialState, action) => {
   switch (action.type) {
     case STUDENT_GET_ALL_REQUEST:
       return { loading: true };
     case STUDENT_GET_ALL_SUCCESS:
-      return { loading: false, data: action.payload };
+      return { loading: false, studentData: action.payload };
     case STUDENT_GET_ALL_FAIL:
       return { loading: false, error: action.payload };
     case STUDENT_GET_ALL_CREATED:
       return {
         ...state,
-        data: [...state.data, action.payload],
+        studentData: [...state.studentData, action.payload],
       };
     default:
       return state;
@@ -67,18 +76,18 @@ export const getAllStudentsReducers = (state = {}, action) => {
 };
 
 // GET ALL Groups
-export const getAllGroupReducers = (state = {}, action) => {
+export const getAllGroupReducers = (state = initialState, action) => {
   switch (action.type) {
     case GROUPS_GET_ALL_REQUEST:
       return { loading: true };
     case GROUPS_GET_ALL_SUCCESS:
-      return { loading: false, data: action.payload };
+      return { loading: false, allGroupData: action.payload };
     case GROUPS_GET_ALL_FAIL:
       return { loading: false, error: action.payload };
     case GROUPS_GET_ALL_CREATED:
       return {
         ...state,
-        data: [...state.data, action.payload],
+        allGroupData: [...state.allGroupData, action.payload],
       };
     default:
       return state;
@@ -86,45 +95,44 @@ export const getAllGroupReducers = (state = {}, action) => {
 };
 
 // GET All Groups Times
-export const getAllGroupTimesReducers = (state = {}, action) => {
+export const getAllGroupTimesReducers = (state = initialState, action) => {
   switch (action.type) {
     case GROUPS_TIMES_GET_ONE_REQUEST:
       return { loading: true };
     case GROUPS_TIMES_GET_ONE_SUCCESS:
-      return { loading: false, data: action.payload };
+      return { loading: false, allGroupTimes: action.payload };
     case GROUPS_TIMES_GET_ONE_FAIL:
       return { loading: false, error: action.payload };
-      case GROUPS_TIMES_GET_ONE_CREATED:
-        return {
-          ...state,
-          data: [...state.data, action.payload],
-        };
-    default:
-      return state;
-  }
-};
-
-// GET One Groups
-export const getOneGroupReducers = (state = {}, action) => {
-  switch (action.type) {
-    case GROUPS_GET_ONE_REQUEST:
-      return { loading: true };
-    case GROUPS_GET_ONE_SUCCESS:
-      return { loading: false, data: action.payload };
-    case GROUPS_GET_ONE_FAIL:
-      return { loading: false, error: action.payload };
-    case SEND_MESSAGE:
+    case GROUPS_TIMES_GET_ONE_CREATED:
       return {
         ...state,
-        data: { ...state.data.group.comments, group: action.payload },
+        allGroupTimes: [...state.allGroupTimes, action.payload],
       };
     default:
       return state;
   }
 };
 
-const initialState = {
-  subjectData: [],
+// GET One Groups
+export const getOneGroupReducers = (state = initialState, action) => {
+  switch (action.type) {
+    case GROUPS_GET_ONE_REQUEST:
+      return { loading: true };
+    case GROUPS_GET_ONE_SUCCESS:
+      return { loading: false, oneGroupData: action.payload };
+    case GROUPS_GET_ONE_FAIL:
+      return { loading: false, error: action.payload };
+    case SEND_MESSAGE:
+      return {
+        ...state,
+        oneGroupData: {
+          ...state.oneGroupData.group.comments,
+          group: action.payload,
+        },
+      };
+    default:
+      return state;
+  }
 };
 
 // GET Subjects
@@ -142,7 +150,7 @@ export const getAllSubjectsReducers = (state = initialState, action) => {
 };
 
 // GET ALL Locations
-export const getAllLocationReducers = (state = {}, action) => {
+export const getAllLocationReducers = (state = initialState, action) => {
   switch (action.type) {
     case LOCATION_GET_ALL_REQUEST:
       return { loading: true };

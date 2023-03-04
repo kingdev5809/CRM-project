@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteIcon, editIcon } from "../../../Components/icons/svgIcons";
 import Navbar from "../../../Components/Navbar";
-import userImg from "../../../images/navbar-img/userImg.png";
 import {
   deleteStudent,
   getAllStudents,
@@ -32,7 +31,7 @@ const Students = () => {
   const [updateVisibleModal, setUpdateVisibleModal] = useState("d-none");
 
   const getStudents = useSelector((state) => state.students);
-  const { loading, data } = getStudents;
+  const { studentData } = getStudents;
 
   useEffect(() => {
     dispatch(getAllStudents());
@@ -73,8 +72,8 @@ const Students = () => {
         </div>
         <div className="main">
           <div className="items">
-            {data ? (
-              data
+            {studentData ? (
+              studentData
                 ?.map((item) => (
                   <div className="item" key={item._id}>
                     <div className="title">
@@ -176,6 +175,7 @@ const Students = () => {
           setPerson_nr={setPerson_nr}
           setParents_name={setParents_name}
           setParents_phone_number={setParents_phone_number}
+          setPhoto={setPhoto}
         />
       </div>
     </div>
