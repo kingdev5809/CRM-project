@@ -169,8 +169,8 @@ export const postTeachers =
     surname,
     subject,
     phone_number,
-    setVisibleModal,
-    setRefresh
+    photo,
+    setVisibleModal
   ) =>
   async (dispatch) => {
     try {
@@ -181,6 +181,7 @@ export const postTeachers =
         surname,
         subject,
         phone_number,
+        photo,
       });
       console.log(data);
 
@@ -190,7 +191,6 @@ export const postTeachers =
         toast.success(data.msg);
         setVisibleModal("d-none");
         dispatch({ type: TEACHER_GET_ALL_CREATED, payload: data.teacher });
-        // setRefresh(name);
       }
     } catch (error) {
       console.log(error);
@@ -257,8 +257,8 @@ export const postStudents =
     person_nr,
     parents_name,
     parents_phone_number,
+    photo,
     setVisibleModal,
-    setRefresh,
     setName,
     setSurname,
     setEmail,
@@ -279,6 +279,7 @@ export const postStudents =
         person_nr,
         parents_name,
         parents_phone_number,
+        photo,
       });
       console.log(data);
       if (data.error) {
@@ -295,8 +296,6 @@ export const postStudents =
         setPerson_nr("");
         setParents_name("");
         setParents_phone_number("");
-
-        // setRefresh(name);
       }
     } catch (error) {
       console.log(error);
@@ -359,7 +358,7 @@ export const postGroupTime =
         text,
         teacher_id,
       });
-     
+
       if (data.error) {
         toast.warning(data.error);
       } else {
@@ -406,7 +405,7 @@ export const postLocation =
 
 // Delete Students
 
-export const deleteStudent = (student_id, setRefresh) => async () => {
+export const deleteStudent = (student_id) => async () => {
   try {
     const { data } = await AdminApi.deleteStudents(student_id);
 
@@ -414,7 +413,6 @@ export const deleteStudent = (student_id, setRefresh) => async () => {
       toast.warning(data.error);
     } else {
       toast.success(data.msg);
-      setRefresh(student_id);
     }
   } catch (error) {
     console.log(error);

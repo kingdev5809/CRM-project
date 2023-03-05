@@ -6,18 +6,23 @@ import { postTeachers } from "../../../Redux/Actions/AdminAction";
 import "../../layout.css";
 
 function AddTeacherModal(props) {
-  const { visibleModal, setVisibleModal, setRefresh } = props;
+  const {
+    visibleModal,
+    setVisibleModal,
+    setRefresh,
+    photo,
+    setPhoto,
+    imageUpload,
+    setImageUpload,
+  } = props;
   const [name, setName] = useState("");
   const [surname, setSurname] = useState("");
   const [subject, setSubject] = useState("");
   const [email, setEmail] = useState("");
   const [phone_number, setPhone_number] = useState("");
   const [address, setAddress] = useState("");
-  const [photo, setPhoto] = useState("");
 
   // upload image states
-  const [imageUpload, setImageUpload] = useState(null);
-  const [showModal, setShowModal] = useState(false);
   const dispatch = useDispatch();
   // this is
   const handleSubmit = (e) => {
@@ -30,6 +35,7 @@ function AddTeacherModal(props) {
         surname,
         subject,
         phone_number,
+        photo,
         setVisibleModal,
         setRefresh
       )
@@ -139,7 +145,6 @@ function AddTeacherModal(props) {
                     imageUpload={imageUpload}
                     setImgUrl={setPhoto}
                     setImageUpload={setImageUpload}
-                    setShowModal={setShowModal}
                   />
                 </div>
 

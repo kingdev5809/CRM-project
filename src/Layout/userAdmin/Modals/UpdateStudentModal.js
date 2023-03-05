@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { updateStudent } from "../../../Redux/Actions/AdminAction";
 import { deleteIcon } from "../../../Components/icons/svgIcons";
 import { useDispatch } from "react-redux";
+import UploadImage from "../../../Components/Firebase/UploadImage";
 
 function UpdateStudentModal(props) {
   const {
@@ -13,7 +14,6 @@ function UpdateStudentModal(props) {
     email,
     phone_number,
     address,
-    photo,
     person_nr,
     parents_name,
     parents_phone_number,
@@ -26,9 +26,13 @@ function UpdateStudentModal(props) {
     setPerson_nr,
     setParents_name,
     setParents_phone_number,
-    setPhoto
+    photo,
+    setPhoto,
+    imageUpload,
+    setImageUpload,
   } = props;
   const dispatch = useDispatch();
+  // upload image states
 
   const handleUpdate = (e) => {
     e.preventDefault();
@@ -124,17 +128,17 @@ function UpdateStudentModal(props) {
                   </div>
                 </div>
 
-                <div className="modal-input">
-                  <label>Adress</label>
-                  <input
-                    className="w-full"
-                    type="text"
-                    placeholder="Adress"
-                    value={address}
-                    onChange={(e) => setAddress(e.target.value)}
-                  />
-                </div>
-                <div className="flex ">
+                <div className="flex">
+                  <div className="modal-input w-full">
+                    <label>Adress</label>
+                    <input
+                      className="w-full"
+                      type="text"
+                      placeholder="Adress"
+                      value={address}
+                      onChange={(e) => setAddress(e.target.value)}
+                    />
+                  </div>
                   <div className="modal-input w-full">
                     <label>Id number </label>
                     <input
@@ -145,8 +149,8 @@ function UpdateStudentModal(props) {
                       onChange={(e) => setPerson_nr(e.target.value)}
                     />
                   </div>
-
-
+                </div>
+                <div className="flex ">
                   <div className="modal-input w-full">
                     <label>Parent name</label>
                     <input
@@ -157,8 +161,6 @@ function UpdateStudentModal(props) {
                       onChange={(e) => setParents_name(e.target.value)}
                     />
                   </div>
-                </div>
-                <div className="flex ">
                   <div className="modal-input w-full">
                     <label>Parent number </label>
                     <input
@@ -169,19 +171,17 @@ function UpdateStudentModal(props) {
                       onChange={(e) => setParents_phone_number(e.target.value)}
                     />
                   </div>
-
-                  <div className="modal-input w-full">
-                    <label>Email </label>
-                    <input
-                      className="w-full"
-                      type="text"
-                      placeholder="Email"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                    />
-                  </div>
                 </div>
+                <div className="flex "></div>
 
+                <div className="modal-input">
+                  <label>Image </label>
+                  <UploadImage
+                    imageUpload={imageUpload}
+                    setImgUrl={setPhoto}
+                    setImageUpload={setImageUpload}
+                  />
+                </div>
                 <div className="btn-group">
                   <button onClick={handleDelete}>Cancel</button>
                   <button onClick={handleUpdate} className="btn-2">

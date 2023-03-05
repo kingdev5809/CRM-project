@@ -11,10 +11,12 @@ import DeleteModal from "../Modals/DeleteModal";
 import UpdateStudentModal from "../Modals/UpdateStudentModal";
 const Students = () => {
   const [visibleModal, setVisibleModal] = useState("d-none");
-  const [refresh, setRefresh] = useState("");
   const [deleteModalVisible, setDeleteModalVisible] = useState("d-none");
   const [student_id, setStudent_Id] = useState();
   const dispatch = useDispatch();
+
+  const [photo, setPhoto] = useState("");
+  const [imageUpload, setImageUpload] = useState(null);
 
   // update useStates
   const [name, setName] = useState("");
@@ -22,9 +24,6 @@ const Students = () => {
   const [email, setEmail] = useState("");
   const [phone_number, setPhone_number] = useState("");
   const [address, setAddress] = useState("");
-  const [photo, setPhoto] = useState(
-    "http://cdn.onlinewebfonts.com/svg/img_518099.png"
-  );
   const [person_nr, setPerson_nr] = useState("");
   const [parents_name, setParents_name] = useState("");
   const [parents_phone_number, setParents_phone_number] = useState("");
@@ -35,7 +34,7 @@ const Students = () => {
 
   useEffect(() => {
     dispatch(getAllStudents());
-  }, [refresh]);
+  }, []);
   // handles delte item
   const handleSetItem = (item) => {
     setDeleteModalVisible("d-block");
@@ -43,7 +42,7 @@ const Students = () => {
   };
 
   function handleDelete() {
-    dispatch(deleteStudent(student_id, setRefresh));
+    dispatch(deleteStudent(student_id));
     setDeleteModalVisible("d-none");
     setStudent_Id();
   }
@@ -59,6 +58,7 @@ const Students = () => {
     setPerson_nr(item.person_nr);
     setParents_name(item.parents_name);
     setParents_phone_number(item.parents_phone_number);
+    setPhoto(item.photo);
     setUpdateVisibleModal("d-block");
   };
 
@@ -145,7 +145,10 @@ const Students = () => {
         <AddStudentModal
           visibleModal={visibleModal}
           setVisibleModal={setVisibleModal}
-          setRefresh={setRefresh}
+          photo={photo}
+          setPhoto={setPhoto}
+          imageUpload={imageUpload}
+          setImageUpload={setImageUpload}
         />
         <DeleteModal
           deleteModalVisible={deleteModalVisible}
@@ -156,13 +159,11 @@ const Students = () => {
         <UpdateStudentModal
           updateVisibleModal={updateVisibleModal}
           setUpdateVisibleModal={setUpdateVisibleModal}
-          setRefresh={setRefresh}
           name={name}
           surname={surname}
           email={email}
           phone_number={phone_number}
           address={address}
-          photo={photo}
           person_nr={person_nr}
           parents_name={parents_name}
           parents_phone_number={parents_phone_number}
@@ -175,7 +176,10 @@ const Students = () => {
           setPerson_nr={setPerson_nr}
           setParents_name={setParents_name}
           setParents_phone_number={setParents_phone_number}
+          photo={photo}
           setPhoto={setPhoto}
+          imageUpload={imageUpload}
+          setImageUpload={setImageUpload}
         />
       </div>
     </div>

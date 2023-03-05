@@ -5,7 +5,7 @@ import { v4 } from "uuid";
 import { toast } from "react-toastify";
 
 const UploadImage = (props) => {
-  const { setShowModal, setImageUpload, imageUpload, setImgUrl } = props;
+  const { setImageUpload, imageUpload, setImgUrl } = props;
 
   const upload = () => {
     if (imageUpload == null) {
@@ -13,7 +13,6 @@ const UploadImage = (props) => {
     }
     const imageRef = ref(storage, `images/${imageUpload?.name + v4()}`);
     uploadBytes(imageRef, imageUpload).then((snapshot) => {
-      setShowModal(false);
       getDownloadURL(snapshot.ref).then((url) => {
         setImgUrl(url);
         setImageUpload(null);

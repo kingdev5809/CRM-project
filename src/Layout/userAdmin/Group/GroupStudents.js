@@ -27,7 +27,7 @@ function GroupStudents() {
   }, [refresh]);
 
   // handle set item for delete modal
-
+  console.log(oneGroupData);
   const handleSetItem = (item) => {
     setDeleteModalVisible("d-block");
     setGroup(token);
@@ -69,7 +69,7 @@ function GroupStudents() {
                 .map((item) => (
                   <div className="item" key={item._id}>
                     <div className="title">
-                      <img src={item.photo} alt="" />
+                      <img src={item.student.photo} alt="" />
                       <div className="text-box">
                         <h3>{`${item.student?.surname} ${" "} ${
                           item.student?.name

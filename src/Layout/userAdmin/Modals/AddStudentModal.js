@@ -5,7 +5,14 @@ import { deleteIcon } from "../../../Components/icons/svgIcons";
 import { postStudents } from "../../../Redux/Actions/AdminAction";
 import "../../layout.css";
 function AddStudentModal(props) {
-  const { visibleModal, setVisibleModal, setRefresh } = props;
+  const {
+    visibleModal,
+    setVisibleModal,
+    photo,
+    setPhoto,
+    imageUpload,
+    setImageUpload,
+  } = props;
   const [name, setName] = useState("");
   const [surname, setSurname] = useState("");
   const [email, setEmail] = useState("");
@@ -14,11 +21,8 @@ function AddStudentModal(props) {
   const [person_nr, setPerson_nr] = useState("");
   const [parents_name, setParents_name] = useState("");
   const [parents_phone_number, setParents_phone_number] = useState("");
-  const [photo, setPhoto] = useState("");
 
   // upload image states
-  const [imageUpload, setImageUpload] = useState(null);
-  const [showModal, setShowModal] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -34,8 +38,8 @@ function AddStudentModal(props) {
         person_nr,
         parents_name,
         parents_phone_number,
+        photo,
         setVisibleModal,
-        setRefresh,
         setName,
         setSurname,
         setEmail,
@@ -181,7 +185,6 @@ function AddStudentModal(props) {
                     imageUpload={imageUpload}
                     setImgUrl={setPhoto}
                     setImageUpload={setImageUpload}
-                    setShowModal={setShowModal}
                   />
                 </div>
                 <div className="btn-group">

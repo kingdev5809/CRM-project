@@ -20,6 +20,9 @@ const Teachers = () => {
   const [deleteModalVisible, setDeleteModalVisible] = useState("d-none");
   const [teacher_id, setTeacher_Id] = useState();
 
+  const [photo, setPhoto] = useState("");
+  const [imageUpload, setImageUpload] = useState(null);
+
   // update modal useStates
   const [name, setName] = useState("");
   const [surname, setSurname] = useState("");
@@ -27,9 +30,6 @@ const Teachers = () => {
   const [email, setEmail] = useState("");
   const [phone_number, setPhone_number] = useState("");
   const [address, setAddress] = useState("");
-  const [photo, setPhoto] = useState(
-    "http://cdn.onlinewebfonts.com/svg/img_518099.png"
-  );
   const [updateVisibleModal, setUpdateVisibleModal] = useState("d-none");
 
   const dispatch = useDispatch();
@@ -122,6 +122,10 @@ const Teachers = () => {
           visibleModal={visibleModal}
           setVisibleModal={setVisibleModal}
           setRefresh={setRefresh}
+          photo={photo}
+          setPhoto={setPhoto}
+          imageUpload={imageUpload}
+          setImageUpload={setImageUpload}
         />
         <DeleteModal
           deleteModalVisible={deleteModalVisible}
@@ -150,6 +154,8 @@ const Teachers = () => {
           setPhone_number={setPhone_number}
           setAddress={setAddress}
           setPhoto={setPhoto}
+          imageUpload={imageUpload}
+          setImageUpload={setImageUpload}
         />
       </div>
     </div>

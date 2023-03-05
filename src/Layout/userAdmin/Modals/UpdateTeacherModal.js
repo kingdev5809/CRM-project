@@ -24,10 +24,10 @@ function UpdateTeacherModal(props) {
     setPhone_number,
     setAddress,
     setPhoto,
+    setImageUpload,
+    imageUpload,
   } = props;
   // upload image states
-  const [imageUpload, setImageUpload] = useState(null);
-  const [showModal, setShowModal] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -146,7 +146,6 @@ function UpdateTeacherModal(props) {
                     imageUpload={imageUpload}
                     setImgUrl={setPhoto}
                     setImageUpload={setImageUpload}
-                    setShowModal={setShowModal}
                   />
                 </div>
 
