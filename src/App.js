@@ -169,7 +169,7 @@ const Routing = () => {
       />
 
       <Route
-        path="teacher/homework/engelska"
+        path="teacher/homework/:token"
         element={
           <TeacherElement>
             <TeacherHomeworks />

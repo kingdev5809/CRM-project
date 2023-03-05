@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import Navbar from "../../../Components/Navbar";
 import { getAllGroups } from "../../../Redux/Actions/TeacherAction";
-import Homeworks from "./TeacherHomeworks";
 import userImg from "../../../images/navbar-img/userImg.png";
+import TeacherHomeworks from "./TeacherHomeworks";
 
 function TeacherHomeworkPage() {
   const [group_id, setGroup_id] = useState();
@@ -21,6 +21,7 @@ function TeacherHomeworkPage() {
   const handleChangeGroup = (item) => {
     setGroup_id(item._id);
   };
+  console.log(group_id);
   return (
     <div className="flex">
       <Navbar />
@@ -42,8 +43,11 @@ function TeacherHomeworkPage() {
                 </div>
 
                 <div className="item-box-3"></div>
-                <NavLink to={`/student/homework/engelska`}>
-                  <div className="click-window"></div>
+                <NavLink to={`/teacher/homework/${item._id}`}>
+                  <div
+                    onClick={() => handleChangeGroup(item)}
+                    className="click-window"
+                  ></div>
                 </NavLink>
                 <div
                   onClick={() => handleChangeGroup(item)}
@@ -54,7 +58,7 @@ function TeacherHomeworkPage() {
           </div>
         </div>
         <div className="deskop-responsive">
-          <Homeworks group_id={group_id} />
+          <TeacherHomeworks group_id={group_id} allGroupData={allGroupData} />
         </div>
       </div>
     </div>

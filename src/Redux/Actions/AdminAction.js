@@ -28,9 +28,6 @@ import {
   TEACHER_GET_ALL_FAIL,
   TEACHER_GET_ALL_REQUEST,
   TEACHER_GET_ALL_SUCCESS,
-  TEACHER_POST_ALL_FAIL,
-  TEACHER_POST_ALL_REQUEST,
-  TEACHER_POST_ALL_SUCCESS,
 } from "../Constants/AdminContants";
 
 // GET ALL TEACHERS
@@ -85,6 +82,7 @@ export const getAllGroups = () => async (dispatch) => {
     });
   }
 };
+
 
 // GET One GROUPS
 
@@ -402,6 +400,9 @@ export const postLocation =
       console.log(error);
     }
   };
+
+
+  
 
 // Delete Students
 

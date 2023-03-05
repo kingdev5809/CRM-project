@@ -8,7 +8,7 @@ import {
   GROUPS_TIMES_GET_ONE_FAIL,
   GROUPS_TIMES_GET_ONE_REQUEST,
   GROUPS_TIMES_GET_ONE_SUCCESS,
-  SEND_MESSAGE 
+  SEND_MESSAGE,
 } from "../Constants/AdminContants";
 import * as AdminApi from "../../api/TeacherRequest";
 import { toast } from "react-toastify";
@@ -86,3 +86,37 @@ export const putComment = (group_id, message) => async (dispatch) => {
     console.log(error);
   }
 };
+
+// POST Students to group
+
+export const postHomework =
+  (
+    group_id,
+    name,
+    message,
+    setGroup_id,
+    setName,
+    setMessage,
+    setVisibleModal
+  ) =>
+  async () => {
+    try {
+      const { data } = await AdminApi.postHomeworks({
+        group_id,
+        name,
+        message,
+      });
+      console.log(data);
+      if (data.error) {
+        toast.warning(data.error);
+      } else {
+        toast.success(data.msg);
+        setVisibleModal("d-none");
+        setGroup_id();
+        setName();
+        setMessage();
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };

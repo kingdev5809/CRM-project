@@ -1,28 +1,28 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllGroups } from "../../../api/TeacherRequest";
 import { deleteIcon } from "../../../Components/icons/svgIcons";
+import { postHomework } from "../../../Redux/Actions/TeacherAction";
 
 function AddHomeworkModal(props) {
-  const { visibleModal, setVisibleModal } = props;
+  const { visibleModal, setVisibleModal, allGroupData } = props;
+  const [group_id, setGroup_id] = useState();
+  const [name, setName] = useState();
+  const [message, setMessage] = useState();
+
+  const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // dispatch(
-    //   postGroups(
-    //     group_name,
-    //     subject,
-    //     teacher,
-    //     bg_color,
-    //     text_color,
-    //     text,
-    //     setVisibleModal,
-    //     setRefresh
-    //   )
-    // );
+    dispatch(
+      postHomework(group_id, name, message, setGroup_id, setName, setMessage,setVisibleModal)
+    );
   };
   const handleDelete = (e) => {
     e.preventDefault();
     setVisibleModal("d-none");
   };
+
   return (
     <div>
       <div className={visibleModal}>
@@ -49,8 +49,8 @@ function AddHomeworkModal(props) {
                   className="w-full"
                   type="text"
                   placeholder="Name"
-                  //   value={name}
-                  //   onChange={(e) => setName(e.target.value)}
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
                 />
               </div>
 
@@ -58,15 +58,15 @@ function AddHomeworkModal(props) {
                 <label>Select Class</label>
                 <select
                   className="w-full"
-                  name="selectColor"
-                  id="color"
-                  // value={}
-                  // onChange={(e) => setTeacher(e.target.value)}
+                  name="selectClass"
+                  id="class"
+                  value={group_id}
+                  onChange={(e) => setGroup_id(e.target.value)}
                 >
-                  <option value="">Choose teacher...</option>
-                  {/* {data?.teachers.map((item) => (
-                      <option value={item._id}>{item.name}</option>
-                    ))} */}
+                  <option value="">Choose class...</option>
+                  {allGroupData?.groups?.map((item) => (
+                    <option value={item._id}>{item.group_name}</option>
+                  ))}
                 </select>
               </div>
 
@@ -78,8 +78,8 @@ function AddHomeworkModal(props) {
                   id=""
                   cols="30"
                   rows="4"
-                  //   value={text}
-                  //   onChange={(e) => setText(e.target.value)}
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
                 ></textarea>
               </div>
 
