@@ -1,9 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {
-  deleteIcon,
-  editIcon,
-  studentIcon,
-} from "../../../Components/icons/svgIcons";
+import { studentIcon } from "../../../Components/icons/svgIcons";
 import Navbar from "../../../Components/Navbar";
 import "../../layout.css";
 import userImg from "../../../images/navbar-img/userImg.png";
@@ -21,8 +17,7 @@ const TeacherClasses = () => {
     dispatch(getAllGroups());
   }, []);
 
-
-console.log(allGroupData);
+  console.log(allGroupData);
   return (
     <div className="flex">
       <Navbar />
