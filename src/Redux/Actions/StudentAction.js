@@ -13,9 +13,8 @@ import {
   GROUPS_TIMES_GET_ONE_FAIL,
   GROUPS_TIMES_GET_ONE_REQUEST,
   GROUPS_TIMES_GET_ONE_SUCCESS,
-  SEND_MESSAGE 
+  SEND_MESSAGE,
 } from "../Constants/AdminContants";
-
 
 // GET All GROUPS
 
@@ -42,6 +41,23 @@ export const getOneGroup = (group_id) => async (dispatch) => {
   try {
     const { data } = await AdminApi.getOneGroup(group_id);
     dispatch({ type: GROUPS_GET_ONE_SUCCESS, payload: data });
+  } catch (error) {
+    dispatch({
+      type: GROUPS_GET_ONE_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
+
+// get homworks
+export const getHomework = (token) => async (dispatch) => {
+  dispatch({ type: GROUPS_GET_ONE_REQUEST });
+  try {
+    const { data } = await AdminApi.getOneGroup(token);
+    dispatch({ type: GROUPS_GET_ONE_SUCCESS, payload: data.group.homeworks });
   } catch (error) {
     dispatch({
       type: GROUPS_GET_ONE_FAIL,

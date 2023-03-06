@@ -16,7 +16,6 @@ const StudentClasses = () => {
     dispatch(getAllGroups());
   }, []);
 
-
   return (
     <div className="flex">
       <Navbar />

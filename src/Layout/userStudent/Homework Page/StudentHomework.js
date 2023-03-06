@@ -8,6 +8,7 @@ import userImg from "../../../images/navbar-img/userImg.png";
 
 function Homework() {
   const [group_id, setGroup_id] = useState();
+  const [teacher, setTeacher] = useState([]);
 
   const dispatch = useDispatch();
 
@@ -20,6 +21,7 @@ function Homework() {
 
   const handleChangeGroup = (item) => {
     setGroup_id(item._id);
+    setTeacher(item.teacher);
   };
   return (
     <div className="flex">
@@ -54,7 +56,7 @@ function Homework() {
           </div>
         </div>
         <div className="deskop-responsive">
-          <Homeworks group_id={group_id} />
+          <Homeworks group_id={group_id} teacher={teacher} />
         </div>
       </div>
     </div>

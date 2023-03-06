@@ -1339,7 +1339,7 @@ body::-webkit-scrollbar {
   padding: 7px 25px;
 }
 .homeworkPage .homework .items .item {
-  height: 190px;
+  /* height: 190px; */
 }
 
 .homeworkPage .group-sec .items .item {
