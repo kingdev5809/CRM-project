@@ -21,7 +21,7 @@ function TeacherHomeworkPage() {
   const handleChangeGroup = (item) => {
     setGroup_id(item._id);
   };
-  console.log(group_id);
+  console.log(allGroupData);
   return (
     <div className="flex">
       <Navbar />

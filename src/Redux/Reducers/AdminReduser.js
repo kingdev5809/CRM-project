@@ -26,6 +26,7 @@ import {
   TEACHER_GET_ALL_REQUEST,
   TEACHER_GET_ALL_SUCCESS,
   SEND_MESSAGE,
+  HOMEWORK_CREATED,
 } from "../Constants/AdminContants";
 
 const initialState = {
@@ -89,6 +90,7 @@ export const getAllGroupReducers = (state = initialState, action) => {
         ...state,
         allGroupData: [...state.allGroupData, action.payload],
       };
+
     default:
       return state;
   }
@@ -129,6 +131,11 @@ export const getOneGroupReducers = (state = initialState, action) => {
           ...state.oneGroupData.group.comments,
           group: action.payload,
         },
+      };
+    case HOMEWORK_CREATED:
+      return {
+        ...state,
+        oneGroupData: action.payload,
       };
     default:
       return state;

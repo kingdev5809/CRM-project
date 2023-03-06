@@ -8,6 +8,7 @@ import {
   GROUPS_TIMES_GET_ONE_FAIL,
   GROUPS_TIMES_GET_ONE_REQUEST,
   GROUPS_TIMES_GET_ONE_SUCCESS,
+  HOMEWORK_CREATED,
   SEND_MESSAGE,
 } from "../Constants/AdminContants";
 import * as AdminApi from "../../api/TeacherRequest";
@@ -38,6 +39,24 @@ export const getOneGroup = (token) => async (dispatch) => {
   try {
     const { data } = await AdminApi.getOneGroup(token);
     dispatch({ type: GROUPS_GET_ONE_SUCCESS, payload: data });
+  } catch (error) {
+    dispatch({
+      type: GROUPS_GET_ONE_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
+
+// GET Homeworks
+
+export const getHomework = (token) => async (dispatch) => {
+  dispatch({ type: GROUPS_GET_ONE_REQUEST });
+  try {
+    const { data } = await AdminApi.getOneGroup(token);
+    dispatch({ type: GROUPS_GET_ONE_SUCCESS, payload: data.group.homeworks });
   } catch (error) {
     dispatch({
       type: GROUPS_GET_ONE_FAIL,
@@ -87,7 +106,7 @@ export const putComment = (group_id, message) => async (dispatch) => {
   }
 };
 
-// POST Students to group
+// POST Homework
 
 export const postHomework =
   (
@@ -99,7 +118,7 @@ export const postHomework =
     setMessage,
     setVisibleModal
   ) =>
-  async () => {
+  async (dispatch) => {
     try {
       const { data } = await AdminApi.postHomeworks({
         group_id,
@@ -112,6 +131,8 @@ export const postHomework =
       } else {
         toast.success(data.msg);
         setVisibleModal("d-none");
+        dispatch({ type: HOMEWORK_CREATED, payload: data.result.homeworks });
+
         setGroup_id();
         setName();
         setMessage();
