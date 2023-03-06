@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { getHomework, getOneGroup } from "../../../Redux/Actions/StudentAction";
-import HomeworksItem from "./components/HomeworksItem";
+import { getHomework } from "../../../../Redux/Actions/StudentAction";
+import HomeworksItem from "./HomeworksItem";
 function Homeworks({ group_id, teacher }) {
   const [rate, setRate] = useState(false);
   const dispatch = useDispatch();
@@ -21,7 +21,6 @@ function Homeworks({ group_id, teacher }) {
     }
   }, [group_id]);
 
-  // console.log(user);
   const handleCheckRate = (item) => {
     if (Object.values(item.students).includes("Fronted")) {
       console.log(true);

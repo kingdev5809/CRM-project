@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 import Navbar from "../../../Components/Navbar";
 import { getAllGroups } from "../../../Redux/Actions/TeacherAction";
 import userImg from "../../../images/navbar-img/userImg.png";
-import TeacherHomeworks from "./TeacherHomeworks";
+import TeacherHomeworks from "./components/TeacherHomeworks";
 
 function TeacherHomeworkPage() {
   const [group_id, setGroup_id] = useState();

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import Navbar from "../../../Components/Navbar";
 import { getAllGroups } from "../../../Redux/Actions/StudentAction";
-import Homeworks from "./Homeworks";
+import Homeworks from "./components/Homeworks";
 import userImg from "../../../images/navbar-img/userImg.png";
 
 function Homework() {

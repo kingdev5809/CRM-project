@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { getHomework, getOneGroup } from "../../../Redux/Actions/TeacherAction";
-import AddHomeworkModal from "../Modal/AddHomeworkModal";
+import {
+  getHomework,
+  getOneGroup,
+} from "../../../../Redux/Actions/TeacherAction";
+import AddHomeworkModal from "../../Modal/AddHomeworkModal";
 import exclamationImg from "../../../images/navbar-img/exclamation.png";
 
 function TeacherHomeworks({ group_id, allGroupData }) {
@@ -39,30 +42,32 @@ function TeacherHomeworks({ group_id, allGroupData }) {
       </div>
       <div className="items">
         {group_id ? "" : <h1>Choose group</h1>}
-        {oneGroupData?.map((item) => (
-          <div className="item">
-            <div className="item-title">
-              <img src={exclamationImg} alt="" />
-              <h3>{item.name}</h3>
-            </div>
-            <div className="item-content">
-              <p>{item.text}</p>
-              <div className="item-box">
-                <div className="user-box">
-                  <img src={user?.teach?.photo} alt="" />
-                  <div className="user-box-inner">
-                    <h4>{user?.teach?.name}</h4>
-                    <h6>Teacher</h6>
+        {oneGroupData
+          ?.map((item) => (
+            <div className="item">
+              <div className="item-title">
+                <img src={exclamationImg} alt="" />
+                <h3>{item.name}</h3>
+              </div>
+              <div className="item-content">
+                <p>{item.text}</p>
+                <div className="item-box">
+                  <div className="user-box">
+                    <img src={user?.teach?.photo} alt="" />
+                    <div className="user-box-inner">
+                      <h4>{user?.teach?.name}</h4>
+                      <h6>Teacher</h6>
+                    </div>
                   </div>
-                </div>
 
-                <div className="created-time">
-                  <h6>{HandleCreatedAt(item)}</h6>
+                  <div className="created-time">
+                    <h6>{HandleCreatedAt(item)}</h6>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        )).reverse()}
+          ))
+          .reverse()}
       </div>
       <AddHomeworkModal
         visibleModal={visibleModal}

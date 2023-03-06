@@ -15,7 +15,7 @@ import StudentsSchedule from "./Layout/userStudent/Schedule/StudentsSchedule";
 import StudentsClasses from "./Layout/userStudent/Group/StudentClasses.js";
 import MessagePage from "./Layout/userStudent/Message Page/MessagePage";
 import StudentHomework from "./Layout/userStudent/Homework Page/StudentHomework";
-import Homeworks from "./Layout/userStudent/Homework Page/Homeworks";
+import Homeworks from "./Layout/userStudent/Homework Page/components/Homeworks";
 import Message from "./Layout/userStudent/Message Page/Message";
 import TeacherSchedule from "./Layout/userTeacher/Schedule/TeacherSchedule";
 import TeacherClasses from "./Layout/userTeacher/Group/TeacherClasses";
@@ -24,7 +24,7 @@ import TeacherGroupStudents from "./Layout/userTeacher/Group/TeacherGroupStudent
 import PageNotFound from "./Components/Page404/PageNotFound";
 import TeacherMessagePage from "./Layout/userTeacher/Message Page/TeacherMessagePage";
 import TeacherHomeworkPage from "./Layout/userTeacher/Homework Page/TeacherHomeworkPage";
-import TeacherHomeworks from "./Layout/userTeacher/Homework Page/TeacherHomeworks";
+import TeacherHomeworks from "./Layout/userTeacher/Homework Page/components/TeacherHomeworks";
 const Routing = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
