@@ -1,10 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import {
-  getHomework,
-  getOneGroup,
-} from "../../../../Redux/Actions/TeacherAction";
+import { getHomework } from "../../../../Redux/Actions/TeacherAction";
 import AddHomeworkModal from "../../Modal/AddHomeworkModal";
 import exclamationImg from "../../../images/navbar-img/exclamation.png";
 
