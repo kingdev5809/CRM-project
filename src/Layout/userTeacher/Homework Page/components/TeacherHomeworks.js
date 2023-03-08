@@ -12,6 +12,7 @@ import ScheduleInfoModal from "../../Modal/ScheduleInfoModal";
 function TeacherHomeworks({ group_id, allGroupData }) {
   const [visibleModal, setVisibleModal] = useState("d-none");
   const [rateVisibleModal, setRateVisibleModal] = useState("d-none");
+  const [homework_id, setHomework_id] = useState("");
   const dispatch = useDispatch();
   const { token } = useParams();
 
@@ -31,13 +32,14 @@ function TeacherHomeworks({ group_id, allGroupData }) {
     }
   }, [group_id]);
 
-  const handleOpenRateModal = () => {
+  const handleOpenRateModal = (item) => {
     if (!group_id) {
       dispatch(getOneGroup(token));
     } else {
       dispatch(getOneGroup(group_id));
     }
     setRateVisibleModal("d-block");
+    setHomework_id(item._id)
   };
   const HandleCreatedAt = (item) => {
     const date = new Date(item.createdAt);
@@ -57,7 +59,7 @@ function TeacherHomeworks({ group_id, allGroupData }) {
 
         {homeworkData
           ?.map((item) => (
-            <div className="item">
+            <div className="item" key={item._id}>
               <div className="item-title">
                 <img src={exclamationImg} alt="" />
                 <h3>{item.name}</h3>
@@ -74,7 +76,7 @@ function TeacherHomeworks({ group_id, allGroupData }) {
                   </div>
                   <div
                     className="click-window"
-                    onClick={handleOpenRateModal}
+                    onClick={() => handleOpenRateModal(item)}
                   ></div>
                   <div className="created-time">
                     <h6>{HandleCreatedAt(item)}</h6>
@@ -94,6 +96,8 @@ function TeacherHomeworks({ group_id, allGroupData }) {
         visibleModal={rateVisibleModal}
         setVisibleModal={setRateVisibleModal}
         data={oneGroupData}
+        group_id={group_id ? group_id : token}
+        homework_id={homework_id}
       />
     </div>
   );

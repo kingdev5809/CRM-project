@@ -22,3 +22,6 @@ export const putComments = (data) => API.put("/teacher/comment", data, config);
 
 export const postHomeworks = (data) =>
   API.post("/teacher/homework", data, config);
+
+  export const postCheckHomeworks = (data) =>
+  API.post("/teacher/check_homework", data, config);

@@ -1724,6 +1724,7 @@ Teacher Page start
   justify-content: space-between;
   padding: 10px 0;
   margin: 0;
+  align-items: center;
 }
 .scheduleInfoModal .modal-content .student-box .item img {
   margin: auto 0;
@@ -1734,6 +1735,7 @@ Teacher Page start
 }
 .scheduleInfoModal .modal-content .student-box input {
   width: 20px;
+  cursor: pointer;
 }
 .scheduleInfoModal .success-img {
   width: 30px;
@@ -1750,7 +1752,22 @@ Teacher Page start
   z-index: 99999 !important;
 }
 .scheduleInfoModal .rate-images img {
-  margin: 0px 15px;
+  margin: 0px 12px;
 }
-
+.scheduleInfoModal .rating i{
+  color: #ee6c4d;
+  font-size: 18px;
+  margin: 3px;
+  cursor: pointer;  
+}
+.scheduleInfoModal .modal-content  button{
+  background-color: #ee6c4d;
+  border: none;
+  border-radius: 30px;
+  color: #fff;
+  cursor: pointer;
+  margin: auto 0;
+  padding: 10px 45px;
+  float: right;
+}
 /* schedule info modal style end */

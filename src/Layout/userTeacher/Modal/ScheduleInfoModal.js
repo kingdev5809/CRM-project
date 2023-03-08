@@ -1,17 +1,36 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../../layout.css";
 import { deleteIcon } from "../../../Components/icons/svgIcons";
 import calendarImg from "../../../images/calendarImg.png";
 import userImg from "../../../images/navbar-img/userImg.png";
-import clockImg from "../../../images/modal-mg/clockImd.png";
-import locationImg from "../../../images/modal-mg/locationImg.png";
 import studentImg from "../../../images/modal-mg/studentImg.png";
-import starImg from "../../../images/navbar-img/starts.png";
 import succsesImg from "../../../images/navbar-img/success.png";
 import exclamationImg from "../../../images/navbar-img/exclamation.png";
+import Rating from "../../../Components/Rating";
 function ScheduleInfoModal(props) {
-  const { visibleModal, setVisibleModal, data } = props;
+  const { visibleModal, setVisibleModal, data, homework_id, group_id } = props;
 
+  const user = JSON.parse(localStorage.getItem("userInfo"));
+
+  let dataRates = [];
+  let studentsId = [];
+  for (let i = 0; i < data?.length; i++) {
+    dataRates.push({
+      rate: 0,
+      teacher_id: user.teach._id,
+      student_id: data[i].student._id,
+      homework_id,
+      group_id,
+    });
+  }
+  const handleAddStudentId = (id) => {
+    if (!studentsId.includes(id)) {
+      studentsId.push(id);
+    }
+  };
+  const handleRemoveStudentId = (item) => {
+    studentsId = studentsId.filter((id) => id !== item);
+  };
   return (
     <div>
       <div className={visibleModal}>
@@ -68,18 +87,26 @@ function ScheduleInfoModal(props) {
                 </div>
                 {data?.length == 0 && <h1>Not Students</h1>}
                 {data ? (
-                  data.map((item) => (
-                    <div className="item">
+                  data.map((item, index) => (
+                    <div className="item" key={item.student._id}>
                       <div className="user-box">
                         <img src={item.student.photo} alt="" />
                         <div className="box">
                           <h3>{`${item.student.surname} ${item.student.name}`}</h3>
-                          <p>Student</p>
+                          <p>Student {dataRates[index].rate} </p>
                         </div>
                       </div>
-                      <img className="star-img" src={starImg} alt="" />
-                      <input type="radio" name="rate" />
-                      <input type="radio" name="rate" />
+                      <Rating item={item} index={index} dataRates={dataRates} />
+                      <input
+                        type="radio"
+                        name={item._id}
+                        onClick={() => handleAddStudentId(item.student._id)}
+                      />
+                      <input
+                        type="radio"
+                        name={item._id}
+                        onClick={() => handleRemoveStudentId(item.student._id)}
+                      />
                     </div>
                   ))
                 ) : (
@@ -89,6 +116,7 @@ function ScheduleInfoModal(props) {
                 {/* item end */}
               </div>
             </div>
+              <button >Submit</button>
           </div>
         </div>
       </div>
