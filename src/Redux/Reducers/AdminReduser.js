@@ -35,6 +35,7 @@ import {
   HOMEWORK_GET_ALL_REQUEST,
   HOMEWORK_GET_ALL_SUCCESS,
   HOMEWORK_GET_ALL_FAIL,
+  LOCATION_GET_ALL_DELETED,
 } from "../Constants/AdminContants";
 
 const initialState = {
@@ -204,6 +205,13 @@ export const getAllLocationReducers = (state = initialState, action) => {
       return {
         ...state,
         locationData: [...state.locationData, action.payload],
+      };
+    case LOCATION_GET_ALL_DELETED:
+      return {
+        ...state,
+        locationData: state.locationData.filter(
+          (data) => data._id !== action.payload
+        ),
       };
     default:
       return state;

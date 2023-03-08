@@ -1245,11 +1245,13 @@ body::-webkit-scrollbar {
   max-width: 90%;
   margin: auto;
 }
+
 .locationPage .main .items {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
 }
 .locationPage .main .items .item {
+  position: relative;
   padding: 10px 5px;
   margin: 10px;
   display: flex;
@@ -1257,11 +1259,22 @@ body::-webkit-scrollbar {
   background-color: #fff;
   border-radius: 11px;
 }
-.locationPage .main .items .item svg {
+.locationPage .main .items .item .homeIcon svg {
   width: 3.5rem;
 }
 .locationPage .main .items .item p {
   margin-left: 10px;
+}
+.locationPage .deleteBtn {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  display: flex;
+  cursor: pointer;
+}
+.locationPage .deleteBtn svg {
+  margin: auto;
+  width: 1.5rem;
 }
 
 /******************
@@ -1719,7 +1732,7 @@ Teacher Page start
   width: 100px;
   cursor: pointer;
 }
-.scheduleInfoModal .modal-content .student-box input{
+.scheduleInfoModal .modal-content .student-box input {
   width: 20px;
 }
 .scheduleInfoModal .success-img {

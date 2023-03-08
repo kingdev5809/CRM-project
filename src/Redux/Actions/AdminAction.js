@@ -18,6 +18,7 @@ import {
   GROUPS_TIMES_GET_ONE_REQUEST,
   GROUPS_TIMES_GET_ONE_SUCCESS,
   LOCATION_GET_ALL_CREATED,
+  LOCATION_GET_ALL_DELETED,
   LOCATION_GET_ALL_FAIL,
   LOCATION_GET_ALL_REQUEST,
   LOCATION_GET_ALL_SUCCESS,
@@ -479,6 +480,23 @@ export const removeStudent =
       console.log(error);
     }
   };
+
+// Delete Teachers
+
+export const deleteLocation = (location_id) => async (dispatch) => {
+  try {
+    const { data } = await AdminApi.deleteLocations(location_id);
+
+    if (data.error) {
+      toast.warning(data.error);
+    } else {
+      toast.success(data.msg);
+      dispatch({ type: LOCATION_GET_ALL_DELETED, payload: location_id });
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 // Update teacher
 
