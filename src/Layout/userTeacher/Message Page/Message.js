@@ -46,10 +46,9 @@ function Message({ group_id, group_name }) {
                   <img src={item.sender.photo} alt="" />
                   <div className="user-box-inner">
                     <h4>
-                      {item.sender.name}
-                      {item.sender.surname}
+                      {item.sender.name} {item.sender.surname}
                     </h4>
-                    <h6>{item.sender.grade}</h6>
+                    <h6>{item.sender.teacher ? "teacher" : "student"}</h6>
                   </div>
                 </div>
                 <div className="created-time">
