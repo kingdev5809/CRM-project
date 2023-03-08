@@ -105,7 +105,10 @@ const AddClassModal = (props) => {
                   >
                     <option value="">Choose teacher...</option>
                     {Teacherdata?.map((item) => (
-                      <option value={item._id}>{item.name}</option>
+                      <option value={item._id}>
+                        {item.name}
+                        {item.surname}
+                      </option>
                     ))}
                   </select>
                 </div>
