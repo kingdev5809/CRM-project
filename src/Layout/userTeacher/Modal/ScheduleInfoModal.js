@@ -10,12 +10,13 @@ import Rating from "../../../Components/Rating";
 import { useDispatch } from "react-redux";
 import { postCheckHomework } from "../../../Redux/Actions/TeacherAction";
 function ScheduleInfoModal(props) {
-  const { visibleModal, setVisibleModal, data, homework_id, group_id } = props;
+  const { visibleModal, setVisibleModal, data, homework_id, group_id,setRefresh} = props;
 
   const user = JSON.parse(localStorage.getItem("userInfo"));
 
   let dataRates = [];
   let studentsId = [];
+
   for (let i = 0; i < data?.length; i++) {
     dataRates.push({
       rate: 0,
@@ -41,7 +42,8 @@ function ScheduleInfoModal(props) {
         { data: dataRates, homework_id, students_id: studentsId },
         setVisibleModal,
         dataRates,
-        studentsId
+        studentsId,
+        setRefresh
       )
     );
   };

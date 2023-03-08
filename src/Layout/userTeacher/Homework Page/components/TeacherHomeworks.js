@@ -17,6 +17,7 @@ function TeacherHomeworks({ group_id, allGroupData }) {
   const [visibleModal, setVisibleModal] = useState("d-none");
   const [rateVisibleModal, setRateVisibleModal] = useState("d-none");
   const [homework_id, setHomework_id] = useState("");
+  const [refresh, setRefresh] = useState('')
   const dispatch = useDispatch();
   const { token } = useParams();
 
@@ -36,6 +37,15 @@ function TeacherHomeworks({ group_id, allGroupData }) {
     }
   }, [group_id]);
 
+
+  useEffect(() => {
+    if (!group_id) {
+      dispatch(getHomework(token));
+    } else {
+      dispatch(getHomework(group_id));
+    }
+  }, [refresh]);
+
   const handleOpenRateModal = (item) => {
     if (item.check) {
       toast.warning("this homework already checked");
@@ -49,14 +59,7 @@ function TeacherHomeworks({ group_id, allGroupData }) {
       setHomework_id(item._id);
     }
   };
-  const HandleCreatedAt = (item) => {
-    const date = new Date(item.createdAt);
-    const year = date.getFullYear();
-    const month = date.getMonth();
-    const day = date.getDate();
-    return `${year}-${month}-${day}`;
-  };
-  console.log(homeworkData);
+
   return (
     <div className="homework messages-cards">
       <div className="flex homework-title">
@@ -113,6 +116,7 @@ function TeacherHomeworks({ group_id, allGroupData }) {
         data={oneGroupData}
         group_id={group_id ? group_id : token}
         homework_id={homework_id}
+        setRefresh={setRefresh}
       />
     </div>
   );

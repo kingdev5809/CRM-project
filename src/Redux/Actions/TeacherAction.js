@@ -168,7 +168,8 @@ export const postHomework =
 // POST Homework
 
 export const postCheckHomework =
-  (Rates, setVisibleModal, dataRates, studentsId) => async (dispatch) => {
+  (Rates, setVisibleModal, dataRates, studentsId, setRefresh) =>
+  async (dispatch) => {
     try {
       const { data } = await AdminApi.postCheckHomeworks(Rates);
       if (data.error) {
@@ -178,6 +179,7 @@ export const postCheckHomework =
         setVisibleModal("d-none");
         dataRates = [];
         studentsId = [];
+        setRefresh(Rates);
       }
     } catch (error) {
       console.log(error);
