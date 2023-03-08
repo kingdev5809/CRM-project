@@ -29,7 +29,7 @@ function AddGroupTimeModal(props) {
   const dispatch = useDispatch();
 
   const getGroups = useSelector((state) => state.groups);
-  const { data } = getGroups;
+  const { allGroupData } = getGroups;
 
   const getLocations = useSelector((state) => state.locations);
   const { locationData } = getLocations;
@@ -42,7 +42,7 @@ function AddGroupTimeModal(props) {
     dispatch(getAllLocation());
     dispatch(getAllTeachers());
   }, []);
-
+  
   // post group Time
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -114,7 +114,7 @@ function AddGroupTimeModal(props) {
                   >
                     <option value="">Choose group...</option>
 
-                    {data?.map((item) => (
+                    {allGroupData?.map((item) => (
                       <option value={item._id} key={item._id}>
                         {`${item.group_name}`}
                       </option>
