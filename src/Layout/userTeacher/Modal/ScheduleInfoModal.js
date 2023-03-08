@@ -38,13 +38,12 @@ function ScheduleInfoModal(props) {
   const handleCheckHomework = () => {
     dispatch(
       postCheckHomework(
-        { data: dataRates, group_id: homework_id, students_id: studentsId },
+        { data: dataRates, homework_id, students_id: studentsId },
         setVisibleModal,
         dataRates,
         studentsId
       )
     );
-
   };
   return (
     <div>

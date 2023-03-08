@@ -22,6 +22,8 @@ function MessagePage() {
     setGroup_id(item._id);
     setGroup_name(item.group_name);
   };
+
+  
   return (
     <div className="flex">
       <Navbar />

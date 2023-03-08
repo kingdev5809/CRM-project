@@ -9,6 +9,7 @@ import {
   getAllSubjectsReducers,
   getAllLocationReducers,
   getAllHomeworkReducers,
+  getAllCommentsReducers,
 } from "./AdminReduser";
 import { userLoginReducer } from "./UserReducers";
 
@@ -22,4 +23,5 @@ export const reducers = combineReducers({
   subjects: getAllSubjectsReducers,
   locations: getAllLocationReducers,
   homeworks: getAllHomeworkReducers,
+  comments: getAllCommentsReducers,
 });

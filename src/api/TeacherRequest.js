@@ -18,10 +18,14 @@ export const getOneGroup = (token) => API.get(`/rektor/group/${token}`, config);
 export const getHomeworks = (token) =>
   API.get(`/teacher/homework/${token}`, config);
 
-export const putComments = (data) => API.put("/teacher/comment", data, config);
+export const getComments = (token) =>
+  API.get(`/teacher/comment/${token}`, config);
+
+export const postComments = (data) =>
+  API.post("/teacher/comment", data, config);
 
 export const postHomeworks = (data) =>
   API.post("/teacher/homework", data, config);
 
-  export const postCheckHomeworks = (data) =>
+export const postCheckHomeworks = (data) =>
   API.post("/teacher/check_homework", data, config);

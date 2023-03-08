@@ -36,6 +36,10 @@ import {
   HOMEWORK_GET_ALL_SUCCESS,
   HOMEWORK_GET_ALL_FAIL,
   LOCATION_GET_ALL_DELETED,
+  MESSAGE_GET_ALL_REQUEST,
+  MESSAGE_GET_ALL_SUCCESS,
+  MESSAGE_GET_ALL_FAIL,
+  MESSAGE_CREATED,
 } from "../Constants/AdminContants";
 
 const initialState = {
@@ -47,6 +51,7 @@ const initialState = {
   locationData: [],
   allGroupTimes: [],
   homeworkData: [],
+  messageData: [],
 };
 // GET ALL teachers
 export const getAllTeachersReducers = (state = initialState, action) => {
@@ -218,7 +223,7 @@ export const getAllLocationReducers = (state = initialState, action) => {
   }
 };
 
-// GET Homeworkd
+// GET Homework
 export const getAllHomeworkReducers = (state = initialState, action) => {
   switch (action.type) {
     case HOMEWORK_GET_ALL_REQUEST:
@@ -231,6 +236,25 @@ export const getAllHomeworkReducers = (state = initialState, action) => {
       return {
         ...state,
         homeworkData: [...state.homeworkData, action.payload],
+      };
+    default:
+      return state;
+  }
+};
+
+// GET Comments
+export const getAllCommentsReducers = (state = initialState, action) => {
+  switch (action.type) {
+    case MESSAGE_GET_ALL_REQUEST:
+      return { loading: true };
+    case MESSAGE_GET_ALL_SUCCESS:
+      return { loading: false, messageData: action.payload };
+    case MESSAGE_GET_ALL_FAIL:
+      return { loading: false, error: action.payload };
+    case MESSAGE_CREATED:
+      return {
+        ...state,
+        messageData: [...state.messageData, action.payload],
       };
     default:
       return state;

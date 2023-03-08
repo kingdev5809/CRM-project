@@ -12,6 +12,10 @@ import {
   HOMEWORK_GET_ALL_FAIL,
   HOMEWORK_GET_ALL_REQUEST,
   HOMEWORK_GET_ALL_SUCCESS,
+  MESSAGE_CREATED,
+  MESSAGE_GET_ALL_FAIL,
+  MESSAGE_GET_ALL_REQUEST,
+  MESSAGE_GET_ALL_SUCCESS,
   SEND_MESSAGE,
 } from "../Constants/AdminContants";
 import * as AdminApi from "../../api/TeacherRequest";
@@ -90,15 +94,31 @@ export const getAllGroupTimes = () => async (dispatch) => {
   }
 };
 
-// put comment
-export const putComment = (group_id, message) => async (dispatch) => {
+// GET Comments
+
+export const getComment = (token) => async (dispatch) => {
+  dispatch({ type: MESSAGE_GET_ALL_REQUEST });
   try {
-    const { data } = await AdminApi.putComments({
+    const { data } = await AdminApi.getComments(token);
+    dispatch({ type: MESSAGE_GET_ALL_SUCCESS, payload: data.comments });
+  } catch (error) {
+    dispatch({
+      type: MESSAGE_GET_ALL_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
+// put comment
+export const postComment = (group_id, message) => async (dispatch) => {
+  try {
+    const { data } = await AdminApi.postComments({
       group_id,
       message,
     });
-    dispatch({ type: SEND_MESSAGE, payload: data.result });
-
+    dispatch({ type: MESSAGE_CREATED, payload: data.result });
     if (data.error) {
       toast.warning(data.error);
     } else {
