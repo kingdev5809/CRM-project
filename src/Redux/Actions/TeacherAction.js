@@ -158,7 +158,7 @@ export const postHomework =
         setMessage();
         toast.success(data.msg);
 
-        // dispatch({ type: HOMEWORK_CREATED, payload: data.result.homeworks });
+        dispatch({ type: HOMEWORK_CREATED, payload: data.result });
       }
     } catch (error) {
       console.log(error);
