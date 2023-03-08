@@ -1,28 +1,44 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { getHomework } from "../../../../Redux/Actions/TeacherAction";
+import {
+  getHomework,
+  getOneGroup,
+} from "../../../../Redux/Actions/TeacherAction";
 import AddHomeworkModal from "../../Modal/AddHomeworkModal";
 import exclamationImg from "../../../../images/navbar-img/exclamation.png";
+import ScheduleInfoModal from "../../Modal/ScheduleInfoModal";
 
 function TeacherHomeworks({ group_id, allGroupData }) {
   const [visibleModal, setVisibleModal] = useState("d-none");
+  const [rateVisibleModal, setRateVisibleModal] = useState("d-none");
   const dispatch = useDispatch();
   const { token } = useParams();
+
+  const getHomeworks = useSelector((state) => state.homeworks);
+  const { homeworkData } = getHomeworks;
+
+  const user = JSON.parse(localStorage.getItem("userInfo"));
 
   const getGroup = useSelector((state) => state.oneGroup);
   const { oneGroupData } = getGroup;
 
-  const user = JSON.parse(localStorage.getItem("userInfo"));
-
   useEffect(() => {
     if (!group_id) {
       dispatch(getHomework(token));
-      return;
+    } else {
+      dispatch(getHomework(group_id));
     }
-    dispatch(getHomework(group_id));
   }, [group_id]);
 
+  const handleOpenRateModal = () => {
+    if (!group_id) {
+      dispatch(getOneGroup(token));
+    } else {
+      dispatch(getOneGroup(group_id));
+    }
+    setRateVisibleModal("d-block");
+  };
   const HandleCreatedAt = (item) => {
     const date = new Date(item.createdAt);
     const year = date.getFullYear();
@@ -30,7 +46,6 @@ function TeacherHomeworks({ group_id, allGroupData }) {
     const day = date.getDate();
     return `${year}-${month}-${day}`;
   };
-  console.log(oneGroupData);
   return (
     <div className="homework messages-cards">
       <div className="flex homework-title">
@@ -38,8 +53,9 @@ function TeacherHomeworks({ group_id, allGroupData }) {
         <button onClick={() => setVisibleModal("d-block")}>Create</button>
       </div>
       <div className="items">
-        {group_id ? "" : <h1>Choose group</h1>}
-        {oneGroupData
+        {homeworkData?.length == 0 && <h1>Choose group</h1>}
+
+        {homeworkData
           ?.map((item) => (
             <div className="item">
               <div className="item-title">
@@ -56,7 +72,10 @@ function TeacherHomeworks({ group_id, allGroupData }) {
                       <h6>Teacher</h6>
                     </div>
                   </div>
-
+                  <div
+                    className="click-window"
+                    onClick={handleOpenRateModal}
+                  ></div>
                   <div className="created-time">
                     <h6>{HandleCreatedAt(item)}</h6>
                   </div>
@@ -70,6 +89,11 @@ function TeacherHomeworks({ group_id, allGroupData }) {
         visibleModal={visibleModal}
         setVisibleModal={setVisibleModal}
         allGroupData={allGroupData}
+      />
+      <ScheduleInfoModal
+        visibleModal={rateVisibleModal}
+        setVisibleModal={setRateVisibleModal}
+        data={oneGroupData}
       />
     </div>
   );

@@ -1328,10 +1328,11 @@ body::-webkit-scrollbar {
 .homeworkPage .items {
   height: 84vh;
 }
-.homeworkPage .homework .homework-title {
+
+.homework .homework-title {
   justify-content: space-between;
 }
-.homeworkPage .homework .homework-title button {
+.homework .homework-title button {
   background-color: #ee6c4d;
   border: none;
   border-radius: 30px;
@@ -1340,15 +1341,29 @@ body::-webkit-scrollbar {
   margin: auto 0;
   padding: 7px 25px;
 }
-.homeworkPage .homework .items .item {
-  /* height: 190px; */
+.homework .items .item {
+  position: relative;
 }
 
-.homeworkPage .group-sec .items .item {
+.group-sec .items .item {
   height: 130px;
   box-shadow: 0px 0px 1px 0px;
 }
+.homework .click-window {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+}
 
+@media screen and (max-width: 1050px) {
+  .homework .w-screen {
+    left: 0;
+  }
+}
 /* Homework page end */
 
 /* Homewwork and message page style start */
@@ -1583,6 +1598,7 @@ Teacher Page start
 .scheduleInfoModal {
 }
 .scheduleInfoModal .modal-content .user-box {
+  width: 250px;
   display: flex;
 }
 
@@ -1656,11 +1672,13 @@ Teacher Page start
   padding: 15px;
   border-radius: 10px;
   margin: 10px 0;
+  position: relative;
 }
 .scheduleInfoModal .modal-content .student-box .items {
   height: 295px;
   overflow-y: scroll;
-  padding: 10px;
+  padding: 0px;
+  margin: 0;
 }
 
 /* width */
@@ -1692,20 +1710,34 @@ Teacher Page start
   display: flex;
   justify-content: space-between;
   padding: 10px 0;
+  margin: 0;
 }
-.scheduleInfoModal .modal-content .student-box img {
+.scheduleInfoModal .modal-content .student-box .item img {
   margin: auto 0;
 }
 .scheduleInfoModal .modal-content .student-box .star-img {
   width: 100px;
   cursor: pointer;
 }
-.scheduleInfoModal .modal-content .student-box .success-img {
+.scheduleInfoModal .modal-content .student-box input{
+  width: 20px;
+}
+.scheduleInfoModal .success-img {
   width: 30px;
   cursor: pointer;
 }
-.scheduleInfoModal .modal-content .student-box .exclamation-img {
+.scheduleInfoModal .exclamation-img {
   cursor: pointer;
   width: 30px;
 }
+.scheduleInfoModal .rate-images {
+  position: absolute;
+  right: 10px;
+  top: 0px;
+  z-index: 99999 !important;
+}
+.scheduleInfoModal .rate-images img {
+  margin: 0px 15px;
+}
+
 /* schedule info modal style end */

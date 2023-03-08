@@ -31,16 +31,14 @@ function TeacherGroupStudents() {
         </div>
         <div className="main">
           <div className="items">
-            {oneGroupData?.group?.students?.length == 0 && (
-              <h1>Not Students</h1>
-            )}
+            {oneGroupData?.length == 0 && <h1>Not Students</h1>}
 
             {oneGroupData ? (
-              oneGroupData?.group?.students
-                .map((item) => (
+              oneGroupData
+                ?.map((item) => (
                   <div className="item" key={item._id}>
                     <div className="title">
-                      <img src={userImg} alt="" />
+                      <img src={item.student.photo} alt="" />
                       <div className="text-box">
                         <h3>{`${item.student.surname} ${" "} ${
                           item.student.name
@@ -65,11 +63,6 @@ function TeacherGroupStudents() {
             )}
           </div>
         </div>
-        <ScheduleInfoModal
-          visibleModal={visibleModal}
-          setVisibleModal={setVisibleModal}
-          data={oneGroupData}
-        />
       </div>
     </div>
   );

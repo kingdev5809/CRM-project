@@ -44,7 +44,7 @@ function AddHomeworkModal(props) {
           <div className="modal-content">
             <form action="">
               <div className="modal-input">
-                <label>Class name</label>
+                <label> Name</label>
                 <input
                   className="w-full"
                   type="text"

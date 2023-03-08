@@ -10,7 +10,7 @@ import starImg from "../../../images/navbar-img/starts.png";
 import succsesImg from "../../../images/navbar-img/success.png";
 import exclamationImg from "../../../images/navbar-img/exclamation.png";
 function ScheduleInfoModal(props) {
-  const { visibleModal, setVisibleModal } = props;
+  const { visibleModal, setVisibleModal, data } = props;
 
   return (
     <div>
@@ -51,32 +51,14 @@ function ScheduleInfoModal(props) {
             </p>
             <div className="schedule-box">
               <div className="box">
-                <img src={clockImg} alt="" />
-                <h4>Monday,July 15 15:00- 16:30</h4>
-              </div>
-              <div className="flex">
-                <div className="box">
-                  <img src={locationImg} alt="" />
-                  <h4>Rinkeby 15,Stockholm</h4>
-                </div>
-                <div className="box">
-                  <img src={studentImg} alt="" />
-                  <h4>14 Students</h4>
-                </div>
+                <img src={studentImg} alt="" />
+                <h4>14 Students</h4>
               </div>
             </div>
             <div className="student-box">
               <div className="items">
                 {/* item start */}
-                <div className="item">
-                  <div className="user-box">
-                    <img src={userImg} alt="" />
-                    <div className="box">
-                      <h2>Sher Murodjonov</h2>
-                      <p>Teacher</p>
-                    </div>
-                  </div>
-                  <img className="star-img" src={starImg} alt="" />
+                <div className="rate-images">
                   <img className="success-img" src={succsesImg} alt="" />
                   <img
                     className="exclamation-img"
@@ -84,139 +66,26 @@ function ScheduleInfoModal(props) {
                     alt=""
                   />
                 </div>
-                {/* item end */}
+                {data?.length == 0 && <h1>Not Students</h1>}
+                {data ? (
+                  data.map((item) => (
+                    <div className="item">
+                      <div className="user-box">
+                        <img src={item.student.photo} alt="" />
+                        <div className="box">
+                          <h3>{`${item.student.surname} ${item.student.name}`}</h3>
+                          <p>Student</p>
+                        </div>
+                      </div>
+                      <img className="star-img" src={starImg} alt="" />
+                      <input type="radio" name="rate" />
+                      <input type="radio" name="rate" />
+                    </div>
+                  ))
+                ) : (
+                  <h1>Loading...</h1>
+                )}
 
-                {/* item start */}
-                <div className="item">
-                  <div className="user-box">
-                    <img src={userImg} alt="" />
-                    <div className="box">
-                      <h2>Sher Murodjonov</h2>
-                      <p>Teacher</p>
-                    </div>
-                  </div>
-                  <img className="star-img" src={starImg} alt="" />
-                  <img className="success-img" src={succsesImg} alt="" />
-                  <img
-                    className="exclamation-img"
-                    src={exclamationImg}
-                    alt=""
-                  />
-                </div>
-                {/* item end */}
-
-                {/* item start */}
-                <div className="item">
-                  <div className="user-box">
-                    <img src={userImg} alt="" />
-                    <div className="box">
-                      <h2>Sher Murodjonov</h2>
-                      <p>Teacher</p>
-                    </div>
-                  </div>
-                  <img className="star-img" src={starImg} alt="" />
-                  <img className="success-img" src={succsesImg} alt="" />
-                  <img
-                    className="exclamation-img"
-                    src={exclamationImg}
-                    alt=""
-                  />
-                </div>
-                {/* item end */}
-
-                {/* item start */}
-                <div className="item">
-                  <div className="user-box">
-                    <img src={userImg} alt="" />
-                    <div className="box">
-                      <h2>Sher Murodjonov</h2>
-                      <p>Teacher</p>
-                    </div>
-                  </div>
-                  <img className="star-img" src={starImg} alt="" />
-                  <img className="success-img" src={succsesImg} alt="" />
-                  <img
-                    className="exclamation-img"
-                    src={exclamationImg}
-                    alt=""
-                  />
-                </div>
-                {/* item end */}
-
-                {/* item start */}
-                <div className="item">
-                  <div className="user-box">
-                    <img src={userImg} alt="" />
-                    <div className="box">
-                      <h2>Sher Murodjonov</h2>
-                      <p>Teacher</p>
-                    </div>
-                  </div>
-                  <img className="star-img" src={starImg} alt="" />
-                  <img className="success-img" src={succsesImg} alt="" />
-                  <img
-                    className="exclamation-img"
-                    src={exclamationImg}
-                    alt=""
-                  />
-                </div>
-                {/* item end */}
-
-                {/* item start */}
-                <div className="item">
-                  <div className="user-box">
-                    <img src={userImg} alt="" />
-                    <div className="box">
-                      <h2>Sher Murodjonov</h2>
-                      <p>Teacher</p>
-                    </div>
-                  </div>
-                  <img className="star-img" src={starImg} alt="" />
-                  <img className="success-img" src={succsesImg} alt="" />
-                  <img
-                    className="exclamation-img"
-                    src={exclamationImg}
-                    alt=""
-                  />
-                </div>
-                {/* item end */}
-
-                {/* item start */}
-                <div className="item">
-                  <div className="user-box">
-                    <img src={userImg} alt="" />
-                    <div className="box">
-                      <h2>Sher Murodjonov</h2>
-                      <p>Teacher</p>
-                    </div>
-                  </div>
-                  <img className="star-img" src={starImg} alt="" />
-                  <img className="success-img" src={succsesImg} alt="" />
-                  <img
-                    className="exclamation-img"
-                    src={exclamationImg}
-                    alt=""
-                  />
-                </div>
-                {/* item end */}
-
-                {/* item start */}
-                <div className="item">
-                  <div className="user-box">
-                    <img src={userImg} alt="" />
-                    <div className="box">
-                      <h2>Sher Murodjonov</h2>
-                      <p>Teacher</p>
-                    </div>
-                  </div>
-                  <img className="star-img" src={starImg} alt="" />
-                  <img className="success-img" src={succsesImg} alt="" />
-                  <img
-                    className="exclamation-img"
-                    src={exclamationImg}
-                    alt=""
-                  />
-                </div>
                 {/* item end */}
               </div>
             </div>

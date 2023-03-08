@@ -32,6 +32,9 @@ import {
   GROUPS_GET_ALL_DELETED,
   GROUPS_POST_STUDENT_REMOVED,
   GROUPS_POST_STUDENT_ADD,
+  HOMEWORK_GET_ALL_REQUEST,
+  HOMEWORK_GET_ALL_SUCCESS,
+  HOMEWORK_GET_ALL_FAIL,
 } from "../Constants/AdminContants";
 
 const initialState = {
@@ -42,6 +45,7 @@ const initialState = {
   oneGroupData: [],
   locationData: [],
   allGroupTimes: [],
+  homeworkData: [],
 };
 // GET ALL teachers
 export const getAllTeachersReducers = (state = initialState, action) => {
@@ -157,11 +161,6 @@ export const getOneGroupReducers = (state = initialState, action) => {
           group: action.payload,
         },
       };
-    case HOMEWORK_CREATED:
-      return {
-        ...state,
-        oneGroupData: action.payload,
-      };
     case GROUPS_POST_STUDENT_ADD:
       return {
         oneGroupData: [...state.oneGroupData, action.payload],
@@ -205,6 +204,25 @@ export const getAllLocationReducers = (state = initialState, action) => {
       return {
         ...state,
         locationData: [...state.locationData, action.payload],
+      };
+    default:
+      return state;
+  }
+};
+
+// GET Homeworkd
+export const getAllHomeworkReducers = (state = initialState, action) => {
+  switch (action.type) {
+    case HOMEWORK_GET_ALL_REQUEST:
+      return { loading: true };
+    case HOMEWORK_GET_ALL_SUCCESS:
+      return { loading: false, homeworkData: action.payload };
+    case HOMEWORK_GET_ALL_FAIL:
+      return { loading: false, error: action.payload };
+    case HOMEWORK_CREATED:
+      return {
+        ...state,
+        homeworkData: [...state.homeworkData, action.payload],
       };
     default:
       return state;

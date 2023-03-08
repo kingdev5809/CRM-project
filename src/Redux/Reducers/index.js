@@ -1,4 +1,5 @@
 import { combineReducers } from "redux";
+import { homeworkIcon } from "../../Components/icons/svgIcons";
 import {
   getAllTeachersReducers,
   getAllStudentsReducers,
@@ -7,6 +8,7 @@ import {
   getAllGroupTimesReducers,
   getAllSubjectsReducers,
   getAllLocationReducers,
+  getAllHomeworkReducers,
 } from "./AdminReduser";
 import { userLoginReducer } from "./UserReducers";
 
@@ -18,5 +20,6 @@ export const reducers = combineReducers({
   oneGroup: getOneGroupReducers,
   groupTimes: getAllGroupTimesReducers,
   subjects: getAllSubjectsReducers,
-  locations: getAllLocationReducers
+  locations: getAllLocationReducers,
+  homeworks: getAllHomeworkReducers,
 });

@@ -19,9 +19,10 @@ function TeacherHomeworkPage() {
   }, []);
 
   const handleChangeGroup = (item) => {
+    
     setGroup_id(item._id);
   };
-  console.log(allGroupData);
+  
   return (
     <div className="flex">
       <Navbar />
@@ -45,7 +46,7 @@ function TeacherHomeworkPage() {
                 <div className="item-box-3"></div>
                 <NavLink to={`/teacher/homework/${item._id}`}>
                   <div
-                    onClick={() => handleChangeGroup(item)}
+                    onClick={() => setGroup_id('')}
                     className="click-window"
                   ></div>
                 </NavLink>

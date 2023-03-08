@@ -41,7 +41,7 @@ const TeacherClasses = () => {
                     <div className="itemBtn">
                       <span>
                         <i className="svg1">{studentIcon}</i> Student:
-                        {item.students.length}
+                        {item.students}
                       </span>{" "}
                     </div>
                   </div>
