@@ -5,6 +5,7 @@ import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getComment, postComment } from "../../../Redux/Actions/TeacherAction";
 import { toast } from "react-toastify";
+import moment from "moment";
 function Message({ group_id, group_name }) {
   const [message, setMessage] = useState("");
 
@@ -52,7 +53,11 @@ function Message({ group_id, group_name }) {
                   </div>
                 </div>
                 <div className="created-time">
-                  <h6>{HandleCreatedAt(item)}</h6>
+                  <h6>
+                    {item.createdAt
+                      ? moment(item.createdAt).format("lll")
+                      : null}
+                  </h6>
                 </div>
               </div>
               <NavLink to={`/student/message/engelska`}>
