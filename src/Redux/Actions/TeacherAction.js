@@ -144,3 +144,22 @@ export const postHomework =
       console.log(error);
     }
   };
+
+// POST Homework
+
+export const postCheckHomework =
+  (dataRates, setVisibleModal) => async (dispatch) => {
+    try {
+      const { data } = await AdminApi.postCheckHomeworks(dataRates);
+      if (data.error) {
+        toast.warning(data.error);
+      } else {
+        toast.success(data.msg);
+        setVisibleModal("d-none");
+
+        // dispatch({ type: HOMEWORK_CREATED, payload: data.result.homeworks });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };

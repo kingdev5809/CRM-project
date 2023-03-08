@@ -7,6 +7,8 @@ import studentImg from "../../../images/modal-mg/studentImg.png";
 import succsesImg from "../../../images/navbar-img/success.png";
 import exclamationImg from "../../../images/navbar-img/exclamation.png";
 import Rating from "../../../Components/Rating";
+import { useDispatch } from "react-redux";
+import { postCheckHomework } from "../../../Redux/Actions/TeacherAction";
 function ScheduleInfoModal(props) {
   const { visibleModal, setVisibleModal, data, homework_id, group_id } = props;
 
@@ -30,6 +32,16 @@ function ScheduleInfoModal(props) {
   };
   const handleRemoveStudentId = (item) => {
     studentsId = studentsId.filter((id) => id !== item);
+  };
+  const dispatch = useDispatch();
+
+  const handleCheckHomework = () => {
+    dispatch(
+      postCheckHomework(
+        { data: dataRates, group_id: homework_id, students_id: studentsId },
+        setVisibleModal
+      )
+    );
   };
   return (
     <div>
@@ -116,7 +128,7 @@ function ScheduleInfoModal(props) {
                 {/* item end */}
               </div>
             </div>
-              <button >Submit</button>
+            <button onClick={handleCheckHomework}>Submit</button>
           </div>
         </div>
       </div>
