@@ -101,7 +101,7 @@ const Classes = () => {
                       <h3 className={item.text_color}> {item.group_name} </h3>
                     </NavLink>
                     <h4>
-                      <b>Teacher:</b> {item?.teacher?.name}
+                      <b>Teacher:</b> {item?.teacher?.name} {item?.teacher?.surname} 
                     </h4>
                     <div className="itemBtn">
                       <span>
