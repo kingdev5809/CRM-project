@@ -27,7 +27,6 @@ function GroupStudents() {
   }, [refresh]);
 
   // handle set item for delete modal
-  console.log(oneGroupData);
   const handleSetItem = (item) => {
     setDeleteModalVisible("d-block");
     setGroup(token);
@@ -41,8 +40,7 @@ function GroupStudents() {
         group,
         setGroup,
         setStudent,
-        setRefresh,
-        setDeleteModalVisible
+       setDeleteModalVisible
       )
     );
   };
@@ -60,13 +58,11 @@ function GroupStudents() {
         </div>
         <div className="main">
           <div className="items">
-            {oneGroupData?.group?.students?.length == 0 && (
-              <h1>Not Students</h1>
-            )}
+            {oneGroupData?.students?.length == 0 && <h1>Not Students</h1>}
 
             {oneGroupData ? (
-              oneGroupData?.group?.students
-                .map((item) => (
+              oneGroupData
+                ?.map((item) => (
                   <div className="item" key={item._id}>
                     <div className="title">
                       <img src={item.student.photo} alt="" />

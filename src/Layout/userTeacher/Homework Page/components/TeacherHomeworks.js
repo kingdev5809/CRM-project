@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getHomework } from "../../../../Redux/Actions/TeacherAction";
 import AddHomeworkModal from "../../Modal/AddHomeworkModal";
-import exclamationImg from "../../../images/navbar-img/exclamation.png";
+import exclamationImg from "../../../../images/navbar-img/exclamation.png";
 
 function TeacherHomeworks({ group_id, allGroupData }) {
   const [visibleModal, setVisibleModal] = useState("d-none");

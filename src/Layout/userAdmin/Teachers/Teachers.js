@@ -64,6 +64,7 @@ const Teachers = () => {
     setAddress(user.address);
     setUpdateVisibleModal("d-block");
     setTeacher_Id(user._id);
+    setPhoto(user.photo);
   };
 
   return (

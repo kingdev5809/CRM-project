@@ -27,6 +27,11 @@ import {
   TEACHER_GET_ALL_SUCCESS,
   SEND_MESSAGE,
   HOMEWORK_CREATED,
+  STUDENT_GET_ALL_DELETED,
+  TEACHER_GET_ALL_DELETED,
+  GROUPS_GET_ALL_DELETED,
+  GROUPS_POST_STUDENT_REMOVED,
+  GROUPS_POST_STUDENT_ADD,
 } from "../Constants/AdminContants";
 
 const initialState = {
@@ -52,6 +57,13 @@ export const getAllTeachersReducers = (state = initialState, action) => {
         ...state,
         Teacherdata: [...state.Teacherdata, action.payload],
       };
+    case TEACHER_GET_ALL_DELETED:
+      return {
+        ...state,
+        Teacherdata: state.Teacherdata.filter(
+          (data) => data._id !== action.payload
+        ),
+      };
     default:
       return state;
   }
@@ -70,6 +82,13 @@ export const getAllStudentsReducers = (state = initialState, action) => {
       return {
         ...state,
         studentData: [...state.studentData, action.payload],
+      };
+    case STUDENT_GET_ALL_DELETED:
+      return {
+        ...state,
+        studentData: state.studentData.filter(
+          (data) => data._id !== action.payload
+        ),
       };
     default:
       return state;
@@ -90,7 +109,13 @@ export const getAllGroupReducers = (state = initialState, action) => {
         ...state,
         allGroupData: [...state.allGroupData, action.payload],
       };
-
+    case GROUPS_GET_ALL_DELETED:
+      return {
+        ...state,
+        allGroupData: state.allGroupData.filter(
+          (data) => data._id !== action.payload
+        ),
+      };
     default:
       return state;
   }
@@ -136,6 +161,17 @@ export const getOneGroupReducers = (state = initialState, action) => {
       return {
         ...state,
         oneGroupData: action.payload,
+      };
+    case GROUPS_POST_STUDENT_ADD:
+      return {
+        oneGroupData: [...state.oneGroupData, action.payload],
+      };
+    case GROUPS_POST_STUDENT_REMOVED:
+      return {
+        ...state,
+        oneGroupData: state.oneGroupData.filter(
+          (data) => data.student._id !== action.payload
+        ),
       };
     default:
       return state;

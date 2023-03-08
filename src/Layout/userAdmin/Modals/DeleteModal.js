@@ -12,6 +12,7 @@ function DeleteModal(props) {
     e.preventDefault();
     setDeleteModalVisible("d-none");
   };
+
   return (
     <div>
       <div className={deleteModalVisible}>

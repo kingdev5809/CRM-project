@@ -99,7 +99,6 @@ body::-webkit-scrollbar {
   }
 }
 
-
 .navbar-component {
   width: 20%;
 }
@@ -637,7 +636,7 @@ body::-webkit-scrollbar {
   display: flex;
   align-items: center;
 }
-.login-page .login-sec main .login-box .input-box img{
+.login-page .login-sec main .login-box .input-box img {
   width: 20px;
 }
 .login-page .login-sec main .login-box .input-box span {
@@ -657,7 +656,7 @@ body::-webkit-scrollbar {
   cursor: pointer;
   color: #c2d1d4;
 }
-.login-page .login-sec main .login-box .input-box .eyeSlash img{
+.login-page .login-sec main .login-box .input-box .eyeSlash img {
   width: 25px;
 }
 .login-page .login-sec main .login-box .checkbox {
@@ -941,7 +940,6 @@ body::-webkit-scrollbar {
   font-size: 1.25rem;
   line-height: 1.75rem;
   font-weight: 500;
-  
 }
 .classes-page .items .item .item-box h4 {
   font-size: 1rem;
@@ -1097,6 +1095,8 @@ body::-webkit-scrollbar {
 }
 .teacherPage .items .item img {
   width: 150px;
+  height: 150px;
+  border-radius: 100px;
 }
 .teacherPage .items .item h2 {
   font-size: 1.25rem;
@@ -1176,6 +1176,8 @@ body::-webkit-scrollbar {
 }
 .studentsPage .main .items .item .title img {
   width: 4rem;
+  height: 4rem;
+  border-radius: 100px;
 }
 .studentsPage .main .items .item .title .text-box {
   margin-left: 20px;
@@ -1295,7 +1297,7 @@ body::-webkit-scrollbar {
 
 .messagesPage .messages-sec .items {
   height: 75vh;
-  }
+}
 
 /* Message page end w*/
 

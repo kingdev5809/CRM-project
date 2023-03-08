@@ -95,7 +95,7 @@ const Classes = () => {
             allGroupData
               ?.map((item) => (
                 <div className="item" key={item._id}>
-                  <img src={item.teacher.photo} alt="" />
+                  <img src={item?.teacher?.photo} alt="" />
                   <div className="item-box">
                     <NavLink to={`/admin/classes/${item._id}`}>
                       <h3 className={item.text_color}> {item.group_name} </h3>

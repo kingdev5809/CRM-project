@@ -49,7 +49,11 @@ export const deleteTeachers = (teacher_id) =>
 export const deleteClasses = (classes_id) =>
   API.delete(`/rektor/group/${classes_id}`, config);
 
-export const removeStudents = (data) => API.delete(`/rektor/room`, data, config);
+export const removeStudents = (data) =>
+  API.delete(
+    `/rektor/room?group=${data.group}&student=${data.student}`,
+    config
+  );
 
 export const updateTeachers = (data, teacher_id) =>
   API.put(`/rektor/teacher/${teacher_id}`, data, config);
