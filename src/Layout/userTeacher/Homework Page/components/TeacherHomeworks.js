@@ -1,13 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import moment from "moment";
 import {
   getHomework,
   getOneGroup,
 } from "../../../../Redux/Actions/TeacherAction";
 import AddHomeworkModal from "../../Modal/AddHomeworkModal";
 import exclamationImg from "../../../../images/navbar-img/exclamation.png";
+import successImg from "../../../../images/navbar-img/success.png";
+
 import ScheduleInfoModal from "../../Modal/ScheduleInfoModal";
+import { toast } from "react-toastify";
 
 function TeacherHomeworks({ group_id, allGroupData }) {
   const [visibleModal, setVisibleModal] = useState("d-none");
@@ -33,13 +37,17 @@ function TeacherHomeworks({ group_id, allGroupData }) {
   }, [group_id]);
 
   const handleOpenRateModal = (item) => {
-    if (!group_id) {
-      dispatch(getOneGroup(token));
+    if (item.check) {
+      toast.warning("this homework already checked");
     } else {
-      dispatch(getOneGroup(group_id));
+      if (!group_id) {
+        dispatch(getOneGroup(token));
+      } else {
+        dispatch(getOneGroup(group_id));
+      }
+      setRateVisibleModal("d-block");
+      setHomework_id(item._id);
     }
-    setRateVisibleModal("d-block");
-    setHomework_id(item._id)
   };
   const HandleCreatedAt = (item) => {
     const date = new Date(item.createdAt);
@@ -48,6 +56,7 @@ function TeacherHomeworks({ group_id, allGroupData }) {
     const day = date.getDate();
     return `${year}-${month}-${day}`;
   };
+  console.log(homeworkData);
   return (
     <div className="homework messages-cards">
       <div className="flex homework-title">
@@ -61,7 +70,7 @@ function TeacherHomeworks({ group_id, allGroupData }) {
           ?.map((item) => (
             <div className="item" key={item._id}>
               <div className="item-title">
-                <img src={exclamationImg} alt="" />
+                <img src={item.check ? successImg : exclamationImg} alt="" />
                 <h3>{item.name}</h3>
               </div>
               <div className="item-content">
@@ -74,15 +83,21 @@ function TeacherHomeworks({ group_id, allGroupData }) {
                       <h6>Teacher</h6>
                     </div>
                   </div>
-                  <div
-                    className="click-window"
-                    onClick={() => handleOpenRateModal(item)}
-                  ></div>
+
                   <div className="created-time">
-                    <h6>{HandleCreatedAt(item)}</h6>
+                    <h6>
+                      {item.createdAt
+                        ? moment(item.createdAt).format("lll")
+                        : null}
+                    </h6>
                   </div>
                 </div>
               </div>
+
+              <div
+                className="click-window"
+                onClick={() => handleOpenRateModal(item)}
+              ></div>
             </div>
           ))
           .reverse()}
