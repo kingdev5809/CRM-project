@@ -148,16 +148,16 @@ export const postHomework =
 // POST Homework
 
 export const postCheckHomework =
-  (dataRates, setVisibleModal) => async (dispatch) => {
+  (Rates, setVisibleModal, dataRates, studentsId) => async (dispatch) => {
     try {
-      const { data } = await AdminApi.postCheckHomeworks(dataRates);
+      const { data } = await AdminApi.postCheckHomeworks(Rates);
       if (data.error) {
         toast.warning(data.error);
       } else {
         toast.success(data.msg);
         setVisibleModal("d-none");
-
-        // dispatch({ type: HOMEWORK_CREATED, payload: data.result.homeworks });
+        dataRates = [];
+        studentsId = [];
       }
     } catch (error) {
       console.log(error);
