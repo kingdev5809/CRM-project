@@ -4,14 +4,12 @@ import { useParams } from "react-router-dom";
 import { getHomework } from "../../../../Redux/Actions/StudentAction";
 import HomeworksItem from "./HomeworksItem";
 function Homeworks({ group_id, teacher }) {
-  const [rate, setRate] = useState(false);
   const dispatch = useDispatch();
   const { token } = useParams();
 
   const getGroup = useSelector((state) => state.oneGroup);
   const { oneGroupData } = getGroup;
 
-  const user = JSON.parse(localStorage.getItem("userInfo"));
 
   const getHomeworks = useSelector((state) => state.homeworks);
   const { homeworkData } = getHomeworks;
@@ -24,13 +22,7 @@ function Homeworks({ group_id, teacher }) {
     }
   }, [group_id]);
 
-  const handleCheckRate = (item) => {
-    if (Object.values(item.students).includes("Fronted")) {
-      console.log(true);
-    } else {
-      console.log(false);
-    }
-  };
+  
   return (
     <div className="homework messages-cards">
       <div className="flex">
@@ -42,7 +34,6 @@ function Homeworks({ group_id, teacher }) {
           <HomeworksItem
             item={item}
             teacher={teacher}
-            handleCheckRate={handleCheckRate}
           />
         ))}
       </div>

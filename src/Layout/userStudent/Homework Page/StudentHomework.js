@@ -23,7 +23,7 @@ function Homework() {
     setGroup_id(item._id);
     setTeacher(item.teacher);
   };
-  console.log(allGroupData);
+
   return (
     <div className="flex">
       <Navbar />

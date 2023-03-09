@@ -1,24 +1,22 @@
-import React, { useEffect } from "react";
+import moment from "moment";
+import React from "react";
 import exclamationImg from "../../../../images/navbar-img/exclamation.png";
+import succsessImg from ".././../../../images/navbar-img/success.png";
+function HomeworksItem({ item, teacher }) {
+  const user = JSON.parse(localStorage.getItem("userInfo"));
 
-function HomeworksItem({ item, teacher, handleCheckRate }) {
-  const HandleCreatedAt = (item) => {
-    const date = new Date(item.createdAt);
-    const year = date.getFullYear();
-    const month = date.getMonth();
-    const day = date.getDate();
-    return `${year}-${month}-${day}`;
-  };
-  useEffect(() => {
-    handleCheckRate(item);
-  }, [item]);
-
-  
   return (
     <div>
       <div className="item">
         <div className="item-title">
-          <img src={exclamationImg} alt="" />
+          <img
+            src={
+              item.students.includes(user.stud._id)
+                ? succsessImg
+                : exclamationImg
+            }
+            alt=""
+          />
           <h3>{item.name}</h3>
         </div>
         <div className="item-content">
@@ -32,7 +30,9 @@ function HomeworksItem({ item, teacher, handleCheckRate }) {
               </div>
             </div>
             <div className="created-time">
-              <h6>{HandleCreatedAt(item)}</h6>
+              <h6>
+                {item.createdAt ? moment(item.createdAt).format("lll") : null}
+              </h6>
             </div>
           </div>
         </div>

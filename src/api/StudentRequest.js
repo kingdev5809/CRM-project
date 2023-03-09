@@ -16,8 +16,6 @@ export const getOneGroup = (group_id) =>
 
 export const getAllGroupTimes = () => API.get("/student/group_time", config);
 
-
-
 export const getHomeworks = (token) =>
   API.get(`/student/homework/${token}`, config);
 

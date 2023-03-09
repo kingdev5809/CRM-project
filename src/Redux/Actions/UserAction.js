@@ -17,21 +17,18 @@ export const login =
       if (data.error) {
         toast.warning(data.error);
       } else {
-        //   document.location.href = "/";
+        document.location.href = "/";
         toast.success(data.msg);
+        localStorage.setItem("userInfo", JSON.stringify(data));
         if (data?.rektor) {
-          navigate("/admin/schedule");
+          navigate("/admin/schedule", { replace: true });
         } else if (data?.teacher) {
-          navigate("/teacher/schedule");
-        }else if (data?.student) {
-          navigate("/student/schedule");
+          navigate("/teacher/schedule", { replace: true });
+        } else if (data?.student) {
+          navigate("/student/schedule", { replace: true });
         }
       }
-
       dispatch({ type: USER_LOGIN_SUCCESS, payload: data });
-      // if (checkbox) {
-      localStorage.setItem("userInfo", JSON.stringify(data));
-      // }
     } catch (error) {
       dispatch({
         type: USER_LOGIN_FAIL,

@@ -25,7 +25,7 @@ const StudentClasses = () => {
         </div>
         <div className="items container-95">
           {allGroupData ? (
-            allGroupData?.groups?.map((item) => (
+            allGroupData?.map((item) => (
               <div className="item">
                 <img src={userImg} alt="" />
                 <div className="item-box">

@@ -30,16 +30,17 @@ const Routing = () => {
   const navigate = useNavigate();
 
   const user = JSON.parse(localStorage.getItem("userInfo"));
+
   useEffect(() => {
-    if (user?.rektor) {
+    if (user?.msg) {
       dispatch({ type: USER_LOGIN_SUCCESS, payload: user });
-      navigate("/admin/schedule");
-    } else if (user?.teacher) {
-      dispatch({ type: USER_LOGIN_SUCCESS, payload: user });
-      navigate("/teacher/schedule");
-    } else if (user?.student) {
-      dispatch({ type: USER_LOGIN_SUCCESS, payload: user });
-      navigate("/student/schedule");
+      if (user?.rektor) {
+        navigate("/admin/schedule");
+      } else if (user?.teacher) {
+        navigate("/teacher/schedule");
+      } else if (user?.student) {
+        navigate("/student/schedule");
+      }
     } else {
       navigate("/login");
     }
@@ -72,7 +73,7 @@ const Routing = () => {
     <Routes>
       {/* admin page start */}
       <Route
-        path="admin/schedule"
+        path="/admin/schedule"
         element={
           <AdminElement>
             <Schedule />
@@ -80,7 +81,7 @@ const Routing = () => {
         }
       />
       <Route
-        path="admin/classes"
+        path="/admin/classes"
         element={
           <AdminElement>
             <Classes />
@@ -89,7 +90,7 @@ const Routing = () => {
       />
 
       <Route
-        path="admin/classes/:token"
+        path="/admin/classes/:token"
         element={
           <AdminElement>
             <GroupStudents />
@@ -97,7 +98,7 @@ const Routing = () => {
         }
       />
       <Route
-        path="admin/teacher"
+        path="/admin/teacher"
         element={
           <AdminElement>
             <Teachers />
@@ -105,7 +106,7 @@ const Routing = () => {
         }
       />
       <Route
-        path="admin/students"
+        path="/admin/students"
         element={
           <AdminElement>
             <Students />
@@ -113,7 +114,7 @@ const Routing = () => {
         }
       />
       <Route
-        path="admin/location"
+        path="/admin/location"
         element={
           <AdminElement>
             <Location />
@@ -124,7 +125,7 @@ const Routing = () => {
 
       {/* teacher page start */}
       <Route
-        path="teacher/schedule"
+        path="/teacher/schedule"
         element={
           <TeacherElement>
             <TeacherSchedule />
@@ -133,7 +134,7 @@ const Routing = () => {
       />
 
       <Route
-        path="teacher/classes"
+        path="/teacher/classes"
         element={
           <TeacherElement>
             <TeacherClasses />
@@ -142,7 +143,7 @@ const Routing = () => {
       />
 
       <Route
-        path="teacher/classes/:token"
+        path="/teacher/classes/:token"
         element={
           <TeacherElement>
             <TeacherGroupStudents />
@@ -151,7 +152,7 @@ const Routing = () => {
       />
 
       <Route
-        path="teacher/message"
+        path="/teacher/message"
         element={
           <TeacherElement>
             <TeacherMessagePage />
@@ -160,7 +161,7 @@ const Routing = () => {
       />
 
       <Route
-        path="teacher/homework"
+        path="/teacher/homework"
         element={
           <TeacherElement>
             <TeacherHomeworkPage />
@@ -169,7 +170,7 @@ const Routing = () => {
       />
 
       <Route
-        path="teacher/homework/:token"
+        path="/teacher/homework/:token"
         element={
           <TeacherElement>
             <TeacherHomeworks />
@@ -181,7 +182,7 @@ const Routing = () => {
 
       {/* student page start */}
       <Route
-        path="student/schedule"
+        path="/student/schedule"
         element={
           <StudentElement>
             <StudentsSchedule />
@@ -190,7 +191,7 @@ const Routing = () => {
       />
 
       <Route
-        path="student/message"
+        path="/student/message"
         element={
           <StudentElement>
             <MessagePage />
@@ -199,7 +200,7 @@ const Routing = () => {
       />
 
       <Route
-        path="student/classes"
+        path="/student/classes"
         element={
           <StudentElement>
             <StudentsClasses />
@@ -208,7 +209,7 @@ const Routing = () => {
       />
 
       <Route
-        path="student/homework"
+        path="/student/homework"
         element={
           <StudentElement>
             <StudentHomework />
@@ -216,7 +217,7 @@ const Routing = () => {
         }
       />
       <Route
-        path="student/homework/engelska"
+        path="/student/homework/engelska"
         element={
           <StudentElement>
             <Homeworks />
@@ -225,7 +226,7 @@ const Routing = () => {
       />
 
       <Route
-        path="student/message/engelska"
+        path="/student/message/engelska"
         element={
           <StudentElement>
             <Message />
@@ -235,8 +236,8 @@ const Routing = () => {
 
       {/* student page end */}
 
-      <Route path="notFound" element={<PageNotFound />} />
-      <Route path="login" element={<Login />} />
+      <Route path="/notFound" element={<PageNotFound />} />
+      <Route path="/login" element={<Login />} />
       {/* <Route path="*" element={<NoMatch />} /> */}
     </Routes>
   );

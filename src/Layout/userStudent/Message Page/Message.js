@@ -5,6 +5,7 @@ import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getComment, postComment } from "../../../Redux/Actions/StudentAction";
 import { toast } from "react-toastify";
+import moment from "moment";
 function Message({ group_id, group_name }) {
   const [message, setMessage] = useState("");
 
@@ -41,14 +42,18 @@ function Message({ group_id, group_name }) {
             <p>{item.content}</p>
             <div className="item-box">
               <div className="user-box">
-                <img src={item.userImg} alt="" />
+                <img src={item.sender.photo} alt="" />
                 <div className="user-box-inner">
-                  <h4>{item.userName}</h4>
-                  <h6>{item.userGrade}</h6>
+                  <h4>
+                    {item.sender.name} {item.sender.surname}
+                  </h4>
+                  <h6>{item.sender.teacher ? "teacher" : "student"}</h6>
                 </div>
               </div>
               <div className="created-time">
-                <h6>{item.sendData}</h6>
+                <h5>
+                  {item.createdAt ? moment(item.createdAt).format("lll") : null}
+                </h5>
               </div>
             </div>
             <NavLink to={`/student/message/engelska`}>
@@ -57,22 +62,26 @@ function Message({ group_id, group_name }) {
           </div>
         ))}
 
-        <div className="input-box">
-          <input
-            type="text"
-            placeholder="You can write message here..."
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
-            onKeyDown={(e) => {
-              if (e.key == "Enter") {
-                handleSendMessage();
-              }
-            }}
-          />
-          <span onClick={handleSendMessage}>
-            <img src={sendImd} alt="" />
-          </span>
-        </div>
+        {group_id ? (
+          <div className="input-box">
+            <input
+              type="text"
+              placeholder="You can write message here..."
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key == "Enter") {
+                  handleSendMessage();
+                }
+              }}
+            />
+            <span onClick={handleSendMessage}>
+              <img src={sendImd} alt="" />
+            </span>
+          </div>
+        ) : (
+          ""
+        )}
       </div>
     </div>
   );

@@ -5,9 +5,8 @@ import timeGridPlugin from "@fullcalendar/timegrid";
 import listPlugin from "@fullcalendar/list";
 import interactionPlugin from "@fullcalendar/interaction";
 
-
 export default function Calendar(props) {
-  const { handleEventClick, events } = props;
+  const { handleEventClick, events, handleEventDrop } = props;
   const [isMobile, setIsMobile] = useState(true);
   const [selectable, setSelectable] = useState(false);
   function getHeaderToolbar() {
@@ -76,6 +75,8 @@ export default function Calendar(props) {
         events={events[0]}
         // dateClick={handleEventClick}
         select={handleEventClick}
+        eventClick={handleEventDrop}
+        eventDrop={handleEventDrop}
       />
     </div>
   );

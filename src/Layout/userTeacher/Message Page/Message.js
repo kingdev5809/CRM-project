@@ -26,17 +26,10 @@ function Message({ group_id, group_name }) {
     dispatch(postComment(group_id, message));
     setMessage("");
   };
-  console.log(messageData);
-  const HandleCreatedAt = (item) => {
-    const date = new Date(item.createdAt);
-    const year = date.getFullYear();
-    const month = date.getMonth();
-    const day = date.getDate();
-    return `${year}-${month}-${day}`;
-  };
+
   return (
     <div className="messages-sec messages-cards">
-      <h1>{group_name ? group_name : 'Choose group'}</h1>
+      <h1>{group_name ? group_name : "Choose group"}</h1>
       <div className="items">
         {messageData?.length == 0 && <h1>Choose group</h1>}
 
@@ -69,22 +62,26 @@ function Message({ group_id, group_name }) {
           ))
           .reverse()}
 
-        <div className="input-box">
-          <input
-            type="text"
-            placeholder="You can write message here..."
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
-            onKeyDown={(e) => {
-              if (e.key === "Enter") {
-                handleSendMessage();
-              }
-            }}
-          />
-          <span onClick={handleSendMessage}>
-            <img src={sendImd} alt="" />
-          </span>
-        </div>
+        {group_id ? (
+          <div className="input-box">
+            <input
+              type="text"
+              placeholder="You can write message here..."
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key == "Enter") {
+                  handleSendMessage();
+                }
+              }}
+            />
+            <span onClick={handleSendMessage}>
+              <img src={sendImd} alt="" />
+            </span>
+          </div>
+        ) : (
+          ""
+        )}
       </div>
     </div>
   );

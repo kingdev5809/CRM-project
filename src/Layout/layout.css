@@ -1455,6 +1455,7 @@ body::-webkit-scrollbar {
   position: relative;
   min-height: 100%;
   min-height: 80vh;
+  
 }
 .messages-cards {
 }
@@ -1512,6 +1513,8 @@ body::-webkit-scrollbar {
 
 .messages-cards .user-box img {
   width: 40px;
+  height: 40px;
+  border-radius: 100px;
 }
 .messages-cards .user-box .user-box-inner {
   margin-left: 10px;
@@ -1519,7 +1522,8 @@ body::-webkit-scrollbar {
 .messages-cards h4 {
   font-weight: 500;
 }
-.messages-cards h6 {
+.messages-cards h6,
+.messages-cards h5 {
   color: #b5b5b5;
 }
 
@@ -1754,13 +1758,13 @@ Teacher Page start
 .scheduleInfoModal .rate-images img {
   margin: 0px 12px;
 }
-.scheduleInfoModal .rating i{
+.scheduleInfoModal .rating i {
   color: #ee6c4d;
   font-size: 18px;
   margin: 3px;
-  cursor: pointer;  
+  cursor: pointer;
 }
-.scheduleInfoModal .modal-content  button{
+.scheduleInfoModal .modal-content button {
   background-color: #ee6c4d;
   border: none;
   border-radius: 30px;

@@ -1,5 +1,4 @@
 import { combineReducers } from "redux";
-import { homeworkIcon } from "../../Components/icons/svgIcons";
 import {
   getAllTeachersReducers,
   getAllStudentsReducers,
