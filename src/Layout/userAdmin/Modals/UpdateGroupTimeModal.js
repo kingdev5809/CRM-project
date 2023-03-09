@@ -5,6 +5,7 @@ import {
   getAllLocation,
   getAllTeachers,
   postGroupTime,
+  updateGroupTime,
 } from "../../../Redux/Actions/AdminAction";
 import { deleteIcon } from "../../../Components/icons/svgIcons";
 
@@ -16,10 +17,13 @@ function UpdateGroupTimeModal(props) {
     end_day,
     start,
     end,
+    id,
     setStart_day,
     setEnd_day,
     setStart,
     setEnd,
+    setId,
+    setRefresh,
   } = props;
   const [group_id, setGroup_id] = useState("");
   const [address, setAddress] = useState("");
@@ -28,7 +32,7 @@ function UpdateGroupTimeModal(props) {
   const [teacher_id, setTeacher_id] = useState();
 
   const dispatch = useDispatch();
-  
+
   const getGroups = useSelector((state) => state.groups);
   const { allGroupData } = getGroups;
 
@@ -48,23 +52,28 @@ function UpdateGroupTimeModal(props) {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(
-      postGroupTime(
-        group_id,
-        start_day,
-        start,
-        end_day,
-        end,
-        address,
-        color,
-        text,
-        teacher_id,
+        updateGroupTime(
+        {
+          group_id,
+          start_day,
+          start,
+          end_day,
+          end,
+          address,
+          color,
+          text,
+          teacher_id,
+        },
+        id,
         setVisibleModal,
         setGroup_id,
         setEnd_day,
         setAddress,
         setColor,
         setText,
-        setTeacher_id
+        setTeacher_id,
+        setId,
+        setRefresh
       )
     );
   };
@@ -158,7 +167,6 @@ function UpdateGroupTimeModal(props) {
                       type="date"
                       value={end_day}
                       onChange={(e) => setEnd_day(e.target.value)}
-                      
                     />
                   </div>
 

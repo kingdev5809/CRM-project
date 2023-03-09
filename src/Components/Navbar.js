@@ -164,7 +164,12 @@ function Navbar() {
           <ul>
             {navData.map((item) => (
               <li onClick={() => setResNavActive("navbar-component")}>
-                <NavLink to={item.slug}>
+                <NavLink
+                  to={item.slug}
+                  className={({ isActive }) =>
+                    isActive ? "active" : "inactive"
+                  }
+                >
                   <span>
                     <img src={`${item.img}`} alt="" />
                   </span>

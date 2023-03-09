@@ -212,7 +212,6 @@ export const postGroups =
     text_color,
     text,
     setVisibleModal,
-    setRefresh,
     setGroup_name,
     setSubject,
     setTeacher,
@@ -619,6 +618,44 @@ export const updateClass =
         toast.success(data.msg);
         setRefresh(group_name);
         setVisibleModal("d-none");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+// update group time
+export const updateGroupTime =
+  (
+    dataTime,
+    id,
+    setVisibleModal,
+    setGroup_id,
+    setEnd_day,
+    setAddress,
+    setColor,
+    setText,
+    setTeacher_id,
+    setId,
+    setRefresh
+  ) =>
+  async () => {
+    try {
+      const { data } = await AdminApi.updateGroupTimes(dataTime, id);
+
+      if (data.error) {
+        toast.warning(data.error);
+      } else {
+        toast.success(data.msg);
+        setRefresh(dataTime);
+        setVisibleModal("d-none");
+        setGroup_id("");
+        setEnd_day("");
+        setAddress("");
+        setColor("");
+        setText("");
+        setTeacher_id("");
+        setId("");
       }
     } catch (error) {
       console.log(error);

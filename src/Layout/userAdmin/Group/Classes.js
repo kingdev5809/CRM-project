@@ -45,9 +45,9 @@ const Classes = () => {
   const { allGroupData } = getGroups;
   useEffect(() => {
     dispatch(getAllGroups());
-  }, []);
+  }, [refresh]);
 
-  console.log(allGroupData);
+  
   // handle set item for delete modal
   const handleSetItem = (item) => {
     setDeleteModalVisible("d-block");
@@ -134,7 +134,6 @@ const Classes = () => {
         <AddClassModal
           visibleModal={visibleModal}
           setVisibleModal={setVisibleModal}
-          setRefresh={setRefresh}
         />
         <DeleteModal
           deleteModalVisible={deleteModalVisible}
@@ -146,8 +145,6 @@ const Classes = () => {
         <AddGroupTimeModal
           visibleModal={visibleModalTwo}
           setVisibleModal={setVisibleModalTwo}
-          setRefresh={setRefresh}
-          refresh={refresh}
           start_day={start_day}
           start={start}
           end={end}

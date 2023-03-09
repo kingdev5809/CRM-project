@@ -167,6 +167,9 @@ body::-webkit-scrollbar {
   color: black;
   text-decoration: none;
 }
+.navbar-component .deskop-nav .navbar-main ul li a.active {
+  color: #ee6c4d;
+}
 .navbar-component .deskop-nav .navbar-main ul li a:hover {
   color: #ee6c4d;
 }
@@ -1455,7 +1458,6 @@ body::-webkit-scrollbar {
   position: relative;
   min-height: 100%;
   min-height: 80vh;
-  
 }
 .messages-cards {
 }

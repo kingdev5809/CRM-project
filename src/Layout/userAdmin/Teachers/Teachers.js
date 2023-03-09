@@ -49,7 +49,7 @@ const Teachers = () => {
   };
 
   const handleDelete = () => {
-    dispatch(deleteTeacher(teacher_id, setRefresh));
+    dispatch(deleteTeacher(teacher_id));
     setDeleteModalVisible("d-none");
     setTeacher_Id();
   };

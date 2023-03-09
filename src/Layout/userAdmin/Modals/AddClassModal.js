@@ -9,7 +9,7 @@ import {
 import "../../layout.css";
 
 const AddClassModal = (props) => {
-  const { visibleModal, setVisibleModal, setRefresh } = props;
+  const { visibleModal, setVisibleModal } = props;
   const [group_name, setGroup_name] = useState("");
   const [subject, setSubject] = useState("");
   const [teacher, setTeacher] = useState("");
@@ -39,7 +39,6 @@ const AddClassModal = (props) => {
         text_color,
         text,
         setVisibleModal,
-        setRefresh,
         setGroup_name,
         setSubject,
         setTeacher,

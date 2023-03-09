@@ -14,6 +14,8 @@ const Students = () => {
   const [deleteModalVisible, setDeleteModalVisible] = useState("d-none");
   const [student_id, setStudent_Id] = useState();
   const dispatch = useDispatch();
+  const [refresh, setRefresh] = useState('')
+
 
   const [photo, setPhoto] = useState("");
   const [imageUpload, setImageUpload] = useState(null);
@@ -34,7 +36,7 @@ const Students = () => {
 
   useEffect(() => {
     dispatch(getAllStudents());
-  }, []);
+  }, [refresh]);
   // handles delte item
   const handleSetItem = (item) => {
     setDeleteModalVisible("d-block");
@@ -180,6 +182,7 @@ const Students = () => {
           setPhoto={setPhoto}
           imageUpload={imageUpload}
           setImageUpload={setImageUpload}
+          setRefresh={setRefresh}
         />
       </div>
     </div>

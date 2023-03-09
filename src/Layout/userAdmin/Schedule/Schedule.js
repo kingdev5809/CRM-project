@@ -13,6 +13,9 @@ function Schedule() {
   const [end_day, setEnd_day] = useState("");
   const [start, setStart] = useState("");
   const [end, setEnd] = useState("");
+  const [id, setId] = useState('');
+
+  const [refresh, setRefresh] = useState('')
 
   const handleEventClick = (clickInfo) => {
     let startDate = new Date(clickInfo.startStr);
@@ -34,7 +37,6 @@ function Schedule() {
     setStart(`${startHours}:${startMinutes}`);
     setEnd(`${endHours}:${endMinutes}`);
     setVisibleModalTwo("d-block");
-    console.log(clickInfo);
   };
 
   const handleEventDrop = (clickInfo) => {
@@ -62,9 +64,9 @@ function Schedule() {
     setEnd_day(`${endYear}-${endMonth}-${endDay}`);
     setStart(`${startHours}:${startMinutes}`);
     setEnd(`${endHours}:${endMinutes}`);
+    setId(clickInfo.event.id);
     setVisibleUpdateModal("d-block");
-    
-    
+    console.log(id);
   };
 
   const dispatch = useDispatch();
@@ -74,7 +76,7 @@ function Schedule() {
 
   useEffect(() => {
     dispatch(getAllGroupTimes());
-  }, []);
+  }, [refresh ]);
 
   const CalendarFunc = (event) => {
     let day = new Date(event.start_day).getDay();
@@ -85,9 +87,11 @@ function Schedule() {
       daysOfWeek: [day],
       startTime: event.start,
       endTime: event.end,
-      groupId: event._id,
+      groupId: event.group_id._id,
+      id: event._id,
       classNames: event.color,
     };
+
     return events;
   };
 
@@ -123,6 +127,9 @@ function Schedule() {
           setStart_day={setStart_day}
           setStart={setStart}
           setEnd={setEnd}
+          id={id}
+          setId={setId}
+          setRefresh={setRefresh}
         />
       </div>
     </div>

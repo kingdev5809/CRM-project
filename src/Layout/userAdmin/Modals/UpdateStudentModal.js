@@ -30,6 +30,7 @@ function UpdateStudentModal(props) {
     setPhoto,
     imageUpload,
     setImageUpload,
+    
   } = props;
   const dispatch = useDispatch();
   // upload image states

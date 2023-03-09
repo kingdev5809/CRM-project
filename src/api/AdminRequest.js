@@ -67,7 +67,5 @@ export const updateStudents = (data, student_id) =>
 export const updateClasses = (data, group_id) =>
   API.put(`/rektor/group/${group_id}`, data, config);
 
-  
-export const updateGroupTime = (data, group_id) =>
-API.put(`/rektor/group/${group_id}`, data, config);
-
+export const updateGroupTimes = (dataTime, id) =>
+  API.put(`/rektor/group_time/${id}`, dataTime, config);
