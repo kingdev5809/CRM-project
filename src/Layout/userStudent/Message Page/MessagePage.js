@@ -31,7 +31,7 @@ function MessagePage() {
         <div className="class-sec group-cards">
           <h1>Class Groups</h1>
           <div className="items">
-            {allGroupData?.groups?.map((item) => (
+            {allGroupData?.map((item) => (
               <div className="item">
                 <div className="item-box">
                   <h3>{item.group_name}</h3>

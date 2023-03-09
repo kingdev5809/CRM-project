@@ -12,6 +12,8 @@ function HomeworksItem({ item, teacher, handleCheckRate }) {
   useEffect(() => {
     handleCheckRate(item);
   }, [item]);
+
+  
   return (
     <div>
       <div className="item">

@@ -13,6 +13,13 @@ import {
   GROUPS_TIMES_GET_ONE_FAIL,
   GROUPS_TIMES_GET_ONE_REQUEST,
   GROUPS_TIMES_GET_ONE_SUCCESS,
+  HOMEWORK_GET_ALL_FAIL,
+  HOMEWORK_GET_ALL_REQUEST,
+  HOMEWORK_GET_ALL_SUCCESS,
+  MESSAGE_CREATED,
+  MESSAGE_GET_ALL_FAIL,
+  MESSAGE_GET_ALL_REQUEST,
+  MESSAGE_GET_ALL_SUCCESS,
   SEND_MESSAGE,
 } from "../Constants/AdminContants";
 
@@ -22,7 +29,7 @@ export const getAllGroups = () => async (dispatch) => {
   dispatch({ type: GROUPS_GET_ALL_REQUEST });
   try {
     const { data } = await AdminApi.getGroups();
-    dispatch({ type: GROUPS_GET_ALL_SUCCESS, payload: data });
+    dispatch({ type: GROUPS_GET_ALL_SUCCESS, payload: data.groups });
   } catch (error) {
     dispatch({
       type: GROUPS_GET_ALL_FAIL,
@@ -41,23 +48,6 @@ export const getOneGroup = (group_id) => async (dispatch) => {
   try {
     const { data } = await AdminApi.getOneGroup(group_id);
     dispatch({ type: GROUPS_GET_ONE_SUCCESS, payload: data });
-  } catch (error) {
-    dispatch({
-      type: GROUPS_GET_ONE_FAIL,
-      payload:
-        error.response && error.response.data.message
-          ? error.response.data.message
-          : error.message,
-    });
-  }
-};
-
-// get homworks
-export const getHomework = (token) => async (dispatch) => {
-  dispatch({ type: GROUPS_GET_ONE_REQUEST });
-  try {
-    const { data } = await AdminApi.getOneGroup(token);
-    dispatch({ type: GROUPS_GET_ONE_SUCCESS, payload: data.group.homeworks });
   } catch (error) {
     dispatch({
       type: GROUPS_GET_ONE_FAIL,
@@ -88,16 +78,52 @@ export const getAllGroupTimes = () => async (dispatch) => {
   }
 };
 
-// Send comment
+// GET Homeworks
 
-export const putComment = (group_id, message) => async (dispatch) => {
+export const getHomework = (token) => async (dispatch) => {
+  dispatch({ type: HOMEWORK_GET_ALL_REQUEST });
   try {
-    const { data } = await AdminApi.putComments({
+    const { data } = await AdminApi.getHomeworks(token);
+    dispatch({ type: HOMEWORK_GET_ALL_SUCCESS, payload: data.homeworks });
+  } catch (error) {
+    dispatch({
+      type: HOMEWORK_GET_ALL_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
+
+// GET Comments
+
+export const getComment = (token) => async (dispatch) => {
+  dispatch({ type: MESSAGE_GET_ALL_REQUEST });
+  try {
+    const { data } = await AdminApi.getComments(token);
+    dispatch({ type: MESSAGE_GET_ALL_SUCCESS, payload: data.comments });
+  } catch (error) {
+    dispatch({
+      type: MESSAGE_GET_ALL_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
+
+
+
+// put comment
+export const postComment = (group_id, message) => async (dispatch) => {
+  try {
+    const { data } = await AdminApi.postComments({
       group_id,
       message,
     });
-    dispatch({ type: SEND_MESSAGE, payload: data.result });
-
+    dispatch({ type: MESSAGE_CREATED, payload: data.result });
     if (data.error) {
       toast.warning(data.error);
     } else {

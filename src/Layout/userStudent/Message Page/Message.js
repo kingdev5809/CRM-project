@@ -3,18 +3,18 @@ import sendImd from "../../../images/navbar-img/sendmessageicon.png";
 import "../../layout.css";
 import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getOneGroup, putComment } from "../../../Redux/Actions/StudentAction";
+import { getComment, postComment } from "../../../Redux/Actions/StudentAction";
 import { toast } from "react-toastify";
 function Message({ group_id, group_name }) {
   const [message, setMessage] = useState("");
-  
+
   const dispatch = useDispatch();
 
-  const getGroup = useSelector((state) => state.oneGroup);
-  const { oneGroupData } = getGroup;
+  const getComments = useSelector((state) => state.comments);
+  const { messageData } = getComments;
 
   useEffect(() => {
-    dispatch(getOneGroup(group_id));
+    dispatch(getComment(group_id));
   }, [group_id]);
 
   const handleSendMessage = (e) => {
@@ -27,17 +27,16 @@ function Message({ group_id, group_name }) {
       return;
     }
 
-    dispatch(putComment(group_id, message,));
+    dispatch(postComment(group_id, message));
     setMessage("");
   };
- 
-
+  console.log(messageData);
   return (
     <div className="messages-sec messages-cards">
       <h1>{group_name}</h1>
       {group_id ? "" : <h1>Choose group</h1>}
       <div className="items">
-        {oneGroupData?.group?.comments?.map((item) => (
+        {messageData?.map((item) => (
           <div className="item">
             <p>{item.content}</p>
             <div className="item-box">

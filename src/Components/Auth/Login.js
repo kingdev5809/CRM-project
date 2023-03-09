@@ -92,6 +92,11 @@ export default function Login() {
               className="signBtn"
               onClick={handleSubmit}
               disabled={loading}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  handleSubmit();
+                }
+              }}
             >
               {loading ? "LOADING . . ." : "SING IN"}
             </button>

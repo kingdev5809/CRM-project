@@ -13,6 +13,9 @@ function Homeworks({ group_id, teacher }) {
 
   const user = JSON.parse(localStorage.getItem("userInfo"));
 
+  const getHomeworks = useSelector((state) => state.homeworks);
+  const { homeworkData } = getHomeworks;
+
   useEffect(() => {
     if (!group_id) {
       dispatch(getHomework(token));
@@ -35,7 +38,7 @@ function Homeworks({ group_id, teacher }) {
       </div>
       <div className="items">
         {group_id ? "" : <h1>Choose group</h1>}
-        {oneGroupData?.map((item) => (
+        {homeworkData?.map((item) => (
           <HomeworksItem
             item={item}
             teacher={teacher}

@@ -36,8 +36,10 @@ function Message({ group_id, group_name }) {
   };
   return (
     <div className="messages-sec messages-cards">
-      <h1>{group_name}</h1>
+      <h1>{group_name ? group_name : 'Choose group'}</h1>
       <div className="items">
+        {messageData?.length == 0 && <h1>Choose group</h1>}
+
         {messageData
           ?.map((item) => (
             <div className="item">

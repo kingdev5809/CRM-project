@@ -57,24 +57,6 @@ export const getOneGroup = (token) => async (dispatch) => {
   }
 };
 
-// GET Homeworks
-
-export const getHomework = (token) => async (dispatch) => {
-  dispatch({ type: HOMEWORK_GET_ALL_REQUEST });
-  try {
-    const { data } = await AdminApi.getHomeworks(token);
-    dispatch({ type: HOMEWORK_GET_ALL_SUCCESS, payload: data.homeworks });
-  } catch (error) {
-    dispatch({
-      type: HOMEWORK_GET_ALL_FAIL,
-      payload:
-        error.response && error.response.data.message
-          ? error.response.data.message
-          : error.message,
-    });
-  }
-};
-
 // GET All GROUP Times
 
 export const getAllGroupTimes = () => async (dispatch) => {
@@ -93,6 +75,26 @@ export const getAllGroupTimes = () => async (dispatch) => {
     });
   }
 };
+
+// GET Homeworks
+
+export const getHomework = (token) => async (dispatch) => {
+  dispatch({ type: HOMEWORK_GET_ALL_REQUEST });
+  try {
+    const { data } = await AdminApi.getHomeworks(token);
+    dispatch({ type: HOMEWORK_GET_ALL_SUCCESS, payload: data.homeworks });
+  } catch (error) {
+    dispatch({
+      type: HOMEWORK_GET_ALL_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
+
+
 
 // GET Comments
 
@@ -165,7 +167,7 @@ export const postHomework =
     }
   };
 
-// POST Homework
+// POST check homework
 
 export const postCheckHomework =
   (Rates, setVisibleModal, dataRates, studentsId, setRefresh) =>

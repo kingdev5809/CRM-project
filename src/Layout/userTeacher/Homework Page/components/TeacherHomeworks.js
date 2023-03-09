@@ -21,14 +21,17 @@ function TeacherHomeworks({ group_id, allGroupData }) {
   const dispatch = useDispatch();
   const { token } = useParams();
 
-  const getHomeworks = useSelector((state) => state.homeworks);
-  const { homeworkData } = getHomeworks;
 
   const user = JSON.parse(localStorage.getItem("userInfo"));
 
   const getGroup = useSelector((state) => state.oneGroup);
   const { oneGroupData } = getGroup;
 
+
+  
+  const getHomeworks = useSelector((state) => state.homeworks);
+  const { homeworkData } = getHomeworks;
+  
   useEffect(() => {
     if (!group_id) {
       dispatch(getHomework(token));
