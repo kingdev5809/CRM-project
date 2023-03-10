@@ -10,9 +10,9 @@ import {
   GROUPS_GET_ONE_FAIL,
   GROUPS_GET_ONE_REQUEST,
   GROUPS_GET_ONE_SUCCESS,
-  GROUPS_TIMES_GET_ONE_FAIL,
-  GROUPS_TIMES_GET_ONE_REQUEST,
-  GROUPS_TIMES_GET_ONE_SUCCESS,
+  GROUPS_TIMES_GET_ALL_FAIL,
+  GROUPS_TIMES_GET_ALL_REQUEST,
+  GROUPS_TIMES_GET_ALL_SUCCESS,
   HOMEWORK_GET_ALL_FAIL,
   HOMEWORK_GET_ALL_REQUEST,
   HOMEWORK_GET_ALL_SUCCESS,
@@ -63,14 +63,14 @@ export const getOneGroup = (group_id) => async (dispatch) => {
 // GET All GROUP Times
 
 export const getAllGroupTimes = () => async (dispatch) => {
-  dispatch({ type: GROUPS_TIMES_GET_ONE_REQUEST });
+  dispatch({ type: GROUPS_TIMES_GET_ALL_REQUEST });
   try {
     const { data } = await AdminApi.getAllGroupTimes();
 
-    dispatch({ type: GROUPS_TIMES_GET_ONE_SUCCESS, payload: data });
+    dispatch({ type: GROUPS_TIMES_GET_ALL_SUCCESS, payload: data });
   } catch (error) {
     dispatch({
-      type: GROUPS_TIMES_GET_ONE_FAIL,
+      type: GROUPS_TIMES_GET_ALL_FAIL,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message
