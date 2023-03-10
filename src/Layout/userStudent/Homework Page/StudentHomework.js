@@ -45,7 +45,7 @@ function Homework() {
                 </div>
 
                 <div className="item-box-3"></div>
-                <NavLink to={`/student/homework/engelska`}>
+                <NavLink to={`/student/homework/${item._id}`}>
                   <div className="click-window"></div>
                 </NavLink>
                 <div

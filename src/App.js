@@ -217,7 +217,7 @@ const Routing = () => {
         }
       />
       <Route
-        path="/student/homework/engelska"
+        path="/student/homework/:token"
         element={
           <StudentElement>
             <Homeworks />
@@ -226,7 +226,7 @@ const Routing = () => {
       />
 
       <Route
-        path="/student/message/engelska"
+        path="/student/message/:token"
         element={
           <StudentElement>
             <Message />

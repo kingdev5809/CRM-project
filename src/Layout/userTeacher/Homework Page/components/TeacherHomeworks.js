@@ -39,6 +39,7 @@ function TeacherHomeworks({ group_id, allGroupData }) {
       dispatch(getHomework(group_id));
     }
   }, [group_id]);
+  
 
 
   useEffect(() => {

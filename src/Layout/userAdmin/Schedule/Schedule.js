@@ -13,9 +13,9 @@ function Schedule() {
   const [end_day, setEnd_day] = useState("");
   const [start, setStart] = useState("");
   const [end, setEnd] = useState("");
-  const [id, setId] = useState('');
+  const [id, setId] = useState("");
 
-  const [refresh, setRefresh] = useState('')
+  const [refresh, setRefresh] = useState("");
 
   const handleEventClick = (clickInfo) => {
     let startDate = new Date(clickInfo.startStr);
@@ -76,7 +76,7 @@ function Schedule() {
 
   useEffect(() => {
     dispatch(getAllGroupTimes());
-  }, [refresh ]);
+  }, [refresh]);
 
   const CalendarFunc = (event) => {
     let day = new Date(event.start_day).getDay();

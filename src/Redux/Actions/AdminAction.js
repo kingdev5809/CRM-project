@@ -13,7 +13,12 @@ import {
   GROUPS_GET_ONE_SUCCESS,
   GROUPS_POST_STUDENT_ADD,
   GROUPS_POST_STUDENT_REMOVED,
+  GROUPS_TIMES_GET_ALL_DELETE,
+  GROUPS_TIMES_GET_ALL_FAIL,
+  GROUPS_TIMES_GET_ALL_REQUEST,
+  GROUPS_TIMES_GET_ALL_SUCCESS,
   GROUPS_TIMES_GET_ONE_CREATED,
+  GROUPS_TIMES_GET_ONE_DELETE,
   GROUPS_TIMES_GET_ONE_FAIL,
   GROUPS_TIMES_GET_ONE_REQUEST,
   GROUPS_TIMES_GET_ONE_SUCCESS,
@@ -111,14 +116,14 @@ export const getOneGroup = (token) => async (dispatch) => {
 // GET All GROUP Times
 
 export const getAllGroupTimes = () => async (dispatch) => {
-  dispatch({ type: GROUPS_TIMES_GET_ONE_REQUEST });
+  dispatch({ type: GROUPS_TIMES_GET_ALL_REQUEST });
   try {
     const { data } = await AdminApi.getAllGroupTimes();
 
-    dispatch({ type: GROUPS_TIMES_GET_ONE_SUCCESS, payload: data.groupTimes });
+    dispatch({ type: GROUPS_TIMES_GET_ALL_SUCCESS, payload: data.groupTimes });
   } catch (error) {
     dispatch({
-      type: GROUPS_TIMES_GET_ONE_FAIL,
+      type: GROUPS_TIMES_GET_ALL_FAIL,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message
@@ -162,6 +167,7 @@ export const getAllLocation = () => async (dispatch) => {
     });
   }
 };
+
 
 // POST TEACHERS
 
@@ -507,7 +513,7 @@ export const deleteGroupTime = (id) => async (dispatch) => {
       toast.warning(data.error);
     } else {
       toast.success(data.msg);
-      // dispatch({ type: LOCATION_GET_ALL_DELETED, payload: location_id });
+      dispatch({ type: GROUPS_TIMES_GET_ALL_DELETE, payload: id });
     }
   } catch (error) {
     console.log(error);

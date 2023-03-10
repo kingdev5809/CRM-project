@@ -40,6 +40,11 @@ import {
   MESSAGE_GET_ALL_SUCCESS,
   MESSAGE_GET_ALL_FAIL,
   MESSAGE_CREATED,
+  GROUPS_TIMES_GET_ALL_REQUEST,
+  GROUPS_TIMES_GET_ALL_SUCCESS,
+  GROUPS_TIMES_GET_ALL_FAIL,
+  GROUPS_TIMES_GET_ALL_CREATED,
+  GROUPS_TIMES_GET_ALL_DELETE,
 } from "../Constants/AdminContants";
 
 const initialState = {
@@ -134,21 +139,29 @@ export const getAllGroupReducers = (state = initialState, action) => {
 // GET All Groups Times
 export const getAllGroupTimesReducers = (state = initialState, action) => {
   switch (action.type) {
-    case GROUPS_TIMES_GET_ONE_REQUEST:
+    case GROUPS_TIMES_GET_ALL_REQUEST:
       return { loading: true };
-    case GROUPS_TIMES_GET_ONE_SUCCESS:
+    case GROUPS_TIMES_GET_ALL_SUCCESS:
       return { loading: false, allGroupTimes: action.payload };
-    case GROUPS_TIMES_GET_ONE_FAIL:
+    case GROUPS_TIMES_GET_ALL_FAIL:
       return { loading: false, error: action.payload };
-    case GROUPS_TIMES_GET_ONE_CREATED:
+    case GROUPS_TIMES_GET_ALL_CREATED:
       return {
         ...state,
         allGroupTimes: [...state.allGroupTimes, action.payload],
+      };
+    case GROUPS_TIMES_GET_ALL_DELETE:
+      return {
+        ...state,
+        allGroupTimes: state.allGroupTimes.filter(
+          (data) => data._id !== action.payload
+        ),
       };
     default:
       return state;
   }
 };
+
 
 // GET One Groups
 export const getOneGroupReducers = (state = initialState, action) => {

@@ -6,10 +6,10 @@ import HomeworksItem from "./HomeworksItem";
 function Homeworks({ group_id, teacher }) {
   const dispatch = useDispatch();
   const { token } = useParams();
+  console.log(token);
 
   const getGroup = useSelector((state) => state.oneGroup);
   const { oneGroupData } = getGroup;
-
 
   const getHomeworks = useSelector((state) => state.homeworks);
   const { homeworkData } = getHomeworks;
@@ -19,10 +19,10 @@ function Homeworks({ group_id, teacher }) {
       dispatch(getHomework(token));
     } else {
       dispatch(getHomework(group_id));
+      console.log(group_id);
     }
   }, [group_id]);
 
-  
   return (
     <div className="homework messages-cards">
       <div className="flex">
@@ -31,10 +31,7 @@ function Homeworks({ group_id, teacher }) {
       <div className="items">
         {group_id ? "" : <h1>Choose group</h1>}
         {homeworkData?.map((item) => (
-          <HomeworksItem
-            item={item}
-            teacher={teacher}
-          />
+          <HomeworksItem item={item} teacher={teacher} />
         ))}
       </div>
     </div>

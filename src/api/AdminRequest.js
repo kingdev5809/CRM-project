@@ -24,6 +24,9 @@ export const getSubjects = () => API.get("/rektor/book", config);
 
 export const getLocations = () => API.get("/rektor/location", config);
 
+export const getOneGroupTimes = (id) => API.get(`/rektor/group_time/${id}`, config);
+
+
 // Post
 export const postTeachers = (data) => API.post("/rektor/teacher", data, config);
 

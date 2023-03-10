@@ -18,7 +18,6 @@ function TeacherMessagePage() {
     dispatch(getAllGroups());
   }, []);
 
-
   const handleChangeGroup = (item) => {
     setGroup_id(item._id);
     setGroup_name(item.group_name);
@@ -45,7 +44,7 @@ function TeacherMessagePage() {
                 </div>
 
                 <div className="item-box-3"></div>
-                <NavLink to={`/student/message/engelska`}>
+                <NavLink to={`/student/message/${item._id}`}>
                   <div className="click-window"></div>
                 </NavLink>
                 <div
