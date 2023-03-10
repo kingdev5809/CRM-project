@@ -8,7 +8,6 @@ import userImg from "../../../images/navbar-img/userImg.png";
 
 function Homework() {
   const [group_id, setGroup_id] = useState();
-  const [teacher, setTeacher] = useState([]);
 
   const dispatch = useDispatch();
 
@@ -21,7 +20,6 @@ function Homework() {
 
   const handleChangeGroup = (item) => {
     setGroup_id(item._id);
-    setTeacher(item.teacher);
   };
 
   return (
@@ -57,7 +55,7 @@ function Homework() {
           </div>
         </div>
         <div className="deskop-responsive">
-          <Homeworks group_id={group_id} teacher={teacher} />
+          <Homeworks group_id={group_id} />
         </div>
       </div>
     </div>

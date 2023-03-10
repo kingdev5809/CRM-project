@@ -2,7 +2,7 @@ import moment from "moment";
 import React from "react";
 import exclamationImg from "../../../../images/navbar-img/exclamation.png";
 import succsessImg from ".././../../../images/navbar-img/success.png";
-function HomeworksItem({ item, teacher }) {
+function HomeworksItem({ item }) {
   const user = JSON.parse(localStorage.getItem("userInfo"));
 
   return (
@@ -23,9 +23,9 @@ function HomeworksItem({ item, teacher }) {
           <p>{item.text}</p>
           <div className="item-box">
             <div className="user-box">
-              <img src={teacher?.photo} alt="" />
+              <img src={item.sender.photo} alt="" />
               <div className="user-box-inner">
-                <h4>{teacher?.name} </h4>
+                <h4>{item.sender.name} </h4>
                 <h6>Teacher </h6>
               </div>
             </div>
