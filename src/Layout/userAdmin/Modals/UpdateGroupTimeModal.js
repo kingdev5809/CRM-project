@@ -52,7 +52,7 @@ function UpdateGroupTimeModal(props) {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(
-        updateGroupTime(
+      updateGroupTime(
         {
           group_id,
           start_day,
@@ -241,11 +241,14 @@ function UpdateGroupTimeModal(props) {
                   ></textarea>
                 </div>
                 <div className="btn-group">
-                  <button onClick={handleDelete}>DELELTE</button>
+                  <button onClick={handleDelete}>CANCEL</button>
                   <button onClick={handleSubmit} className="btn-2">
                     SAVE
                   </button>
                 </div>
+                  <div className="btn-group  btn-group-lg">
+                    <button className="deleteBtn">DELETE</button>
+                  </div>
               </form>
             </div>
           </div>

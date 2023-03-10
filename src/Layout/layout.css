@@ -546,6 +546,15 @@ body::-webkit-scrollbar {
   border: none;
   color: white;
 }
+.modalWindows .modal-content .btn-group-lg{
+  justify-content: center;
+}
+.modalWindows .modal-content .btn-group-lg .deleteBtn{
+  background-color: #f25656;
+  color: #fff;
+  margin: 10px;
+  text-align: center;
+}
 
 .delete-modal {
   position: fixed;

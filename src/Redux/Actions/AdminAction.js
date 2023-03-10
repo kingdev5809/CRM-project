@@ -642,7 +642,7 @@ export const updateGroupTime =
   async () => {
     try {
       const { data } = await AdminApi.updateGroupTimes(dataTime, id);
-
+      console.log(dataTime);
       if (data.error) {
         toast.warning(data.error);
       } else {
@@ -661,3 +661,5 @@ export const updateGroupTime =
       console.log(error);
     }
   };
+
+  
