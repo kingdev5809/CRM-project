@@ -24,10 +24,6 @@ function Message({ group_id, group_name }) {
   }, [group_id]);
 
   const handleSendMessage = (e) => {
-    if (!group_id) {
-      toast.warning("choose group");
-      return;
-    }
     if (!message.trim()) {
       toast.warning("Enter comment");
       return;
