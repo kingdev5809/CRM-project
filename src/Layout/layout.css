@@ -546,10 +546,10 @@ body::-webkit-scrollbar {
   border: none;
   color: white;
 }
-.modalWindows .modal-content .btn-group-lg{
+.modalWindows .modal-content .btn-group-lg {
   justify-content: center;
 }
-.modalWindows .modal-content .btn-group-lg .deleteBtn{
+.modalWindows .modal-content .btn-group-lg .deleteBtn {
   background-color: #f25656;
   color: #fff;
   margin: 10px;
@@ -1543,6 +1543,8 @@ body::-webkit-scrollbar {
 }
 .messages-cards .items .item {
   min-height: 50px;
+  box-shadow: 0px 0px 3px 0px;
+  margin: 8px;
 }
 
 .messages-cards .group-sec .items .item {

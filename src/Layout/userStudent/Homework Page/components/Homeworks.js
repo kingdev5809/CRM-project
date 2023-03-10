@@ -19,7 +19,7 @@ function Homeworks({ group_id, teacher }) {
       dispatch(getHomework(token));
     } else {
       dispatch(getHomework(group_id));
-      console.log(group_id);
+      
     }
   }, [group_id]);
 

@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 import sendImd from "../../../images/navbar-img/sendmessageicon.png";
 import "../../layout.css";
-import { NavLink } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getComment, postComment } from "../../../Redux/Actions/StudentAction";
 import { toast } from "react-toastify";
 import moment from "moment";
 function Message({ group_id, group_name }) {
   const [message, setMessage] = useState("");
+  const { token } = useParams();
 
   const dispatch = useDispatch();
 
@@ -15,7 +16,11 @@ function Message({ group_id, group_name }) {
   const { messageData } = getComments;
 
   useEffect(() => {
-    dispatch(getComment(group_id));
+    if (!group_id) {
+      dispatch(getComment(token));
+    } else {
+      dispatch(getComment(group_id));
+    }
   }, [group_id]);
 
   const handleSendMessage = (e) => {
@@ -35,7 +40,7 @@ function Message({ group_id, group_name }) {
   return (
     <div className="messages-sec messages-cards">
       <h1>{group_name}</h1>
-      {group_id ? "" : <h1>Choose group</h1>}
+      {group_id || token ? "" : <h1>Choose group</h1>}
       <div className="items">
         {messageData?.map((item) => (
           <div className="item">
@@ -62,7 +67,7 @@ function Message({ group_id, group_name }) {
           </div>
         ))}
 
-        {group_id ? (
+        {group_id || token ? (
           <div className="input-box">
             <input
               type="text"
