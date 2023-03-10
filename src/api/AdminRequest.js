@@ -58,6 +58,9 @@ export const removeStudents = (data) =>
 export const deleteLocations = (location_id) =>
   API.delete(`/rektor/location/${location_id}`, config);
 
+export const deleteGroupTimes = (id) =>
+  API.delete(`/rektor/group_time/${id}`, config);
+
 export const updateTeachers = (data, teacher_id) =>
   API.put(`/rektor/teacher/${teacher_id}`, data, config);
 

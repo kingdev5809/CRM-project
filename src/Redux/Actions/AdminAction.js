@@ -497,6 +497,23 @@ export const deleteLocation = (location_id) => async (dispatch) => {
   }
 };
 
+// Delete Group Time Modal
+
+export const deleteGroupTime = (id) => async (dispatch) => {
+  try {
+    const { data } = await AdminApi.deleteGroupTimes(id);
+
+    if (data.error) {
+      toast.warning(data.error);
+    } else {
+      toast.success(data.msg);
+      // dispatch({ type: LOCATION_GET_ALL_DELETED, payload: location_id });
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 // Update teacher
 
 export const updateTeacher =
@@ -661,5 +678,3 @@ export const updateGroupTime =
       console.log(error);
     }
   };
-
-  

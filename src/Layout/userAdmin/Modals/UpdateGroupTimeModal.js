@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  deleteGroupTime,
   getAllGroups,
   getAllLocation,
   getAllTeachers,
@@ -79,7 +80,7 @@ function UpdateGroupTimeModal(props) {
   };
 
   // cancel posting group time
-  const handleDelete = (e) => {
+  const handleCancel = (e) => {
     e.preventDefault();
     setVisibleModal("d-none");
     setGroup_id("");
@@ -91,6 +92,12 @@ function UpdateGroupTimeModal(props) {
     setColor("");
     setTeacher_id("");
   };
+
+  function handleDelete(e) {
+    e.preventDefault();
+    dispatch(deleteGroupTime(id));
+    setVisibleModal("d-none");
+  }
 
   return (
     <div>
@@ -241,14 +248,16 @@ function UpdateGroupTimeModal(props) {
                   ></textarea>
                 </div>
                 <div className="btn-group">
-                  <button onClick={handleDelete}>CANCEL</button>
+                  <button onClick={handleCancel}>CANCEL</button>
                   <button onClick={handleSubmit} className="btn-2">
                     SAVE
                   </button>
                 </div>
-                  <div className="btn-group  btn-group-lg">
-                    <button className="deleteBtn">DELETE</button>
-                  </div>
+                <div className="btn-group  btn-group-lg">
+                  <button onClick={handleDelete} className="deleteBtn">
+                    DELETE
+                  </button>
+                </div>
               </form>
             </div>
           </div>
