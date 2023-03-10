@@ -8,7 +8,6 @@ import {
   GROUPS_GET_ALL_REQUEST,
   GROUPS_GET_ALL_SUCCESS,
   GROUPS_GET_ONE_FAIL,
-  GROUPS_GET_ONE_REMOVED,
   GROUPS_GET_ONE_REQUEST,
   GROUPS_GET_ONE_SUCCESS,
   GROUPS_POST_STUDENT_ADD,
@@ -17,11 +16,6 @@ import {
   GROUPS_TIMES_GET_ALL_FAIL,
   GROUPS_TIMES_GET_ALL_REQUEST,
   GROUPS_TIMES_GET_ALL_SUCCESS,
-  GROUPS_TIMES_GET_ONE_CREATED,
-  GROUPS_TIMES_GET_ONE_DELETE,
-  GROUPS_TIMES_GET_ONE_FAIL,
-  GROUPS_TIMES_GET_ONE_REQUEST,
-  GROUPS_TIMES_GET_ONE_SUCCESS,
   LOCATION_GET_ALL_CREATED,
   LOCATION_GET_ALL_DELETED,
   LOCATION_GET_ALL_FAIL,
@@ -167,7 +161,6 @@ export const getAllLocation = () => async (dispatch) => {
     });
   }
 };
-
 
 // POST TEACHERS
 
@@ -373,7 +366,7 @@ export const postGroupTime =
       } else {
         toast.success(data.msg);
         dispatch({
-          type: GROUPS_TIMES_GET_ONE_CREATED,
+          type: GROUPS_TIMES_GET_ALL_DELETE,
           payload: data.groupTime,
         });
 
