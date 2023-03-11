@@ -19,6 +19,9 @@ export const getAllGroupTimes = () => API.get("/student/group_time", config);
 export const getHomeworks = (token) =>
   API.get(`/student/homework/${token}`, config);
 
+export const getOneGroupTimes = (token) =>
+  API.get(`/student/group_time/${token}`, config);
+
 export const getComments = (token) =>
   API.get(`/student/comment/${token}`, config);
 

@@ -2,7 +2,10 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Calendar from "../../../Components/calendar/calendar";
 import Navbar from "../../../Components/Navbar";
-import { getAllGroupTimes } from "../../../Redux/Actions/StudentAction";
+import {
+  getAllGroupTimes,
+  getOneGroupTime,
+} from "../../../Redux/Actions/StudentAction";
 import ScheduleInfoModal from "../Modals/ScheduleInfoModal";
 
 function StudentSchedule() {
@@ -11,9 +14,12 @@ function StudentSchedule() {
   const getGroupTimes = useSelector((state) => state.groupTimes);
   const { allGroupTimes } = getGroupTimes;
 
+  const getGroupTime = useSelector((state) => state.oneGroupTime);
+  const { oneGroupTimes } = getGroupTime;
+
   // info modal states
   const [group_name, setGroup_name] = useState("");
-  const [text, setText] = useState("");
+  
   const [start_day, setStart_day] = useState("");
   const [end_day, setEnd_day] = useState("");
   useEffect(() => {
@@ -22,7 +28,7 @@ function StudentSchedule() {
 
   const handleEventDrop = (clickInfo) => {
     setInfoVisibleModal("d-block");
-    console.log(clickInfo);
+    dispatch(getOneGroupTime(clickInfo.event.id));
     let endDate = new Date(clickInfo.event.endStr);
     let endHours = endDate.getHours();
     let endMinutes = endDate.getMinutes();
@@ -31,24 +37,24 @@ function StudentSchedule() {
     setGroup_name(clickInfo.event.title);
     setStart_day(clickInfo.event.start);
     setEnd_day(`${endHours}:${endMinutes}`);
-    setText(clickInfo.event.textColor);
+    console.log(clickInfo.event);
   };
-
+  console.log(oneGroupTimes);
   const CalendarFunc = (event) => {
     let day = new Date(event.start_day).getDay();
     const events = {
       title: event.group_id?.group_name,
-      textColor: event.text,
       startRecur: `${event.start_day}T${event.start}+05:00`,
       endRecur: `${event.end_day}T${event.end}+05:00`,
       daysOfWeek: [day],
       startTime: event.start,
       endTime: event.end,
       groupId: event.group_id?._id,
+      id: event._id,
       teacherId: event.group_id?.teacher,
       classNames: event.color,
     };
-    
+
     return events;
   };
   const events = [
@@ -65,7 +71,7 @@ function StudentSchedule() {
           group_name={group_name}
           start_day={start_day}
           end_day={end_day}
-          text={text}
+          oneGroupTimes={oneGroupTimes}
         />
       </div>
     </div>

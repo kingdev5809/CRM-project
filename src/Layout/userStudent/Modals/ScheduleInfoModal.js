@@ -11,7 +11,8 @@ function ScheduleInfoModal({
   group_name,
   start_day,
   end_day,
-  text,
+  oneGroupTimes,
+  
 }) {
   return (
     <div>
@@ -37,26 +38,29 @@ function ScheduleInfoModal({
 
             <div className="modal-content">
               <div className="teacher-box user-box">
-                <img src="" alt="" />
+                <img src={oneGroupTimes?.teacher_id?.photo} alt="" />
                 <div className="box">
-                  <h2>Sher Murodjonov</h2>
+                  <h2>
+                    {oneGroupTimes?.teacher_id?.name}{" "}
+                    {oneGroupTimes?.teacher_id?.surname}
+                  </h2>
                   <p>Teacher</p>
                 </div>
               </div>
-              <p className="comment-box">{text}</p>
+              <p className="comment-box">{oneGroupTimes?.text}</p>
               <div className="schedule-box">
                 <div className="box">
                   <img src={clockImg} alt="" />
                   <h4>
                     {start_day
-                      ? moment(start_day).format("MMMM Do YYYY, kk:mm  ")
+                      ? moment(start_day).format("dddd, MMMM D , kk:mm  ")
                       : null}{" "}
                     - {end_day}
                   </h4>
                 </div>
                 <div className="box">
                   <img src={locationImg} alt="" />
-                  <h4>Rinked 15, Stockholm</h4>
+                  <h4>{oneGroupTimes?.address}</h4>
                 </div>
               </div>
             </div>

@@ -41,6 +41,11 @@ import {
   GROUPS_TIMES_GET_ALL_FAIL,
   GROUPS_TIMES_GET_ALL_CREATED,
   GROUPS_TIMES_GET_ALL_DELETE,
+  GROUPS_TIMES_GET_ONE_DELETE,
+  GROUPS_TIMES_GET_ONE_CREATED,
+  GROUPS_TIMES_GET_ONE_FAIL,
+  GROUPS_TIMES_GET_ONE_SUCCESS,
+  GROUPS_TIMES_GET_ONE_REQUEST,
 } from "../Constants/AdminContants";
 
 const initialState = {
@@ -51,6 +56,7 @@ const initialState = {
   oneGroupData: [],
   locationData: [],
   allGroupTimes: [],
+  oneGroupTimes: [],
   homeworkData: [],
   messageData: [],
 };
@@ -158,6 +164,19 @@ export const getAllGroupTimesReducers = (state = initialState, action) => {
   }
 };
 
+// GET All Groups Times
+export const getOneGroupTimesReducers = (state = initialState, action) => {
+  switch (action.type) {
+    case GROUPS_TIMES_GET_ONE_REQUEST:
+      return { loading: true };
+    case GROUPS_TIMES_GET_ONE_SUCCESS:
+      return { loading: false, oneGroupTimes: action.payload };
+    case GROUPS_TIMES_GET_ONE_FAIL:
+      return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
 
 // GET One Groups
 export const getOneGroupReducers = (state = initialState, action) => {
