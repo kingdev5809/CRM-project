@@ -184,11 +184,12 @@ body::-webkit-scrollbar {
 
 .response-nav-open {
   position: absolute;
-  width: 40px;
+  width: 45px;
   height: 40px;
   padding: 10px;
   cursor: pointer;
   display: none;
+  top: -4px;
 }
 .response-nav-open img {
   width: 100%;
@@ -1803,18 +1804,18 @@ Teacher Page start
     right: 31px;
     top: 17px;
   }
-  .RateHomeworkModal .modal-title h1 span{
+  .RateHomeworkModal .modal-title h1 span {
     font-size: 20px;
     line-height: 2.25rem;
   }
-  .RateHomeworkModal .modal-title h1 img{
+  .RateHomeworkModal .modal-title h1 img {
     width: 25px;
     padding: 0;
   }
-  .RateHomeworkModal .modal-content .comment-box{
+  .RateHomeworkModal .modal-content .comment-box {
     font-size: 13px;
   }
-  .RateHomeworkModal .modal-content .schedule-box .box h4{
+  .RateHomeworkModal .modal-content .schedule-box .box h4 {
     font-size: 12px;
   }
   .RateHomeworkModal .modal-content .schedule-box .box img {
@@ -1822,8 +1823,6 @@ Teacher Page start
   }
 }
 /* RateHomeworkModal style end */
-
-
 
 /* schedule info modal style start */
 .scheduleInfoModal {
@@ -1921,8 +1920,7 @@ Teacher Page start
   .scheduleInfoModal .closeModal {
     right: 59px;
     top: 50px;
- 
+  }
 }
-
 
 /* schedule info modal style end */
