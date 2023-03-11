@@ -8,6 +8,9 @@ import {
   GROUPS_TIMES_GET_ALL_FAIL,
   GROUPS_TIMES_GET_ALL_REQUEST,
   GROUPS_TIMES_GET_ALL_SUCCESS,
+  GROUPS_TIMES_GET_ONE_FAIL,
+  GROUPS_TIMES_GET_ONE_REQUEST,
+  GROUPS_TIMES_GET_ONE_SUCCESS,
   HOMEWORK_CREATED,
   HOMEWORK_GET_ALL_FAIL,
   HOMEWORK_GET_ALL_REQUEST,
@@ -76,6 +79,25 @@ export const getAllGroupTimes = () => async (dispatch) => {
   }
 };
 
+
+// GET One group Time
+
+export const getOneGroupTime = (token) => async (dispatch) => {
+  dispatch({ type: GROUPS_TIMES_GET_ONE_REQUEST });
+  try {
+    const { data } = await AdminApi.getOneGroupTimes(token);
+    console.log(data);
+    dispatch({ type: GROUPS_TIMES_GET_ONE_SUCCESS, payload: data.groupTimes[0] });
+  } catch (error) {
+    dispatch({
+      type: GROUPS_TIMES_GET_ONE_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
 // GET Homeworks
 
 export const getHomework = (token) => async (dispatch) => {

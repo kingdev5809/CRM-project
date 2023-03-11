@@ -33,7 +33,7 @@ export const getAllGroups = () => async (dispatch) => {
   try {
     const { data } = await AdminApi.getGroups();
     dispatch({ type: GROUPS_GET_ALL_SUCCESS, payload: data.groups });
-    console.log(data);
+    
   } catch (error) {
     dispatch({
       type: GROUPS_GET_ALL_FAIL,

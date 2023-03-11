@@ -66,7 +66,6 @@ function Schedule() {
     setEnd(`${endHours}:${endMinutes}`);
     setId(clickInfo.event.id);
     setVisibleUpdateModal("d-block");
-    console.log(endDate);
   };
 
   const dispatch = useDispatch();

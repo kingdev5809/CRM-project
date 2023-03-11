@@ -2,23 +2,46 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Calendar from "../../../Components/calendar/calendar";
 import Navbar from "../../../Components/Navbar";
-import { getAllGroupTimes } from "../../../Redux/Actions/TeacherAction";
-import ScheduleInfoModal from "../Modal/RateHomeworkModal";
+import {
+  getAllGroupTimes,
+  getOneGroupTime,
+} from "../../../Redux/Actions/TeacherAction";
+import ScheduleInfoModal from "../Modal/ScheduleInfoModal";
 
 function TeacherSchedule() {
   const dispatch = useDispatch();
+  const [infoVisibleModal, setInfoVisibleModal] = useState("d-none");
 
   const getGroupTimes = useSelector((state) => state.groupTimes);
   const { allGroupTimes } = getGroupTimes;
+
+  const getGroupTime = useSelector((state) => state.oneGroupTime);
+  const { oneGroupTimes } = getGroupTime;
 
   useEffect(() => {
     dispatch(getAllGroupTimes());
   }, []);
 
-const handleEventDrop = () => {
-  console.log("helllo");
-}
+  // info modal states
+  const [group_name, setGroup_name] = useState("");
 
+  const [start_day, setStart_day] = useState("");
+  const [end_day, setEnd_day] = useState("");
+
+  const handleEventDrop = (clickInfo) => {
+    setInfoVisibleModal("d-block");
+    dispatch(getOneGroupTime(clickInfo.event.id));
+    let endDate = new Date(clickInfo.event.endStr);
+    let endHours = endDate.getHours();
+    let endMinutes = endDate.getMinutes();
+    if (endHours < 10) endHours = "0" + endHours;
+    if (endMinutes < 10) endMinutes = "0" + endMinutes;
+    setGroup_name(clickInfo.event.title);
+    setStart_day(clickInfo.event.start);
+    setEnd_day(`${endHours}:${endMinutes}`);
+  };
+
+console.log(oneGroupTimes);
 
   // set group times
   const CalendarFunc = (event) => {
@@ -32,6 +55,7 @@ const handleEventDrop = () => {
       endTime: event.end,
       groupId: event._id,
       classNames: event.color,
+    
     };
     return events;
   };
@@ -44,6 +68,14 @@ const handleEventDrop = () => {
       <Navbar />
       <div className="scheldulePage container">
         <Calendar events={events} handleEventDrop={handleEventDrop} />
+        <ScheduleInfoModal
+          infoVisibleModal={infoVisibleModal}
+          setInfoVisibleModal={setInfoVisibleModal}
+          group_name={group_name}
+          start_day={start_day}
+          end_day={end_day}
+          oneGroupTimes={oneGroupTimes}
+        />
       </div>
     </div>
   );

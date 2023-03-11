@@ -17,14 +17,17 @@ function StudentSchedule() {
   const getGroupTime = useSelector((state) => state.oneGroupTime);
   const { oneGroupTimes } = getGroupTime;
 
-  // info modal states
-  const [group_name, setGroup_name] = useState("");
-  
-  const [start_day, setStart_day] = useState("");
-  const [end_day, setEnd_day] = useState("");
   useEffect(() => {
     dispatch(getAllGroupTimes());
   }, []);
+
+  
+  // info modal states
+  const [group_name, setGroup_name] = useState("");
+
+  const [start_day, setStart_day] = useState("");
+  const [end_day, setEnd_day] = useState("");
+
 
   const handleEventDrop = (clickInfo) => {
     setInfoVisibleModal("d-block");
@@ -37,9 +40,9 @@ function StudentSchedule() {
     setGroup_name(clickInfo.event.title);
     setStart_day(clickInfo.event.start);
     setEnd_day(`${endHours}:${endMinutes}`);
-    console.log(clickInfo.event);
+    
   };
-  console.log(oneGroupTimes);
+
   const CalendarFunc = (event) => {
     let day = new Date(event.start_day).getDay();
     const events = {

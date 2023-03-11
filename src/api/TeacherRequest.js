@@ -21,6 +21,9 @@ export const getHomeworks = (token) =>
 export const getComments = (token) =>
   API.get(`/teacher/comment/${token}`, config);
 
+export const getOneGroupTimes = (token) =>
+  API.get(`/teacher/group_time/${token}`, config);
+
 export const postComments = (data) =>
   API.post("/teacher/comment", data, config);
 
