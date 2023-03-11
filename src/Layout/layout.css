@@ -910,6 +910,9 @@ body::-webkit-scrollbar {
   border-color: #10b981;
 }
 /* color item end  bg_green*/
+.calendarComponent .fc-timegrid-event-harness>.fc-timegrid-event{
+  cursor: pointer;
+}
 @media screen and (max-width: 768px) {
   .calendarComponent .fc-toolbar .fc-toolbar-chunk button {
     background-color: #dad7d7 !important;

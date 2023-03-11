@@ -60,7 +60,7 @@ export default function Calendar(props) {
     <div className="calendarComponent">
       <FullCalendar
         initialView="timeGridSevenDay"
-        editable={true}
+        editable={selectable}
         headerToolbar={getHeaderToolbar()}
         views={{
           timeGridSevenDay: {

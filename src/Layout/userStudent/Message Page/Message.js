@@ -88,4 +88,5 @@ function Message({ group_id, group_name }) {
   );
 }
 
+
 export default Message;

@@ -87,7 +87,7 @@ function Schedule() {
       daysOfWeek: [day],
       startTime: event.start,
       endTime: event.end,
-      groupId: event.group_id._id,
+      groupId: event.group_id?._id,
       id: event._id,
       classNames: event.color,
     };

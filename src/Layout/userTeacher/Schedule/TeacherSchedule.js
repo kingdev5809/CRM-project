@@ -15,6 +15,11 @@ function TeacherSchedule() {
     dispatch(getAllGroupTimes());
   }, []);
 
+const handleEventDrop = () => {
+  console.log("helllo");
+}
+
+
   // set group times
   const CalendarFunc = (event) => {
     let day = new Date(event.start_day).getDay();
@@ -38,7 +43,7 @@ function TeacherSchedule() {
     <div className="flex">
       <Navbar />
       <div className="scheldulePage container">
-        <Calendar events={events} />
+        <Calendar events={events} handleEventDrop={handleEventDrop} />
       </div>
     </div>
   );
