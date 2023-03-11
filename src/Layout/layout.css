@@ -405,6 +405,7 @@ body::-webkit-scrollbar {
   height: 100%;
   top: 0;
   left: 20%;
+  z-index: 999;
 }
 
 .modalWindows {

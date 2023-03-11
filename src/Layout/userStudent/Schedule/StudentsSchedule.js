@@ -7,10 +7,15 @@ import ScheduleInfoModal from "../Modals/ScheduleInfoModal";
 
 function StudentSchedule() {
   const dispatch = useDispatch();
-  const [infoVisibleModal, setInfoVisibleModal] = useState("d-block");
+  const [infoVisibleModal, setInfoVisibleModal] = useState("d-none");
   const getGroupTimes = useSelector((state) => state.groupTimes);
   const { allGroupTimes } = getGroupTimes;
 
+  // info modal states
+  const [group_name, setGroup_name] = useState("");
+  const [text, setText] = useState("");
+  const [start_day, setStart_day] = useState("");
+  const [end_day, setEnd_day] = useState("");
   useEffect(() => {
     dispatch(getAllGroupTimes());
   }, []);
@@ -18,12 +23,22 @@ function StudentSchedule() {
   const handleEventDrop = (clickInfo) => {
     setInfoVisibleModal("d-block");
     console.log(clickInfo);
+    let endDate = new Date(clickInfo.event.endStr);
+    let endHours = endDate.getHours();
+    let endMinutes = endDate.getMinutes();
+    if (endHours < 10) endHours = "0" + endHours;
+    if (endMinutes < 10) endMinutes = "0" + endMinutes;
+    setGroup_name(clickInfo.event.title);
+    setStart_day(clickInfo.event.start);
+    setEnd_day(`${endHours}:${endMinutes}`);
+    setText(clickInfo.event.textColor);
   };
 
   const CalendarFunc = (event) => {
     let day = new Date(event.start_day).getDay();
     const events = {
       title: event.group_id?.group_name,
+      textColor: event.text,
       startRecur: `${event.start_day}T${event.start}+05:00`,
       endRecur: `${event.end_day}T${event.end}+05:00`,
       daysOfWeek: [day],
@@ -33,7 +48,7 @@ function StudentSchedule() {
       teacherId: event.group_id?.teacher,
       classNames: event.color,
     };
-    console.log(event);
+    
     return events;
   };
   const events = [
@@ -47,6 +62,10 @@ function StudentSchedule() {
         <ScheduleInfoModal
           infoVisibleModal={infoVisibleModal}
           setInfoVisibleModal={setInfoVisibleModal}
+          group_name={group_name}
+          start_day={start_day}
+          end_day={end_day}
+          text={text}
         />
       </div>
     </div>

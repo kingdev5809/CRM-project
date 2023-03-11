@@ -1,10 +1,18 @@
+import moment from "moment";
 import React from "react";
 import { deleteIcon } from "../../../Components/icons/svgIcons";
 import calendarImg from "../../../images/calendarImgFFF.png";
 import clockImg from "../../../images/modal-mg/clockImdFFF.png";
 import locationImg from "../../../images/modal-mg/locationImgFFF.png";
 
-function ScheduleInfoModal({ infoVisibleModal, setInfoVisibleModal }) {
+function ScheduleInfoModal({
+  infoVisibleModal,
+  setInfoVisibleModal,
+  group_name,
+  start_day,
+  end_day,
+  text,
+}) {
   return (
     <div>
       <div className={infoVisibleModal}>
@@ -17,10 +25,7 @@ function ScheduleInfoModal({ infoVisibleModal, setInfoVisibleModal }) {
             <div className="modal-title">
               <h1>
                 <img src={calendarImg} alt="" />
-                <span>
-                  {" "}
-                  English A1 lesson for begineer teenagers after dinner
-                </span>
+                <span>{group_name}</span>
               </h1>
               <span
                 onClick={() => setInfoVisibleModal("d-none")}
@@ -38,15 +43,16 @@ function ScheduleInfoModal({ infoVisibleModal, setInfoVisibleModal }) {
                   <p>Teacher</p>
                 </div>
               </div>
-              <p className="comment-box">
-                Are you thinking about a future with the English language as
-                your main working tool? Do you want to develop your
-                communication skills?
-              </p>
+              <p className="comment-box">{text}</p>
               <div className="schedule-box">
                 <div className="box">
                   <img src={clockImg} alt="" />
-                  <h4>Monday, July 15 15:00 - 16:00</h4>
+                  <h4>
+                    {start_day
+                      ? moment(start_day).format("MMMM Do YYYY, kk:mm  ")
+                      : null}{" "}
+                    - {end_day}
+                  </h4>
                 </div>
                 <div className="box">
                   <img src={locationImg} alt="" />
