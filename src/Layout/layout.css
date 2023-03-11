@@ -1506,7 +1506,7 @@ body::-webkit-scrollbar {
 }
 .messages-cards .items .item {
   background-color: #fff;
-  border-radius: 20px;
+  border-radius: 8px;
   position: relative;
   padding: 20px;
   margin: 10px 0;
@@ -1771,7 +1771,7 @@ Teacher Page start
 }
 .RateHomeworkModal .rate-images {
   position: absolute;
-  right: 10px;
+  right: 15px;
   top: 0px;
   z-index: 99999 !important;
 }
@@ -1912,27 +1912,13 @@ Teacher Page start
 
 @media screen and (max-width: 550px) {
   .scheduleInfoModal {
-    top: 1.625rem;
+    height: 100%;
+    width: 100%;
+    top: 10rem;
+    z-index: 999999;
   }
-  .scheduleInfoModal .closeModal {
-    right: 31px;
-    top: 17px;
-  }
-  .scheduleInfoModal .modal-title h1 span{
-    font-size: 20px;
-  }
-  .scheduleInfoModal .modal-title h1 img{
-    width: 25px;
-    padding: 0;
-  }
-  .scheduleInfoModal .modal-content .comment-box{
-    font-size: 13px;
-  }
-  .scheduleInfoModal .modal-content .schedule-box .box h4{
-    font-size: 12px;
-  }
-  .scheduleInfoModal .modal-content .schedule-box .box img {
-    width: 20px;
-  }
+ 
 }
+
+
 /* schedule info modal style end */

@@ -164,7 +164,7 @@ export const getAllGroupTimesReducers = (state = initialState, action) => {
   }
 };
 
-// GET All Groups Times
+// GET One Groups Times
 export const getOneGroupTimesReducers = (state = initialState, action) => {
   switch (action.type) {
     case GROUPS_TIMES_GET_ONE_REQUEST:

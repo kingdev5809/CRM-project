@@ -12,6 +12,7 @@ import {
   GROUPS_GET_ONE_SUCCESS,
   GROUPS_POST_STUDENT_ADD,
   GROUPS_POST_STUDENT_REMOVED,
+  GROUPS_TIMES_GET_ALL_CREATED,
   GROUPS_TIMES_GET_ALL_DELETE,
   GROUPS_TIMES_GET_ALL_FAIL,
   GROUPS_TIMES_GET_ALL_REQUEST,
@@ -360,13 +361,12 @@ export const postGroupTime =
         text,
         teacher_id,
       });
-
       if (data.error) {
         toast.warning(data.error);
       } else {
         toast.success(data.msg);
         dispatch({
-          type: GROUPS_TIMES_GET_ALL_DELETE,
+          type: GROUPS_TIMES_GET_ALL_CREATED,
           payload: data.groupTime,
         });
 

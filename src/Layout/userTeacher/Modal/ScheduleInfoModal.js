@@ -11,8 +11,7 @@ function ScheduleInfoModal({
   group_name,
   start_day,
   end_day,
-  oneGroupTimes,
-  
+  oneGroupTimes,  
 }) {
   return (
     <div>
