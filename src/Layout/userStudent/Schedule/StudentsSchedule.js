@@ -3,16 +3,22 @@ import { useDispatch, useSelector } from "react-redux";
 import Calendar from "../../../Components/calendar/calendar";
 import Navbar from "../../../Components/Navbar";
 import { getAllGroupTimes } from "../../../Redux/Actions/StudentAction";
+import ScheduleInfoModal from "../Modals/ScheduleInfoModal";
 
 function StudentSchedule() {
   const dispatch = useDispatch();
-
+  const [infoVisibleModal, setInfoVisibleModal] = useState("d-block");
   const getGroupTimes = useSelector((state) => state.groupTimes);
   const { allGroupTimes } = getGroupTimes;
 
   useEffect(() => {
     dispatch(getAllGroupTimes());
   }, []);
+
+  const handleEventDrop = (clickInfo) => {
+    setInfoVisibleModal("d-block");
+    console.log(clickInfo);
+  };
 
   const CalendarFunc = (event) => {
     let day = new Date(event.start_day).getDay();
@@ -23,12 +29,13 @@ function StudentSchedule() {
       daysOfWeek: [day],
       startTime: event.start,
       endTime: event.end,
-      groupId: event._id,
+      groupId: event.group_id?._id,
+      teacherId: event.group_id?.teacher,
       classNames: event.color,
     };
+    console.log(event);
     return events;
   };
-
   const events = [
     allGroupTimes?.group_times?.map((event) => CalendarFunc(event)),
   ];
@@ -36,7 +43,11 @@ function StudentSchedule() {
     <div className="flex">
       <Navbar />
       <div className="scheldulePage container">
-        <Calendar  events={events} />
+        <Calendar events={events} handleEventDrop={handleEventDrop} />
+        <ScheduleInfoModal
+          infoVisibleModal={infoVisibleModal}
+          setInfoVisibleModal={setInfoVisibleModal}
+        />
       </div>
     </div>
   );

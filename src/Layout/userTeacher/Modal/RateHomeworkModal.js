@@ -9,7 +9,7 @@ import exclamationImg from "../../../images/navbar-img/exclamation.png";
 import Rating from "../../../Components/Rating";
 import { useDispatch } from "react-redux";
 import { postCheckHomework } from "../../../Redux/Actions/TeacherAction";
-function ScheduleInfoModal(props) {
+function RateHomeworkModal(props) {
   const { visibleModal, setVisibleModal, data, homework_id, group_id,setRefresh} = props;
 
   const user = JSON.parse(localStorage.getItem("userInfo"));
@@ -54,7 +54,7 @@ function ScheduleInfoModal(props) {
           onClick={() => setVisibleModal("d-none")}
           className="w-screen"
         ></div>
-        <div className="modalWindows scheduleInfoModal ">
+        <div className="modalWindows RateHomeworkModal ">
           <div className="modal-title">
             <h1>
               <img src={calendarImg} alt="" />
@@ -140,4 +140,4 @@ function ScheduleInfoModal(props) {
   );
 }
 
-export default ScheduleInfoModal;
+export default RateHomeworkModal;

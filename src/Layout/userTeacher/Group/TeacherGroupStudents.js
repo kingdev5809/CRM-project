@@ -3,9 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
 import Navbar from "../../../Components/Navbar";
-import userImg from "../../../images/navbar-img/userImg.png";
 import { getOneGroup } from "../../../Redux/Actions/AdminAction";
-import ScheduleInfoModal from "../Modal/ScheduleInfoModal";
 
 function TeacherGroupStudents() {
   const [visibleModal, setVisibleModal] = useState("d-none");

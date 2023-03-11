@@ -10,7 +10,7 @@ import AddHomeworkModal from "../../Modal/AddHomeworkModal";
 import exclamationImg from "../../../../images/navbar-img/exclamation.png";
 import successImg from "../../../../images/navbar-img/success.png";
 
-import ScheduleInfoModal from "../../Modal/ScheduleInfoModal";
+import RateHomeworkModal from "../../Modal/RateHomeworkModal";
 import { toast } from "react-toastify";
 
 function TeacherHomeworks({ group_id, allGroupData }) {
@@ -114,7 +114,7 @@ function TeacherHomeworks({ group_id, allGroupData }) {
         setVisibleModal={setVisibleModal}
         allGroupData={allGroupData}
       />
-      <ScheduleInfoModal
+      <RateHomeworkModal
         visibleModal={rateVisibleModal}
         setVisibleModal={setRateVisibleModal}
         data={oneGroupData}

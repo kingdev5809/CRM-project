@@ -910,7 +910,7 @@ body::-webkit-scrollbar {
   border-color: #10b981;
 }
 /* color item end  bg_green*/
-.calendarComponent .fc-timegrid-event-harness>.fc-timegrid-event{
+.calendarComponent .fc-timegrid-event-harness > .fc-timegrid-event {
   cursor: pointer;
 }
 @media screen and (max-width: 768px) {
@@ -1627,12 +1627,190 @@ Teacher Page start
 ******************
 ****************** */
 
+/* RateHomeworkModal style start */
+.RateHomeworkModal {
+}
+.RateHomeworkModal .modal-content .user-box {
+  width: 250px;
+  display: flex;
+  margin-top: 0;
+}
+
+.RateHomeworkModal .modal-content .user-box img {
+  width: 42px;
+  height: 42px;
+}
+.RateHomeworkModal .modal-content .user-box .box {
+  padding: 5px;
+  font-size: 12px;
+}
+.RateHomeworkModal .modal-content .user-box .box p {
+  color: rgb(153, 152, 152);
+  font-size: 12px;
+}
+
+.RateHomeworkModal .modal-title {
+}
+.RateHomeworkModal .modal-title h1 {
+  display: flex;
+}
+.RateHomeworkModal .modal-title h1 img {
+  width: 40px;
+  margin: auto 0;
+  margin-top: 0;
+  padding: 10px;
+  padding-left: 0;
+  padding-top: 0;
+}
+.RateHomeworkModal .modal-title h1 span {
+  font-weight: 600;
+  margin-left: 10px;
+  font-size: 26px;
+}
+
+.RateHomeworkModal .modal-content {
+}
+
+.RateHomeworkModal .modal-content .teacher-box {
+  margin: 10px 0;
+}
+.RateHomeworkModal .modal-content .comment-box {
+  line-height: 20px;
+  font-size: 13px;
+}
+
+.RateHomeworkModal .modal-content .schedule-box {
+  margin-top: 10px;
+}
+.RateHomeworkModal .modal-content .schedule-box .flex {
+  justify-content: flex-start;
+}
+.RateHomeworkModal .modal-content .schedule-box .box {
+  display: flex;
+  padding: 5px 0px;
+  padding-right: 35px;
+  align-items: center;
+}
+.RateHomeworkModal .modal-content .schedule-box .box img {
+  width: 20px;
+  padding: 5px;
+  padding-left: 0;
+}
+.RateHomeworkModal .modal-content .schedule-box .box h4 {
+  font-size: 14px;
+  margin-left: 7px;
+}
+
+.RateHomeworkModal .modal-content .student-box {
+  border: 1px solid #000;
+  padding: 15px;
+  border-radius: 10px;
+  margin: 10px 0;
+  position: relative;
+}
+.RateHomeworkModal .modal-content .student-box .items {
+  height: 295px;
+  overflow-y: scroll;
+  padding: 0px;
+  margin: 0;
+  margin-top: 25px;
+}
+
+/* width */
+.RateHomeworkModal .modal-content .student-box .items::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+.RateHomeworkModal .modal-content .student-box .items::-webkit-scrollbar-track {
+  background: #f1f1f100;
+  margin-top: 10px;
+}
+
+/* Handle */
+.RateHomeworkModal .modal-content .student-box .items::-webkit-scrollbar-thumb {
+  background: #ee6c5d;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+.RateHomeworkModal
+  .modal-content
+  .student-box
+  .items::-webkit-scrollbar-thumb:hover {
+  background: #c75b4f;
+}
+
+.RateHomeworkModal .modal-content .student-box .items .item {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  margin: 2px;
+  align-items: center;
+}
+.RateHomeworkModal .modal-content .student-box .item img {
+  margin: auto 0;
+}
+.RateHomeworkModal .modal-content .student-box .star-img {
+  width: 100px;
+  cursor: pointer;
+}
+.RateHomeworkModal .modal-content .student-box input {
+  width: 20px;
+  cursor: pointer;
+}
+.RateHomeworkModal .success-img {
+  width: 30px;
+  cursor: pointer;
+}
+.RateHomeworkModal .exclamation-img {
+  cursor: pointer;
+  width: 30px;
+}
+.RateHomeworkModal .rate-images {
+  position: absolute;
+  right: 10px;
+  top: 0px;
+  z-index: 99999 !important;
+}
+.RateHomeworkModal .rate-images img {
+  margin: 0px 12px;
+}
+.RateHomeworkModal .rating i {
+  color: #ee6c4d;
+  font-size: 18px;
+  margin: 3px;
+  cursor: pointer;
+}
+.RateHomeworkModal .modal-content button {
+  background-color: #ee6c4d;
+  border: none;
+  border-radius: 30px;
+  color: #fff;
+  cursor: pointer;
+  margin: auto 0;
+  padding: 10px 45px;
+  float: right;
+}
+/* RateHomeworkModal style end */
+
 /* schedule info modal style start */
 .scheduleInfoModal {
+  background-color: #e56f53;
+  color: white;
+  top: 7.625rem;
 }
+
+.scheduleInfoModal .closeModal {
+  position: absolute;
+  right: 35px;
+  top: 30px;
+}
+
 .scheduleInfoModal .modal-content .user-box {
   width: 250px;
   display: flex;
+  margin-top: 0;
 }
 
 .scheduleInfoModal .modal-content .user-box img {
@@ -1644,7 +1822,7 @@ Teacher Page start
   font-size: 12px;
 }
 .scheduleInfoModal .modal-content .user-box .box p {
-  color: rgb(153, 152, 152);
+  color: rgb(227 227 227);
   font-size: 12px;
 }
 
@@ -1664,18 +1842,18 @@ Teacher Page start
 .scheduleInfoModal .modal-title h1 span {
   font-weight: 600;
   margin-left: 10px;
-  font-size: 26px;
+  font-size: 32px;
 }
 
 .scheduleInfoModal .modal-content {
 }
 
 .scheduleInfoModal .modal-content .teacher-box {
-  margin: 10px 0;
+  margin: 18px 0;
 }
 .scheduleInfoModal .modal-content .comment-box {
-  line-height: 20px;
-  font-size: 13px;
+  line-height: 24px;
+  font-size: 17px;
 }
 
 .scheduleInfoModal .modal-content .schedule-box {
@@ -1691,103 +1869,38 @@ Teacher Page start
   align-items: center;
 }
 .scheduleInfoModal .modal-content .schedule-box .box img {
-  width: 20px;
+  width: 22px;
   padding: 5px;
   padding-left: 0;
 }
 .scheduleInfoModal .modal-content .schedule-box .box h4 {
-  font-size: 14px;
+  font-size: 17px;
   margin-left: 7px;
 }
 
-.scheduleInfoModal .modal-content .student-box {
-  border: 1px solid #000;
-  padding: 15px;
-  border-radius: 10px;
-  margin: 10px 0;
-  position: relative;
-}
-.scheduleInfoModal .modal-content .student-box .items {
-  height: 295px;
-  overflow-y: scroll;
-  padding: 0px;
-  margin: 0;
-}
-
-/* width */
-.scheduleInfoModal .modal-content .student-box .items::-webkit-scrollbar {
-  width: 10px;
-}
-
-/* Track */
-.scheduleInfoModal .modal-content .student-box .items::-webkit-scrollbar-track {
-  background: #f1f1f100;
-  margin-top: 10px;
-}
-
-/* Handle */
-.scheduleInfoModal .modal-content .student-box .items::-webkit-scrollbar-thumb {
-  background: #ee6c5d;
-  border-radius: 10px;
-}
-
-/* Handle on hover */
-.scheduleInfoModal
-  .modal-content
-  .student-box
-  .items::-webkit-scrollbar-thumb:hover {
-  background: #c75b4f;
-}
-
-.scheduleInfoModal .modal-content .student-box .items .item {
-  display: flex;
-  justify-content: space-between;
-  padding: 10px 0;
-  margin: 0;
-  align-items: center;
-}
-.scheduleInfoModal .modal-content .student-box .item img {
-  margin: auto 0;
-}
-.scheduleInfoModal .modal-content .student-box .star-img {
-  width: 100px;
-  cursor: pointer;
-}
-.scheduleInfoModal .modal-content .student-box input {
-  width: 20px;
-  cursor: pointer;
-}
-.scheduleInfoModal .success-img {
-  width: 30px;
-  cursor: pointer;
-}
-.scheduleInfoModal .exclamation-img {
-  cursor: pointer;
-  width: 30px;
-}
-.scheduleInfoModal .rate-images {
-  position: absolute;
-  right: 10px;
-  top: 0px;
-  z-index: 99999 !important;
-}
-.scheduleInfoModal .rate-images img {
-  margin: 0px 12px;
-}
-.scheduleInfoModal .rating i {
-  color: #ee6c4d;
-  font-size: 18px;
-  margin: 3px;
-  cursor: pointer;
-}
-.scheduleInfoModal .modal-content button {
-  background-color: #ee6c4d;
-  border: none;
-  border-radius: 30px;
-  color: #fff;
-  cursor: pointer;
-  margin: auto 0;
-  padding: 10px 45px;
-  float: right;
+@media screen and (max-width: 550px) {
+  .scheduleInfoModal {
+    top: 1.625rem;
+  }
+  .scheduleInfoModal .closeModal {
+    right: 31px;
+    top: 17px;
+  }
+  .scheduleInfoModal .modal-title h1 span{
+    font-size: 20px;
+  }
+  .scheduleInfoModal .modal-title h1 img{
+    width: 25px;
+    padding: 0;
+  }
+  .scheduleInfoModal .modal-content .comment-box{
+    font-size: 13px;
+  }
+  .scheduleInfoModal .modal-content .schedule-box .box h4{
+    font-size: 12px;
+  }
+  .scheduleInfoModal .modal-content .schedule-box .box img {
+    width: 20px;
+  }
 }
 /* schedule info modal style end */

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Calendar from "../../../Components/calendar/calendar";
 import Navbar from "../../../Components/Navbar";
 import { getAllGroupTimes } from "../../../Redux/Actions/TeacherAction";
-import ScheduleInfoModal from "../Modal/ScheduleInfoModal";
+import ScheduleInfoModal from "../Modal/RateHomeworkModal";
 
 function TeacherSchedule() {
   const dispatch = useDispatch();
