@@ -1916,7 +1916,11 @@ Teacher Page start
     width: 100%;
     top: 10rem;
     z-index: 999999;
+    padding-top: 80px;
   }
+  .scheduleInfoModal .closeModal {
+    right: 59px;
+    top: 50px;
  
 }
 
