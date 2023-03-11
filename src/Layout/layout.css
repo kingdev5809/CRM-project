@@ -1358,6 +1358,7 @@ body::-webkit-scrollbar {
 }
 
 .homework .homework-title {
+  display: flex;
   justify-content: space-between;
 }
 .homework .homework-title button {
@@ -1803,6 +1804,7 @@ Teacher Page start
   }
   .RateHomeworkModal .modal-title h1 span{
     font-size: 20px;
+    line-height: 2.25rem;
   }
   .RateHomeworkModal .modal-title h1 img{
     width: 25px;
@@ -1819,6 +1821,8 @@ Teacher Page start
   }
 }
 /* RateHomeworkModal style end */
+
+
 
 /* schedule info modal style start */
 .scheduleInfoModal {
