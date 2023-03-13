@@ -34,6 +34,11 @@ export default function Login() {
     e.preventDefault();
     dispatch(login(email, password, checkbox, navigate));
   };
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") {
+      dispatch(login(email, password, checkbox, navigate));
+    }
+  };
 
   return (
     <div className="login-page d-flex">
@@ -53,7 +58,7 @@ export default function Login() {
         </nav>
 
         <main>
-          <div className="login-box">
+          <div className="login-box" onKeyDown={handleKeyDown}>
             <h1>Loggin</h1>
             <div className="input-box">
               <span>@</span>
@@ -92,11 +97,6 @@ export default function Login() {
               className="signBtn"
               onClick={handleSubmit}
               disabled={loading}
-              onKeyDown={(e) => {
-                if (e.key === "Enter") {
-                  handleSubmit();
-                }
-              }}
             >
               {loading ? "LOADING . . ." : "SING IN"}
             </button>

@@ -543,6 +543,7 @@ export const updateTeacher =
         teacher_id
       );
 
+      
       if (data.error) {
         toast.warning(data.error);
       } else {
@@ -588,7 +589,6 @@ export const updateStudent =
         },
         student_id
       );
-
       if (data.error) {
         toast.warning(data.error);
       } else {
