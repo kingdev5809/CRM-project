@@ -6,12 +6,11 @@
   box-sizing: border-box;
   text-decoration: none;
   list-style-type: none;
-  font-family: "Inter", sans-serif;
 }
 
 body {
   background-color: #f5f7fb;
-  font-family: sans-serif;
+  font-family: "Inter", sans-serif;
 }
 
 .container {
