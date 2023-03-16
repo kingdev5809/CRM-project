@@ -6,11 +6,13 @@
   box-sizing: border-box;
   text-decoration: none;
   list-style-type: none;
+  font-weight: 400;
 }
 
 body {
   background-color: #f5f7fb;
   font-family: "Inter", sans-serif;
+  font-weight: 400;
 }
 
 .container {
@@ -46,7 +48,7 @@ body::-webkit-scrollbar {
 }
 
 .main-header-pages h1 {
-  font-weight: 500;
+  
 }
 .main-header-pages button {
   background-color: #ee6c4d;
@@ -146,10 +148,11 @@ body::-webkit-scrollbar {
 }
 .navbar-component .deskop-nav .box-2 h2 {
   font-size: 1.35rem;
-  font-weight: 500;
+  
 }
 .navbar-component .deskop-nav .box-2 h3 {
-  font-size: 1rem;
+  font-size: 12px;
+  font-weight: 400;
 }
 .navbar-component .deskop-nav .navbar-main {
   min-height: 100%;
@@ -245,7 +248,7 @@ body::-webkit-scrollbar {
   flex-direction: column;
   width: 100%;
   text-align: center;
-  font-weight: 500;
+  
 }
 .navbar-component .mobile-nav ul li a .icon {
   position: relative;
@@ -433,7 +436,7 @@ body::-webkit-scrollbar {
 }
 .modalWindows .modal-title h1 {
   font-size: 1.875rem;
-  font-weight: 500;
+  
   line-height: 2.25rem;
 }
 .modalWindows .modal-content {
@@ -455,7 +458,7 @@ body::-webkit-scrollbar {
 .modalWindows .modal-content .modal-input label {
   display: block;
   font-size: 13px;
-  font-weight: 500;
+  
 }
 
 .modalWindows .modal-content .modal-input input {
@@ -625,7 +628,7 @@ body::-webkit-scrollbar {
 }
 .login-page .login-sec nav .nav-box ul li a {
   padding: 8px 15px;
-  font-weight: 500;
+  
   font-size: 18px;
   color: black;
 }
@@ -958,7 +961,7 @@ body::-webkit-scrollbar {
 .classes-page .items .item .item-box h3 {
   font-size: 1.25rem;
   line-height: 1.75rem;
-  font-weight: 500;
+  
 }
 .classes-page .items .item .item-box h4 {
   font-size: 1rem;
@@ -1121,12 +1124,12 @@ body::-webkit-scrollbar {
   font-size: 1.25rem;
   line-height: 1.75rem;
   color: #706b6b;
-  font-weight: 600;
+  
 }
 .teacherPage .items .item h4 {
   font-size: 1rem;
   line-height: 1.5rem;
-  font-weight: 500;
+  
 }
 .teacherPage .items .item p {
   margin: 10px 0;
@@ -1205,7 +1208,7 @@ body::-webkit-scrollbar {
   color: #333;
   font-size: 1.125rem;
   line-height: 1.75rem;
-  font-weight: 500;
+  
 }
 .studentsPage .main .items .item .title .text-box p {
   display: flex;
@@ -1313,7 +1316,7 @@ body::-webkit-scrollbar {
   margin-left: 10px;
 }
 .messagesPage h4 {
-  font-weight: 500;
+  
 }
 .messagesPage h6 {
   color: #b5b5b5;
@@ -1346,7 +1349,7 @@ body::-webkit-scrollbar {
   margin-left: 10px;
 }
 .homeworkPage h4 {
-  font-weight: 500;
+  
 }
 .homeworkPage h6 {
   color: #b5b5b5;
@@ -1408,7 +1411,7 @@ body::-webkit-scrollbar {
   background-color: #f5f7fb;
 }
 .group-cards h1 {
-  font-weight: 600;
+  
   font-size: 2.5rem;
 }
 .group-cards .items {
@@ -1450,7 +1453,7 @@ body::-webkit-scrollbar {
   right: 0;
 }
 .group-cards .items .item h3 {
-  font-weight: 500;
+  
   font-size: 1.5rem;
 }
 .group-cards .items .item p {
@@ -1479,7 +1482,7 @@ body::-webkit-scrollbar {
 .messages-cards {
 }
 .messages-cards h1 {
-  font-weight: 500;
+  
 }
 .messages-cards .items {
   margin-top: 20px;
@@ -1539,7 +1542,7 @@ body::-webkit-scrollbar {
   margin-left: 10px;
 }
 .messages-cards h4 {
-  font-weight: 500;
+  
 }
 .messages-cards h6,
 .messages-cards h5 {
@@ -1568,7 +1571,7 @@ body::-webkit-scrollbar {
   width: 30px;
 }
 .messages-cards .items .item .item-title h3 {
-  font-weight: 500;
+  
   margin-left: 11px;
 }
 
@@ -1668,7 +1671,7 @@ Teacher Page start
   padding-top: 0;
 }
 .RateHomeworkModal .modal-title h1 span {
-  font-weight: 600;
+  
   margin-left: 10px;
   font-size: 26px;
 }
@@ -1874,7 +1877,7 @@ Teacher Page start
   padding-top: 0;
 }
 .scheduleInfoModal .modal-title h1 span {
-  font-weight: 600;
+  
   margin-left: 10px;
   font-size: 32px;
 }
